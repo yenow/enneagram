@@ -11,12 +11,13 @@
 	<jsp:include page="../info/banner.jsp" ></jsp:include>
 	
 	
-	<form action="/Anneagram/AnneagramController.user" method="post">
+	<form action="/Anneagram/login.user" method="post">
 		<fieldset>
 			<legend>로그인</legend>
-			<label>아이디 : </label><input type="text" name="id" placeholder="아이디"></label>
+			<label>아이디 : <input type="text" name="id" placeholder="아이디"></label>
 			<label>비밀번호 : <input type="text" name="pw" placeholder="비밀번호"></label>
 			<input type="submit" value="로그인">
+			<button value="" onclick="location.href='newuser.jsp'">회원가입</button>
 		</fieldset>
 	</form>
 	

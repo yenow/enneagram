@@ -21,17 +21,27 @@ public class AnneagramController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		dorequest(request, response);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		System.out.print(id+pw);
+		dorequest(request, response);
 	}
 	
+	public void dorequest(HttpServletRequest request, HttpServletResponse response) {
+		String uri = request.getRequestURI();
+		String contextpath = request.getContextPath();
+		uri = uri.replace(contextpath, "");
+		uri = uri.substring(1,uri.lastIndexOf("."));
+		
+		switch(uri) {
+		case "newuser" : 
+		case "login" : 
+		}
+		
+	}
 	
 	@Override
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
