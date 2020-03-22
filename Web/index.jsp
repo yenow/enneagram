@@ -14,9 +14,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="info/header.jsp" ></jsp:include>
-	<jsp:include page="info/banner.jsp" ></jsp:include>
 	
+	<jsp:include page="info/banner.jsp" ></jsp:include>
+	<jsp:include page="info/content.jsp" ></jsp:include>
 	<a href="test/test.jsp">에니어그램 테스트</a>
 	
 	
