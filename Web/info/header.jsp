@@ -5,15 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/banner.css" >
+<link rel="stylesheet" href="../css/header.css">
 </head>
 <body>
-	<ul>
-		<li>소개</li>
-		<li>성격 유형</li>
-		<li>기사</li>
-		<li>게시판</li>
-	</ul>
-	<hr>
+	<h1>에니어 그램</h1>
 </body>
 </html>
