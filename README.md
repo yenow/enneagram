@@ -1,2 +1,0 @@
-# Anneagram
- Anneagram cite
