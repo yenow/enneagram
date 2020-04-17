@@ -7,7 +7,6 @@
 	<name>anneagram</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
-	
 	<properties>
 		<java-version>1.8</java-version>
 		<org.springframework-version>5.0.7.RELEASE</org.springframework-version>
@@ -16,8 +15,7 @@
 	</properties>
 	
 	<dependencies>
-	
-		<!-- 오라클 JDBC 드라이버 -->
+	 <!-- 오라클 JDBC 드라이버 -->	      
 		<dependency>
 			<groupId>oracle.jdbc</groupId>
 			<artifactId>jdbc</artifactId>
@@ -26,8 +24,7 @@
 			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/ojdbc8.jar</systemPath>
 		</dependency>
 	
-		<!-- 시작 -->
-		<!-- json 라이브러리 추가 -->
+	<!-- json 라이브러리 추가 -->
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-databind</artifactId>
@@ -89,9 +86,7 @@
 				<groupId>org.aspectj</groupId>
 				<artifactId>aspectjweaver</artifactId>
 				<version>${org.aspectj-version}</version>
-			</dependency>	
-		
-		<!-- 끝 -->
+			</dependency>
 	
 		<!-- Spring -->
 		<dependency>
@@ -170,19 +165,20 @@
 		</dependency>
 				
 		<!-- Servlet -->
-		
 		<!-- <dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency> -->
+		
 		<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>javax.servlet-api</artifactId>
-				<version>3.1.0</version>
-				<scope>provided</scope>			
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>			
 		</dependency>
+		
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
