@@ -5,5 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Board">
-
+	<insert id="b_insert">
+	insert into board (bno,user_id,title,content,cnt,regdate) values 
+	(bno_seq.nextval,#{user_id},#{title},#{content},#{cnt},sysdate)
+	</insert>
 </mapper>
