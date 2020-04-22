@@ -1,5 +1,8 @@
 package com.anneagram.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +18,10 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void insertBoard(BoardVO bo) {
 		boardDAO.insertBoard(bo);
+	}
+
+	@Override
+	public List<BoardVO> selectList() {
+		return boardDAO.selectList();
 	}
 }

@@ -9,4 +9,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	insert into board (bno,user_id,title,content,cnt,regdate) values 
 	(bno_seq.nextval,#{user_id},#{title},#{content},#{cnt},sysdate)
 	</insert>
+	
+	<select id="b_list">
+	select * from board
+	</select>
 </mapper>
