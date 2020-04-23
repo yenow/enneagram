@@ -10,7 +10,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	(bno_seq.nextval,#{user_id},#{title},#{content},#{cnt},sysdate)
 	</insert>
 	
-	<select id="b_list">
-	select * from board
+	<select id="b_list" resultType="b" >
+		select * from board
+	</select>
+	
+	<select id="b_board" resultType="b">
+		select * from board where bno = #{bno}
 	</select>
 </mapper>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <form action="boardWrite" method="get">
 	<table border="1" style="text-align: center;">
 		<caption>게시판 목록</caption>
@@ -15,9 +17,11 @@
 				<th>글번호</th> <th>제목</th> <th>글쓴이</th> <th>수정날짜</th>
 			</tr>
 		</thead>
-		<tr>
-			<td>미완성</td>  <td>미완성</td>  <td>미완성</td>  <td>미완성</td>  
+		<c:forEach var="b" items="${blist }">
+			<tr>
+			<td>${b.bno }</td> <td><a href="boardCont?bno=${b.bno }">${b.title }</a></td>  <td>${b.user_id }</td>  <td>${b.regdate }</td>  
 		</tr>
+		</c:forEach>
 		
 		<tr>
 			<td colspan="4"> <input type="submit" value="글쓰기"> </td>

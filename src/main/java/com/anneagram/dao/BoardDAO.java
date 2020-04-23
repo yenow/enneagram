@@ -11,4 +11,6 @@ public interface BoardDAO {
 
 	List<BoardVO> selectList();
 
+	BoardVO selectboard(int bno);
+
 }

@@ -24,6 +24,9 @@
 			<td>제목</td><td><input type="text" name="title"></td>
 		</tr>
 		<tr>
+			<td>글쓴이</td><td><input type="text" name="title" value="${login.user_id }"  readonly="readonly"></td>
+		</tr>
+		<tr>
 			<td colspan="2" style="text-align: center;">내용</td>
 		</tr>
 		<tr>

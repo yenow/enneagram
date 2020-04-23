@@ -11,4 +11,6 @@ public interface BoardService {
 
 	List<BoardVO> selectList();
 
+	BoardVO selectboard(int bno);
+
 }
