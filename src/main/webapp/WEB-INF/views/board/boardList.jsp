@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<jsp:include page="../info/header.jsp"></jsp:include>
+<jsp:include page="../info/banner.jsp"></jsp:include>
 <form action="boardWrite" method="get">
 	<table border="1" style="text-align: center;">
 		<caption>게시판 목록</caption>

@@ -9,6 +9,9 @@
 </head>
 
 <body>
+
+<jsp:include page="../info/header.jsp"></jsp:include>
+<jsp:include page="../info/banner.jsp"></jsp:include>
 <c:if test="${login == null }">
 	<script type="text/javascript">
 		alert("로그인이 필요합니다");
@@ -21,10 +24,10 @@
 	<table border="1">
 		<caption>게시판 글쓰기</caption>
 		<tr>
-			<td>제목</td><td><input type="text" name="title"></td>
+			<td>제목</td> <td><input type="text" name="title"></td>
 		</tr>
 		<tr>
-			<td>글쓴이</td><td><input type="text" name="title" value="${login.user_id }"  readonly="readonly"></td>
+			<td>글쓴이</td> <td><input type="text" name="user_id" value="${login.user_id }"  readonly="readonly"></td>
 		</tr>
 		<tr>
 			<td colspan="2" style="text-align: center;">내용</td>

@@ -39,6 +39,7 @@ public class MemberController {
 		
 	}
 	
+	
 	@RequestMapping("/login_ok")
 	public String login_ok(MemberVO m, HttpSession session, HttpServletResponse response) throws IOException {
 		MemberVO member = memberSerivce.login_confirm(m.getUser_id());
@@ -49,13 +50,19 @@ public class MemberController {
 			out.print("history.back()");
 		}else {
 			if(member.getUser_pw().equals(m.getUser_pw())) {
-				out.print("alert('로그인에 성공하셨습니다');");
-				session.setAttribute("login", member);
+				out.print("alert('로그인에 성공하셨습니다');");   
+				session.setAttribute("login", member);    // login 성공할경우 "login"세션
 			}else {
 				out.print("alert('비밀번호가 틀립니다');");
 				out.print("history.back()");
 			}
 		}
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("login");
 		return "redirect:/";
 	}
 	

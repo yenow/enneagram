@@ -49,4 +49,10 @@ public class BoardController {
 		mv.addObject("b", b);
 		return mv;
 	}
+	
+	@RequestMapping(value = "/boardUpdate", method = RequestMethod.POST)
+	public void boardUpdate() {
+		
+	}
+	
 }
