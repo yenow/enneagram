@@ -20,7 +20,7 @@
 </c:if>
 
 <form action="boardWrite_ok" method="post">
-	<input type="hidden" name="user_id" value="${login.user_id }"> 
+	 
 	<table border="1">
 		<caption>게시판 글쓰기</caption>
 		<tr>

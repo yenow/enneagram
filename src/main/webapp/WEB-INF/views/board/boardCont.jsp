@@ -11,7 +11,7 @@
 	<jsp:include page="../info/banner.jsp"></jsp:include>
 	
 	<form action="boardUpdate" method="post">
-		<input type="hidden" name="user_id" value="${login.user_id }">
+		
 		<table border="1">
 			<caption>게시판 보기</caption>
 			<tr>
@@ -21,7 +21,7 @@
 			</tr>
 			<tr>
 				<td>글쓴이</td>
-				<td><input type="text" name="title" value="${b.user_id }"
+				<td><input type="text" name="user_id" value="${b.user_id }"
 					readonly="readonly"></td>
 			</tr>
 			<tr>

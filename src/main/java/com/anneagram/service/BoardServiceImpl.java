@@ -29,4 +29,9 @@ public class BoardServiceImpl implements BoardService{
 	public BoardVO selectboard(int bno) {
 		return boardDAO.selectboard(bno);
 	}
+
+	@Override
+	public void boardUpdate(BoardVO b) {
+		boardDAO.boardUpdate(b);
+	}
 }

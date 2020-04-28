@@ -24,18 +24,18 @@
 			<caption>게시판 수정</caption>
 			<tr>
 				<td>제목</td>
-				<td><input type="text" name="title" value="${login.title }"></td>
+				<td><input type="text" name="title" value="${b.title }"></td>
 			</tr>
 			<tr>
 				<td>글쓴이</td>
-				<td><input type="text" name="user_id" value="${login.user_id }"
+				<td><input type="text" name="user_id" value="${b.user_id }"
 					readonly="readonly"></td>
 			</tr>
 			<tr>
 				<td colspan="2" style="text-align: center;"></td>
 			</tr>
 			<tr>
-				<td colspan="2"><textarea rows="10" cols="20" name="content"> ${login.content }</textarea></td>
+				<td colspan="2"><textarea rows="10" cols="20" name="content"> ${b.content }</textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2" style="text-align: center;"><input

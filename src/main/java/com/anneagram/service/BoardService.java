@@ -13,4 +13,6 @@ public interface BoardService {
 
 	BoardVO selectboard(int bno);
 
+	void boardUpdate(BoardVO b);
+
 }

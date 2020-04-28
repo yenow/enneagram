@@ -13,4 +13,6 @@ public interface BoardDAO {
 
 	BoardVO selectboard(int bno);
 
+	void boardUpdate(BoardVO b);
+
 }

@@ -17,4 +17,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="b_board" resultType="b">
 		select * from board where bno = #{bno}
 	</select>
+	
+	<insert id="b_update">
+	insert into board (bno,user_id,title,content,cnt,moddate) values 
+	(bno_seq.nextval,#{user_id},#{title},#{content},#{cnt},sysdate)
+	</insert>
 </mapper>
