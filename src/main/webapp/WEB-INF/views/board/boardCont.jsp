@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,18 +33,24 @@
 				<td colspan="2"><textarea rows="10" cols="20" name="content"
 						readonly="readonly">${b.content }</textarea></td>
 			</tr>
-			<tr>
-				<td colspan="2" style="text-align: center;">
+			<c:if test="${b.user_id eq login.user_id}">
+				<tr>
+					<td colspan="2" style="text-align: center;">
 				
 					<input type="submit" value="수정">
-					<a href="boardDelete?bno=${b.bno }"><input type="button" value="삭제"></a></td>
-				<!-- 왜 안되는거지? -->
-				<c:if test="${b.user_id ne login.user_id } ">
-					<button onclick="history.back();">뒤로가기</button>
-				</c:if>
-			</tr>
+					<a href="boardDelete?bno=${b.bno }"><input type="button" value="삭제"></a>
+					</td>
+				</tr>
+			</c:if>
+			<!-- test="${b.user_id ne login.user_id} " 이렇게 뒤에 공간이 있으면 안됨;; -->
+			<c:if test="${b.user_id ne login.user_id}">
+				<tr>
+				<td colspan="2" style="text-align: center;"><button onclick="history.back();">뒤로가기</button></td>
+				</tr>
+			</c:if>
 		</table>
 	</form>
-
+	
+	
 </body>
 </html>
