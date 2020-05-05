@@ -29,5 +29,6 @@
 		</tr>
 	</table>
 </form>
+<jsp:include page="../info/tail.jsp"></jsp:include>
 </body>
 </html>

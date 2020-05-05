@@ -43,5 +43,6 @@
 			</tr>
 		</table>
 	</form>
+	<jsp:include page="../info/banner.jsp"></jsp:include>
 </body>
 </html>

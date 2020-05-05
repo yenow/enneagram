@@ -18,6 +18,6 @@
 <jsp:include page="info/banner.jsp"></jsp:include>
 
 
-
+<jsp:include page="info/tail.jsp"></jsp:include>
 </body>
 </html>
