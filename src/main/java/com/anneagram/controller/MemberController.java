@@ -42,7 +42,7 @@ public class MemberController {
 	
 	@RequestMapping("/login_ok")
 	public String login_ok(MemberVO m, HttpSession session, HttpServletResponse response) throws IOException {
-		MemberVO member = memberSerivce.login_confirm(m.getUser_id());
+		MemberVO member = memberSerivce.login_confirm(m.getUser_id());  // user_id로 member객체 정보 가져오기
 		PrintWriter out = response.getWriter();
 		
 		if(member.getUser_pw() == null) {

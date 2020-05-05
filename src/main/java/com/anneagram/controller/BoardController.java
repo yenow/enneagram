@@ -1,6 +1,10 @@
 package com.anneagram.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,6 +49,7 @@ public class BoardController {
 		return mv;
 	}
 	
+	//게시판 내용
 	@GetMapping("/boardCont")
 	public ModelAndView boardCont(int bno) {
 		ModelAndView mv = new ModelAndView("board/boardCont");
@@ -58,11 +63,21 @@ public class BoardController {
 		m.addAttribute("b", b);
 	}
 	
-	@PostMapping("boardUpdate_ok")
+	@PostMapping("/boardUpdate_ok")
 	public ModelAndView boardUpdate_ok(BoardVO b) {
-		ModelAndView mv = new ModelAndView("redirect:/board/boardList");
+		ModelAndView mv = new ModelAndView("redirect:/board/boardCont?bno="+b.getBno());
 		boardService.boardUpdate(b);
 		return mv; 
 	}
+	
+	@GetMapping("/boardDelete")
+	public ModelAndView boardDelete(int bno, HttpServletResponse response) throws IOException {
+		ModelAndView mv = new ModelAndView("redirect:/board/boardList");
+		boardService.boardDelete(bno);
+		PrintWriter out = response.getWriter();
+		
+		out.println("alert('게시글이 삭제되었습니다');");
+		return mv; 
+	} 
 	
 }

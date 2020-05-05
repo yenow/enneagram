@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +10,9 @@
 <body>
 	<jsp:include page="../info/header.jsp"></jsp:include>
 	<jsp:include page="../info/banner.jsp"></jsp:include>
-	
+
 	<form action="boardUpdate" method="post">
-		
+		<input type="hidden" name="bno" value="${b.bno }">
 		<table border="1">
 			<caption>게시판 보기</caption>
 			<tr>
@@ -25,14 +26,21 @@
 					readonly="readonly"></td>
 			</tr>
 			<tr>
-				<td colspan="2" style="text-align: center;" readonly>내용</td>
+				<td colspan="2" style="text-align: center;">내용</td>
 			</tr>
 			<tr>
-				<td colspan="2"><textarea rows="10" cols="20" name="content">${b.content }</textarea></td>
+				<td colspan="2"><textarea rows="10" cols="20" name="content"
+						readonly="readonly">${b.content }</textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2" style="text-align: center;">
-				<input type="submit" value="수정"></a> <input type="button" value="삭제"> </td>
+				
+					<input type="submit" value="수정">
+					<a href="boardDelete?bno=${b.bno }"><input type="button" value="삭제"></a></td>
+				<!-- 왜 안되는거지? -->
+				<c:if test="${b.user_id ne login.user_id } ">
+					<button onclick="history.back();">뒤로가기</button>
+				</c:if>
 			</tr>
 		</table>
 	</form>

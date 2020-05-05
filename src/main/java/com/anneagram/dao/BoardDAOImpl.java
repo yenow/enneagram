@@ -34,6 +34,11 @@ public class BoardDAOImpl implements BoardDAO {
 	public void boardUpdate(BoardVO b) {
 		sqlSession.insert("b_update",b);
 	}
+
+	@Override
+	public void boardDelete(int bno) {
+		sqlSession.delete("b_delete",bno);
+	}
 	
 	
 }

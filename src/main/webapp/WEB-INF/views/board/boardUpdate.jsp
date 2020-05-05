@@ -19,7 +19,7 @@
 	</c:if>
 
 	<form action="boardUpdate_ok" method="post">
-		<input type="hidden" name="user_id" value="${login.user_id }">
+		<input type="hidden" name="bno" value="${b.bno }">
 		<table border="1">
 			<caption>게시판 수정</caption>
 			<tr>

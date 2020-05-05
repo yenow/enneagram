@@ -6,20 +6,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="Board">
 	<insert id="b_insert">
-	insert into board (bno,user_id,title,content,cnt,regdate) values 
-	(bno_seq.nextval,#{user_id},#{title},#{content},#{cnt},sysdate)
+		insert into board (bno,user_id,title,content,cnt,regdate) values
+		(bno_seq.nextval,#{user_id},#{title},#{content},#{cnt},sysdate)
 	</insert>
-	
-	<select id="b_list" resultType="b" >
+
+	<select id="b_list" resultType="b">
 		select * from board
 	</select>
-	
+
 	<select id="b_board" resultType="b">
-		select * from board where bno = #{bno}
+		select * from board where bno =
+		#{bno}
 	</select>
-	
+
 	<insert id="b_update">
-	insert into board (bno,user_id,title,content,cnt,moddate) values 
-	(bno_seq.nextval,#{user_id},#{title},#{content},#{cnt},sysdate)
+		update board set user_id=#{user_id} ,title=#{title} ,content=#{content},
+		moddate=sysdate where bno = #{bno}
+	</insert>
+	
+	<insert id="b_delete">
+		delete from board where bno = #{bno}
 	</insert>
 </mapper>

@@ -2,7 +2,7 @@
 <%@ page session="false" contentType="text/html; charset=UTF-8" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>에니어그램</title>
 </head>
 <body>
 <%-- <h1>
