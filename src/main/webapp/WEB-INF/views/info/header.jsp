@@ -6,10 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../../resources/css/bootstrap.css">
 </head>
 <body>
-	<h1>header</h1>
-
 	<c:if test="${login!=null }">
 		<p>${login.user_id }님환영합니다</p>
 	</c:if>
@@ -21,7 +20,8 @@
 
 			<c:if test="${login!=null }">
 				<td><a href="/member/logout">로그아웃</a></td>
-				<td><a href="/member/">마이페이지</a></td>  <!-- 미완성 -->
+				<td><a href="/member/">마이페이지</a></td>
+				<!-- 미완성 -->
 			</c:if>
 			<c:if test="${login==null }">
 				<td><a href="/member/login">로그인</a></td>
@@ -34,6 +34,10 @@
 
 	<hr>
 
+	<button class="btn btn-info">테스트</button>
+
+	<script src="../../resources/js/jquery.js"></script>
+	<script type="text/javascript" src="../../resources/js/bootstrap.js"></script>
 
 </body>
 </html>
