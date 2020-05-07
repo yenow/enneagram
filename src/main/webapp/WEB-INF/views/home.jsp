@@ -3,9 +3,7 @@
 <html>
 <head>
 <title>에니어그램</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link  href="../resources/css/style.css" rel="stylesheet">
 </head>
 <body>
 	<%-- <h1>
@@ -18,19 +16,21 @@
 	<%-- <jsp:include page="info/header.jsp"></jsp:include> 이거는 .jsp를 붙여줘야 하네?? / 매핑경로를 사용하는게 아니라 실제 경로를 사용하는듯 --%>
 	<%-- jstl를 사용, 외부 경로도 가능, 느낌상 매핑경로도 이용가능하다는 느낌 <c:import url="/info/header"></c:import> --%>
 
-	<div class="container">
-		<div class="header">
-		 	<jsp:include page="info/header.jsp"></jsp:include>
+	<div class=container-md>
+		<div id="header">
+			<div class="">
+				<jsp:include page="info/header.jsp"></jsp:include>
+			</div>
 		</div>
-		<div class="banner">
-		 	<jsp:include page="info/banner.jsp"></jsp:include>
+		<div id="banner">
+			<div><jsp:include page="info/banner.jsp"></jsp:include></div>	
 		</div>
-			<div class="content">
+		<div id="content">
+			
 		</div>
-		<div class="tail">
-		 		<jsp:include page="info/tail.jsp"></jsp:include>
+		<div id="tail">
+			<div><jsp:include page="info/tail.jsp"></jsp:include></div>
 		</div>
-
 	</div>
 
 </body>

@@ -17,7 +17,6 @@
 		<tr>
 			<td><a href="/">홈페이지</a></td>
 
-
 			<c:if test="${login!=null }">
 				<td><a href="/member/logout">로그아웃</a></td>
 				<td><a href="/member/">마이페이지</a></td>
@@ -28,13 +27,10 @@
 				<td><a href="/member/member_insert">회원가입</a></td>
 			</c:if>
 
-
 		</tr>
 	</table>
 
 	<hr>
-
-	<button class="btn btn-info">테스트</button>
 
 	<script src="../../resources/js/jquery.js"></script>
 	<script type="text/javascript" src="../../resources/js/bootstrap.js"></script>
