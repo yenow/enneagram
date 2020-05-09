@@ -27,4 +27,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="b_delete">
 		delete from board where bno = #{bno}
 	</insert>
+	
+	<select id="">
+	 select * from (select rownum as rnum, e.* from (select * from board order by bno desc) e) where rnum <= 10 and rnum >=5;
+	</select>
 </mapper>

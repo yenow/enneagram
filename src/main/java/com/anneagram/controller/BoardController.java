@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,8 +36,19 @@ public class BoardController {
 	
 	//게시판 리스트 ,  리스트를 jsp파일로 넘기는게 필요하다. Model을 활용해서 넘긴다.
 	@RequestMapping(value = "/boardList", method = RequestMethod.GET)  
-	public ModelAndView boardList() {
+	public ModelAndView boardList(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("board/boardList");
+		int lineMax=10;
+		int startnum;
+		if(request.getParameter("startnum")==null) {
+			startnum = 1;
+		}else {
+			startnum = Integer.parseInt(request.getParameter("startnum"));
+		}
+		
+		
+			
+		
 		List<BoardVO> blist =boardService.selectList();   // ArrayList는 안되고 List는 되는 이유가 뭘까? 왜 SqlSession의 selectList는 List형만 반환할까?
 		mv.addObject("blist",blist);
 		return mv;

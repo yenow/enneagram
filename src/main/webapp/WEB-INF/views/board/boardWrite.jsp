@@ -36,10 +36,14 @@
 			<td colspan="2"><textarea rows="10" cols="20" name="content"></textarea></td>
 		</tr>
 		<tr>
-			<td colspan="2" style="text-align: center;"><input type="submit" value="등록"></td>
+			<td colspan="2" style="text-align: center;">
+				<input type="submit" value="등록">
+				<input type="button" value="취소" onclick="history.back();">
+			</td>
 		</tr>
 	</table>
 </form>
+
 <jsp:include page="../info/tail.jsp"></jsp:include>
 </body>
 </html>

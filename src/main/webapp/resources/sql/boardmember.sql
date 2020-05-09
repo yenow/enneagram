@@ -47,3 +47,10 @@ insert into ysy values ('신영');
 
 select * from ysy;
 
+select * from (select ROWNUM, e.* from board e);
+
+select * from board order by bno desc;
+
+select rownum, board.* from board;
+
+select * from (select rownum as rnum, e.* from (select * from board order by bno desc) e) where rnum <= 10 and rnum >=5;

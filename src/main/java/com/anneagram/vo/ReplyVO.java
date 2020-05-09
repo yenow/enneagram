@@ -9,7 +9,9 @@ public class ReplyVO {
 	user_id varchar2(100),
 	rcontent varchar2(2000) not null,
 	regdate date,
-	updatedate date,*/
+	updatedate date,
+	no_user_id varchar2(100),
+	no_user_passwd*/
 	
 	private int rno;
 	private int bno;
@@ -17,20 +19,31 @@ public class ReplyVO {
 	private String rcontent;
 	private Date regdate;
 	private Date updatedate;
+	private String no_user_id;
+	private String no_user_passwd;
 	
-	public ReplyVO() {
-		// TODO Auto-generated constructor stub
+	
+	
+	public String getNo_user_id() {
+		return no_user_id;
 	}
 
-	public ReplyVO(int rno, int bno, String user_id, String rcontent, Date regdate, Date updatedate) {
-		super();
-		this.rno = rno;
-		this.bno = bno;
-		this.user_id = user_id;
-		this.rcontent = rcontent;
-		this.regdate = regdate;
-		this.updatedate = updatedate;
+	public void setNo_user_id(String no_user_id) {
+		this.no_user_id = no_user_id;
 	}
+
+	public String getNo_user_passwd() {
+		return no_user_passwd;
+	}
+
+	public void setNo_user_passwd(String no_user_passwd) {
+		this.no_user_passwd = no_user_passwd;
+	}
+
+	public ReplyVO() {
+		
+	}
+
 
 	public int getRno() {
 		return rno;
