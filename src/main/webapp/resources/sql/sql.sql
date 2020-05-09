@@ -13,9 +13,11 @@ create table reply(
 	updatedate date,
 	
 	constraint fk_user_bno foreign key (bno) references board(bno) on delete cascade,
-	constraint fk_user_id foreign key (user_id) references member(user_id) on delete cascade,
-	
+	constraint fk_user_id foreign key (user_id) references member(user_id) on delete cascade
 );
+
+
+drop table ysy1;
 
 select * from reply;
 
