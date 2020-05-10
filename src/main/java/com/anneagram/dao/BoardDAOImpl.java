@@ -21,8 +21,9 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public List<BoardVO> selectList() {
-		return sqlSession.selectList("b_list");
+	public List<BoardVO> selectList(BoardVO bo) {
+		return sqlSession.selectList("b_list", bo);
+		
 	}
 
 	@Override
@@ -38,6 +39,11 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public void boardDelete(int bno) {
 		sqlSession.delete("b_delete",bno);
+	}
+
+	@Override
+	public List<BoardVO> boardCount() {
+		return sqlSession.selectList("b_count");
 	}
 	
 	

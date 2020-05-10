@@ -39,18 +39,40 @@ public class BoardController {
 	public ModelAndView boardList(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("board/boardList");
 		int lineMax=10;
-		int startnum;
+		int page;
 		if(request.getParameter("startnum")==null) {
-			startnum = 1;
+			page = 1;
 		}else {
-			startnum = Integer.parseInt(request.getParameter("startnum"));
+			page = Integer.parseInt(request.getParameter("startnum"));
 		}
 		
+		System.out.println(page);
 		
-			
+		//보여줄 시작게시글번호, 마지막 게시글번호
+		BoardVO bo = new BoardVO();
+		int start = (page-1)*lineMax+1; 
+		int end = (page)*lineMax; 
+		bo.setStart(start);
+		bo.setEnd(end);
 		
-		List<BoardVO> blist =boardService.selectList();   // ArrayList는 안되고 List는 되는 이유가 뭘까? 왜 SqlSession의 selectList는 List형만 반환할까?
+		// count 계산
+		List<BoardVO> list = boardService.boardCount();
+		int count=0;
+		for(BoardVO a : list) {
+			count++;
+		}
+		count = count/lineMax +1;
+		
+		System.out.println(count);
+		System.out.println(start);
+		System.out.println(end);
+		
+		//list 가져오기
+		List<BoardVO> blist =boardService.selectList(bo);   // ArrayList는 안되고 List는 되는 이유가 뭘까? 왜 SqlSession의 selectList는 List형만 반환할까?
 		mv.addObject("blist",blist);
+		mv.addObject("count",count);
+		mv.addObject("page",page);
+		
 		return mv;
 	}
 	
@@ -66,8 +88,11 @@ public class BoardController {
 	@GetMapping("/boardCont")
 	public ModelAndView boardCont(int bno) {
 		ModelAndView mv = new ModelAndView("board/boardCont");
+		
 		BoardVO b = boardService.selectboard(bno);
 		mv.addObject("b", b);
+		
+		
 		return mv;
 	}
 	

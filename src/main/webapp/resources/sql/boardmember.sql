@@ -53,4 +53,4 @@ select * from board order by bno desc;
 
 select rownum, board.* from board;
 
-select * from (select rownum as rnum, e.* from (select * from board order by bno desc) e) where rnum <= 10 and rnum >=5;
+select * from (select rownum as rnum, e.* from (select * from board order by bno desc) e) where rnum <= 15 and rnum >=5;

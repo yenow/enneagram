@@ -19,9 +19,27 @@ public class BoardVO {
 	private int cnt;
 	private Date regdate;
 	private Date moddate;
+	private int start;
+	private int end;
 	
 	public BoardVO() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public int getStart() {
+		return start;
+	}
+
+	public void setStart(int start) {
+		this.start = start;
+	}
+
+	public int getEnd() {
+		return end;
+	}
+
+	public void setEnd(int end) {
+		this.end = end;
 	}
 
 	public int getBno() {

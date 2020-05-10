@@ -21,8 +21,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<BoardVO> selectList() {
-		return boardDAO.selectList();
+	public List<BoardVO> selectList(BoardVO bo) {
+		return boardDAO.selectList(bo);
 	}
 
 	@Override
@@ -38,5 +38,10 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void boardDelete(int bno) {
 		boardDAO.boardDelete(bno);
+	}
+
+	@Override
+	public List<BoardVO> boardCount() {
+		return boardDAO.boardCount();
 	}
 }
