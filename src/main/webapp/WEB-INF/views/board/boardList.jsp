@@ -25,7 +25,23 @@
 		</c:forEach>
 		
 		<tr>
-			<td colspan="4"> <input type="submit" value="글쓰기"> </td>
+			
+			<%-- <a href="board/boardList?startnum="${page-1}>이전</a> --%>
+			<c:set var="n" value="1" />
+			<c:forEach var="n" end="${count }" begin="1" step="1">
+				<a href="boardList?startnum="${n}>${n} </a>
+			</c:forEach>
+			
+			<%-- <a href="board/boardList?startnum="${page+1}>다음</a>  --%>
+			<td colspan="4"> 
+				<a href="boardList?startnum=${page-1}">이전</a>
+				<c:set var="n" value="1" />
+				<c:forEach var="n" end="${count }" begin="1" step="1">
+					<a href="boardList?startnum=${n}">${n} </a>
+				</c:forEach>
+				<a href="boardList?startnum=${page+1}">다음</a>
+				<input type="submit" value="글쓰기"> 
+			</td>
 		</tr>
 	</table>
 </form>
