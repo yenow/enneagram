@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +10,10 @@
 <link rel="stylesheet" href="../../resources/css/reset.css">
 </head>
 <body>
-	<div class="banner">
+	<div class="content">
 		<div class="container">
-			a
+			b
 		</div>
 	</div>
-	
 </body>
-
 </html>

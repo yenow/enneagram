@@ -1,39 +1,25 @@
 @charset "UTF-8";
 
-#header {height: 100px; background: #111;}
-#banner {height: 200px;}
-#content {height: 600px; background: orange;}
-#tail {height: 200px; background: aqua;}
+#header {height: 100px; background: #fff;}
+#banner {height: 200px; background: #ccc}
+#content {height: 600px; background: #bbb;}
+#tail {height: 200px; background: #aaa;}
+
+.banner { height:inherit;}
+.content { height:inherit; }
+.container {width: 1200px; height: inherit; background: rgba(0,0,0,0.1);  margin: 0 auto;}
+
+
 
 .header { overflow : hidden; height : inherit;}
-.header h1 {}
+.header h1 { }
 .header h1 img { float : left; width: 50px; height: 50px; }
 /*아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/vitaly-gorbachev" title="Vitaly Gorbachev">Vitaly Gorbachev</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon"> www.flaticon.com</a>*/
-.header em { float: right; display: inline-block;}
+
+.header .header_list { overflow : hidden; }
+.header .header_list a { display: inline; }
+.header .header_list em { float: right; }
 
 .banner { width : inherit; height : inherit; background: #ddd}
 
 
-
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) { 
-
-	}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-
- }
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) { 
-
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { 
-	#header {height: 100px;}
-	#banner {height: 200px;}
-	#content {height: 600px;}
-	#tail {height: 200px;}
- }
