@@ -5,17 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../resources/css/bootstrap.css">
-<link rel="stylesheet" href="../../resources/css/style.css">
-<link rel="stylesheet" href="../../resources/css/reset.css">
+<link rel="stylesheet" href="../../resources/css/bootstrap.css?after">
+<link rel="stylesheet" href="../../resources/css/style.css?after">
+<link rel="stylesheet" href="../../resources/css/reset.css?after">
 </head>
 <body>
-	<div class="banner">
-		<div class="container">
+	<div class="container">
+		<div class="banner">
 			a
 		</div>
 	</div>
-	
 </body>
-
 </html>
