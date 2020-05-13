@@ -33,19 +33,23 @@
 				<td colspan="2"><textarea rows="10" cols="20" name="content"
 						readonly="readonly">${b.content }</textarea></td>
 			</tr>
+			
 			<c:if test="${b.user_id eq login.user_id}">
 				<tr>
 					<td colspan="2" style="text-align: center;">
 				
 					<input type="submit" value="수정">
 					<a href="boardDelete?bno=${b.bno }"><input type="button" value="삭제"></a>
+					<button><a href="/board/boardList">목록</a></button>
 					</td>
 				</tr>
 			</c:if>
 			<!-- test="${b.user_id ne login.user_id} " 이렇게 뒤에 공간이 있으면 안됨;; -->
 			<c:if test="${b.user_id ne login.user_id}">
 				<tr>
-				<td colspan="2" style="text-align: center;"><button onclick="history.back();">뒤로가기</button></td>
+					<td colspan="2" style="text-align: center;">
+						<button><a href="/board/boardList">목록</a></button>
+					</td>
 				</tr>
 			</c:if>
 		</table>

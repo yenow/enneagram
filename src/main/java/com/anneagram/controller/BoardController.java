@@ -84,7 +84,7 @@ public class BoardController {
 		return mv;
 	}
 	
-	//게시판 내용
+	//게시판 내용보기
 	@GetMapping("/boardCont")
 	public ModelAndView boardCont(int bno) {
 		ModelAndView mv = new ModelAndView("board/boardCont");
@@ -96,11 +96,13 @@ public class BoardController {
 		return mv;
 	}
 	
+	//게시판 수정페이지로 이동
 	@RequestMapping(value = "/boardUpdate", method = RequestMethod.POST)
 	public void boardUpdate(Model m ,BoardVO b) {
 		m.addAttribute("b", b);
 	}
 	
+	//게시판 수정
 	@PostMapping("/boardUpdate_ok")
 	public ModelAndView boardUpdate_ok(BoardVO b) {
 		ModelAndView mv = new ModelAndView("redirect:/board/boardCont?bno="+b.getBno());
@@ -108,6 +110,7 @@ public class BoardController {
 		return mv; 
 	}
 	
+	//게시판 삭제
 	@GetMapping("/boardDelete")
 	public ModelAndView boardDelete(int bno, HttpServletResponse response) throws IOException {
 		ModelAndView mv = new ModelAndView("redirect:/board/boardList");

@@ -25,6 +25,10 @@ create table board(
     CONSTRAINT fk_code FOREIGN KEY (user_id) REFERENCES member(user_id) ON DELETE CASCADE
 );
 
+alter table board add (rcnt number(30) default 0);
+
+select * from board;
+
 create sequence bno_seq 
 start with 1
 INCREMENT by 1

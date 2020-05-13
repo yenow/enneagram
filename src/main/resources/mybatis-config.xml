@@ -8,5 +8,6 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 	<typeAliases>
 		<typeAlias type="com.anneagram.vo.MemberVO" alias="m"/>
 		<typeAlias type="com.anneagram.vo.BoardVO" alias="b"/>
+		<typeAlias type="com.anneagram.vo.ReplyVO" alias="r"/>
 	</typeAliases>
 </configuration>

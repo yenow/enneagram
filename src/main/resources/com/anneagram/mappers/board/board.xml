@@ -12,11 +12,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="b_list" resultType="b">
 		<![CDATA[select * from (select rownum as rnum, e.* from (select * from board order by bno desc) e) where rnum <= #{end} and rnum >= #{start}]]>
+		<!-- 부등호를 사용할경우 '>', '<' 같은게 코드랑 겹치기 때문에 <![CDATA[]]> 방법을 쓴다!  -->
 	</select>
-
+	
+	
 	<select id="b_board" resultType="b">
 		select * from board where bno =#{bno}
 	</select>
+	
+	<update id="b_cnt">
+		update board set cnt=cnt+1 where bno =#{bno}  
+	</update>
 
 	<insert id="b_update">
 		update board set user_id=#{user_id} ,title=#{title} ,content=#{content},

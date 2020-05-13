@@ -12,20 +12,35 @@ public class BoardVO {
 	 *regdate date,
       moddate date
 	 */ 
-	private int bno;
+	private int bno;     
 	private String user_id;
 	private String title;
 	private String content;
-	private int cnt;
-	private Date regdate;
+	private int cnt;     // 조회수
+	private Date regdate;   
 	private Date moddate;
 	private int start;
 	private int end;
+	private int rcnt;    // 댓글 수
 	
 	public BoardVO() {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	
+	public int getRcnt() {
+		return rcnt;
+	}
+
+
+
+	public void setRcnt(int rcnt) {
+		this.rcnt = rcnt;
+	}
+
+
+
 	public int getStart() {
 		return start;
 	}

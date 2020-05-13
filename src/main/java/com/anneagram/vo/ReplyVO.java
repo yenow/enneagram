@@ -13,14 +13,14 @@ public class ReplyVO {
 	no_user_id varchar2(100),
 	no_user_passwd*/
 	
-	private int rno;
+	private int rno;    // 
 	private int bno;
-	private String user_id;
-	private String rcontent;
-	private Date regdate;
-	private Date updatedate;
-	private String no_user_id;
-	private String no_user_passwd;
+	private String user_id;   // 댓글 쓴 사람 아이디
+	private String rcontent;   // 댓글 내용
+	private Date regdate;     // 등록일
+	private Date updatedate;     // 업데이트 날짜
+	private String no_user_id;     //   회원이 아닌 사람 임시 아이디
+	private String no_user_passwd;     //  회원이 아닌 사람 임시 비밀번호
 	
 	
 	

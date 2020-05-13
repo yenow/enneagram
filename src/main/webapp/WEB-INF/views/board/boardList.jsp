@@ -23,6 +23,7 @@
 					<th>제목</th>
 					<th>글쓴이</th>
 					<th>수정날짜</th>
+					<th>조회수</th>
 				</tr>
 			</thead>
 			<c:forEach var="b" items="${blist }">
@@ -31,10 +32,11 @@
 					<td><a href="boardCont?bno=${b.bno }">${b.title }</a></td>
 					<td>${b.user_id }</td>
 					<td>${b.regdate }</td>
+					<td>${b.cnt }</td>
 				</tr>
 			</c:forEach>
 
-			<td colspan="4"><a href="boardList?startnum=${page-1}">이전</a> <c:set
+			<td colspan="5"><a href="boardList?startnum=${page-1}">이전</a> <c:set
 					var="n" value="1" /> <c:forEach var="n" end="${count }" begin="1"
 					step="1">
 					<a href="boardList?startnum=${n}">${n} </a>
