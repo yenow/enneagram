@@ -63,10 +63,6 @@ public class BoardController {
 		}
 		count = count/lineMax +1;
 		
-		System.out.println(count);
-		System.out.println(start);
-		System.out.println(end);
-		
 		//list 가져오기
 		List<BoardVO> blist =boardService.selectList(bo);   // ArrayList는 안되고 List는 되는 이유가 뭘까? 왜 SqlSession의 selectList는 List형만 반환할까?
 		mv.addObject("blist",blist);

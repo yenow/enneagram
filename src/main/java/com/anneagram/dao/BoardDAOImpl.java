@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.anneagram.vo.BoardVO;
+import com.anneagram.vo.ReplyVO;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -15,6 +16,7 @@ public class BoardDAOImpl implements BoardDAO {
 	@Autowired
 	private SqlSession sqlSession;
 
+	//게시판 입력
 	@Override
 	public void insertBoard(BoardVO bo) {
 		sqlSession.insert("b_insert",bo);
@@ -46,6 +48,12 @@ public class BoardDAOImpl implements BoardDAO {
 	public List<BoardVO> boardCount() {
 		return sqlSession.selectList("b_count");
 	}
+
+	@Override
+	public void replycnt(ReplyVO re) {
+		sqlSession.update("b_rcnt", re);
+	}
+	
 	
 	
 }

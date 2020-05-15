@@ -17,7 +17,6 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.memberInsert(m);
 	}
 
-
 	@Override
 	public MemberVO login_confirm(String user_id) {
 	

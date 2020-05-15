@@ -4,7 +4,20 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+
 <mapper namespace="Reply">
+	
+	<insert id="r_insert" parameterType="com.anneagram.vo.ReplyVO">
+		insert into reply (rno, bno, user_id, rcontent, regdate, no_user_id, no_user_passwd) 
+		values (rno_seq.nextval, #{bno}, #{user_id}, #{rcontent}, sysdate)
+	</insert>
+	
+	<insert id="r_insert_no" parameterType="com.anneagram.vo.ReplyVO">
+		insert into reply (rno, bno, rcontent, regdate, no_user_id, no_user_passwd) 
+		values (rno_seq.nextval, #{bno}, #{rcontent}, sysdate, #{no_user_id}, #{no_user_passwd})
+	</insert>
 
-
+	<select id="r_list" resultSets="r">
+		select * from reply where bno=#{bno}
+	</select>
 </mapper>

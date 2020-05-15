@@ -27,6 +27,6 @@ public class TestDB {
 		m.setNickname("신영");
 		m.setTel("1111");
 		m.setEmail("email");
-		memberDAO.insert(m);
+		
 	}
 }

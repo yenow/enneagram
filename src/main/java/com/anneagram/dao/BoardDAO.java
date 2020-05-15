@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.anneagram.vo.BoardVO;
+import com.anneagram.vo.ReplyVO;
 
 public interface BoardDAO {
 
@@ -18,5 +19,7 @@ public interface BoardDAO {
 	void boardDelete(int bno);
 
 	List<BoardVO> boardCount();
+
+	void replycnt(ReplyVO re);
 
 }

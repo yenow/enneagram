@@ -44,6 +44,14 @@
 								readonly="readonly"></td>
 						</tr>
 						<tr>
+							<td>조회수</td>
+							<td><p>${b.cnt}</p></td>
+						</tr>
+						<tr>
+							<td>등록일</td>
+							<td><p>${b.regdate}></p></td>
+						</tr>
+						<tr>
 							<td colspan="2" style="text-align: center;"></td>
 						</tr>
 						<tr>

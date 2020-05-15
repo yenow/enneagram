@@ -11,13 +11,6 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Autowired
 	private SqlSession sqlSession;
-	
-	@Override
-	public void insert(MemberVO m) {
-		/*
-		 * System.out.println("확인"); sqlSession.insert("m_insert",m);
-		 */
-	}
 
 	@Override
 	public void memberInsert(MemberVO m) {
