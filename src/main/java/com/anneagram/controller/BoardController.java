@@ -46,8 +46,6 @@ public class BoardController {
 			page = Integer.parseInt(request.getParameter("startnum"));
 		}
 		
-		System.out.println(page);
-		
 		//보여줄 시작게시글번호, 마지막 게시글번호
 		BoardVO bo = new BoardVO();
 		int start = (page-1)*lineMax+1; 

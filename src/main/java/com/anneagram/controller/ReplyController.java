@@ -2,7 +2,9 @@ package com.anneagram.controller;
 
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -52,12 +54,13 @@ public class ReplyController {
 			e.printStackTrace();
 			entity=new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
+		 
 		return entity;
 	}
 	
 	//게시판 번호에 따라 댓글리스트 가져오기
-	@RequestMapping("/replySelect")
-	public ResponseEntity<List<ReplyVO>> listReply(@PathVariable("bno") int bno) {  //@PathVariable은 매핑주소의 게시물 번호값을 추출하는 용도로 사용
+	@RequestMapping("/listReply")
+	public ResponseEntity<List<ReplyVO>> listReply(int bno) {  //@PathVariable은 매핑주소의 게시물 번호값을 추출하는 용도로 사용
 		ResponseEntity<List<ReplyVO>> entity= null;
 		try {
 			entity= new ResponseEntity<List<ReplyVO>>(replyService.listReply(bno), HttpStatus.OK);
@@ -67,6 +70,7 @@ public class ReplyController {
 		}
 		return entity;
 	}
+	
 	
 	// 댓글 수정
 	

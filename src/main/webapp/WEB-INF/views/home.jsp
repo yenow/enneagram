@@ -38,7 +38,7 @@
 	</div>
 
 
-	<script src="../../resources/js/jquery.js"></script>
-	<script type="text/javascript" src="../../resources/js/bootstrap.js"></script>
+	<script src="../resources/js/jquery.js"></script>
+	<script type="text/javascript" src="../resources/js/bootstrap.js"></script>
 </body>
 </html>

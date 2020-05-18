@@ -6,13 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <link rel="stylesheet" href="../../resources/css/bootstrap.css?after">
 <link rel="stylesheet" href="../../resources/css/style.css?after">
 <link rel="stylesheet" href="../../resources/css/reset.css?after">
 
 </head>
 <body>
-
 	
 	<div class="container">
 		<div class="header">
@@ -34,10 +34,49 @@
 			</div>
 
 			<div class="header_list">
-				<a href="">에니어그램이란 </a> <a href="">테스트 </a> <a href="/board/boardList">게시판 </a>
-				<!-- 절대경로가 아닐경우 오류발생, 이 jsp파일은 모든파일에 공통적이게 적용되야하는 페이지라서 상대경로로하면 오류가 날 가능성이있음. 절대경로로 해야함 -->
-				<a href="">소식지 </a> <a href="">자료실 </a> 
+				<div class="drop-down">
+					<button class="first-drop-btn">에니어그램이란</button>
+				</div>
+				<div class="dropdown-content">
+					<a href="#">에니어그램이란</a> 
+					<a href="#">9가지의 유형</a> 
+					<a href="#">에니어그램의 역사</a>
+				</div>
 				
+				<div class="drop-down">
+					<button class="first-drop-btn">테스트</button>
+				</div>
+				<div class="dropdown-content">
+					<a href="#">에니어그램이란</a> 
+					<a href="#">9가지의 유형</a> 
+					<a href="#">에니어그램의 역사</a>
+				</div>
+				<div class="drop-down">
+					<button class="first-drop-btn"><a href="/board/boardList">게시판</a></button>
+				</div>
+				<div class="dropdown-content">
+					<a href="#">에니어그램이란</a> 
+					<a href="#">9가지의 유형</a> 
+					<a href="#">에니어그램의 역사</a>
+				</div>
+				<div class="drop-down">
+					<button class="first-drop-btn">소식지</button>
+				</div>
+				<div class="dropdown-content">
+					<a href="#">에니어그램이란</a> 
+					<a href="#">9가지의 유형</a> 
+					<a href="#">에니어그램의 역사</a>
+				</div>
+				<div class="drop-down">
+					<button class="first-drop-btn">자료실</button>
+				</div>
+				<div class="dropdown-content">
+					<a href="#">에니어그램이란</a> 
+					<a href="#">9가지의 유형</a> 
+					<a href="#">에니어그램의 역사</a>
+				</div>
+				
+				<!-- 절대경로가 아닐경우 오류발생, 이 jsp파일은 모든파일에 공통적이게 적용되야하는 페이지라서 상대경로로하면 오류가 날 가능성이있음. 절대경로로 해야함 -->
 			</div>
 		</div>
 	</div>

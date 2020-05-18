@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (rno_seq.nextval, #{bno}, #{rcontent}, sysdate, #{no_user_id}, #{no_user_passwd})
 	</insert>
 
-	<select id="r_list" resultSets="r">
+	<select id="r_list" resultType="r" >
 		select * from reply where bno=#{bno}
 	</select>
 </mapper>

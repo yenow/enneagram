@@ -28,18 +28,13 @@ public class BoardVO {
 	}
 	
 	
-	
 	public int getRcnt() {
 		return rcnt;
 	}
 
-
-
 	public void setRcnt(int rcnt) {
 		this.rcnt = rcnt;
 	}
-
-
 
 	public int getStart() {
 		return start;
