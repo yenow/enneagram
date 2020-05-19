@@ -1,22 +1,26 @@
 @charset "UTF-8";
 
 #header {background: #fff; }
-#banner {height: 200px; background: #ccc}
+#banner {}
 #content {height: 600px; background: #bbb;}
 #tail {height: 200px; background: #aaa;}
 
-.container {width: 1800px; height:inherit;  margin: 0 auto;}
+.container {width: 1600px; height:inherit;  margin: 0 auto;}
 
-.header {width:inherit; position: relative; padding-top: 20px;}
+.header {width:inherit; position: relative; padding-top: 20px; padding-bottom: 18px;}
 .header h1{width: 100%; height: 100px; display:inline-block; margin-left:20px; }
 .header .login_info {position: absolute; right : 10px; top: 10px; font-size: 20px;}
 .header .login_info p {display: inline;}
-.header h1 a img { float : left; width: 50px; height: 50px; }
+.header h1 a img {float : left; width: 100px; height: 100px;}
+.header h1 a span {display:inline-block; margin-left: 10px; color: #b2ebf2; line-height: 100px; font-size:70px; font-family: 'Nanum Pen Script', cursive;}
 /*아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/vitaly-gorbachev" title="Vitaly Gorbachev">Vitaly Gorbachev</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon"> www.flaticon.com</a>*/
 
-.header .header_list {text-align: center; padding-bottom: 30px;}
-.header .header_list .drop-down {display:inline-block;  margin-left: 50px;}
-.header .header_list .drop-down button {font-size: 30px}
-.header .header_list .dropdown-content {display: none; }
+.banner {}
+.banner .header_list {}
+.banner .header_list .drop-down {width:19%; display:inline-block; color: #b2ebf2; text-align: center;}
+.banner .header_list .drop-down:hover {color: #80deea}
+.banner .header_list .drop-down a {font-size: 50px; font-family: 'Nanum Pen Script', cursive;}
+.banner .header_list .dropdown-content {display: none; }
+.banner .header_list .first-drop-down {border: 2px solid #9cf0fc; border-radius: 20px; }
 
 

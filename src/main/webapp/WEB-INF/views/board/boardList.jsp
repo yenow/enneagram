@@ -18,6 +18,10 @@
 	<div id="banner">
 		<jsp:include page="../info/banner.jsp"></jsp:include>
 	</div>
+	
+	<div id="select">
+		
+	</div>
 
 	<div id="content"">
 		<div class="container">
