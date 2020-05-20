@@ -20,9 +20,9 @@
 .nav {}
 .nav ul {text-align: center; }
 .nav ul li {position:relative; display: inline-block; width: 18%; }
-.nav ul li a {display:block; font-size:50px; font-family: 'Nanum Pen Script', cursive; color: #b2ebf2; padding: 10px;}
+.nav ul li a {display:block; font-size:50px; font-family: 'Nanum Pen Script', cursive; color: #b2ebf2; padding: 10px; }
 
-.nav .first {position:absolute; left:30px; top: 70px; width:180px; display: none; background: #fff;}
+.nav .first {position:absolute; left:30px; top: 70px; width:180px; display: none; background: #fff; transition: all 0.3s ease;}
 .nav .first ul {}
 .nav .first ul li {display:block; margin-left: 0; width: 100%;}
 .nav .first ul li a{font-size: 30px}
