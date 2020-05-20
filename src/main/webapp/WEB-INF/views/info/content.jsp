@@ -12,9 +12,6 @@
 <body>
 	<div class="container">
 		<div class="content">
-			
-			
-			</div>
 		</div>
 	</div>
 </body>

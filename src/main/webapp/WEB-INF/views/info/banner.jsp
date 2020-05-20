@@ -17,9 +17,9 @@
 		<div class="banner">
 			<div class="nav">
 				<ul>
-					<li><a href="">에니어그램</a>
+					<li><a href="" class="btn">에니어그램</a>
 					
-						<div class="first">
+						<div class="first w3-animate-fading">
 							<ul>
 								<li><a href="#">에니어그램이란</a></li>
 								<li><a href="#">9가지의 유형</a></li>
@@ -28,31 +28,32 @@
 						</div>
 						
 					</li>
-					<li><a href="">성격테스트</a>
+					<li><a href="" class="btn">성격테스트</a></li>
+					<li><a href="" class="btn">소식지</a>
 						<div class="first">
 							<ul>
-								<li><a href="#">에니어그램이란</a></li>
-								<li><a href="#">9가지의 유형</a></li>
-								<li><a href="#">에니어그램의 역사</a></li>
+								<li><a href="#">뉴스</a></li>
+								<li><a href="#">칼럼</a></li>
+								<li><a href="#">회원체험 및 사례</a></li>
 							</ul>
 						</div>
 					</li>
-					<li><a href="">소식지</a>
+					<li><a href="" class="btn">게시판</a>
 						<div class="first">
 							<ul>
-								<li><a href="#">에니어그램이란</a></li>
-								<li><a href="#">9가지의 유형</a></li>
-								<li><a href="#">에니어그램의 역사</a></li>
+								<li><a href="#">공지</a></li>
+								<li><a href="#">자유게시판</a></li>
+								
 							</ul>
 						</div>
 					</li>
-					<li><a href="">게시판</a></li>
-					<li><a href="">자료실</a>
+					<li><a href="" class="btn">자료실</a>
 						<div class="first">
 							<ul>
-								<li><a href="#">에니어그램이란</a></li>
-								<li><a href="#">9가지의 유형</a></li>
-								<li><a href="#">에니어그램의 역사</a></li>
+								<li><a href="#">일반자료실</a></li>
+								<li><a href="#">강의자료실</a></li>
+								<li><a href="#">논문</a></li>
+								<li><a href="#">상담</a></li>
 							</ul>
 						</div>
 					</li>

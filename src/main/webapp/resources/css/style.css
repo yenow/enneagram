@@ -2,7 +2,7 @@
 
 #header {background: #fff; }
 #banner {}
-#content {height: 600px; background: #bbb;}
+#content {width:100%; height:800px; margin:0 auto; background: url(../img/mountain.jpg); }
 #tail {height: 200px; background: #aaa;}
 
 .container {width: 1600px; height:inherit;  margin: 0 auto;}
@@ -20,17 +20,66 @@
 .nav {}
 .nav ul {text-align: center; }
 .nav ul li {position:relative; display: inline-block; width: 18%; }
-.nav ul li a {display:block; font-size:50px; font-family: 'Nanum Pen Script', cursive; color: #b2ebf2; padding: 10px; }
+.nav ul li .btn { display:block; font-size:50px; font-family: 'Nanum Pen Script', cursive; color: #b2ebf2; padding: 10px;}
+.nav ul li .btn:before {
+  content: '';
+}
 
-.nav .first {position:absolute; left:30px; top: 70px; width:180px; display: none; background: #fff; transition: all 0.3s ease;}
+.nav ul li .btn:hover:after {
+  content: '';
+  position: absolute;
+  width:100%;
+  height: 10px;
+  left : 0;
+  display:block;
+  
+  bottom: -18px;
+  box-shadow: 
+  0 5px 20px 0 #999999 ;
+}
+.nav ul li .btn:hover:before{
+ 	position: absolute;
+    left: 50%; bottom: -10px;
+    margin-left: -5px;
+    border-bottom: 10px solid #dddddd;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 0px solid transparent;}
+.nav ul li .btn:after {
+	content: '';
+}
+
+.nav .first {position:absolute; left:0%; top: 85px; width: 100%; display:none; background: #fff; transition : height 0.3s;}
 .nav .first ul {}
 .nav .first ul li {display:block; margin-left: 0; width: 100%;}
-.nav .first ul li a{font-size: 30px}
-.nav .first ul li a:hover{background: #ddd;}
+.nav .first ul li a {display:block; font-size: 30px; font-family: 'Nanum Pen Script', cursive; color: #b2ebf2; padding: 10px;}
+.nav .first ul li a:hover {background: #ccc;}
+.nav ul li:hover .first{display: block;}
 
-.nav ul li:hover .first {display: block;}
- 
+/*2번째 버튼 초기화*/
+.nav ul li:nth-child(2) .btn:after {
+	display: none;
+}
+.nav ul li:nth-child(2) .btn:before {
+	display: none;
+}
+.nav ul li:nth-child(2) .first {
+	display: none;
+}
 
+.content { }
+
+
+
+
+ /*
+.content .ysy{  
+	width: 100px;
+  	height: 100px;
+  	background: red;
+  	transition: width 2s;}
+ .content .ysy:hover {width: 300px;}
+*/
 /*
 .header_list {}
 .header_list .drop-down {width:19%; display:inline-block; color: #b2ebf2; text-align: center;}
