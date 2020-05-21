@@ -21,9 +21,9 @@
 					
 						<div class="first w3-animate-fading">
 							<ul>
-								<li><a href="#">에니어그램이란</a></li>
-								<li><a href="#">9가지의 유형</a></li>
-								<li><a href="#">에니어그램의 역사</a></li>
+								<li><a href="/anneagram/anneagram">에니어그램이란</a></li>
+								<li><a href="/anneagram/nine_type">9가지의 유형</a></li>
+								<li><a href="/anneagram/history">에니어그램의 역사</a></li>
 							</ul>
 						</div>
 						
@@ -38,11 +38,11 @@
 							</ul>
 						</div>
 					</li>
-					<li><a href="" class="btn">게시판</a>
+					<li><a href="#" class="btn">게시판</a>
 						<div class="first">
 							<ul>
 								<li><a href="#">공지</a></li>
-								<li><a href="#">자유게시판</a></li>
+								<li><a href="/board/boardList">자유게시판</a></li>
 								
 							</ul>
 						</div>

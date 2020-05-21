@@ -38,9 +38,9 @@
 		<jsp:include page="../info/banner.jsp"></jsp:include>
 	</div>
 
-	<div id="content">
+	<div id="content2">
 		<div class="container">
-			<div class="content">
+			<div class="content2">
 				<form action="boardUpdate" method="post">
 					<input type="hidden" name="bno" value="${b.bno }">
 					<table border="1">

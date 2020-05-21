@@ -23,9 +23,9 @@
 		
 	</div>
 
-	<div id="content"">
+	<div id="content2">
 		<div class="container">
-			<div class="content">
+			<div class="content2">
 				<form action="boardWrite" method="get">
 					<table border="1" style="text-align: center;">
 						<caption>게시판 목록</caption>

@@ -19,9 +19,9 @@
 	<div id="banner">
 		<jsp:include page="../info/banner.jsp"></jsp:include>
 	</div>
-	<div id="content">
+	<div id="conten2t">
 		<div class="container">
-			<div class="content">
+			<div class="content2">
 				<c:if test="${login == null }">
 					<script type="text/javascript">
 						alert("로그인이 필요합니다");

@@ -40,4 +40,19 @@ public class HomeController {
 	public void header() {
 		
 	}
+	
+	@RequestMapping("/anneagram/anneagram")
+	public void anneagram() {
+		
+	}
+	
+	@RequestMapping("/anneagram/nine_type")
+	public void nine_type() {
+		
+	}
+	
+	@RequestMapping("/anneagram/history")
+	public void history() {
+		
+	}
 }
