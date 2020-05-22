@@ -5,6 +5,8 @@
 <title>에니어그램</title>
 <link rel="stylesheet" href="../resources/css/bootstrap.css?after ">
 <link rel="stylesheet" href="../resources/css/style.css?after ">
+<link rel="stylesheet" href="../resources/css/reset.css?after">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 </head>
 <body>
 	<%-- <h1>

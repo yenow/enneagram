@@ -1,13 +1,23 @@
 @charset "UTF-8";
 
+body { position: relative;}
+body::after {
+  content: "";
+  background: url("../img/mountain.jpg");
+  background-size: 100% 100%;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+#header {}
+#banner {}
+#content {height: 1000px;}
 
-
-#header {background: rgba(224,247,250,0.3); }
-#banner {background: rgba(224,247,250,0.3);}
-
-#content {width:100%; height:100%; margin:0 auto; background: url(../img/mountain.jpg); background-size:100%; }
-
-#tail {height: 200px; background: #aaa;}
+#tail {height: 200px; background: rgba(250,250,250,0.7); display: none;}
 
 .container {width: 1600px; height:inherit;  margin: 0 auto;}
 
@@ -18,7 +28,7 @@
 .header .login_info a {margin-left: 10px;}
 .header h1 a {}
 .header h1 a img {float : left; width: 100px; height: 100px; }
-.header h1 a span {display:inline-block; margin-left: 10px; color: #4dd0e1; line-height: 100px; font-size:70px; font-family: 'Nanum Pen Script', cursive;}
+.header h1 a span {display:inline-block; margin-left: 10px; color: #b2ebf2; line-height: 100px; font-size:70px; font-family: 'Nanum Pen Script', cursive;}
 /*아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/vitaly-gorbachev" title="Vitaly Gorbachev">Vitaly Gorbachev</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon"> www.flaticon.com</a>*/
 
 .banner {}
@@ -72,9 +82,11 @@
 	display: none;
 }
 
-.content2 {height: 1000px;  background: #fff; }
+.content {width:inherit;height:inherit; background: rgba(250,250,250,0.9); border-radius: 20px;}
 
+.content2 {height: 1000px;  background: rgba(250,250,250,0.9);  border-radius: 20px;}
 
+.tail {font-size: 30px; font-family: 'Nanum Pen Script', cursive;}
 /* 반응형 */
 @media (max-width:1220px) {
 	.container{width: 100%;}
