@@ -52,7 +52,7 @@
 						</tr>
 						<tr>
 							<td>글쓴이</td>
-							<td><input type="text" name="user_id" value="${b.user_id }"
+							<td><input type="text" name="user_id" value="${b.nickname }"
 								readonly="readonly"></td>
 						</tr>
 						<tr>

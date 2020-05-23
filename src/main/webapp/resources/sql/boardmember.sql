@@ -26,6 +26,10 @@ create table board(
 );
 
 alter table board add (rcnt number(30) default 0);
+-- board에 nickname추가
+alter table board add (nickname VARCHAR2(200));
+
+update board set nickname='띠용';
 
 select * from board;
 

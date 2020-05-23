@@ -14,6 +14,7 @@ public class BoardVO {
 	 */ 
 	private int bno;     
 	private String user_id;
+	private String nickname;
 	private String title;
 	private String content;
 	private int cnt;     // 조회수
@@ -28,6 +29,16 @@ public class BoardVO {
 	}
 	
 	
+	public String getNickname() {
+		return nickname;
+	}
+
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+
 	public int getRcnt() {
 		return rcnt;
 	}

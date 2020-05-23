@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="Board">
 	<insert id="b_insert">
-		insert into board (bno,user_id,title,content,cnt,regdate) values
-		(bno_seq.nextval,#{user_id},#{title},#{content},#{cnt},sysdate)
+		insert into board (bno,user_id,title,content,cnt,regdate,nickname) values
+		(bno_seq.nextval,#{user_id},#{title},#{content},#{cnt},sysdate,#{nickname})
 	</insert>
 
 	<select id="b_list" resultType="b">

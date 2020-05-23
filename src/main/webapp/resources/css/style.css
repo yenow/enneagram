@@ -47,7 +47,7 @@ body::after {
   height: 10px;
   left : 0;
   display:block;
-  
+  border-radius: 50px;
   bottom: -18px;
   box-shadow: 
   0 5px 20px 0 #999999 ;
@@ -82,9 +82,64 @@ body::after {
 	display: none;
 }
 
-.content {width:inherit;height:inherit; background: rgba(250,250,250,0.9); border-radius: 20px;}
+.content {width:inherit;height:inherit; background: rgba(250,250,250,0.9); border-radius: 20px; }
+.content h1 {text-align: center; padding: 10px;}
+.content .searchBox {}
+.content .boardList {}
+.content .boardList ul {}
+.content .boardList ul li {overflow:hidden; text-align: center; padding:10px 0 10px 0; border-bottom: 1px solid #ccc;}
+.content .boardList ul li .board-title {display:block; float:left; width: 50%;}
+.content .boardList ul li .board-nickname {display:block; float:left; width: 15%;}
+.content .boardList ul li .board-date {display:block; float:left; width: 15%;}
+.content .boardList ul li .board-count {display:block; float:left; width: 5%;}
+.content .boardList ul li .board-good {display:block; float:left; width: 5%;}
 
-.content2 {height: 1000px;  background: rgba(250,250,250,0.9);  border-radius: 20px;}
+.content .boardList ul li .write-box {display:inline-block; text-align: center; }
+
+/*	<div id="content">
+		<div class="container">
+			<div class="content">
+				<div class="row">
+					<h1>게시판 목록</h1>
+					<!-- 검색기능 박스 -->
+					<div class="searchBox"></div>
+
+					<div class="boardList">
+						<form action="boardWrite" method="get">
+							<ul>
+								<li><span class="board-title">제목</span><span
+									class="board-nickname">글쓴이</span><span class="board-date">수정날짜</span>
+									<span class="board-count">조회수</span><span class="board-good">좋아요</span></li>
+
+								<!-- 게시물 내용 반복 -->
+								<c:forEach var="b" items="${blist }">
+									<li><span class="board-title"><a
+											href="boardCont?bno=${b.bno }">${b.title }</a></span><span
+										class="board-nickname">${b.nickname }</span> <span
+										class="board-date">${b.regdate }</span> <span
+										class="board-count">${b.cnt }</span><span class="board-good"></span></li>
+								</c:forEach>
+								
+								<li><input type="submit" value="글쓰기"></li>
+								
+								<!-- 게시글 페이지번호 -->
+								<a href="boardList?startnum=${page-1}">이전</a>
+								<c:set var="n" value="1" /> 
+								<c:forEach var="n" end="${count }" begin="1" step="1">
+									<li><a href="boardList?startnum=${n}">${n} </a></li>
+								</c:forEach>
+								<a href="boardList?startnum=${page+1}">다음</a>
+							</ul>
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>*/
+
+
+
 
 .tail {font-size: 30px; font-family: 'Nanum Pen Script', cursive;}
 /* 반응형 */

@@ -32,7 +32,7 @@
 				</c:if>
 
 				<form action="boardWrite_ok" method="post">
-
+					<input type="hidden" name="nickname" value="${login.nickname }">
 					<table border="1">
 						<caption>게시판 글쓰기</caption>
 						<tr>
