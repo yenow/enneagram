@@ -19,12 +19,14 @@ create table board(
 	title varchar2(200),
 	content varchar2(4000), 
 	cnt number(30) default 0, 
+	rcnt number(30) default 0,
+	nickname VARCHAR2(200),
 	regdate date,
     moddate date,
     
     CONSTRAINT fk_code FOREIGN KEY (user_id) REFERENCES member(user_id) ON DELETE CASCADE
 );
-
+-- board에 rcnt추가
 alter table board add (rcnt number(30) default 0);
 -- board에 nickname추가
 alter table board add (nickname VARCHAR2(200));
@@ -45,6 +47,8 @@ INCREMENT by 1
 MAXVALUE 10000
 NOCACHE;
 
+
+-- 여기서부터는 연습장
 select * from nls_database_parameters where parameter = 'NLS_CHARACTERSET';
 
 create table ysy(

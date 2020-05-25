@@ -14,12 +14,12 @@ body::after {
   z-index: -1;   
 }
 #header {}
-#banner {}
-#content {height: 1000px;}
+#banner {background: #b2ebf2; }
+#content {height: 1000px; background: rgba(250,250,250,1); }
 
 #tail {height: 200px; background: rgba(250,250,250,0.7); display: none;}
 
-.container {width: 1600px; height:inherit;  margin: 0 auto;}
+.container {width: 1400px; height:inherit;  margin: 0 auto; }
 
 .header {width:inherit; position: relative; padding-top: 20px; padding-bottom: 18px; }
 .header h1{width: 100%; height: 100px; display:inline-block; margin-left:20px; }
@@ -33,9 +33,9 @@ body::after {
 
 .banner {}
 .nav {}
-.nav ul {text-align: center; background: #b2ebf2; border-radius: 20px; }
+.nav ul {text-align: center;  }
 .nav ul li {position:relative; display: inline-block; width: 18%; }
-.nav ul li .btn { display:block; font-size:50px; font-family: 'Nanum Pen Script', cursive; color: #fff; padding: 10px;}
+.nav ul li .btn { display:block; font-size:50px; font-family: 'Nanum Pen Script', cursive; color: #fff; padding: 10px; }
 .nav ul li .btn:before {
   content: '';
 }
@@ -43,10 +43,11 @@ body::after {
 .nav ul li .btn:hover:after {
   content: '';
   position: absolute;
-  width:100%;
+ 
+  width:90%;
   height: 10px;
-  left : 0;
-  display:block;
+  left : 6px;
+  display:inline-block;
   border-radius: 50px;
   bottom: -18px;
   box-shadow: 
@@ -64,7 +65,7 @@ body::after {
 	content: '';
 }
 
-.nav .first {position:absolute; left:0%; top: 85px; width: 100%; display:none; transition : height 0.3s;}
+.nav .first {position:absolute; left:0%; top: 85px; width: 100%; display:none; transition : height 0.3s; background: #b2ebf2; border-radius:20px;	 }
 .nav .first ul {}
 .nav .first ul li {display:block; margin-left: 0; width: 100%;}
 .nav .first ul li a {display:block; font-size: 30px; font-family: 'Nanum Pen Script', cursive; color: #fff; padding: 10px;}
@@ -82,7 +83,7 @@ body::after {
 	display: none;
 }
 
-.content {width:inherit;height:inherit; background: rgba(250,250,250,0.9); border-radius: 20px; }
+.content {width:inherit;height:inherit;  }
 .content h1 {text-align: center; padding: 10px;}
 .content .searchBox {}
 .content .boardList {}
@@ -96,51 +97,16 @@ body::after {
 
 .content .boardList ul li .write-box {display:inline-block; text-align: center; }
 
-/*	<div id="content">
-		<div class="container">
-			<div class="content">
-				<div class="row">
-					<h1>게시판 목록</h1>
-					<!-- 검색기능 박스 -->
-					<div class="searchBox"></div>
-
-					<div class="boardList">
-						<form action="boardWrite" method="get">
-							<ul>
-								<li><span class="board-title">제목</span><span
-									class="board-nickname">글쓴이</span><span class="board-date">수정날짜</span>
-									<span class="board-count">조회수</span><span class="board-good">좋아요</span></li>
-
-								<!-- 게시물 내용 반복 -->
-								<c:forEach var="b" items="${blist }">
-									<li><span class="board-title"><a
-											href="boardCont?bno=${b.bno }">${b.title }</a></span><span
-										class="board-nickname">${b.nickname }</span> <span
-										class="board-date">${b.regdate }</span> <span
-										class="board-count">${b.cnt }</span><span class="board-good"></span></li>
-								</c:forEach>
-								
-								<li><input type="submit" value="글쓰기"></li>
-								
-								<!-- 게시글 페이지번호 -->
-								<a href="boardList?startnum=${page-1}">이전</a>
-								<c:set var="n" value="1" /> 
-								<c:forEach var="n" end="${count }" begin="1" step="1">
-									<li><a href="boardList?startnum=${n}">${n} </a></li>
-								</c:forEach>
-								<a href="boardList?startnum=${page+1}">다음</a>
-							</ul>
-						</form>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>*/
-
-
-
-
+.blank {height: 10px;}
+.content2 {width: 19%; height:inherit; float: left;}
+.content2 li {width: 100%; display: block;  background: rgba(250,250,250,1);  padding: 20px 0; text-align: center;
+	font-size:25px; font-family: 'Nanum Pen Script', cursive; border-bottom: 1px solid #ccc; }
+.content2 li:last-child {border-bottom: none;}
+.content2  .anneagram-nav {background: #ddd;}
+.content3 {width: 80%; height:inherit; float: left; text-align: center;}
+.content3 h2 { padding: 20px; font-size:50px; font-family: 'Nanum Pen Script', cursive; }
+.content3 ul {}
+.content3 ul li {text-align: left; padding: 10px 10px 10px 30px;}
 .tail {font-size: 30px; font-family: 'Nanum Pen Script', cursive;}
 /* 반응형 */
 @media (max-width:1220px) {
