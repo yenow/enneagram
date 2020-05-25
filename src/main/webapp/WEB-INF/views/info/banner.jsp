@@ -28,7 +28,7 @@
 						</div>
 						
 					</li>
-					<li><a href="" class="btn">성격테스트</a></li>
+					<li><a href="/test/test" class="btn">성격테스트</a></li>
 					<li><a href="" class="btn">소식지</a>
 						<div class="first">
 							<ul>

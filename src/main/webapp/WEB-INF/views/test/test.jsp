@@ -37,10 +37,95 @@
 					</div>
 					</div>
 				</div>
-				<div class="test">
-				
-				</div>
+			<div class="test">
+				<form action="/test/test1">
+					<input type="hidden" name="number11" value="">
+					<ul>
+						<li>
+							<h3>질문1</h3>
+							<input type="radio" name="number1" value="1">
+							<input type="radio" name="number1" value="2">
+							<input type="radio" name="number1" value="3">
+							<input type="radio" name="number1" value="4">
+							<input type="radio" name="number1" value="5">
+							</li>
+						<li>
+							<h3>질문1</h3>
+							<input type="radio" name="number2" value="1">
+							<input type="radio" name="number2" value="2">
+							<input type="radio" name="number2" value="3">
+							<input type="radio" name="number2" value="4">
+							<input type="radio" name="number2" value="5">
+						</li>
+						<li>
+							<h3>질문1</h3>
+							<input type="radio" name="number3" value="1">
+							<input type="radio" name="number3" value="2">
+							<input type="radio" name="number3" value="3">
+							<input type="radio" name="number3" value="4">
+							<input type="radio" name="number3" value="5">
+						</li>
+						<li>
+							<h3>질문1</h3>
+							<input type="radio" name="number4" value="1">
+							<input type="radio" name="number4" value="2">
+							<input type="radio" name="number4" value="3">
+							<input type="radio" name="number4" value="4">
+							<input type="radio" name="number4" value="5">
+						</li>
+					    <li>
+					    <h3>질문1</h3>	
+							<input type="radio" name="number5" value="1">
+							<input type="radio" name="number5" value="2">
+							<input type="radio" name="number5" value="3">
+							<input type="radio" name="number5" value="4">
+							<input type="radio" name="number5" value="5">
+						</li>
+						<li>
+							<h3>질문1</h3>
+							<input type="radio" name="number6" value="1">
+							<input type="radio" name="number6" value="2">
+							<input type="radio" name="number6" value="3">
+							<input type="radio" name="number6" value="4">
+							<input type="radio" name="number6" value="5">
+						</li>
+						<li>
+							<h3>질문1</h3>
+							<input type="radio" name="number7" value="1">
+							<input type="radio" name="number7" value="2">
+							<input type="radio" name="number7" value="3">
+							<input type="radio" name="number7" value="4">
+							<input type="radio" name="number7" value="5">
+						</li>
+						<li>
+							<h3>질문1</h3>
+							<input type="radio" name="number8" value="1">
+							<input type="radio" name="number8" value="2">
+							<input type="radio" name="number8" value="3">
+							<input type="radio" name="number8" value="4">
+							<input type="radio" name="number8" value="5">
+						</li>
+						<li>
+							<h3>질문1</h3>
+							<input type="radio" name="number9" value="1">
+							<input type="radio" name="number9" value="2">
+							<input type="radio" name="number9" value="3">
+							<input type="radio" name="number9" value="4">
+							<input type="radio" name="number9" value="5">
+						</li>
+						<li>
+							<h3>질문1</h3>
+							<input type="radio" name="number10" value="1">
+							<input type="radio" name="number10" value="2">
+							<input type="radio" name="number10" value="3">
+							<input type="radio" name="number10" value="4">
+							<input type="radio" name="number10" value="5">
+						</li>
+						<li><input type="submit" value="제출" onclick=""></li>
+					</ul>
+				</form>
 			</div>
+		</div>
 		</div>
 	</div>
 
