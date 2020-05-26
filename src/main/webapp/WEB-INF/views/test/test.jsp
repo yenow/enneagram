@@ -26,15 +26,17 @@
 		<div class="container">
 			<div class="content">
 				<div class="test-notice">
-					<div class="notice1">
-						<p> 총 검사 시간은 12분 내외입니다</p>
-					</div>
-					<div class="notice2">
-						<p> 질문이 기분 나쁘더라도 이해해주세요</p>
-					</div>
-					<div class="notice3">
-						<p> 보통은 웬만하면 기피해주세요</p>
-					</div>
+					<div class="test-notice-position">
+						<div class="notice1">
+							<p> 총 검사 시간은 12분 내외입니다</p>
+						</div>
+						<div class="notice2">
+							<p> 질문이 기분 나쁘더라도 이해해주세요</p>
+						</div>
+						<div class="notice3">
+							<p> 보통은 웬만하면 기피해주세요</p>
+						</div>
+						</div>
 					</div>
 				</div>
 			<div class="test">

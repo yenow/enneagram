@@ -22,6 +22,7 @@ body::after {
 
 .container {width: 1400px; height:inherit;  margin: 0 auto; }
 
+/* header부분 css */
 .header {width:inherit; position: relative; padding-top: 20px; padding-bottom: 18px; }
 .header h1{width: 100%; height: 100px; display:inline-block; margin-left:20px; }
 .header .login_info {position: absolute; right : 10px; top: 10px; font-size: 30px; font-family: 'Nanum Pen Script', cursive;}
@@ -32,6 +33,7 @@ body::after {
 .header h1 a span {display:inline-block; margin-left: 10px; color: #b2ebf2; line-height: 100px; font-size:70px; font-family: 'Nanum Pen Script', cursive;}
 /*아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/vitaly-gorbachev" title="Vitaly Gorbachev">Vitaly Gorbachev</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon"> www.flaticon.com</a>*/
 
+/* banner start - nav */
 .banner {}
 .nav {}
 .nav ul {text-align: center;  }
@@ -83,7 +85,10 @@ body::after {
 .nav ul li:nth-child(2) .first {
 	display: none;
 }
+/* banner end */
 
+
+/* content 본문부분*/
 .content {width:inherit;height:inherit;  }
 .content h1 {text-align: center; padding: 10px;}
 .content .searchBox {}
@@ -98,6 +103,7 @@ body::after {
 
 .content .boardList ul li .write-box {display:inline-block; text-align: center; }
 
+/* anneagram 페이지 양쪽 나뉘어지는 부분 */
 .blank {height: 10px;}
 .content2 {width: 19%; height:inherit; float: left; background: rgba(250,250,250,1);}
 .content2 li {width: 100%; display: block;  background: rgba(250,250,250,1);  padding: 20px 0; text-align: center;
@@ -110,7 +116,15 @@ body::after {
 .content3 ul li {text-align: left; padding: 10px 10px 10px 30px;}
 .tail {font-size: 30px; font-family: 'Nanum Pen Script', cursive;}
 
+.test-notice {position: relative; height: 300px; background: #rgba(250,250,250,1);}
+.test-notice .test-notice-position {position: absolute; top:70px; left: 0; width: 100%;; text-align: center;}
+.test-notice .test-notice-position div {margin: 20px 50px;}
+.test-notice .notice1 {display: inline-block; height: 100px; background: #bfd0e6; padding: 20px 20px; color: #fff; border-radius: 20px;}
+.test-notice .notice2 {display: inline-block; height: 100px; background: #bfd0e6; padding: 20px 20px; color: #fff; border-radius: 20px;}
+.test-notice .notice3 {display: inline-block; height: 100px; background: #bfd0e6; padding: 20px 20px; color: #fff; border-radius: 20px;}
 
+.test {}
+.test ul {text-align: center;}
 /* 반응형 */
 @media (max-width:1220px) {
 	.container{width: 100%;}
