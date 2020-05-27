@@ -123,7 +123,7 @@
 							<input type="radio" name="number10" value="4">
 							<input type="radio" name="number10" value="5">
 						</li>
-						<li><input type="submit" value="제출" onclick=""></li>
+						<li><input type="submit" value="다음" onclick=""></li>
 					</ul>
 				</form>
 			</div>
