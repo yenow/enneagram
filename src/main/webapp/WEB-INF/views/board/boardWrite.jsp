@@ -36,6 +36,7 @@
 	
 						<form action="boardWrite_ok" method="post">
 							<input type="hidden" name="user_id" value="${login.user_id }">
+							<input type="hidden" name="nickname" value="${login.nickname }">
 							
 							<ul>
 								<li><input type="text" name="title" placeholder="제목"></li>

@@ -17,7 +17,7 @@
 		<div class="banner">
 			<div class="nav" >
 				<ul>
-					<li><a href="" class="btn">에니어그램</a>
+					<li><a href="/anneagram/anneagram" class="btn">에니어그램</a>
 					
 						<div class="first w3-animate-fading">
 							<ul>
@@ -38,7 +38,7 @@
 							</ul>
 						</div>
 					</li>
-					<li><a href="#" class="btn">게시판</a>
+					<li><a href="/board/boardList" class="btn">게시판</a>
 						<div class="first">
 							<ul>
 								<li><a href="#">공지</a></li>

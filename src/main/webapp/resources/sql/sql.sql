@@ -28,11 +28,57 @@ drop table reply;
 
 select * from reply;
 
+select * from board;
+
+update board set rcnt=(select count(*) from reply where bno=2) where bno=2;
+
+select count(*) from reply where bno=2;
 
 create sequence rno_seq
 start with 1   --1부터 시작하라는 옵션
 increment by 1  -- 1씩증가하라는 옵션
 nocache; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 create table board(
     bno number(30) primary key, 

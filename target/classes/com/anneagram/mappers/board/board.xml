@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<update id="b_rcnt">
-		update board set rnt=rnt+1 where bno=#{bno} 
+		update board set rcnt=rcnt+1 where bno=#{bno} 
 	</update>
 	
 </mapper>

@@ -43,6 +43,11 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping("/index")
+	public void index() {
+		
+	}
+	
 	@RequestMapping("/info/header")
 	public void header() {
 		
