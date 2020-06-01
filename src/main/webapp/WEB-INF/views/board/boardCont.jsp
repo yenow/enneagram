@@ -61,7 +61,7 @@
 								<li class="menu_bar">
 									<c:if test="${b.user_id eq login.user_id}">
 										<!--  	<input type="submit" value="수정">-->
-										<button class="reply_bar">댓글 보기</button>
+										<button class="reply_bar" onclick="replyList();">댓글 보기</button>
 										<button><a href="boardUpdate?bno=${b.bno }">수정</a></button>
 										<button><a href="boardDelete?bno=${b.bno }">삭제</a></button>
 										<button><a href="/board/boardList">목록</a></button>
@@ -175,6 +175,8 @@ function replyRegster2(){
 }
 
 function replyList(){
+	$('.reply_box').css("display", "block");
+	
   	var bno = ${b.bno};
   	
  	 $.ajax({
