@@ -139,7 +139,9 @@ body::after {
 /* 게시판 내용 - 댓글 */
 .reply_box {background: #ddd;  }
 .reply_box ul {}
-.reply_box ul li {}
+.reply_box ul li {border-bottom: 1px solid #ccc;  border-top: 1px solid #ccc;padding: 3px;}
+.reply_box ul li span.nickname {font-size: 20px;  font-weight: bold; padding: 10px;}
+.reply_box ul li span.rcontent {font-size: 13px; padding: 10px;}
 .reply_box .reply_info {padding: 10px;}
 .reply_box .reply_info h5 {padding: 10px 0;}
 .reply_box .reply_info input {display:inline-block; width: 25%; } 

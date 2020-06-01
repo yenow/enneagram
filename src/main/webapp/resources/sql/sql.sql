@@ -17,6 +17,12 @@ create table reply(
 	constraint fk_user_bno foreign key (bno) references board(bno) on delete cascade,
 	constraint fk_user_id foreign key (user_id) references member(user_id) on delete cascade
 );
+-- 컬럼추가
+ALTER table reply add(
+	nickname varchar2(100)
+);
+
+delete from reply;
 
 -- 컬럼추가
 ALTER table reply add(

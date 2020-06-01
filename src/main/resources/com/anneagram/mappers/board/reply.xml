@@ -8,8 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="Reply">
 	
 	<insert id="r_insert" parameterType="r">
-		insert into reply (rno, bno, user_id, rcontent, regdate) 
-		values (rno_seq.nextval, #{bno}, #{user_id}, #{rcontent}, sysdate)
+		insert into reply (rno, bno, user_id, nickname , rcontent, regdate) 
+		values (rno_seq.nextval, #{bno}, #{user_id}, #{nickname} ,#{rcontent}, sysdate)
 	</insert>
 	
 	<insert id="r_insert_no" parameterType="r">

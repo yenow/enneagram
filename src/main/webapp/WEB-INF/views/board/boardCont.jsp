@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>게시판 내용</title>
@@ -29,7 +30,13 @@
 </style>
 
 </head>
+
 <body>
+
+	<script type="text/javascript">
+		replyList();
+	</script>
+
 	<div id="header">
 		<jsp:include page="../info/header.jsp"></jsp:include>
 	</div>
@@ -50,6 +57,7 @@
 								<li>${b.title }</li>
 								<li class="nickname_bar"><span>작성자 : ${b.nickname}</span> <span>등록 날짜 : ${b.regdate }</span></li>
 								<li class="content_box"><span>${b.content}</span></li>
+								
 								<li class="menu_bar">
 									<c:if test="${b.user_id eq login.user_id}">
 										<!--  	<input type="submit" value="수정">-->
@@ -60,7 +68,7 @@
 
 									</c:if> <!-- test="${b.user_id ne login.user_id} " 이렇게 뒤에 공간이 있으면 안됨;; -->
 									<c:if test="${b.user_id ne login.user_id}">
-										<button class="reply_bar">댓글 보기</button>
+										<button class="reply_bar" onclick="replyList();"> 댓글 보기 </button>
 										<button><a href="/board/boardList">목록</a></button>
 									</c:if>
 								</li>
@@ -68,8 +76,8 @@
 								<li class="reply_box">
 									<span>댓글 개수 : ${b.rcnt }</span>
 									<!-- 댓글 -->
-									<ul>
-										<li></li>
+									<ul id="reply_content">
+										
 									</ul>
 									<!-- 댓글 작성란 -->
 								
@@ -84,10 +92,12 @@
 										</c:if>
 										<!-- 로그인중 -->
 										<c:if test="${login != null }">	
-											<input type="hidden" name="user_id" value="${login.user_id }">
 											<div class="reply_info">
 												<textarea id="t_content2"></textarea>
-												<div><button onclick="replyRegster2();">등록</button></div>
+												<div><button onclick="replyRegster2(); replyList();">등록</button>
+													<button onclick="replyList();">모르겟다</button>
+												</div>
+												
 											</div>
 										</c:if>
 								
@@ -108,7 +118,9 @@
 		<jsp:include page="../info/tail.jsp"></jsp:include>
 	</div>
 	
+
 <script type="text/javascript">
+
 
 function replyRegster1(){
 	var dataset = new Object();	
@@ -133,7 +145,7 @@ function replyRegster1(){
 		}
 	});
 	
-	alert("댓글이 등록되었습니다");
+
 }
 
 
@@ -142,7 +154,7 @@ function replyRegster2(){
 	dataset.user_id = "${login.user_id}";
 	dataset.rcontent = $('#t_content2').val();
 	dataset.bno = ${b.bno};
-	
+	dataset.nickname = "${login.nickname}";
 	$.ajax({
 			type : 'post', // method
 			//url   : 'list',
@@ -159,8 +171,34 @@ function replyRegster2(){
 			}
 		});
 	
-	alert(dataset.rcontent);
+	
 }
+
+function replyList(){
+  	var bno = ${b.bno};
+  	
+ 	 $.ajax({
+         type    : 'GET', // method
+         url     : '/reply/listReply?bno='+bno, // POST 요청은 데이터가 요청 바디에 포함됩니다.
+         async   : 'true', // true
+         processData : true,
+         contentType : 'application/json',
+         dataType  :'json', // 명시하지 않을 경우 자동으로 추측
+         success : function(data){
+         	var str="";
+         	$.each(data,function(i,v){
+         	 		str += "<li><span class='nickname'>"+ v.nickname+"</span>"+"<br><span class='rcontent'>"+v.rcontent+"</span>"+"</li>";
+         	 });
+         	$('#reply_content').html(str);
+         	 
+         },
+         error   : function(error){
+             console.log("error", error);
+             responseError(error);
+         }
+     });
+}
+
 </script>	
 	
 	<!-- 
