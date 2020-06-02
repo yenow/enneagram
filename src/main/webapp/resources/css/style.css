@@ -137,7 +137,7 @@ body::after {
 .content .boardCont .menu_bar .reply_bar{display: block; float: left;}
 
 /* 게시판 내용 - 댓글 */
-.reply_box {background: #ddd;  }
+.reply_box {background: #ddd; display: none;}
 .reply_box ul {}
 .reply_box ul li {border-bottom: 1px solid #ccc;  border-top: 1px solid #ccc;padding: 3px;}
 .reply_box ul li span.nickname {font-size: 20px;  font-weight: bold; padding: 10px;}
