@@ -15,6 +15,7 @@ public class ReplyVO {
 	
 	private int rno;    // 
 	private int bno;
+	private int kind;
 	private String user_id;   // 댓글 쓴 사람 아이디
 	private String nickname; 
 	private String rcontent;   // 댓글 내용
@@ -25,6 +26,14 @@ public class ReplyVO {
 	
 	
 	
+	public int getKind() {
+		return kind;
+	}
+
+	public void setKind(int kind) {
+		this.kind = kind;
+	}
+
 	public String getNickname() {
 		return nickname;
 	}

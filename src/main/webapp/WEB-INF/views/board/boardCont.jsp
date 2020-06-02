@@ -84,26 +84,23 @@
 										<!-- 로그인 안되어 있을시 -->
 										<c:if test="${login == null }">
 											<div class="reply_info">
-												<h5><input type="type" id="no_user_id" name="no_user_id" placeholder="닉네임">&#32;&#32;
+												<h5><input type="type" id="nickname" name="nickname" placeholder="닉네임">&#32;&#32;
 												<input type="type" id="no_user_passwd" name="no_user_passwd" placeholder="비밀번호"> </h5>	
 												<textarea id="t_content1"></textarea>
-												<div><button onclick="replyRegster1();">등록</button></div>
+												<div><button onclick="replyRegster1(); replyList();">등록${ysy }</button></div>
 											</div>
 										</c:if>
 										<!-- 로그인중 -->
 										<c:if test="${login != null }">	
 											<div class="reply_info">
 												<textarea id="t_content2"></textarea>
-												<div><button onclick="replyRegster2(); replyList();">등록</button>
-													<button onclick="replyList();">모르겟다</button>
+												<div><button onclick="replyRegster2(); replyList();">등록${ysy }</button>
+													<button  onclick="replyList();">모르겟다${ysy }</button>
 												</div>
 												
 											</div>
 										</c:if>
-								
-										
-									
-										
+ 
 								</li> <!-- 댓글 /li  -->
 							</ul>
 							
@@ -113,28 +110,35 @@
 			</div>
 		</div>
 	</div>
-
+	
+	<div>
+	
+	</div>
+	
 	<div id="tail">
 		<jsp:include page="../info/tail.jsp"></jsp:include>
 	</div>
 	
+	
 
 <script type="text/javascript">
+var ysy=2;
 
-
+// 여기에는 kind 값이 1가 들어감
 function replyRegster1(){
 	var dataset = new Object();	
-	dataset.no_user_id = $("#no_user_id").value();
-	dataset.no_user_passwd = $("#no_user_passwd").value();
-	dataset.rcontent = $("#t_content1").text();
+	dataset.nickname = $('#nickname').val();
+	dataset.no_user_passwd = $('#no_user_passwd').val();
+	dataset.rcontent = $('#t_content1').val();
 	dataset.bno = ${b.bno};
+	dataset.kind = 1;
 	
 	$.ajax({
 		type : 'post', // method
 		//url   : 'list',
 		url : '/reply/replyinsert', // GET 요청은 데이터가 URL 파라미터로 포함되어 전송됩니다.
 		async : 'true', // true
-		data  : JSON.stringify(dataSet), // GET 요청은 지원되지 않습니다.
+		data  : JSON.stringify(dataset), // GET 요청은 지원되지 않습니다.
 		contentType : 'application/json', // List 컨트롤러는 application/json 형식으로만 처리하기 때문에 컨텐트 타입을 지정해야 합니다.
 		dataType : 'json', // 명시하지 않을 경우 자동으로 추측
 		success : function(data, status, xhr) {
@@ -148,13 +152,15 @@ function replyRegster1(){
 
 }
 
-
+//여기에는 kind 값이 2이 들어감
 function replyRegster2(){
 	var dataset = new Object();	
 	dataset.user_id = "${login.user_id}";
 	dataset.rcontent = $('#t_content2').val();
 	dataset.bno = ${b.bno};
 	dataset.nickname = "${login.nickname}";
+	dataset.kind = 2;
+	
 	$.ajax({
 			type : 'post', // method
 			//url   : 'list',
@@ -170,10 +176,10 @@ function replyRegster2(){
 				console.log("error", error);
 			}
 		});
-	
-	
 }
 
+
+/* 댓글 리스트 가져오기 */
 function replyList(){
 	$('.reply_box').css("display", "block");
 	
@@ -188,9 +194,18 @@ function replyList(){
          dataType  :'json', // 명시하지 않을 경우 자동으로 추측
          success : function(data){
          	var str="";
+         	/* data-rno 값을 이용해서 댓글수정과 댓글 삭제를 구현 -> 백단에서 하는게 더 나을듯? */
          	$.each(data,function(i,v){
-         	 		str += "<li><span class='nickname'>"+ v.nickname+"</span>"+"<br><span class='rcontent'>"+v.rcontent+"</span>"+"</li>";
+         	 	if(v.kind==2){
+         	 		str += "<li data-rno='"+v.rno+"'><span class='nickname'>"+ v.nickname+"</span>"+"<br><span class='rcontent'>"+v.rcontent+"</span>";
+         	 		str += "<button class='update2' onclick='update()'>수정</button> <button class='delete2' onclick='delete()'>삭제</button></li>";
+         	 	}else if(v.kind==1){
+         	 		str += "<li data-rno='"+v.rno+"'><span class='nickname'>"+ v.nickname+"</span>"+"<br><span class='rcontent'>"+v.rcontent+"</span>";
+         	 		str += "<button class='update1' onclick='update()'>수정</button> <button class='delete1' onclick='delete()'>삭제</button></li>";
+         	 	}
+         			
          	 });
+         	/* str += "<button onclick='update()'>수정</button> <button onclick='delete()'>삭제</button>" */
          	$('#reply_content').html(str);
          	 
          },
@@ -199,6 +214,16 @@ function replyList(){
              responseError(error);
          }
      });
+}
+
+$.('#reply_content .update').click(function(){
+	
+});
+
+function update(){
+	var
+	
+	$('#reply_content li[data-rno='++']').css("display", "block");
 }
 
 </script>	
