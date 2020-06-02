@@ -3,6 +3,7 @@
 body { position: relative;}
 body::after {
   content: "";
+ 
   background: url("../img/mountain.jpg");
   background-size: 100% 100%;
   opacity: 0.5;
@@ -15,12 +16,13 @@ body::after {
 }
 #header {}
 #banner {background: #b2ebf2; }
-#content {height: 1000px; background: rgba(250,250,250,1); }
+#content {width: 100%; background: rgba(250,250,250,1); overflow: hidden;}
 
-#tail {height: 200px; background: rgba(250,250,250,0.7); display: none;}
+#tail {height: 200px; background: #ccc; }
 
 .container {width: 1400px; height:inherit;  margin: 0 auto; }
 
+/* header부분 css */
 .header {width:inherit; position: relative; padding-top: 20px; padding-bottom: 18px; }
 .header h1{width: 100%; height: 100px; display:inline-block; margin-left:20px; }
 .header .login_info {position: absolute; right : 10px; top: 10px; font-size: 30px; font-family: 'Nanum Pen Script', cursive;}
@@ -31,6 +33,7 @@ body::after {
 .header h1 a span {display:inline-block; margin-left: 10px; color: #b2ebf2; line-height: 100px; font-size:70px; font-family: 'Nanum Pen Script', cursive;}
 /*아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/vitaly-gorbachev" title="Vitaly Gorbachev">Vitaly Gorbachev</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon"> www.flaticon.com</a>*/
 
+/* banner start - nav */
 .banner {}
 .nav {}
 .nav ul {text-align: center;  }
@@ -65,7 +68,7 @@ body::after {
 	content: '';
 }
 
-.nav .first {position:absolute; left:0%; top: 85px; width: 100%; display:none; transition : height 0.3s; background: #b2ebf2; border-radius:20px;	 }
+.nav .first {position:absolute; left:0%; top: 85px; width: 100%; display:none; transition : height 0.3s; background: #b2ebf2; border-radius:20px; z-index: 10;	 }
 .nav .first ul {}
 .nav .first ul li {display:block; margin-left: 0; width: 100%;}
 .nav .first ul li a {display:block; font-size: 30px; font-family: 'Nanum Pen Script', cursive; color: #fff; padding: 10px;}
@@ -82,7 +85,10 @@ body::after {
 .nav ul li:nth-child(2) .first {
 	display: none;
 }
+/* banner end */
 
+
+/* content 본문부분 + boardList */
 .content {width:inherit;height:inherit;  }
 .content h1 {text-align: center; padding: 10px;}
 .content .searchBox {}
@@ -96,18 +102,75 @@ body::after {
 .content .boardList ul li .board-good {display:block; float:left; width: 5%;}
 
 .content .boardList ul li .write-box {display:inline-block; text-align: center; }
+.boardList input {width :auto; height: auto;}
 
+/* anneagram 페이지 양쪽 나뉘어지는 부분 */
 .blank {height: 10px;}
-.content2 {width: 19%; height:inherit; float: left;}
+.content2 {width: 19%; height:inherit; float: left; background: rgba(250,250,250,1);}
 .content2 li {width: 100%; display: block;  background: rgba(250,250,250,1);  padding: 20px 0; text-align: center;
 	font-size:25px; font-family: 'Nanum Pen Script', cursive; border-bottom: 1px solid #ccc; }
 .content2 li:last-child {border-bottom: none;}
-.content2  .anneagram-nav {background: #ddd;}
-.content3 {width: 80%; height:inherit; float: left; text-align: center;}
+.content2 .anneagram-nav {background: #ddd;}
+.content3 {width: 80%; height:500px; float: left; text-align: center; background: rgba(250,250,250,1);}
 .content3 h2 { padding: 20px; font-size:50px; font-family: 'Nanum Pen Script', cursive; }
 .content3 ul {}
 .content3 ul li {text-align: left; padding: 10px 10px 10px 30px;}
+
+/* 게시판 글쓰기	*/
+.content {text-align: center;}
+.content .boardWrite {display: inline-block; width: 1000px; padding: 20px;background: rgba(250,250,250,1); border: 1px solid #ccc; border-radius:20px; margin: 20px 0;}
+.content .boardWrite h1 {text-align: center; padding: 10px;}
+.content .boardWrite ul {}
+.content .boardWrite ul li {overflow:hidden; text-align: center; padding:10px 0 10px 0; border-bottom: 1px solid #ccc;}
+.content .boardWrite ul li textarea,input {width: 90%; height: 90%; }
+.boardWrite ul li:nth-child(3) input {width :auto; height: auto;}
+
+/* 게시판 내용 */
+.content .boardCont {display: inline-block; width: 1000px; padding: 20px;background: rgba(250,250,250,1); border: 1px solid #ccc; border-radius:20px; margin: 20px 0;}
+.content .boardCont ul {}
+.content .boardCont ul li {overflow:hidden; text-align: left; padding:10px 0 10px 0;}
+.content .boardCont ul li:first-child {font-size: 30px;	 font-weight: bolder;}
+.content .boardCont .nickname_bar {font-size: 15px; border-bottom: 1px solid #ccc;}
+.content .boardCont .content_box {border-bottom: 1px solid #ccc;}
+.content .boardCont .menu_bar {text-align: right; }
+.content .boardCont .menu_bar button {border: 1px solid #ccc;}
+.content .boardCont .menu_bar .reply_bar{display: block; float: left;}
+
+/* 게시판 내용 - 댓글 */
+.reply_box {background: #ddd; display: none;}
+.reply_box ul {}
+.reply_box ul li {border-bottom: 1px solid #ccc;  border-top: 1px solid #ccc;padding: 3px;}
+.reply_box ul li span.nickname {font-size: 20px;  font-weight: bold; padding: 10px;}
+.reply_box ul li span.rcontent {font-size: 13px; padding: 10px;}
+.reply_box .reply_info {padding: 10px;}
+.reply_box .reply_info h5 {padding: 10px 0;}
+.reply_box .reply_info input {display:inline-block; width: 25%; } 
+.reply_box .reply_info textarea {width: 90%; height: 50px;}
+
+/* 게시판 수정페이지 */
+.boardUpdate {display: inline-block; width: 1000px; padding: 20px; background: rgba(250,250,250,1); border: 1px solid #ccc; border-radius:20px; margin: 20px 0;}
+.boardUpdate ul {}
+.boardUpdate ul li { text-align: center; padding:10px 0 10px 0; border-bottom: 1px solid #ccc; }
+.boardUpdate ul li input {border : 1px solid #ccc; background: rgba(250,250,250,1);} 
+.boardUpdate ul li textarea {width: 90%; height: 90%; background: rgba(250,250,250,1); border : 1px solid #ccc;}
+.boardUpdate ul li:nth-child(3) input {width :auto; height: auto;}
+
+
+.test-notice {position: relative; height: 300px; background: #rgba(250,250,250,1);}
+.test-notice .test-notice-position {position: absolute; top:70px; left: 0; width: 100%;; text-align: center;}
+.test-notice .test-notice-position div {margin: 20px 50px;}
+.test-notice .notice1 {display: inline-block; height: 100px; background: #bfd0e6; padding: 20px 20px; color: #fff; border-radius: 20px;}
+.test-notice .notice2 {display: inline-block; height: 100px; background: #bfd0e6; padding: 20px 20px; color: #fff; border-radius: 20px;}
+.test-notice .notice3 {display: inline-block; height: 100px; background: #bfd0e6; padding: 20px 20px; color: #fff; border-radius: 20px;}
+
+.test {}
+.test ul {text-align: center;}
+
+
 .tail {font-size: 30px; font-family: 'Nanum Pen Script', cursive;}
+.tail {text-align: center;}
+
+
 /* 반응형 */
 @media (max-width:1220px) {
 	.container{width: 100%;}

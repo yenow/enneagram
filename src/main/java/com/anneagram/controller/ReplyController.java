@@ -73,6 +73,21 @@ public class ReplyController {
 	
 	
 	// 댓글 수정
+	@RequestMapping("/updateReply")
+	public ResponseEntity<List<ReplyVO>> updateReply(@RequestBody ReplyVO re) {  //@PathVariable은 매핑주소의 게시물 번호값을 추출하는 용도로 사용
+		//1번 로그인 된경우 : rno 에서 user_id 를 알아오고 비교
+		
+		//2번 안된경우 : rno에서 패스워드값 가져오고 비교
+		
+		ResponseEntity<List<ReplyVO>> entity= null;
+		try {
+			entity= new ResponseEntity<List<ReplyVO>>(replyService.listReply(re.getBno()), HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity=new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
 	
 	// 댓글 삭제
 }

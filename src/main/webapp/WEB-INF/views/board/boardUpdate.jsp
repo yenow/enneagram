@@ -12,6 +12,14 @@
 </head>
 
 <body>
+
+	<c:if test="${login == null }">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다");
+			location.href = '../member/login';
+		</script>
+	</c:if>
+
 	<div id="header">
 		<jsp:include page="../info/header.jsp"></jsp:include>
 	</div>
@@ -19,53 +27,34 @@
 	<div id="banner">
 		<jsp:include page="../info/banner.jsp"></jsp:include>
 	</div>
-	<div id="conten2t">
+	
+	<div id="content">
 		<div class="container">
-			<div class="content2">
-				<c:if test="${login == null }">
-					<script type="text/javascript">
-						alert("로그인이 필요합니다");
-						location.href = '../member/login';
-					</script>
-				</c:if>
-
-
-				<form action="boardUpdate_ok" method="post">
-					<input type="hidden" name="bno" value="${b.bno }">
-					<table border="1">
-						<caption>게시판 수정</caption>
-						<tr>
-							<td>제목</td>
-							<td><input type="text" name="title" value="${b.title }"></td>
-						</tr>
-						<tr>
-							<td>글쓴이</td>
-							<td><input type="text" name="user_id" value="${b.user_id }"
-								readonly="readonly"></td>
-						</tr>
-						<tr>
-							<td>조회수</td>
-							<td><p>${b.cnt}</p></td>
-						</tr>
-						<tr>
-							<td>등록일</td>
-							<td><p>${b.regdate}></p></td>
-						</tr>
-						<tr>
-							<td colspan="2" style="text-align: center;"></td>
-						</tr>
-						<tr>
-							<td colspan="2"><textarea rows="10" cols="20" name="content"> ${b.content }</textarea></td>
-						</tr>
-						<tr>
-							<td colspan="2" style="text-align: center;"><input
-								type="submit" value="등록"></td>
-						</tr>
-					</table>
-				</form>
+			<div class="row">
+				<div class="content">
+					<div class="boardUpdate">
+						<h1>게시판 수정하기</h1>
+	
+						<form action="boardUpdate_ok" method="post">
+							<input type="hidden" name="bno" value="${b.bno }">
+							<input type="hidden" name="user_id" value="${login.user_id }">
+							
+							<ul>
+								<li><input type="text" name="title" placeholder="제목" value="${b.title }"></li>
+								<li><textarea rows="50" cols="100" name="content" placeholder="내용">${b.content }</textarea></li>
+								<li>
+								<input type="submit" value="등록"> 
+								<input type="button" value="취소" onclick="history.back();">
+								</li>
+							</ul>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+	
+
 	<div id="tail">
 		<jsp:include page="../info/tail.jsp"></jsp:include>
 	</div>

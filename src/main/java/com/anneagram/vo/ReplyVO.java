@@ -15,7 +15,9 @@ public class ReplyVO {
 	
 	private int rno;    // 
 	private int bno;
+	private int kind;
 	private String user_id;   // 댓글 쓴 사람 아이디
+	private String nickname; 
 	private String rcontent;   // 댓글 내용
 	private Date regdate;     // 등록일
 	private Date updatedate;     // 업데이트 날짜
@@ -24,6 +26,22 @@ public class ReplyVO {
 	
 	
 	
+	public int getKind() {
+		return kind;
+	}
+
+	public void setKind(int kind) {
+		this.kind = kind;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
 	public String getNo_user_id() {
 		return no_user_id;
 	}
