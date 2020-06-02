@@ -87,15 +87,15 @@
 												<h5><input type="type" id="nickname" name="nickname" placeholder="닉네임">&#32;&#32;
 												<input type="type" id="no_user_passwd" name="no_user_passwd" placeholder="비밀번호"> </h5>	
 												<textarea id="t_content1"></textarea>
-												<div><button onclick="replyRegster1(); replyList();">등록${ysy }</button></div>
+												<div><button onclick="replyRegster1(); replyList();">등록</button></div>
 											</div>
 										</c:if>
 										<!-- 로그인중 -->
 										<c:if test="${login != null }">	
 											<div class="reply_info">
 												<textarea id="t_content2"></textarea>
-												<div><button onclick="replyRegster2(); replyList();">등록${ysy }</button>
-													<button  onclick="replyList();">모르겟다${ysy }</button>
+												<div><button onclick="replyRegster2(); replyList();">등록</button>
+													<button  onclick="replyList();">모르겟다</button>
 												</div>
 												
 											</div>
@@ -196,13 +196,17 @@ function replyList(){
          	var str="";
          	/* data-rno 값을 이용해서 댓글수정과 댓글 삭제를 구현 -> 백단에서 하는게 더 나을듯? */
          	$.each(data,function(i,v){
-         	 	if(v.kind==2){
+         	 	/*
+         		if(v.kind==2){
          	 		str += "<li data-rno='"+v.rno+"'><span class='nickname'>"+ v.nickname+"</span>"+"<br><span class='rcontent'>"+v.rcontent+"</span>";
          	 		str += "<button class='update2' onclick='update()'>수정</button> <button class='delete2' onclick='delete()'>삭제</button></li>";
          	 	}else if(v.kind==1){
          	 		str += "<li data-rno='"+v.rno+"'><span class='nickname'>"+ v.nickname+"</span>"+"<br><span class='rcontent'>"+v.rcontent+"</span>";
          	 		str += "<button class='update1' onclick='update()'>수정</button> <button class='delete1' onclick='delete()'>삭제</button></li>";
          	 	}
+         	 	*/
+         		str += "<li data-rno='"+v.rno+"'><span class='nickname'>"+ v.nickname+"</span>"+"<br><span class='rcontent'>"+v.rcontent+"</span>";
+     	 		str += "<button class='update1' onclick='update()'>수정</button> <button class='delete1' onclick='delete()'>삭제</button></li>";
          			
          	 });
          	/* str += "<button onclick='update()'>수정</button> <button onclick='delete()'>삭제</button>" */
@@ -214,16 +218,6 @@ function replyList(){
              responseError(error);
          }
      });
-}
-
-$.('#reply_content .update').click(function(){
-	
-});
-
-function update(){
-	var
-	
-	$('#reply_content li[data-rno='++']').css("display", "block");
 }
 
 </script>	
