@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -14,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.support.SessionStatus;
 
 import com.anneagram.vo.TestVO;
 
@@ -25,6 +25,29 @@ import com.anneagram.vo.TestVO;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	
+	/* 사용자의 ip주소를 가져오는 메서드 */
+	public String getRemoteIP(HttpServletRequest request){
+		String ip = request.getHeader("X-FORWARDED-FOR"); 
+
+		//proxy 환경일 경우
+		if (ip == null || ip.length() == 0) {
+			ip = request.getHeader("Proxy-Client-IP");
+		}
+
+		//웹로직 서버일 경우
+		if (ip == null || ip.length() == 0) {
+			ip = request.getHeader("WL-Proxy-Client-IP");
+		}
+
+		if (ip == null || ip.length() == 0) {
+			ip = request.getRemoteAddr() ;
+		}
+
+		return ip;
+	}
+	// getRemoteIP() 끝
+
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -74,7 +97,10 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/test/test1")
-	public String test1(TestVO t, HttpSession session) {
+	public String test1(TestVO t, HttpSession session,HttpServletRequest request) {
+		
+		String ip = getRemoteIP(request);
+		
 		List<Integer> ar = new ArrayList<Integer>();
 		ar.add(Integer.parseInt(t.getNumber1()));
 		ar.add(Integer.parseInt(t.getNumber2()));

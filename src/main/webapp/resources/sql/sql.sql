@@ -84,9 +84,6 @@ nocache;
 
 
 
-
-
-
 create table board(
     bno number(30) primary key, 
 	user_id varchar2(50) , 

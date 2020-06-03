@@ -12,7 +12,7 @@ body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, input, fieldset, legend, 
 a {color: #222; text-decoration: none;}
 a:hover {color: #390;}
 
-button {
+/* button {
     display: inline-block;
     border: none;
    	padding 0;
@@ -20,6 +20,14 @@ button {
     text-decoration: none;
     text-align: center;
   	background: #fff;
-}
+} */
 
 ul {list-style: none;}
+
+/*input 박스를 클릭 했을떄 나오는 테두리 색상 없애기*/
+input:focus {outline:none;}
+
+/*
+input 박스를 클릭 했을떄 나오는 테두리 색상 변경하기
+input:focus {outline:2px solid #d50000;}
+*/

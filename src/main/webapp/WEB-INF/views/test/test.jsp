@@ -10,7 +10,8 @@
 <link rel="stylesheet" href="../../resources/css/reset.css?after">
 
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-
+<!-- 제이쿼리 -->
+<script src="../../resources/js/jquery.js"></script>
 </head>
 <body>
 
@@ -45,14 +46,14 @@
 					<ul>
 						<li>
 							<h3>질문1</h3>
-							<input type="radio" name="number1" value="1">
-							<input type="radio" name="number1" value="2">
-							<input type="radio" name="number1" value="3">
-							<input type="radio" name="number1" value="4">
-							<input type="radio" name="number1" value="5">
+							<input type="radio"  name="number1" value="1" value="true">
+							<input type="radio"  name="number1" value="2">
+							<input type="radio"  name="number1" value="3">
+							<input type="radio"  name="number1" value="4">
+							<input type="radio"  name="number1" value="5">
 							</li>
 						<li>
-							<h3>질문1</h3>
+							<h3>질문2</h3>
 							<input type="radio" name="number2" value="1">
 							<input type="radio" name="number2" value="2">
 							<input type="radio" name="number2" value="3">
@@ -60,7 +61,7 @@
 							<input type="radio" name="number2" value="5">
 						</li>
 						<li>
-							<h3>질문1</h3>
+							<h3>질문3</h3>
 							<input type="radio" name="number3" value="1">
 							<input type="radio" name="number3" value="2">
 							<input type="radio" name="number3" value="3">
@@ -68,7 +69,7 @@
 							<input type="radio" name="number3" value="5">
 						</li>
 						<li>
-							<h3>질문1</h3>
+							<h3>질문4</h3>
 							<input type="radio" name="number4" value="1">
 							<input type="radio" name="number4" value="2">
 							<input type="radio" name="number4" value="3">
@@ -76,7 +77,7 @@
 							<input type="radio" name="number4" value="5">
 						</li>
 					    <li>
-					    <h3>질문1</h3>	
+					    <h3>질문5</h3>	
 							<input type="radio" name="number5" value="1">
 							<input type="radio" name="number5" value="2">
 							<input type="radio" name="number5" value="3">
@@ -84,7 +85,7 @@
 							<input type="radio" name="number5" value="5">
 						</li>
 						<li>
-							<h3>질문1</h3>
+							<h3>질문6</h3>
 							<input type="radio" name="number6" value="1">
 							<input type="radio" name="number6" value="2">
 							<input type="radio" name="number6" value="3">
@@ -92,7 +93,7 @@
 							<input type="radio" name="number6" value="5">
 						</li>
 						<li>
-							<h3>질문1</h3>
+							<h3>질문7</h3>
 							<input type="radio" name="number7" value="1">
 							<input type="radio" name="number7" value="2">
 							<input type="radio" name="number7" value="3">
@@ -100,7 +101,7 @@
 							<input type="radio" name="number7" value="5">
 						</li>
 						<li>
-							<h3>질문1</h3>
+							<h3>질문8</h3>
 							<input type="radio" name="number8" value="1">
 							<input type="radio" name="number8" value="2">
 							<input type="radio" name="number8" value="3">
@@ -108,7 +109,7 @@
 							<input type="radio" name="number8" value="5">
 						</li>
 						<li>
-							<h3>질문1</h3>
+							<h3>질문9</h3>
 							<input type="radio" name="number9" value="1">
 							<input type="radio" name="number9" value="2">
 							<input type="radio" name="number9" value="3">
@@ -116,7 +117,7 @@
 							<input type="radio" name="number9" value="5">
 						</li>
 						<li>
-							<h3>질문1</h3>
+							<h3>질문10</h3>
 							<input type="radio" name="number10" value="1">
 							<input type="radio" name="number10" value="2">
 							<input type="radio" name="number10" value="3">
@@ -128,15 +129,17 @@
 				</form>
 			</div>
 		</div>
-		</div>
 	</div>
+	
 
 
 	<div id="tail">
 		<jsp:include page="../info/tail.jsp"></jsp:include>
 	</div>
 
-	<script src="../../resources/js/jquery.js"></script>
+	
 	<script type="text/javascript" src="../../resources/js/bootstrap.js"></script>
+	
+	
 </body>
 </html>

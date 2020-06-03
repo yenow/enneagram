@@ -195,7 +195,7 @@ function replyList(){
          success : function(data){
          	var str="";
          	/* data-rno 값을 이용해서 댓글수정과 댓글 삭제를 구현 -> 백단에서 하는게 더 나을듯? */
-         	$.each(data,function(i,v){
+         	$.each(data,function(i,v){   /* i는  인덱스값, v는 하나의 value의 약자인듯*/
          	 	/*
          		if(v.kind==2){
          	 		str += "<li data-rno='"+v.rno+"'><span class='nickname'>"+ v.nickname+"</span>"+"<br><span class='rcontent'>"+v.rcontent+"</span>";
@@ -205,7 +205,7 @@ function replyList(){
          	 		str += "<button class='update1' onclick='update()'>수정</button> <button class='delete1' onclick='delete()'>삭제</button></li>";
          	 	}
          	 	*/
-         		str += "<li data-rno='"+v.rno+"'><span class='nickname'>"+ v.nickname+"</span>"+"<br><span class='rcontent'>"+v.rcontent+"</span>";
+         		str += "<li data-rno='"+v.rno+"'><span class='nickname'>"+i+ v.nickname+"</span>"+"<br><span class='rcontent'>"+v.rcontent+"</span>";
      	 		str += "<button class='update1' onclick='update()'>수정</button> <button class='delete1' onclick='delete()'>삭제</button></li>";
          			
          	 });
