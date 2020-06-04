@@ -91,7 +91,7 @@ public class BoardController {
 	}
 	
 	//게시판 수정페이지로 이동
-	@RequestMapping(value = "/boardUpdate", method = RequestMethod.GET)
+	@RequestMapping(value = "/boardUpdate", method = RequestMethod.POST)
 	public void boardUpdate(Model m ,BoardVO b) {
 		m.addAttribute("b", b);
 	}

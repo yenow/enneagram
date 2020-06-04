@@ -26,108 +26,21 @@
 		<div class="container">
 			<div class="content">
 				<div class="test-notice">
-					<div class="test-notice-position">
-						<div class="notice1">
-							<p> 총 검사 시간은 12분 내외입니다</p>
-						</div>
-						<div class="notice2">
-							<p> 질문이 기분 나쁘더라도 이해해주세요</p>
-						</div>
-						<div class="notice3">
-							<p> 보통은 웬만하면 기피해주세요</p>
-						</div>
-						</div>
+					<div class="notice1">
+						<p> 총 검사 시간은 12분 내외입니다</p>
+					</div>
+					<div class="notice2">
+						<p> 질문이 기분 나쁘더라도 이해해주세요</p>
+					</div>
+					<div class="notice3">
+						<p> 보통은 웬만하면 기피해주세요</p>
+					</div>
 					</div>
 				</div>
-			<div class="test">
-				<form action="/test/test1">
-					<input type="hidden" name="number11" value="">
-					<ul>
-						<li>
-							<h3>질문1</h3>
-							<input type="radio" name="number1" value="1">
-							<input type="radio" name="number1" value="2">
-							<input type="radio" name="number1" value="3">
-							<input type="radio" name="number1" value="4">
-							<input type="radio" name="number1" value="5">
-							</li>
-						<li>
-							<h3>질문1</h3>
-							<input type="radio" name="number2" value="1">
-							<input type="radio" name="number2" value="2">
-							<input type="radio" name="number2" value="3">
-							<input type="radio" name="number2" value="4">
-							<input type="radio" name="number2" value="5">
-						</li>
-						<li>
-							<h3>질문1</h3>
-							<input type="radio" name="number3" value="1">
-							<input type="radio" name="number3" value="2">
-							<input type="radio" name="number3" value="3">
-							<input type="radio" name="number3" value="4">
-							<input type="radio" name="number3" value="5">
-						</li>
-						<li>
-							<h3>질문1</h3>
-							<input type="radio" name="number4" value="1">
-							<input type="radio" name="number4" value="2">
-							<input type="radio" name="number4" value="3">
-							<input type="radio" name="number4" value="4">
-							<input type="radio" name="number4" value="5">
-						</li>
-					    <li>
-					    <h3>질문1</h3>	
-							<input type="radio" name="number5" value="1">
-							<input type="radio" name="number5" value="2">
-							<input type="radio" name="number5" value="3">
-							<input type="radio" name="number5" value="4">
-							<input type="radio" name="number5" value="5">
-						</li>
-						<li>
-							<h3>질문1</h3>
-							<input type="radio" name="number6" value="1">
-							<input type="radio" name="number6" value="2">
-							<input type="radio" name="number6" value="3">
-							<input type="radio" name="number6" value="4">
-							<input type="radio" name="number6" value="5">
-						</li>
-						<li>
-							<h3>질문1</h3>
-							<input type="radio" name="number7" value="1">
-							<input type="radio" name="number7" value="2">
-							<input type="radio" name="number7" value="3">
-							<input type="radio" name="number7" value="4">
-							<input type="radio" name="number7" value="5">
-						</li>
-						<li>
-							<h3>질문1</h3>
-							<input type="radio" name="number8" value="1">
-							<input type="radio" name="number8" value="2">
-							<input type="radio" name="number8" value="3">
-							<input type="radio" name="number8" value="4">
-							<input type="radio" name="number8" value="5">
-						</li>
-						<li>
-							<h3>질문1</h3>
-							<input type="radio" name="number9" value="1">
-							<input type="radio" name="number9" value="2">
-							<input type="radio" name="number9" value="3">
-							<input type="radio" name="number9" value="4">
-							<input type="radio" name="number9" value="5">
-						</li>
-						<li>
-							<h3>질문1</h3>
-							<input type="radio" name="number10" value="1">
-							<input type="radio" name="number10" value="2">
-							<input type="radio" name="number10" value="3">
-							<input type="radio" name="number10" value="4">
-							<input type="radio" name="number10" value="5">
-						</li>
-						<li><input type="submit" value="다음" onclick=""></li>
-					</ul>
-				</form>
+				<div class="test">
+				
+				</div>
 			</div>
-		</div>
 		</div>
 	</div>
 
