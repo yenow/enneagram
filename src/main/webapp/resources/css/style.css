@@ -171,6 +171,7 @@ body::after {
 .test ul li:last-child {position:relative; margin: 10px; border-bottom: none;}
 .test ul li:before {
 	content: '비동의';
+	font-weight : bolder;
 	position:absolute;
 	left: 0;
 	top:40px;
@@ -178,6 +179,7 @@ body::after {
 }
 .test ul li:after {
 	content: '동의';
+	font-weight : bolder;
 	position:absolute;
 	right: 0;
 	top:40px;
