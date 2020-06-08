@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>게시판 내용</title>
@@ -29,7 +30,13 @@
 </style>
 
 </head>
+
 <body>
+
+	<script type="text/javascript">
+		replyList();
+	</script>
+
 	<div id="header">
 		<jsp:include page="../info/header.jsp"></jsp:include>
 	</div>
@@ -38,70 +45,184 @@
 		<jsp:include page="../info/banner.jsp"></jsp:include>
 	</div>
 
-	<div id="content2">
+	<div id="content">
 		<div class="container">
-			<div class="content2">
-				<form action="boardUpdate" method="post">
-					<input type="hidden" name="bno" value="${b.bno }">
-					<table border="1">
-						<caption>게시판 보기</caption>
-						<tr>
-							<td>제목</td>
-							<td><input type="text" name="title" value="${b.title }"
-								readonly></td>
-						</tr>
-						<tr>
-							<td>글쓴이</td>
-							<td><input type="text" name="user_id" value="${b.nickname }"
-								readonly="readonly"></td>
-						</tr>
-						<tr>
-							<td>조회수</td>
-							<td><p>${b.cnt}</p></td>
-						</tr>
-						<tr>
-							<td>등록일</td>
-							<td><p>${b.regdate}></p></td>
-						</tr>
-						<tr>
-							<td colspan="2" style="text-align: center;">내용</td>
-						</tr>
-						<tr>
-							<td colspan="2"><textarea rows="10" cols="20" name="content"
-									readonly="readonly">${b.content }</textarea></td>
-						</tr>
+			<div class="row">
+				<div class="content">
+					
+					<div class="boardCont">
+						<h1 class="ir_su">게시판 내용</h1>
+						
+							<ul>
+								<li>${b.title }</li>
+								<li class="nickname_bar"><span>작성자 : ${b.nickname}</span> <span>등록 날짜 : ${b.regdate }</span></li>
+								<li class="content_box"><span>${b.content}</span></li>
+								
+								<li class="menu_bar">
+									<c:if test="${b.user_id eq login.user_id}">
+										<!--  	<input type="submit" value="수정">-->
+										<button class="reply_bar" onclick="replyList();">댓글 보기</button>
+										<button><a href="boardUpdate?bno=${b.bno }">수정</a></button>
+										<button><a href="boardDelete?bno=${b.bno }">삭제</a></button>
+										<button><a href="/board/boardList">목록</a></button>
 
-						<c:if test="${b.user_id eq login.user_id}">
-							<tr>
-								<td colspan="2" style="text-align: center;"><input
-									type="submit" value="수정"> <a
-									href="boardDelete?bno=${b.bno }"><input type="button"
-										value="삭제"></a>
-									<button>
-										<a href="/board/boardList">목록</a>
-									</button></td>
-							</tr>
-						</c:if>
-						<!-- test="${b.user_id ne login.user_id} " 이렇게 뒤에 공간이 있으면 안됨;; -->
-						<c:if test="${b.user_id ne login.user_id}">
-							<tr>
-								<td colspan="2" style="text-align: center;">
-									<button>
-										<a href="/board/boardList">목록</a>
-									</button>
-								</td>
-							</tr>
-						</c:if>
-					</table>
-				</form>
+									</c:if> <!-- test="${b.user_id ne login.user_id} " 이렇게 뒤에 공간이 있으면 안됨;; -->
+									<c:if test="${b.user_id ne login.user_id}">
+										<button class="reply_bar" onclick="replyList();"> 댓글 보기 </button>
+										<button><a href="/board/boardList">목록</a></button>
+									</c:if>
+								</li>
+								
+								<li class="reply_box">
+									<span>댓글 개수 : ${b.rcnt }</span>
+									<!-- 댓글 -->
+									<ul id="reply_content">
+										
+									</ul>
+									<!-- 댓글 작성란 -->
+								
+										<!-- 로그인 안되어 있을시 -->
+										<c:if test="${login == null }">
+											<div class="reply_info">
+												<h5><input type="type" id="nickname" name="nickname" placeholder="닉네임">&#32;&#32;
+												<input type="type" id="no_user_passwd" name="no_user_passwd" placeholder="비밀번호"> </h5>	
+												<textarea id="t_content1"></textarea>
+												<div><button onclick="replyRegster1(); replyList();">등록</button></div>
+											</div>
+										</c:if>
+										<!-- 로그인중 -->
+										<c:if test="${login != null }">	
+											<div class="reply_info">
+												<textarea id="t_content2"></textarea>
+												<div><button onclick="replyRegster2(); replyList();">등록</button>
+													<button  onclick="replyList();">모르겟다</button>
+												</div>
+												
+											</div>
+										</c:if>
+ 
+								</li> <!-- 댓글 /li  -->
+							</ul>
+							
+						
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-
+	
+	<div>
+	
+	</div>
+	
 	<div id="tail">
 		<jsp:include page="../info/tail.jsp"></jsp:include>
 	</div>
 	
+	
+
+<script type="text/javascript">
+var ysy=2;
+
+// 여기에는 kind 값이 1가 들어감
+function replyRegster1(){
+	var dataset = new Object();	
+	dataset.nickname = $('#nickname').val();
+	dataset.no_user_passwd = $('#no_user_passwd').val();
+	dataset.rcontent = $('#t_content1').val();
+	dataset.bno = ${b.bno};
+	dataset.kind = 1;
+	
+	$.ajax({
+		type : 'post', // method
+		//url   : 'list',
+		url : '/reply/replyinsert', // GET 요청은 데이터가 URL 파라미터로 포함되어 전송됩니다.
+		async : 'true', // true
+		data  : JSON.stringify(dataset), // GET 요청은 지원되지 않습니다.
+		contentType : 'application/json', // List 컨트롤러는 application/json 형식으로만 처리하기 때문에 컨텐트 타입을 지정해야 합니다.
+		dataType : 'json', // 명시하지 않을 경우 자동으로 추측
+		success : function(data, status, xhr) {
+			console.log("data", data);
+		},
+		error : function(error) {
+			console.log("error", error);
+		}
+	});
+	
+
+}
+
+//여기에는 kind 값이 2이 들어감
+function replyRegster2(){
+	var dataset = new Object();	
+	dataset.user_id = "${login.user_id}";
+	dataset.rcontent = $('#t_content2').val();
+	dataset.bno = ${b.bno};
+	dataset.nickname = "${login.nickname}";
+	dataset.kind = 2;
+	
+	$.ajax({
+			type : 'post', // method
+			//url   : 'list',
+			url : '/reply/replyinsert', // GET 요청은 데이터가 URL 파라미터로 포함되어 전송됩니다.
+			async : 'true', // true
+			data  : JSON.stringify(dataset), // GET 요청은 지원되지 않습니다.
+			contentType : 'application/json', // List 컨트롤러는 application/json 형식으로만 처리하기 때문에 컨텐트 타입을 지정해야 합니다.
+			dataType : 'json', // 명시하지 않을 경우 자동으로 추측
+			success : function(data, status, xhr) {
+				console.log("data", data);
+			},
+			error : function(error) {
+				console.log("error", error);
+			}
+		});
+}
+
+
+/* 댓글 리스트 가져오기 */
+function replyList(){
+	$('.reply_box').css("display", "block");
+	
+  	var bno = ${b.bno};
+  	
+ 	 $.ajax({
+         type    : 'GET', // method
+         url     : '/reply/listReply?bno='+bno, // POST 요청은 데이터가 요청 바디에 포함됩니다.
+         async   : 'true', // true
+         processData : true,
+         contentType : 'application/json',
+         dataType  :'json', // 명시하지 않을 경우 자동으로 추측
+         success : function(data){
+         	var str="";
+         	/* data-rno 값을 이용해서 댓글수정과 댓글 삭제를 구현 -> 백단에서 하는게 더 나을듯? */
+         	$.each(data,function(i,v){   /* i는  인덱스값, v는 하나의 value의 약자인듯*/
+         	 	/*
+         		if(v.kind==2){
+         	 		str += "<li data-rno='"+v.rno+"'><span class='nickname'>"+ v.nickname+"</span>"+"<br><span class='rcontent'>"+v.rcontent+"</span>";
+         	 		str += "<button class='update2' onclick='update()'>수정</button> <button class='delete2' onclick='delete()'>삭제</button></li>";
+         	 	}else if(v.kind==1){
+         	 		str += "<li data-rno='"+v.rno+"'><span class='nickname'>"+ v.nickname+"</span>"+"<br><span class='rcontent'>"+v.rcontent+"</span>";
+         	 		str += "<button class='update1' onclick='update()'>수정</button> <button class='delete1' onclick='delete()'>삭제</button></li>";
+         	 	}
+         	 	*/
+         		str += "<li data-rno='"+v.rno+"'><span class='nickname'>"+i+ v.nickname+"</span>"+"<br><span class='rcontent'>"+v.rcontent+"</span>";
+     	 		str += "<button class='update1' onclick='update()'>수정</button> <button class='delete1' onclick='delete()'>삭제</button></li>";
+         			
+         	 });
+         	/* str += "<button onclick='update()'>수정</button> <button onclick='delete()'>삭제</button>" */
+         	$('#reply_content').html(str);
+         	 
+         },
+         error   : function(error){
+             console.log("error", error);
+             responseError(error);
+         }
+     });
+}
+
+</script>	
+	
+	<!-- 
 	<%-- 댓글 수정화면 --%>
 <div id="modDiv" style="display:none;">
 	<%--display:none; css속성값은 해당 화면을 안보이게함 --%>
@@ -131,6 +252,7 @@
 	</div>
 </div>
 
+ 
 <br>
 <hr>
 [댓글개수: <b>${b.rcnt }</b>개]
@@ -258,6 +380,6 @@ $('#replyModBtn').on("click",function(){
  });
  
 </script>
-	
+-->
 </body>
 </html>

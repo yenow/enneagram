@@ -7,14 +7,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="Reply">
 	
-	<insert id="r_insert" parameterType="com.anneagram.vo.ReplyVO">
-		insert into reply (rno, bno, user_id, rcontent, regdate, no_user_id, no_user_passwd) 
-		values (rno_seq.nextval, #{bno}, #{user_id}, #{rcontent}, sysdate)
+	<insert id="r_insert" parameterType="r">
+		insert into reply (rno, bno, user_id, nickname , rcontent, regdate, kind) 
+		values (rno_seq.nextval, #{bno}, #{user_id}, #{nickname} ,#{rcontent}, sysdate, 1)
 	</insert>
 	
-	<insert id="r_insert_no" parameterType="com.anneagram.vo.ReplyVO">
-		insert into reply (rno, bno, rcontent, regdate, no_user_id, no_user_passwd) 
-		values (rno_seq.nextval, #{bno}, #{rcontent}, sysdate, #{no_user_id}, #{no_user_passwd})
+	<insert id="r_insert_no" parameterType="r">
+		insert into reply (rno, bno, rcontent, regdate, nickname, no_user_passwd, kind) 
+		values (rno_seq.nextval, #{bno}, #{rcontent}, sysdate, #{nickname}, #{no_user_passwd}, 2)
 	</insert>
 
 	<select id="r_list" resultType="r" >
