@@ -42,10 +42,8 @@
 					</div>
 				</div>
 			<div class="test">
-				
-					<input type="hidden" name="number11" value="">
-					
 					<ul>
+					
 					<c:forEach var="x" begin="1" end="10" step="1" >
 						<li class="testnum">
 							<h3 class="query"></h3>
@@ -56,9 +54,14 @@
 							<input type="radio"  name="number${x}" value="5">
 						</li>
 					</c:forEach>
-						<li><button onclick="aaa(); replace_query();">다음</button></li>
+						
 					</ul>
 					
+			</div>
+			<div class='test2'>
+				<ul>
+					<li><button onclick="aaa(); replace_query();">다음</button></li>
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -68,7 +71,10 @@
 	</div>
 
 	<script type="text/javascript">
-		var page = 0;	
+		var page = 0;	// 현재 페이지
+		var value=[];   // ajax를 통해서.. 데이터를 넘김. session을 이용해서 값을 저장
+		
+		/* 질문 저장 */
 		var query = new Array(8);
 		for(var i=0; i<8 ; i++){
 		    query[i] = new Array(11);
@@ -94,11 +100,86 @@
 		query[1][7] = '질문18';
 		query[1][8] = '질문19';
 		query[1][9] = '질문20';
+		
+		query[2][0] = '질문21';
+		query[2][1] = '질문22';
+		query[2][2] = '질문23';
+		query[2][3] = '질문24';
+		query[2][4] = '질문25';
+		query[2][5] = '질문26';
+		query[2][6] = '질문27';
+		query[2][7] = '질문28';
+		query[2][8] = '질문29';
+		query[2][9] = '질문30';	
 	
+		query[3][0] = '질문31';
+		query[3][1] = '질문32';
+		query[3][2] = '질문33';
+		query[3][3] = '질문34';
+		query[3][4] = '질문35';
+		query[3][5] = '질문36';
+		query[3][6] = '질문37';
+		query[3][7] = '질문38';
+		query[3][8] = '질문39';
+		query[3][9] = '질문40';
+		
+		query[4][0] = '질문41';
+		query[4][1] = '질문42';
+		query[4][2] = '질문43';
+		query[4][3] = '질문44';
+		query[4][4] = '질문45';
+		query[4][5] = '질문46';
+		query[4][6] = '질문47';
+		query[4][7] = '질문48';
+		query[4][8] = '질문49';
+		query[4][9] = '질문50';	
+	
+		query[5][0] = '질문51';
+		query[5][1] = '질문52';
+		query[5][2] = '질문53';
+		query[5][3] = '질문54';
+		query[5][4] = '질문55';
+		query[5][5] = '질문56';
+		query[5][6] = '질문57';
+		query[5][7] = '질문58';
+		query[5][8] = '질문59';
+		query[5][9] = '질문60';
+		
+		query[6][0] = '질문61';
+		query[6][1] = '질문62';
+		query[6][2] = '질문63';
+		query[6][3] = '질문64';
+		query[6][4] = '질문65';
+		query[6][5] = '질문66';
+		query[6][6] = '질문67';
+		query[6][7] = '질문68';
+		query[6][8] = '질문69';
+		query[6][9] = '질문70';	
+		
+		query[7][0] = '질문71';
+		query[7][1] = '질문72';
+		query[7][2] = '질문73';
+		query[7][3] = '질문74';
+		query[7][4] = '질문75';
+		query[7][5] = '질문76';
+		query[7][6] = '질문77';
+		query[7][7] = '질문78';
+		query[7][8] = '질문79';
+		query[7][9] = '질문80';
+		query[7][10]= '질문81';	
+		/* end) 질문 저장  */
 		console.log(query);
 		console.log(page);
 		
+		/* 페이지가 넘어갈 때 질문을 바꿈 */
 		function replace_query() {
+			 if(page==7){
+				var plusli = document.querySelector('.test ul');
+				var li = document.createElement('li');
+				li.className = 'testnum';
+				li.innerHTML="<h3 class='query'></h3><input type='radio'  name='number' value='1'><input type='radio'  name='number' value='2'><input type='radio'  name='number' value='3'><input type='radio'  name='number' value='4'><input type='radio'  name='number' value='5'>";
+				plusli.appendChild(li);
+			} 
 			var queryAll = document.querySelectorAll('.query');
 			for(var i=0; i<11; i++){
 				if(query[page][i]!=undefined){
@@ -112,20 +193,21 @@
 		/* 문항이 다 체크 되었는지 확인하는 메서드 */
 		function aaa(event){
 			var dataSet;
-			var value=[];
 			var testnum = document.querySelectorAll('.testnum');
 			var flag=0;
 			
+			/* check가 되어있으면 그 input태그의 value 값을 가져옴 */
 			for(var j=0; j<testnum.length ; j++){
 				for(var i=0; i <  testnum[j].getElementsByTagName('input').length ; i++){
 		            if(testnum[j].getElementsByTagName('input')[i].checked==true){
-		                value[j]=testnum[j].getElementsByTagName('input')[i].getAttribute('value');
+		                value[j]=testnum[j].getElementsByTagName('input')[i].getAttribute('value'); 
 		                flag++;
 		            }
 		        }
 			}	
 			console.log(flag);
 			console.log(testnum.length);
+			console.log(value);
 			
 			/* 문항이 다 선택되지 않았으면 다음으로 넘어가지 않음  */
 			if(flag!=testnum.length){
@@ -137,16 +219,34 @@
 				for(var j=0; j<testnum.length ; j++){
 					for(var i=0; i <  testnum[j].getElementsByTagName('input').length ; i++){
 			            if(testnum[j].getElementsByTagName('input')[i].checked==true){
-			                value[j]=testnum[j].getElementsByTagName('input')[i].checked=false;
+			               testnum[j].getElementsByTagName('input')[i].checked=false;
 			            }
 			        }
 				}	
 			}
-			console.log(value);
-		}
+			
+			/* 마지막 페이지일 경우*/
+			$.ajax({
+				type : 'POST', // method
+				url : '/test/test_ok?page='+page, // POST 요청은 데이터가 요청 바디에 포함됩니다.
+				async : 'true', // true
+				data : JSON.stringify(value),
+				contentType : 'application/json',
+				dataType : 'text', // 명시하지 않을 경우 자동으로 추측
+				success : function(data) {
+					console.log(data)
+				 	if(data!='success'){
+						location.href='/test/test_complete';
+					}  
+				},
+				error : function(error) {
+					console.log("error", error);
+				}
+			});
+			
+		}//  /aaa()
 		
-		// 아작스,, 
-		
+		 /* 
 		function check(){
 				var dataSet;
 				var value=[];
@@ -174,7 +274,7 @@
 					responseError(error);
 				}
 			});
-		}
+		} */
 	</script>
 </body>
 </html>

@@ -7,10 +7,27 @@ create table member(
     email VARCHAR2(200),
     tel varchar2(100),
     address VARCHAR2(200) not null, 
-    type number(2),
+    type archar2(100),
     regdate date
 );
 
+alter table member add (
+one number(30),
+two number(30),
+three number(30),
+four number(30),
+five number(30),
+six number(30),
+seven number(30),
+eight number(30),
+night number(30)
+);
+alter table member add (type_regdate date);
+
+-- 여기까지가 member table 정보
+
+alter table member modify (type varchar2(100));
+update member set type=null;
 select * from member;
 
 create table board(
