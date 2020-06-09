@@ -48,6 +48,12 @@ alter table board add (rcnt number(30) default 0);
 -- board에 nickname추가
 alter table board add (nickname VARCHAR2(200));
 
+insert into board (bno,user_id,title,content,cnt,regdate,nickname) values
+		(bno_seq.nextval,#{user_id},#{title},#{content},#{cnt},sysdate,#{nickname});
+		
+insert into board (bno,user_id,title,content,cnt,regdate,nickname) values (bno_seq.nextval,'phantom1994','실험용','실험용',0,sysdate,'띠용');ㄴ
+
+
 update board set nickname='띠용';
 
 select * from board;

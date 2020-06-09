@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.anneagram.service.BoardService;
@@ -36,14 +37,31 @@ public class BoardController {
 	
 	//게시판 리스트 ,  리스트를 jsp파일로 넘기는게 필요하다. Model을 활용해서 넘긴다.
 	@RequestMapping(value = "/boardList", method = RequestMethod.GET)  
-	public ModelAndView boardList(HttpServletRequest request) {
+	public ModelAndView boardList(HttpServletRequest request, @RequestParam(defaultValue = "10", value = "maxLine") String maxLine,
+			 @RequestParam(defaultValue = "", value = "search") String search) {
 		ModelAndView mv = new ModelAndView("board/boardList");
-		int lineMax=10;
+		
+		/* lineMax 설정 */
+		int lineMax=Integer.parseInt(maxLine);
 		int page;
-		if(request.getParameter("startnum")==null) {
+		if(request.getParameter("startnum")==null || Integer.parseInt(request.getParameter("startnum"))<=0) {
 			page = 1;
 		}else {
 			page = Integer.parseInt(request.getParameter("startnum"));
+		}
+		
+		
+		
+		/* count 계산 */
+		List<BoardVO> list = boardService.boardCount(); // 게시판의 개수를 가져오는 함수
+		int count=0;
+		for(BoardVO a : list) {
+			count++;
+		}
+		count = count/lineMax +1;
+		
+		if(page>count) {
+			page--;
 		}
 		
 		//보여줄 시작게시글번호, 마지막 게시글번호
@@ -52,14 +70,6 @@ public class BoardController {
 		int end = (page)*lineMax; 
 		bo.setStart(start);
 		bo.setEnd(end);
-		
-		// count 계산
-		List<BoardVO> list = boardService.boardCount();
-		int count=0;
-		for(BoardVO a : list) {
-			count++;
-		}
-		count = count/lineMax +1;
 		
 		//list 가져오기
 		List<BoardVO> blist =boardService.selectList(bo);   // ArrayList는 안되고 List는 되는 이유가 뭘까? 왜 SqlSession의 selectList는 List형만 반환할까?

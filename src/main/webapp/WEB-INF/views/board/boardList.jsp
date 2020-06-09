@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="../../resources/js/jquery.js"></script>
 
 <link rel="stylesheet" href="../../resources/css/style.css">
 <link rel="stylesheet" href="../../resources/css/reset.css">
@@ -31,7 +32,13 @@
 					<div class="searchBox"></div>
 
 					<div class="boardList">
-						<form action="boardWrite" method="get">
+						<form id="list-target" action="boardList" method="get">
+							<select class="maxLine" name="maxLine" onchange="maxLineEX();">
+										<option value="" selected disabled>개수를 선택</option> 
+									    <option value="10">10개</option>
+									    <option value="30">30개</option>
+									    <option value="50">50개</option>
+  							</select>
 							<ul>
 								<li><span class="board-title">제목</span><span
 									class="board-nickname">글쓴이</span><span class="board-date">수정날짜</span>
@@ -46,7 +53,17 @@
 										class="board-count">${b.cnt }</span><span class="board-good"></span></li>
 								</c:forEach>
 								
-								<li><input type="submit" value="글쓰기" class="write-box"></li>
+								<li>
+									<button class="write-button" type="submit" class="write-box"><a href="/board/boardWrite">글쓰기</a></button>
+									<select name="search" >
+										<option value="" selected disabled>검색</option> 
+									    <option value="title">제목</option>
+									    <option value="name">글쓴이</option>
+									    <option value="content">내용</option>
+  									</select>
+  									<input type="text" name="searchbox"> <input type="submit" value="검색">
+									
+								</li>
 								
 								<!-- 게시글 페이지번호 -->
 								<li>
@@ -70,7 +87,16 @@
 		<jsp:include page="../info/tail.jsp"></jsp:include>
 	</div>
 
-	<script src="../../resources/js/jquery.js"></script>
+	
+	<script type="text/javascript">
+	  function maxLineEX(){
+          var submit = document.querySelector('#list-target');
+          submit.submit();
+      }
+      
+		
+	</script>
+	
 </body>
 </html>
 
