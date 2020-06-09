@@ -17,21 +17,28 @@ body { }
 #header {}
 #banner {background: #b2ebf2; }
 /* #content {width: 100%; background: rgba(250,250,250,1); overflow: hidden;} */
+#content {
+	width: 100%;
+	overflow: hidden;
+	background: rgba(250,250,250,1);	
+	padding-bottom: 20px;
+}	
+#tail {height: 200px; background: #e3f8fb;}
+
+.container {width: 1400px; height:inherit;  margin: 0 auto; }
+
+/* 홈 페이지 */
 #content2 {  
+  position:relative;
   width:100%;
   height:1000px;
   background: url("../img/mountain.jpg");
   background-size: 100% 100%;
   opacity: 0.5;
   z-index: -1;   }
-#content {
-	width: 100%;
-	overflow: hidden;
-	background: rgba(250,250,250,1);
-}	
-#tail {height: 200px; background: #b2ebf2;}
-
-.container {width: 1400px; height:inherit;  margin: 0 auto; }
+#content2 div:first-child {position: absolute; left: 10%; top: 100px; color: #fff; font-size: 30px; font-family: 'Nanum Pen Script', cursive;}
+#content2 div:last-child {position: absolute; left: 10%; top: 200px; color: #fff; font-size: 30px; font-family: 'Nanum Pen Script', cursive;}
+/* 홈 페이지 끝 */
 
 /* header부분 css */
 .header {width:inherit; position: relative; padding-top: 20px; padding-bottom: 18px; }
@@ -44,15 +51,17 @@ body { }
 .header h1 a span {display:inline-block; margin-left: 10px; color: #b2ebf2; line-height: 100px; font-size:70px; font-family: 'Nanum Pen Script', cursive;}
 /* 아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/vitaly-gorbachev" title="Vitaly Gorbachev">Vitaly Gorbachev</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon"> www.flaticon.com</a>*/
 
-/* banner start - nav */
+/* nav */
 .banner {position: relative;}
 .nav {}
 .nav ul { text-align: center;  }
 .nav ul li {position:relative; display: inline-block; width: 18%; }
 .nav ul li .btn { display:block; font-size:50px; font-family: 'Nanum Pen Script', cursive; color: #fff; padding: 10px; }
+.nav ul li .btn:hover { color: black;}
 
 /* nav-block  */
-.nav-block {position:absolute; overflow:hidden; width:100%; left:0px; top:76px; text-align:center; background: #b2ebf2; z-index: 1; display: none; line-height: inherit; border-top: 1px solid #fff; padding-top:5px;}
+.nav-block {position:absolute; overflow:hidden; width:100%; left:0px; top:78px; text-align:center; background: #e3f8fb; z-index: 1; 
+	display: none; line-height: inherit; border-top: 1px solid #fff; padding-top:5px; border-radius:20px; }
 .nav-block .nav-block-element { display: inline-block; width: 18%; height: 180px; vertical-align: top; line-height: inherit; } /* CSS inline-block 사용 시 높이가 안 맞을 때 :  vertical-align사용*/
 .nav-block .nav-block-element:last-child {border-right:none;}
 .nav-block .nav-block-element li {font-size:20px; font-family: 'Nanum Pen Script', cursive; color: black; padding: 10px;}
@@ -129,12 +138,13 @@ body { }
 
 /* 테스트페이지 공지 */
 .test-notice {position: relative; height: 300px; background: #rgba(250,250,250,1);}
-.test-notice .test-notice-position {position: absolute; top:70px; left: 0; width: 100%;; text-align: center;}
-.test-notice .test-notice-position div {margin: 20px 50px;}
-.test-notice .notice1 {display: inline-block; height: 100px; background: #bfd0e6; padding: 20px 20px; color: #fff; border-radius: 20px;}
-.test-notice .notice2 {display: inline-block; height: 100px; background: #bfd0e6; padding: 20px 20px; color: #fff; border-radius: 20px;}
-.test-notice .notice3 {display: inline-block; height: 100px; background: #bfd0e6; padding: 20px 20px; color: #fff; border-radius: 20px;}
-
+.test-notice .test-notice-position {position: absolute; top:70px; left: 0; width: 100%;; text-align: center;
+	font-size:20px; font-family: 'Nanum Pen Script', cursive; color: black; vertical-align: middle;}
+.test-notice .test-notice-position div {margin: 20px 40px;}
+.test-notice .notice1 {display: inline-block; height: 100px; background: #55aaff; padding: 20px 20px; color: #fff; border-radius: 50%; line-height: 100px; }
+.test-notice .notice2 {display: inline-block; height: 100px; background: #55aaff; padding: 20px 20px; color: #fff; border-radius: 50%; line-height: 100px;}
+.test-notice .notice3 {display: inline-block; height: 100px; background: #55aaff; padding: 20px 20px; color: #fff; border-radius: 50%; line-height: 100px;}
+.test-notice p {display:inline; vertical-align: middle;}
 /* 테스트 */
 .test {}
 .test ul {text-align: center;}
@@ -172,9 +182,11 @@ body { }
 .test input[value="5"]:checked {background: #4B9AC9;}
 .test input[type="submit"] {border: 1px solid #ccc; width: 50px; height: 30px; }
 
+/* test 페이지 버튼*/
 .test2 {}
 .test2 ul {text-align: center;}
-.test2 ul {}
+.test2 ul button {width: 50px; height: 50px; border: 1px solid #ccc; border-radius: 50%; font-size:20px; font-family: 'Nanum Pen Script', cursive;}
+.test2 ul progress {width: 300px;}
 
 /* tail부분 */
 .tail {font-size: 30px; font-family: 'Nanum Pen Script', cursive;}

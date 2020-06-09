@@ -60,7 +60,9 @@
 			</div>
 			<div class='test2'>
 				<ul>
+					<li><progress value="0" max="100"></progress></li>
 					<li><button onclick="aaa(); replace_query();">다음</button></li>
+					
 				</ul>
 			</div>
 		</div>
@@ -186,6 +188,7 @@
 					queryAll[i].textContent = query[page][i];
 				}
 			}
+			document.querySelector('.test2 progress').value=(100/8)*page;
 			page++;
 		}// replace_query
 		replace_query();

@@ -101,28 +101,6 @@ public class HomeController {
 		
 	}
 	
-	@RequestMapping("/test/test1")
-	public String test1(TestVO t, HttpSession session,HttpServletRequest request) {
-		
-		String ip = getRemoteIP(request);
-		
-		List<Integer> ar = new ArrayList<Integer>();
-		ar.add(Integer.parseInt(t.getNumber1()));
-		ar.add(Integer.parseInt(t.getNumber2()));
-		ar.add(Integer.parseInt(t.getNumber3()));
-		ar.add(Integer.parseInt(t.getNumber4()));
-		ar.add(Integer.parseInt(t.getNumber5()));
-		ar.add(Integer.parseInt(t.getNumber6()));
-		ar.add(Integer.parseInt(t.getNumber7()));
-		ar.add(Integer.parseInt(t.getNumber8()));
-		ar.add(Integer.parseInt(t.getNumber9()));
-		ar.add(Integer.parseInt(t.getNumber10()));
-		System.out.println(ar);
-		t.setAr(ar);
-		session.setAttribute("testscore", t);
-		return "redirect:/test/test2";
-	}
-	
 	@ResponseBody
 	@RequestMapping("/test/test_ok")             // @RequestParam 은 get방식을 받는듯하다..
 	public ResponseEntity<String> test_ok(@RequestBody List<String> n,  @RequestParam("page") int page, HttpServletRequest request, HttpSession Session) {
@@ -156,8 +134,11 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/test/test_complete")
-	public void test_complete() {
-		
+	public void test_complete(HttpServletRequest request, HttpSession Session) {
+		String ip = getRemoteIP(request);
+		if(Session.getAttribute(ip)!=null) {
+			Session.setAttribute("test", Session.getAttribute(ip));
+		}
 	}
 	
 	/*

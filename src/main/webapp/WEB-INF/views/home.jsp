@@ -33,15 +33,14 @@
 	</div>
 	
 	<div id="content2">
-		<jsp:include page="info/content.jsp"></jsp:include>
+			<div>성격으로 문을 열수는 있으나 품성만이 열린문을 그대로 유지할 수 있다.</div>
+			<div>에니어 그램은 성격을 9가지 유형으로 구분합니다.</br> 이는 획일해 놓은것이 아니라 아홉가지의 문으로, 그 문을 통과해 내면의 여행을 떠나봅시다</div>
+		
 	</div>
 	
 	<div id="tail">
 		<jsp:include page="info/tail.jsp"></jsp:include>
 	</div>
 
-
-	<script src="../resources/js/jquery.js"></script>
-	<script type="text/javascript" src="../resources/js/bootstrap.js"></script>
 </body>
 </html>
