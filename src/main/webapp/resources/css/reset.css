@@ -12,7 +12,7 @@ body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, input, fieldset, legend, 
 a {color: #222; text-decoration: none;}
 a:hover {color: #390;}
 
-/* button {
+button {
     display: inline-block;
     border: none;
    	padding 0;
@@ -20,7 +20,7 @@ a:hover {color: #390;}
     text-decoration: none;
     text-align: center;
   	background: #fff;
-} */
+} 
 
 ul {list-style: none;}
 

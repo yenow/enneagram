@@ -3,6 +3,7 @@
 <html>
 <head>
 <title>에니어그램</title>
+<script src="../resources/js/jquery.js"></script>
 <link rel="stylesheet" href="../resources/css/bootstrap.css?after ">
 <link rel="stylesheet" href="../resources/css/style.css?after ">
 <link rel="stylesheet" href="../resources/css/reset.css?after">
@@ -31,7 +32,7 @@
 		<jsp:include page="info/banner.jsp"></jsp:include>
 	</div>
 	
-	<div id="content">
+	<div id="content2">
 		<jsp:include page="info/content.jsp"></jsp:include>
 	</div>
 	
