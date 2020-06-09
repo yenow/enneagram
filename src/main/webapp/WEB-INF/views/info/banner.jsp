@@ -61,10 +61,10 @@
 					</li>
 				</ul>			
 			</div>
-			<div class="temp1">
+			<div class="nav-block">
 				<ul>
-					<li class="temp">
-						<div class="nav-info-1">
+					<li class="nav-block-element">
+						<div >
 							<ul>
 								<li><a href="/anneagram/anneagram">에니어그램이란</a></li>
 								<li><a href="/anneagram/nine_type">9가지의 유형</a></li>
@@ -74,8 +74,8 @@
 						</div>
 					</li>
 
-					<li class="temp">
-						<div class="nav-info-1">
+					<li class="nav-block-element">
+						<div >
 							<ul>
 								<li><a href="/test/test">테스트</a></li>
 								<li><a href="/test/test_complete">테스트 결과</a></li>
@@ -85,8 +85,8 @@
 					</li>
 
 					
-					<li class="temp">
-						<div class="nav-info-1">
+					<li class="nav-block-element">
+						<div >
 						<ul>
 							<li><a href="#">뉴스</a></li>
 							<li><a href="#">칼럼</a></li>
@@ -96,27 +96,25 @@
 					</div>
 					</li>
 
-					<li class="temp">
+					<li class="nav-block-element">
 				
-					<div class="nav-info-1">
+					<div >
 						<ul>
 							<li><a href="#">공지</a></li>
 							<li><a href="/board/boardList">자유게시판</a></li>
-							<li></li>
-							<li></li>
 						</ul>
 					</div>
 					</li>
 
-					<li class="temp">
-					<div class="nav-info-1">
-						<ul>
-							<li><a href="#">일반자료실</a></li>
-							<li><a href="#">강의자료실</a></li>
-							<li><a href="#">논문</a></li>
-							<li><a href="#">상담</a></li>
-						</ul>
-					</div>
+					<li class="nav-block-element">
+						<div >
+							<ul>
+								<li><a href="#">일반자료실</a></li>
+								<li><a href="#">강의자료실</a></li>
+								<li><a href="#">논문</a></li>
+								<li><a href="#">상담</a></li>
+							</ul>
+						</div>
 					</li>
 					</ul>
 			</div>
@@ -125,8 +123,7 @@
 	
 	<script type="text/javascript">
 		var nav = document.querySelector('.nav');
-		var temp = document.querySelector('.temp1');
-		var closeButton = document.querySelector('.close-button');
+		var temp = document.querySelector('.nav-block');
 		var n=0;
 		nav.addEventListener('click',function(){
             if(n%2==0){

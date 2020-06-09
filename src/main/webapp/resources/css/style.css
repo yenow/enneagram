@@ -25,10 +25,11 @@ body { }
   opacity: 0.5;
   z-index: -1;   }
 #content {
-	width: 100%
-		
+	width: 100%;
+	overflow: hidden;
+	background: rgba(250,250,250,1);
 }	
-#tail {height: 200px; }
+#tail {height: 200px; background: #b2ebf2;}
 
 .container {width: 1400px; height:inherit;  margin: 0 auto; }
 
@@ -41,7 +42,7 @@ body { }
 .header h1 a {}
 .header h1 a img {float : left; width: 100px; height: 100px; }
 .header h1 a span {display:inline-block; margin-left: 10px; color: #b2ebf2; line-height: 100px; font-size:70px; font-family: 'Nanum Pen Script', cursive;}
-/*아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/vitaly-gorbachev" title="Vitaly Gorbachev">Vitaly Gorbachev</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon"> www.flaticon.com</a>*/
+/* 아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/vitaly-gorbachev" title="Vitaly Gorbachev">Vitaly Gorbachev</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon"> www.flaticon.com</a>*/
 
 /* banner start - nav */
 .banner {position: relative;}
@@ -50,67 +51,16 @@ body { }
 .nav ul li {position:relative; display: inline-block; width: 18%; }
 .nav ul li .btn { display:block; font-size:50px; font-family: 'Nanum Pen Script', cursive; color: #fff; padding: 10px; }
 
-/* .nav ul li .btn:before {
-  content: '';
-} */
-
-.temp1 {position:absolute; overflow:hidden; width:100%; left:0px; top:76px; text-align:center; background: #b2ebf2; z-index: 1; display: none;}
-.temp1 .temp { display: inline-block; width: 18%; height: 100%; vertical-align: top; line-height: inherit; }  /* CSS inline-block 사용 시 높이가 안 맞을 때 :  vertical-align사용*/
-.temp1 .temp li {font-size:20px; font-family: 'Nanum Pen Script', cursive; color: #fff; padding: 10px; }
-.temp1 .temp li a {}
-/* 마우스 올렸을때 효과 */
-/* .nav ul li .btn:hover:after {
-  content: '';
-  position: absolute;
- 
-  width:90%;
-  height: 10px;
-  left : 6px;
-  display:inline-block;
-  border-radius: 50px;
-  bottom: -18px;
-  box-shadow: 
-  0 5px 20px 0 #999999 ;
-}
-.nav ul li .btn:hover:before{
- 	position: absolute;
-    left: 50%; bottom: -10px;
-    margin-left: -5px;
-    border-bottom: 10px solid #b2ebf2;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 0px solid transparent;}
-.nav ul li .btn:after {
-	content: '';
-} */
-
-
-
-/*  nav 띄우는 블럭부분
-.nav .first {position:absolute; left:0%; top: 85px; width: 100%; display:none; transition : height 0.3s; background: #b2ebf2; border-radius:20px; z-index: 10;	 }
-.nav .first ul {}
-.nav .first ul li {display:block; margin-left: 0; width: 100%;}
-.nav .first ul li a {display:block; font-size: 30px; font-family: 'Nanum Pen Script', cursive; color: #fff; padding: 10px;}
-.nav .first ul li a:hover {background: rgba(222,222,222,0.5); border-radius:20px; }
-.nav ul li:hover .first{display: block;}
-*/
-
-
-/*2번째 버튼 초기화*/
-/* .nav ul li:nth-child(2) .btn:after {
-	display: none;
-}
-.nav ul li:nth-child(2) .btn:before {
-	display: none;
-}
-.nav ul li:nth-child(2) .first {
-	display: none;
-} */
-/* banner end */
-
+/* nav-block  */
+.nav-block {position:absolute; overflow:hidden; width:100%; left:0px; top:76px; text-align:center; background: #b2ebf2; z-index: 1; display: none; line-height: inherit; border-top: 1px solid #fff; padding-top:5px;}
+.nav-block .nav-block-element { display: inline-block; width: 18%; height: 180px; vertical-align: top; line-height: inherit; } /* CSS inline-block 사용 시 높이가 안 맞을 때 :  vertical-align사용*/
+.nav-block .nav-block-element:last-child {border-right:none;}
+.nav-block .nav-block-element li {font-size:20px; font-family: 'Nanum Pen Script', cursive; color: black; padding: 10px;}
+.nav-block .nav-block-element li a {}
+/* nav-block 끝 */
 
 /* content 본문부분 + boardList */
-.content {width:inherit;height:inherit;  }
+.content {width:inherit; height:inherit;  }
 .content h1 {text-align: center; padding: 10px;}
 .content .searchBox {}
 .content .boardList {}
@@ -243,3 +193,31 @@ body { }
 }
 
 
+
+
+
+/* 마우스 올렸을때 효과 */
+/* .nav ul li .btn:hover:after {
+  content: '';
+  position: absolute;
+ 
+  width:90%;
+  height: 10px;
+  left : 6px;
+  display:inline-block;
+  border-radius: 50px;
+  bottom: -18px;
+  box-shadow: 
+  0 5px 20px 0 #999999 ;
+}
+.nav ul li .btn:hover:before{
+ 	position: absolute;
+    left: 50%; bottom: -10px;
+    margin-left: -5px;
+    border-bottom: 10px solid #b2ebf2;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 0px solid transparent;}
+.nav ul li .btn:after {
+	content: '';
+} */

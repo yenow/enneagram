@@ -24,7 +24,7 @@
 
 	<div id="content">
 		<div class="container">
-			<div class="blank"></div>
+			
 			<div class="content2">
 				<ul>
 					<li><a href="/anneagram/anneagram">에니어그램이란</a></li>
