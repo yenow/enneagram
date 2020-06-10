@@ -33,7 +33,7 @@
 
 					<div class="boardList">
 						<form id="list-target" action="boardList" method="get">
-							<select class="maxLine" name="maxLine" onchange="maxLineEX();">
+							<select class="maxLine" name="maxLine" onchange="maxLineEX();">   <!-- onchange는 셀렉트박스에 값이 변경이 될 때마다 함수를 호출함 -->
 										<option value="" selected disabled>개수를 선택</option> 
 									    <option value="10">10개</option>
 									    <option value="30">30개</option>
