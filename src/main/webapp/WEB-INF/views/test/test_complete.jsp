@@ -9,6 +9,7 @@
 </head>
 <body>
 	<!-- 여기는 음.. 배열에 있는 값들을 계산해서 너가 어떤 유형사람인지 알려주고, 간단하게 소개하는 페이지,, 그리고 자세한걸 원하면 그거 페이지로 연결하는 버튼이 있음 -->
+	
 
 	<div id="header">
 		<jsp:include page="../info/header.jsp"></jsp:include>
@@ -21,12 +22,22 @@
 	<div id="content">
 		<div class="container">
 			<div class="content">
-				<c:if test="${test != null }">
+				<div class="test-complete">
+					<h2> 테스트 결과 입니다 </h2>
 					
-				</c:if>
-				<c:if test="${test == null }">
-					
-				</c:if>
+					<c:if test="${test != null }">
+						
+						<h1>당신의 성향은 : ${first }번 입니다!</h1>
+						<button><a href="/anneagram/nine_type">좀 더 <br>자세히 알아보기</a> </button>
+						<div class="result">
+							
+						</div>
+					</c:if>
+					<c:if test="${test == null }">
+						<h1>아직 테스트를 보지 않으셨군요..!</h1>
+						<button><a href="/test/test">테스트 보러 가기</a></button>
+					</c:if>
+				</div>
 			</div>
 		</div>
 	</div>

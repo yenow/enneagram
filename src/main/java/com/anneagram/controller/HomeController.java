@@ -1,12 +1,19 @@
 package com.anneagram.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -20,8 +27,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.anneagram.vo.TestVO;
 
 /**
  * Handles requests for the application home page.
@@ -109,15 +114,15 @@ public class HomeController {
 		System.out.println(page);
 		
 		if(page==1) {
-			Session.removeAttribute(ip);
+			Session.removeAttribute("test");
 		}
 		
-		if(Session.getAttribute(ip)!=null) {
-			System.out.println(Session.getAttribute(ip));
+		if(Session.getAttribute("test")!=null) {
+			System.out.println(Session.getAttribute("test"));
 			
-			List<String> temp =  (List<String>) Session.getAttribute(ip);
+			List<String> temp =  (List<String>) Session.getAttribute("test");
 			temp.addAll(n);
-			Session.setAttribute(ip, temp);
+			Session.setAttribute("test", temp);
 			System.out.println(temp);   // 확인용
 			
 			if(temp.size()==81) {
@@ -125,7 +130,7 @@ public class HomeController {
 				return response;
 			}
 		}else {
-			Session.setAttribute(ip, n);
+			Session.setAttribute("test", n);
 			System.out.println(n);
 		}
 		
@@ -134,11 +139,158 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/test/test_complete")
-	public void test_complete(HttpServletRequest request, HttpSession Session) {
-		String ip = getRemoteIP(request);
-		if(Session.getAttribute(ip)!=null) {
-			Session.setAttribute("test", Session.getAttribute(ip));
+	public String test_complete(HttpServletRequest request, HttpSession Session, HttpServletResponse Response) {
+		String ip = getRemoteIP(request); 
+	
+		List<String> temp = new ArrayList<String>();
+		if(Session.getAttribute("test")!=null) {
+			temp = (List<String>) Session.getAttribute("test");
+		}else {
+			PrintWriter pr;
+			try {
+				pr = Response.getWriter();
+				pr.print("<script> alert('테스트페이지로 이동');  </script>");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			return "/test/test_complete";
 		}
+		
+		
+		System.out.println(temp);
+		/* 각 성향별 값*/
+		int[] testNum = new int[9];
+		//1번 성향
+		testNum[0] = Integer.parseInt(temp.get(2)) + 
+				Integer.parseInt(temp.get(20)) +
+				Integer.parseInt(temp.get(24)) +
+				Integer.parseInt(temp.get(32)) +
+				Integer.parseInt(temp.get(34)) +
+				Integer.parseInt(temp.get(53)) +
+				Integer.parseInt(temp.get(59)) +
+				Integer.parseInt(temp.get(64)) +
+				Integer.parseInt(temp.get(72));
+		//2번성향
+		testNum[1] = Integer.parseInt(temp.get(6)) + 
+				Integer.parseInt(temp.get(13)) +
+				Integer.parseInt(temp.get(18)) +
+				Integer.parseInt(temp.get(22)) +
+				Integer.parseInt(temp.get(47)) +
+				Integer.parseInt(temp.get(51)) +
+				Integer.parseInt(temp.get(61)) +
+				Integer.parseInt(temp.get(71)) +
+				Integer.parseInt(temp.get(76));
+		//3번성향
+		testNum[2] = Integer.parseInt(temp.get(15)) + 
+				Integer.parseInt(temp.get(29)) +
+				Integer.parseInt(temp.get(31)) +
+				Integer.parseInt(temp.get(38)) +
+				Integer.parseInt(temp.get(44)) +
+				Integer.parseInt(temp.get(49)) +
+				Integer.parseInt(temp.get(65)) +
+				Integer.parseInt(temp.get(70)) +
+				Integer.parseInt(temp.get(77));
+		//4번성향
+		testNum[3] = Integer.parseInt(temp.get(4)) + 
+				Integer.parseInt(temp.get(12)) +
+				Integer.parseInt(temp.get(16)) +
+				Integer.parseInt(temp.get(36)) +
+				Integer.parseInt(temp.get(40)) +
+				Integer.parseInt(temp.get(42)) +
+				Integer.parseInt(temp.get(63)) +
+				Integer.parseInt(temp.get(73)) +
+				Integer.parseInt(temp.get(79));
+		//5번성향
+		testNum[4] = Integer.parseInt(temp.get(0)) + 
+				Integer.parseInt(temp.get(7)) +
+				Integer.parseInt(temp.get(10)) +
+				Integer.parseInt(temp.get(28)) +
+				Integer.parseInt(temp.get(37)) +
+				Integer.parseInt(temp.get(45)) +
+				Integer.parseInt(temp.get(55)) +
+				Integer.parseInt(temp.get(67)) +
+				Integer.parseInt(temp.get(74));
+		//6번성향
+		testNum[5] = Integer.parseInt(temp.get(21)) + 
+				Integer.parseInt(temp.get(25)) +
+				Integer.parseInt(temp.get(33)) +
+				Integer.parseInt(temp.get(39)) +
+				Integer.parseInt(temp.get(48)) +
+				Integer.parseInt(temp.get(58)) +
+				Integer.parseInt(temp.get(68)) +
+				Integer.parseInt(temp.get(75)) +
+				Integer.parseInt(temp.get(80));
+		//7번성향  뭐 잘못적었다..
+		testNum[6] = Integer.parseInt(temp.get(5)) + 
+				Integer.parseInt(temp.get(14)) +
+				Integer.parseInt(temp.get(17)) +
+				Integer.parseInt(temp.get(27)) +
+				Integer.parseInt(temp.get(30)) +
+				Integer.parseInt(temp.get(56)) +
+				Integer.parseInt(temp.get(62)) +
+				Integer.parseInt(temp.get(66)) +
+			    Integer.parseInt(temp.get(78));
+		//8번성향
+		testNum[7] = Integer.parseInt(temp.get(3)) + 
+				Integer.parseInt(temp.get(8)) +
+				Integer.parseInt(temp.get(23)) +
+				Integer.parseInt(temp.get(35)) +
+				Integer.parseInt(temp.get(41)) +
+				Integer.parseInt(temp.get(43)) +
+				Integer.parseInt(temp.get(46)) +
+				Integer.parseInt(temp.get(52)) +
+				Integer.parseInt(temp.get(57)) +
+				Integer.parseInt(temp.get(80));	
+		//9번성향
+		testNum[8] = Integer.parseInt(temp.get(1)) + 
+				Integer.parseInt(temp.get(9)) +
+				Integer.parseInt(temp.get(11)) +
+				Integer.parseInt(temp.get(19)) +
+				Integer.parseInt(temp.get(26)) +
+				Integer.parseInt(temp.get(50)) +
+				Integer.parseInt(temp.get(53)) +
+				Integer.parseInt(temp.get(60)) +
+				Integer.parseInt(temp.get(69));
+		
+		/*  */
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		for(int i=1; i<=testNum.length; i++) {
+			map.put(i,testNum[i-1]);
+		}
+		
+		Integer[] rank = new Integer[9];
+		for(int i=0; i<rank.length ;i++) {
+			rank[i] = i+1;
+		}
+		
+		/*  rank에는 순서대로 높은 성향이 들어가있음  */
+		Arrays.sort(rank, new Comparator<Integer>() {
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				if(map.get(o1)>map.get(o2)) {
+					return -1;
+				}else if(map.get(o1)<map.get(o2)) {
+					return 1;
+				}
+				return 0;
+			}
+			
+		} );
+		
+		for(int a : rank) {
+			System.out.print(a+" ");
+		}
+		System.out.println();
+		
+		for(int i=1; i<9; i++ ) {
+			System.out.print(map.get(i)+" ");
+		}
+		System.out.println();
+		
+		Session.setAttribute("first", rank[0]);
+		
+		return "/test/test_complete";
 	}
 	
 	/*
