@@ -101,6 +101,12 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping("/test/type6")
+	public void type6() {
+		
+	}
+	
+	
 	@RequestMapping("/test/test")
 	public void test() {
 		
@@ -141,19 +147,11 @@ public class HomeController {
 	@RequestMapping("/test/test_complete")
 	public String test_complete(HttpServletRequest request, HttpSession Session, HttpServletResponse Response) {
 		String ip = getRemoteIP(request); 
-	
+		
 		List<String> temp = new ArrayList<String>();
 		if(Session.getAttribute("test")!=null) {
 			temp = (List<String>) Session.getAttribute("test");
 		}else {
-			PrintWriter pr;
-			try {
-				pr = Response.getWriter();
-				pr.print("<script> alert('테스트페이지로 이동');  </script>");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
 			return "/test/test_complete";
 		}
 		
@@ -283,7 +281,7 @@ public class HomeController {
 		}
 		System.out.println();
 		
-		for(int i=1; i<9; i++ ) {
+		for(int i=1; i<=9; i++ ) {
 			System.out.print(map.get(i)+" ");
 		}
 		System.out.println();

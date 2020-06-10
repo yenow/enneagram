@@ -5,7 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="../../resources/css/style.css?after">
+<link rel="stylesheet" href="../../resources/css/reset.css?after">
+
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <title>Insert title here</title>
+
+
 </head>
 <body>
 	<!-- 여기는 음.. 배열에 있는 값들을 계산해서 너가 어떤 유형사람인지 알려주고, 간단하게 소개하는 페이지,, 그리고 자세한걸 원하면 그거 페이지로 연결하는 버튼이 있음 -->
@@ -23,11 +29,15 @@
 		<div class="container">
 			<div class="content">
 				<div class="test-complete">
-					<h2> 테스트 결과 입니다 </h2>
-					
-					<c:if test="${test != null }">
+					<c:if test="${first != null }">
 						
-						<h1>당신의 성향은 : ${first }번 입니다!</h1>
+						<h1>테스트 결과 <br>당신의 성향은 : ${first }번 입니다!</h1>
+						
+						<c:if test="${first ==6 }">
+							<jsp:include page="type6.jsp"></jsp:include>
+						</c:if>
+						
+					
 						<button><a href="/anneagram/nine_type">좀 더 <br>자세히 알아보기</a> </button>
 						<div class="result">
 							
@@ -35,7 +45,7 @@
 					</c:if>
 					<c:if test="${test == null }">
 						<h1>아직 테스트를 보지 않으셨군요..!</h1>
-						<button><a href="/test/test">테스트 보러 가기</a></button>
+						<button><a href="/test/test">테스트 <br>하러 가기</a></button>
 					</c:if>
 				</div>
 			</div>

@@ -35,15 +35,15 @@
 			<div class="content3">
 				<h2>9가지의 유형</h2>
 				<ul>
-					<li><a href="#"></a>1유형</li>
-					<li><a href="#"></a>2유형</li>
-					<li><a href="#"></a>3유형</li>
-					<li><a href="#"></a>4유형</li>
-					<li><a href="#"></a>5유형</li>
-					<li><a href="#"></a>6유형</li>
-					<li><a href="#"></a>7유형</li>	
-					<li><a href="#"></a>8유형</li>
-					<li><a href="#"></a>9유형</li>
+					<li><a href="#"><img alt="1유형" src="../../resources/img/mytype1.png"></a></li>
+					<li><a href="#"><img alt="2유형" src="../../resources/img/mytype2.png"></a></li>
+					<li><a href="#"><img alt="3유형" src="../../resources/img/mytype3.png"></a></li>
+					<li><a href="#"><img alt="4유형" src="../../resources/img/mytype4.png"></a></li>
+					<li><a href="#"><img alt="5유형" src="../../resources/img/mytype5.png"></a></li>
+					<li><a href="#"><img alt="6유형" src="../../resources/img/mytype6.png"></a></li>
+					<li><a href="#"><img alt="7유형" src="../../resources/img/mytype7.png"></a></li>	
+					<li><a href="#"><img alt="8유형" src="../../resources/img/mytype8.png"></a></li>
+					<li><a href="#"><img alt="9유형" src="../../resources/img/mytype9.png"></a></li>
 				</ul>
 			</div>
 		</div>
