@@ -112,6 +112,18 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping("/anneagram/1_type")
+	public String type1() {
+		return "/anneagram/1_type";
+	}
+	
+	@RequestMapping("/anneagram/2_type")
+	public String type2() {
+		return "/anneagram/2_type";
+	}
+	
+	
+	
 	@ResponseBody
 	@RequestMapping("/test/test_ok")             // @RequestParam 은 get방식을 받는듯하다..
 	public ResponseEntity<String> test_ok(@RequestBody List<String> n,  @RequestParam("page") int page, HttpServletRequest request, HttpSession Session) {

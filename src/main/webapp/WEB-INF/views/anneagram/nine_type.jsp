@@ -35,8 +35,8 @@
 			<div class="content3">
 				<h2>9가지의 유형</h2>
 				<ul>
-					<li><a href="#"><img alt="1유형" src="../../resources/img/mytype1.png"></a></li>
-					<li><a href="#"><img alt="2유형" src="../../resources/img/mytype2.png"></a></li>
+					<li><a href="/anneagram/1_type"><img alt="1유형" src="../../resources/img/mytype1.png"></a></li>
+					<li><a href="/anneagram/2_type"><img alt="2유형" src="../../resources/img/mytype2.png"></a></li>
 					<li><a href="#"><img alt="3유형" src="../../resources/img/mytype3.png"></a></li>
 					<li><a href="#"><img alt="4유형" src="../../resources/img/mytype4.png"></a></li>
 					<li><a href="#"><img alt="5유형" src="../../resources/img/mytype5.png"></a></li>

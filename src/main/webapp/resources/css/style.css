@@ -213,10 +213,6 @@ body { }
 .type6 h3 {color: #01369a; margin: 10px;}
 .type6 p {font-family: serif; width: 100%;}
 
-
-
-
-
 /* 반응형 */
 @media (max-width:1220px) {
 	.container{width: 100%;}
@@ -227,7 +223,6 @@ body { }
 @media (max-width:600px) {
 	
 }
-
 
 /* 마우스 올렸을때 효과 */
 /* .nav ul li .btn:hover:after {
