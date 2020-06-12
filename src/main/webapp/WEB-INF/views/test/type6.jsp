@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="type6">
+	<div class="type6" style="font-family: 'Noto Sans KR', sans-serif;">
 		<img alt="6유형" src="../../resources/img/mytype6.png">
 		<p>
 		<ul>

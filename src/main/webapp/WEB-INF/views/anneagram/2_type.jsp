@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 </head>
 <body>
-	<div id="header">
+		<div id="header">
 		<jsp:include page="../info/header.jsp"></jsp:include>
 	</div>
 
@@ -22,12 +22,20 @@
 
 	<div id="content">
 		<div class="container">
-			<div class="type6" style="font-family: 'Noto Sans KR', sans-serif;">
+			<div class="content2">
+				<ul>
+					<li class="anneagram-nav"><a href="/anneagram/anneagram">에니어그램이란</a></li>
+					<li><a href="/anneagram/nine_type">9가지의 유형</a></li>
+					<li><a href="/anneagram/history">에니어그램의 역사</a></li>
+				</ul>
+			</div>
+			<div class="content3">
+				<div class="type6" style="font-family: 'Noto Sans KR', sans-serif;">
 		<img alt="6유형" src="../../resources/img/mytype2.png">
 		<p>
 		<ul>
 			<li>
-				<h3>6유형이란?</h3>2유형은 '타인에게 도움을 주려는 사람'으로 정이 많고 곤경에 빠진 사람들에게 
+				<h3>2유형이란?</h3>2유형은 '타인에게 도움을 주려는 사람'으로 정이 많고 곤경에 빠진 사람들에게 
 				도움의 손길을 뻗치며 주변사람들에게 도움이 되는 일을 마다하지 않는다. 
 				타인이 필요로 하는 것에 몰두하지만 타인의 도움을 필요로 하고 있는 자신에 대해서는 자각하지 못한다.
 				예리한 직감을 갖고 있고 주위 사람들의 기분을 이해하고 거기에 맞출 수 있기 때문에 적응력이 뛰어나다
@@ -109,11 +117,11 @@
 		</ul>
 		</p>
 	</div>
+			</div>
 		</div>
 	</div>
-	
-	
-	
+
+
 	<div id="tail">
 		<jsp:include page="../info/tail.jsp"></jsp:include>
 	</div>

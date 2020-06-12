@@ -8,8 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="type6">
-	<img alt="6유형" src="../../resources/img/mytype2.png">
+<div class="type6" style="font-family: 'Noto Sans KR', sans-serif;">
+	<img alt="3유형" src="../../resources/img/mytype3.png">
 		
 		<ul>
 			<li>

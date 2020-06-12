@@ -212,6 +212,8 @@ body { }
 .type6 img {border-radius: 20px; width: 100%; }
 .type6 h3 {color: #01369a; margin: 10px;}
 .type6 p {font-family: serif; width: 100%;}
+.type6 ul {text-align: left;}
+.type6 ul li {display:inline-block; font-size: 15px; text-align: left;}
 
 /* 반응형 */
 @media (max-width:1220px) {
