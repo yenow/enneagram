@@ -205,15 +205,17 @@ body { }
 
 /* test_complete */
 .test-complete {margin-top: 20px;  font-family: 'Nanum Pen Script', cursive; text-align: left;}	
-.test-complete button {width: 80px; height: 80px; border: 1px solid #ccc; border-radius: 50%; font-size:20px; font-family: 'Nanum Pen Script', cursive;}
+.test-complete .result {text-align: center;}
+.test-complete button {display:inline-block; width: 80px; height: 80px; border: 1px solid #ccc; border-radius: 50%; font-size:20px; font-family: 'Nanum Pen Script', cursive;}
 
 /* test_complete페이지 안에 성격 간단 설명 */
-.type6 {font-size: 30px; width: 100%;}
-.type6 img {border-radius: 20px; width: 100%; }
+.type6 {font-size: 30px; width: 100%; padding: 20px;}
+.type6 img {border-radius: 20px; width: 100%; height: 1000px; }
 .type6 h3 {color: #01369a; margin: 10px;}
 .type6 p {font-family: serif; width: 100%;}
 .type6 ul {text-align: left;}
-.type6 ul li {display:inline-block; font-size: 15px; text-align: left;}
+.type6 ul li {display:inline-block; width:100%;	 font-size: 15px; text-align: left; line-height: 200%;}
+
 
 /* 반응형 */
 @media (max-width:1220px) {

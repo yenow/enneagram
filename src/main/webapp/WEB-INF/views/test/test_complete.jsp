@@ -31,16 +31,42 @@
 				<div class="test-complete">
 					<c:if test="${first != null }">
 						
-						<h1>테스트 결과 <br>당신의 성향은 : ${first }번 입니다!</h1>
+						<h1 style="font-size: 40px; ">테스트 결과</h1>
+						<h2 style="text-align: center;">당신의 1등 성향은 : ${first }번 입니다!</h2>
 						
+						<c:if test="${first ==1 }">
+							<jsp:include page="type1.jsp"></jsp:include>
+						</c:if>
+						<c:if test="${first ==2 }">
+							<jsp:include page="type2.jsp"></jsp:include>
+						</c:if>
+						<c:if test="${first ==3 }">
+							<jsp:include page="type3.jsp"></jsp:include>
+						</c:if>
+						<c:if test="${first ==4 }">
+							<jsp:include page="type4.jsp"></jsp:include>
+						</c:if>
+						<c:if test="${first ==5 }">
+							<jsp:include page="type5.jsp"></jsp:include>
+						</c:if>
 						<c:if test="${first ==6 }">
 							<jsp:include page="type6.jsp"></jsp:include>
 						</c:if>
-						
+						<c:if test="${first ==7 }">
+							<jsp:include page="type7.jsp"></jsp:include>
+						</c:if>
+						<c:if test="${first ==8 }">
+							<jsp:include page="type8.jsp"></jsp:include>
+						</c:if>
+						<c:if test="${first ==9 }">
+							<jsp:include page="type9.jsp"></jsp:include>
+						</c:if>
 					
-						<button><a href="/anneagram/nine_type">좀 더 <br>자세히 알아보기</a> </button>
+						<h2  style="text-align: center;">당신의 2등 성향은 : ${second }번 입니다!</h2>
+						<h2  style="text-align: center;">당신의 3등 성향은 : ${third }번 입니다!</h2>
+						
 						<div class="result">
-							
+								<button><a href="/anneagram/nine_type"></a>다른 성향 <br>자세히 알아보기</a> </button>
 						</div>
 					</c:if>
 					<c:if test="${test == null }">

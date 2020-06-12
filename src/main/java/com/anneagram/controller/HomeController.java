@@ -100,12 +100,7 @@ public class HomeController {
 	public void history() {
 		
 	}
-	
-	@RequestMapping("/test/type6")
-	public void type6() {
-		
-	}
-	
+
 	
 	@RequestMapping("/test/test")
 	public void test() {
@@ -121,6 +116,39 @@ public class HomeController {
 	public String type2() {
 		return "/anneagram/2_type";
 	}
+	@RequestMapping("/anneagram/3_type")
+	public String type3() {
+		return "/anneagram/3_type";
+	}
+	
+	@RequestMapping("/anneagram/4_type")
+	public String type4() {
+		return "/anneagram/4_type";
+	}
+	@RequestMapping("/anneagram/5_type")
+	public String type5() {
+		return "/anneagram/5_type";
+	}
+	
+	@RequestMapping("/anneagram/6_type")
+	public String type6() {
+		return "/anneagram/6_type";
+	}
+	@RequestMapping("/anneagram/7_type")
+	public String type7() {
+		return "/anneagram/7_type";
+	}
+	
+	@RequestMapping("/anneagram/8_type")
+	public String type8() {
+		return "/anneagram/8_type";
+	}
+	
+	@RequestMapping("/anneagram/9_type")
+	public String type9() {
+		return "/anneagram/9_type";
+	}
+	
 	
 	
 	
@@ -299,7 +327,8 @@ public class HomeController {
 		System.out.println();
 		
 		Session.setAttribute("first", rank[0]);
-		
+		Session.setAttribute("second", rank[1]);
+		Session.setAttribute("third", rank[2]);
 		return "/test/test_complete";
 	}
 	

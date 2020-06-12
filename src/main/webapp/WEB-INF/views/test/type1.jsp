@@ -11,7 +11,7 @@
 <body>
 <div class="type6" style="font-family: 'Noto Sans KR', sans-serif;">
 		<img alt="1유형" src="../../resources/img/mytype1.png">
-		<p>
+		
 		<ul>
 			<li>
 				<h3>1유형이란?</h3> 
@@ -96,7 +96,7 @@
 
 			</li>
 		</ul>
-		</p>
+		
 	</div>
 
 </body>

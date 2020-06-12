@@ -37,13 +37,13 @@
 				<ul>
 					<li><a href="/anneagram/1_type"><img alt="1유형" src="../../resources/img/mytype1.png"></a></li>
 					<li><a href="/anneagram/2_type"><img alt="2유형" src="../../resources/img/mytype2.png"></a></li>
-					<li><a href="#"><img alt="3유형" src="../../resources/img/mytype3.png"></a></li>
-					<li><a href="#"><img alt="4유형" src="../../resources/img/mytype4.png"></a></li>
-					<li><a href="#"><img alt="5유형" src="../../resources/img/mytype5.png"></a></li>
-					<li><a href="#"><img alt="6유형" src="../../resources/img/mytype6.png"></a></li>
-					<li><a href="#"><img alt="7유형" src="../../resources/img/mytype7.png"></a></li>	
-					<li><a href="#"><img alt="8유형" src="../../resources/img/mytype8.png"></a></li>
-					<li><a href="#"><img alt="9유형" src="../../resources/img/mytype9.png"></a></li>
+					<li><a href="/anneagram/3_type"><img alt="3유형" src="../../resources/img/mytype3.png"></a></li>
+					<li><a href="/anneagram/4_type"><img alt="4유형" src="../../resources/img/mytype4.png"></a></li>
+					<li><a href="/anneagram/5_type"><img alt="5유형" src="../../resources/img/mytype5.png"></a></li>
+					<li><a href="/anneagram/6_type"><img alt="6유형" src="../../resources/img/mytype6.png"></a></li>
+					<li><a href="/anneagram/7_type"><img alt="7유형" src="../../resources/img/mytype7.png"></a></li>	
+					<li><a href="/anneagram/8_type"><img alt="8유형" src="../../resources/img/mytype8.png"></a></li>
+					<li><a href="/anneagram/9_type"><img alt="9유형" src="../../resources/img/mytype9.png"></a></li>
 				</ul>
 			</div>
 		</div>
