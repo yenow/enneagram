@@ -12,6 +12,117 @@
 <link rel="stylesheet" href="../../resources/css/bootstrap.css?after">
 <link rel="stylesheet" href="../../resources/css/style.css?after">
 <link rel="stylesheet" href="../../resources/css/reset.css?after">
+
+<style type="text/css">
+.content {text-align: left;}
+
+body {
+	background: rgba(248, 225, 225, 0.301);
+}
+
+div, p, input, li {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
+
+.member {
+	width: 400px;
+	margin: 0 auto;
+	padding-top: 30px;
+}
+
+.member-header .banner {
+	background: url("img/sp-icon.png");
+	width: 200px;
+	height: 110px;
+	margin: 0 auto;
+}
+
+.member-header h5 {
+	text-align: center;
+	margin: 10px 0;
+}
+
+.member-header h5 pre {
+	display: inline;
+	text-decoration: line-through
+}
+
+.member-body input[type="submit"] {
+	width: 100%;
+	height: 40px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	background: aqua;
+	color: #fff;
+	font-size:15px;
+	border: none;
+	margin-top: 10px;
+}
+
+.member-body input[type="text"],input[type="password"]  {
+	width: 100%;
+	height: 40px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+}
+
+.member-body input[type="tel"] {
+	width: 60%;
+	height: 40px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+}
+
+.member-body button {
+	width: 38%;
+	height: 43px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	margin-left: 5px;
+}
+
+.member-body button:hover {
+	border: 1px solid #ccc;
+}
+
+.member-red {
+	color: aqua ;
+}
+
+.email_login input:hover {
+	border: 1px solid #ccc;
+}
+
+.member-body h5 {margin: 10px 0;}
+
+.member-body ul li {margin: 10px 0;}
+
+.member-body p {
+	font-size: 13px;
+	font-weight: bold;
+	margin: 5px 0;
+	text-align: left;
+}
+
+.member-body p:first-child {
+	border-bottom: 1px solid black;
+	padding: 10px 0;
+}
+
+.member-body p span {
+	color: rgb(160, 160, 160);
+}
+
+input{
+-webkit-appearance: none;
+}
+</style>
+
 </head>
 <body>
 	<!-- <script>
@@ -68,7 +179,96 @@
 	<div id="content">
 		<div class="container">
 			<div class="content">
-				<form action="member_insert_ok" method="post" id="member-insert"
+				<div class="member">
+			        <div class="member-header">
+			           
+			            <h5>
+			                <pre>                 </pre>
+			                정말 간단한 회원가입하기
+			                <pre>                 </pre>
+			            </h5>
+			            <div class="member-info"></div>
+			        </div>
+		        <div class="member-body">
+		            <form action="member_insert_ok" method="post" id="member-insert"
+						onsubmit="return check();">
+		                <ul>
+		                	<li>
+		                        <h5><span class="member-red">*</span> 아이디</h5>
+		                        <input type="text" name="user_id" class="user_id" placeholder="아이디를 입력해주세요">
+		                    </li>
+		                    
+		                    <li>
+		                        <h5><span class="member-red">*</span> 비밀번호</h5>
+		                        <input type="password" name="user_pw" class="user_pw" placeholder="비밀번호 입력해주세요">
+		                        <input type="password" placeholder="비밀번호 다시 입력해주세요">
+		                    </li>
+		                    
+		                    <li>
+		                        <h5><span class="member-red">*</span> 이름</h5>
+		                        <input type="text" name="name" class="name" placeholder="이름을 입력해주세요">
+		                    </li>
+		                    
+		                    <li>
+		                        <h5><span class="member-red">*</span> 닉네임</h5>
+		                        <input type="text" name="nickname" placeholder="닉네임을 입력해주세요">
+		                    </li>
+		                    
+		                     <li>
+		                        <h5><span class="member-red">*</span> 이메일</h5>
+		                        <input type="text" type="email" name="email" placeholder="이메일을 입력해주세요">
+		                    </li>
+		                    
+		                    <li>
+		                        <h5><span class="member-red">*</span> 전화번호</h5>
+		                        <input type="tel" name="tel" class="tel" placeholder="010-1234-4567"><button>인증요청</button>
+		                    </li>
+		                    
+		                    <li>
+		                        <h5><span class="member-red">*</span> 주소</h5>
+		                        <input type="text" name="address" class="address" placeholder="주소을 입력해주세요">
+		                    </li>
+		                    
+		                    <li>
+		                        <h5><span class="member-red">*</span> 추천인코드</h5>
+		                        <input type="text" placeholder="선택사항">
+		                    </li>
+		                    
+		                    <li>
+		                        <p><input type="checkbox" style="width: 10px; height: 10px; display : inline-block; border: 1px solid #ccc;
+		                         -webkit-appearance: none;"> 모두 동의합니다</p>
+		                        <p><input type="checkbox" style="width: 10px; height: 10px; display : inline-block; border: 1px solid #ccc;
+		                          -webkit-appearance: none;"> 이용약관 필수 동의</p>
+		                        <p><input type="checkbox" style="width: 10px; height: 10px; display : inline-block; border: 1px solid #ccc;
+		                         -webkit-appearance: none;"> 개인정보 처리방침 필수 동의</p>
+		                        <p><input type="checkbox" style="width: 10px; height: 10px; display : inline-block; border: 1px solid #ccc;
+		                         -webkit-appearance: none;"> 쿠폰/이벤트 알림 선택 동의<br>
+		                            <span>SMS, 이메일을 통해 쿠폰 및 이벤트 정보를 받아보실수 있습니다</span>
+		                        </p>
+		                    </li>
+		                    <li>
+		                        <input type="submit" value="회원가입하기">
+		                    </li>
+		                </ul>
+		
+		            </form>
+		        </div>
+		    </div>
+    
+
+			</div>
+		</div>
+	</div>
+
+
+	<div id="tail">
+		<jsp:include page="../info/tail.jsp"></jsp:include>
+	</div>
+
+</body>
+</html>
+
+<!-- <form action="member_insert_ok" method="post" id="member-insert"
 					onsubmit="return check();">
 					<table>
 						<caption>회원가입 양식</caption>
@@ -106,15 +306,4 @@
 						</tr>
 
 					</table>
-				</form>
-			</div>
-		</div>
-	</div>
-
-
-	<div id="tail">
-		<jsp:include page="../info/tail.jsp"></jsp:include>
-	</div>
-
-</body>
-</html>
+				</form> -->

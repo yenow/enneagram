@@ -70,9 +70,9 @@
 			            <h5><pre>                                   </pre>
 			          			      이메일 로그인
 			                <pre>                                   </pre></h5>
-			            <form action="">
-			                <input type="text" placeholder="이메일" >
-			                <input type="text" placeholder="비밀번호" >
+			            <form action="login_ok" method="post" >
+			                <input type="text" name="user_id" placeholder="아이디" >
+			                <input type="password" name="user_pw" placeholder="비밀번호" >
 			                <p>
 			                <div class="helper"></div>
 			                <div class="email_info" style="float:left; font-size: 15px; color: rgb(48, 48, 48);" >
