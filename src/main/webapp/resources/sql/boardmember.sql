@@ -1,13 +1,13 @@
 create table member(
-    uno NUMBER(30),
+    uno number(30),
     user_id varchar2(50) primary key,
     user_pw varchar2(50) not null,
-    name varchar(50) not null,
-    nickname VARCHAR2(50),
-    email VARCHAR2(200),
-    tel varchar2(100),
-    address VARCHAR2(200) not null, 
-    type archar2(100),
+    name varchar2(50) not null,
+    nickname varchar2(50),
+    email varchar2(200),
+    tel varchar2(50),
+    address varchar2(100) not null, 
+    type varchar2(100),
     regdate date
 );
 
@@ -20,7 +20,8 @@ five number(30),
 six number(30),
 seven number(30),
 eight number(30),
-night number(30)
+night number(30),
+type_regdate date
 );
 alter table member add (type_regdate date);
 
@@ -47,6 +48,8 @@ create table board(
 alter table board add (rcnt number(30) default 0);
 -- board에 nickname추가
 alter table board add (nickname VARCHAR2(200));
+
+
 
 insert into board (bno,user_id,title,content,cnt,regdate,nickname) values
 		(bno_seq.nextval,#{user_id},#{title},#{content},#{cnt},sysdate,#{nickname});

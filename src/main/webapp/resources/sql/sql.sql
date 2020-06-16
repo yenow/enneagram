@@ -1,9 +1,6 @@
 -- oh my god !
 
-select * from member;
-
-select * from board;
-
+-- reply 테이블
 create table reply(
 	rno number(30) primary key,
 	bno number(30),
@@ -23,32 +20,84 @@ ALTER table reply add(
 	kind number(30)
 );
 
-delete from reply;
-
 -- 컬럼추가
 ALTER table reply add(
 	no_user_id varchar2(100),
 	no_user_passwd varchar2(100)
 );
 
-drop table reply;
+-- member table
+create table member(
+    uno number(30),
+    user_id varchar2(50) primary key,
+    user_pw varchar2(50) not null,
+    name varchar2(50) not null,
+    nickname varchar2(50),
+    email varchar2(200),
+    tel varchar2(50),
+    address varchar2(100) not null, 
+    type varchar2(100),
+    regdate date
+);
 
-select * from reply;
+alter table member add (
+one number(30),
+two number(30),
+three number(30),
+four number(30),
+five number(30),
+six number(30),
+seven number(30),
+eight number(30),
+night number(30),
+type_regdate date
+);
 
-select * from board;
+-- board 테이블 정보
+create table board(
+    bno number(30) primary key, 
+	user_id varchar2(50), 
+	title varchar2(200),
+	content varchar2(4000), 
+	cnt number(30) default 0, 
+	rcnt number(30) default 0,
+	nickname VARCHAR2(200),
+	regdate date,
+    moddate date,
+    
+    CONSTRAINT fk_code FOREIGN KEY (user_id) REFERENCES member(user_id) ON DELETE CASCADE
+);
+-- board에 rcnt추가
+--alter table board add (rcnt number(30) default 0);
+-- board에 nickname추가
+--alter table board add (nickname VARCHAR2(200));
 
-update board set rcnt=(select count(*) from reply where bno=2) where bno=2;
 
-select count(*) from reply where bno=2;
-
+-- rno_seq 작업
 create sequence rno_seq
 start with 1   --1부터 시작하라는 옵션
 increment by 1  -- 1씩증가하라는 옵션
 nocache; 
 
+-- bno_seq 
+create sequence bno_seq 
+start with 1
+INCREMENT by 1
+MAXVALUE 10000
+NOCACHE;
+
+-- bno_seq 
+create sequence uno_seq 
+start with 1
+INCREMENT by 1
+MAXVALUE 10000
+NOCACHE;
 
 
 
+----------------------------------------------------------------------------------
+
+drop table member;
 
 
 
