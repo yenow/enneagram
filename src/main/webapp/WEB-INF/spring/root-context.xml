@@ -35,7 +35,7 @@
 		<!-- classpath경로는 이클립스 가상경로가 src/main/resources 이다. 이 경로에 있는 mybatis-config.xml 
 			파일을 읽어들임 이 파일의 기능은 데이터 저장빈 클래스의 객체명 별칭을 관리한다. -->
 		<property name="mapperLocations"
-			value="classpath:com/anneagram/mappers/*/*.xml" />
+			value="classpath:/com/anneagram/mappers/*/*.xml" />
 		<!-- mybatis 쿼리문을 담는 매퍼태그 xml위치 -->
 	</bean>
 	

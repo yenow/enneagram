@@ -28,7 +28,7 @@ public class AjaxController {
 	 * @RequestMapping(value="/", method=RequestMethod.GET) public String home(){
 	 * return "index"; }
 	 */
-
+	
 	// Test Case - 1
 	@ResponseBody
 	@RequestMapping(value="/list", method=RequestMethod.GET, consumes=MediaType.APPLICATION_JSON_VALUE)
