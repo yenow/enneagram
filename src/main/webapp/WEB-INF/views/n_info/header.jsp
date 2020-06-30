@@ -24,7 +24,7 @@
 		<h1>Anneagram</h1>
 		<nav>
 			<ul>
-				<li><a href="#intro">Introduce</a></li>
+				<li><a href="${pageContext.request.contextPath}/anneagram/anneagram">Introduce</a></li>
 				<li><a href="#one">Test</a></li>
 				<li><a href="#two">Board</a></li>
 				<li><a href="#work"><buttontype="button" class="btn btn-secondary">로그인</button></a></li>
