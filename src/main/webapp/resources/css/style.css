@@ -35,7 +35,7 @@ body { }
   height:1000px;
   background: url("../img/mountain.jpg");
   background-size: 100% 100%;
-  opacity: 0.5;
+  
   z-index: -1;   }
 #content2 div:first-child {position: absolute; left: 10%; top: 100px; color: #fff; font-size: 30px; font-family: 'Nanum Pen Script', cursive;}
 #content2 div:last-child {position: absolute; left: 10%; top: 250px; color: #fff; font-size: 30px; font-family: 'Nanum Pen Script', cursive;}

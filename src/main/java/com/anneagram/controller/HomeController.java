@@ -81,6 +81,11 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping("/main")
+	public void main() {
+		
+	}
+	
 	@RequestMapping("/info/header")
 	public void header() {
 		
