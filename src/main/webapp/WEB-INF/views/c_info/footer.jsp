@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 
 </div>
@@ -10,6 +9,7 @@
 	<script src="${pageContext.request.contextPath}/resources/assets2/js/breakpoints.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/assets2/js/util.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/assets2/js/main.js"></script>
+
 	
 </body>
 </html>

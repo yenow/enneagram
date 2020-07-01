@@ -2852,6 +2852,7 @@
 
 /* Header */
 
+/*
 	#header {
 		padding: 8em 0 0.1em 0 ;
 	}
@@ -2985,9 +2986,11 @@
 					}
 
 		}
+*/
 
 /* Menu */
 
+/*
 	#wrapper {
 		-moz-transition: opacity 0.45s ease;
 		-webkit-transition: opacity 0.45s ease;
@@ -2995,6 +2998,7 @@
 		transition: opacity 0.45s ease;
 		opacity: 1;
 	}
+*/
 
 /* 	#menu {
 		-moz-transform: translateX(22em);
@@ -3178,6 +3182,7 @@
 
 /* Main */
 
+/*
 	#main {
 		padding: 0em 0 6em 0 ;
 	}
@@ -3189,6 +3194,7 @@
 			}
 
 		}
+*/
 
 /* Footer */
 
