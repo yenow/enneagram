@@ -10,5 +10,6 @@
 	<script src="${pageContext.request.contextPath}/resources/assets2/js/breakpoints.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/assets2/js/util.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/assets2/js/main.js"></script>
+	
 </body>
 </html>

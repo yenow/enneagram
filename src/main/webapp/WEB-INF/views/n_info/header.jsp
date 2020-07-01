@@ -14,12 +14,12 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
 <noscript><link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/noscript.css" /></noscript>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/n_style.css" >
+
 
 
 </head>
 <body>
-
+	
 	<header id="header">
 		<h1>Anneagram</h1>
 		<nav>

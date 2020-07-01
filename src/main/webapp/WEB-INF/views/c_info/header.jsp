@@ -6,7 +6,7 @@
 <title>Insert title here</title>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets2/css/main.css" />
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/n_style.css" />
 </head>
 <body>
 

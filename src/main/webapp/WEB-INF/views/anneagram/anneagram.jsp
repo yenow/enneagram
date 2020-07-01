@@ -11,7 +11,7 @@
 		<!-- Header -->
 		<header id="header">
 			<a href="index.html" class="logo">
-				<strong>Editorial</strong> by HTML5 UP
+				<strong>Introduce</strong>
 			</a>
 			<ul class="icons">
 				<li><a href="#" class="icon brands fa-twitter">
@@ -37,7 +37,7 @@
 			<div class="content">
 				<header>
 					<h1>
-						Hi, I’m Editorial<br /> by HTML5 UP
+						에니어그램이란
 					</h1>
 					<p>A free and fully responsive site template</p>
 				</header>
@@ -46,7 +46,7 @@
 					<li><a href="#" class="button big">Learn More</a></li>
 				</ul>
 			</div>
-			<span class="image object"> <img src="images/pic10.jpg" alt="" />
+			<span class="image object"> <img src="${pageContext.request.contextPath}/resources/images/pic10.jpg" alt="" />
 			</span>
 		</section>
 
@@ -95,7 +95,7 @@
 			<div class="posts">
 				<article>
 					<a href="#" class="image">
-						<img src="images/pic01.jpg" alt="" />
+						<img src="${pageContext.request.contextPath}/resources/images/pic01.jpg" alt="" />
 					</a>
 					<h3>Interdum aenean</h3>
 					<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
@@ -105,7 +105,7 @@
 				</article>
 				<article>
 					<a href="#" class="image">
-						<img src="images/pic02.jpg" alt="" />
+						<img src="${pageContext.request.contextPath}/resources/images/pic02.jpg" alt="" />
 					</a>
 					<h3>Nulla amet dolore</h3>
 					<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
@@ -115,7 +115,7 @@
 				</article>
 				<article>
 					<a href="#" class="image">
-						<img src="images/pic03.jpg" alt="" />
+						<img src="${pageContext.request.contextPath}/resources/images/pic03.jpg" alt="" />
 					</a>
 					<h3>Tempus ullamcorper</h3>
 					<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
@@ -125,7 +125,7 @@
 				</article>
 				<article>
 					<a href="#" class="image">
-						<img src="images/pic04.jpg" alt="" />
+						<img src="${pageContext.request.contextPath}/resources/images/pic04.jpg" alt="" />
 					</a>
 					<h3>Sed etiam facilis</h3>
 					<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
@@ -135,7 +135,7 @@
 				</article>
 				<article>
 					<a href="#" class="image">
-						<img src="images/pic05.jpg" alt="" />
+						<img src="${pageContext.request.contextPath}/resources/images/pic05.jpg" alt="" />
 					</a>
 					<h3>Feugiat lorem aenean</h3>
 					<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
@@ -145,7 +145,7 @@
 				</article>
 				<article>
 					<a href="#" class="image">
-						<img src="images/pic06.jpg" alt="" />
+						<img src="${pageContext.request.contextPath}/resources/images/pic06.jpg" alt="" />
 					</a>
 					<h3>Amet varius aliquam</h3>
 					<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
