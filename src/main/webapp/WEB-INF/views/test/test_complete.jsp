@@ -29,7 +29,7 @@
 		<section id="banner">
 			<div class="content">
 				<header>
-					<h1>테스트 결과</h1>
+					<h1 class="y-t-center">테스트 결과</h1>
 					
 					
 				</header>
@@ -42,12 +42,12 @@
 					<div class="test-complete">
 						<c:if test="${first != null }">
 				
-							<h1 style="font-size: 40px;">테스트 결과</h1>
+						
 							<h2 style="text-align: center;">당신의 1등 성향은 : ${first }번 입니다!</h2>
 							<h2 style="text-align: center;">당신의 2등 성향은 : ${second }번 입니다!</h2>
 							<h2 style="text-align: center;">당신의 3등 성향은 : ${third }번 입니다!</h2>
 
-							<c:if test="${first ==1 }">
+							<%-- <c:if test="${first ==1 }">
 								<jsp:include page="type1.jsp"></jsp:include>
 							</c:if>
 							<c:if test="${first ==2 }">
@@ -73,20 +73,21 @@
 							</c:if>
 							<c:if test="${first ==9 }">
 								<jsp:include page="type9.jsp"></jsp:include>
-							</c:if>
+							</c:if> --%>
 
-							<div class="result">
-								<button>
-									<a href="/anneagram/nine_type"></a>다른 성향 <br>자세히 알아보기</a>
-								</button>
+							<div class="result y-t-center">	
+							<a href="${pageContext.request.contextPath}/anneagram/${first }_type" class="button primary large">${first }번성향</a></a>
+							<a href="${pageContext.request.contextPath}/anneagram/${second }_type" class="button primary large">${second }번성향</a></a>
+							<a href="${pageContext.request.contextPath}/anneagram/${third }_type" class="button primary large">${third }번성향</a></a>
+							<a href="${pageContext.request.contextPath}/anneagram/nine_type" class="button primary large">9가지의 유형</a></a>	
 							</div>
 						</c:if>
+						
 						<c:if test="${test == null }">
-							<h1>아직 테스트를 보지 않으셨군요..!</h1>
-							<button>
-								<a href="/test/test">테스트 <br>하러 가기
-								</a>
-							</button>
+							<h1 class="y-t-center">아직 테스트를 보지 않으셨군요..!</h1>
+							<p class="y-t-center"><a href="${pageContext.request.contextPath}/test/test" class="button primary large ">테스트</a></p>
+							
+							
 						</c:if>
 					</div>
 				</div>

@@ -44,11 +44,9 @@
 		<!-- Footer -->
 		<footer id="footer">
 			<p class="copyright">
-				&copy; Untitled. All rights reserved. Demo Images:
-				<a href="https://unsplash.com">Unsplash</a>
-				. Design:
-				<a href="https://html5up.net">HTML5 UP</a>
-				.
+				&copy; Untitled. All rights reserved. Demo Images:<br>
+				인천시 부평구 청천동<br>
+				대표전화 : 010-2124-5690
 			</p>
 		</footer>
 

@@ -52,10 +52,8 @@
 
 		<section>
 			
-			<ul>
-			<li>
+			<ul class="u-l-m-t-10">
 			
-			</li>
 			<li>
 				<h3>특징</h3> 긍정적 특징<br> 
 				첫째, 리더쉽이 강하다<br>

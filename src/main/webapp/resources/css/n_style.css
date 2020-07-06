@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+h1,h2,h3,h4,h5,h6,p,button,a,input,td,span{font-family: 'Jua', sans-serif !important;}
+
+a.logo{font-family: 'Jua', sans-serif; }
+
 /**/
 .table-wrapper table {}
 
@@ -59,6 +63,9 @@ login-form ul li {width: 100%;}
 
 /* li 점 살리기*/
 .y-ul li{list-style: disc;}
+
+/**/
+.u-l-m-t-10 li{margin-top: 10px; }
 
 /* 게시판 내용부분*/
 .board-content {width: 100%; min-height: 500px;}

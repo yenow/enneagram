@@ -9,7 +9,7 @@
 
 		<!-- Header -->
 		<header id="header">
-			<a href="index.html" class="logo"> <strong>Introduce</strong>
+			<a href="${pageContext.request.contextPath}/test/test" class="logo"><strong>테스트</strong>
 			</a>
 			<ul class="icons">
 				<li><a href="#" class="icon brands fa-twitter"> <span class="label">Twitter</span>
@@ -67,7 +67,7 @@
 				<div class='test2'>
 					<ul>
 						<li><progress value="0" max="100"></progress></li>
-						<li><button onclick="aaa(); replace_query();">다음</button></li>
+						<li><a onclick="aaa(); replace_query();" class="button primary large">다음</a></li>
 
 					</ul>
 				</div>

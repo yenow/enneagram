@@ -11,9 +11,9 @@ create table member(
     regdate date
 );
 
+-- email, address 삭제
 alter table member drop column email;
-
-select * from member;
+alter table member drop column address;
 
 alter table member add (
 one number(30),

@@ -10,7 +10,7 @@
 
 		<!-- Header -->
 		<header id="header">
-			<a href="index.html" class="logo"><strong>게시판</strong></a>
+			<a href="${pageContext.request.contextPath}/board/boardList" class="logo"><strong>게시판</strong></a>
 			<ul class="icons">
 				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -32,7 +32,7 @@
 							<!--  <input type="submit" value="수정">-->
 							<a class="button small reply_bar" onclick="replyList();">댓글 보기</a>	
 							<a href="boardUpdate?bno=${b.bno }" class="button small">수정</a>
-							<a href="boardDelete?bno=${b.bno }" class="button small">삭제</a>
+							<a href="boardDelete?bno=${b.bno }" class="button small" onclick="return del_check();">삭제</a>
 							<a href="${pageContext.request.contextPath}/board/boardList" class="button small">목록</a>
 						</c:if> <!-- test="${b.user_id ne login.user_id} " 이렇게 뒤에 공간이 있으면 안됨;; --> 
 						<c:if test="${b.user_id ne login.user_id}">
@@ -100,49 +100,36 @@
 <script type="text/javascript">
 var ysy=2;
 
-// 여기에는 kind 값이 1가 들어감
-function replyRegster1(){
-	var dataset = new Object();	
-	dataset.nickname = $('#nickname').val();
-	dataset.no_user_passwd = $('#no_user_passwd').val();
-	dataset.rcontent = $('#t_content1').val();
-	dataset.bno = ${b.bno};
-	dataset.kind = 1;
-	
-	$.ajax({
-		type : 'post', // method
-		//url   : 'list',
-		url : '/reply/replyinsert', // GET 요청은 데이터가 URL 파라미터로 포함되어 전송됩니다.
-		async : 'true', // true
-		data  : JSON.stringify(dataset), // GET 요청은 지원되지 않습니다.
-		contentType : 'application/json', // List 컨트롤러는 application/json 형식으로만 처리하기 때문에 컨텐트 타입을 지정해야 합니다.
-		dataType : 'json', // 명시하지 않을 경우 자동으로 추측
-		success : function(data, status, xhr) {
-			console.log("data", data);
-		},
-		error : function(error) {
-			console.log("error", error);
+//삭제 확인
+
+	function del_check() {
+		if (confirm("정말 삭제하시겠습니까 ?") == true) {
+			alert("삭제되었습니다");
+		} else {
+			return;
 		}
-	});
-	
 
-}
+	}
 
-//여기에는 kind 값이 2이 들어감
-function replyRegster2(){
-	var dataset = new Object();	
-	dataset.user_id = "${login.user_id}";
-	dataset.rcontent = $('#t_content2').val();
-	dataset.bno = ${b.bno};
-	dataset.nickname = "${login.nickname}";
-	dataset.kind = 2;
-	
-	$.ajax({
+	// 여기에는 kind 값이 1가 들어감
+	function replyRegster1() {
+		var dataset = new Object();
+		dataset.nickname = $('#nickname').val();
+		dataset.no_user_passwd = $('#no_user_passwd').val();
+		dataset.rcontent = $('#t_content1').val();
+		dataset.bno = $
+		{
+			b.bno
+		}
+		;
+		dataset.kind = 1;
+
+		$.ajax({
 			type : 'post', // method
 			//url   : 'list',
 			url : '/reply/replyinsert', // GET 요청은 데이터가 URL 파라미터로 포함되어 전송됩니다.
 			async : 'true', // true
-			data  : JSON.stringify(dataset), // GET 요청은 지원되지 않습니다.
+			data : JSON.stringify(dataset), // GET 요청은 지원되지 않습니다.
 			contentType : 'application/json', // List 컨트롤러는 application/json 형식으로만 처리하기 때문에 컨텐트 타입을 지정해야 합니다.
 			dataType : 'json', // 명시하지 않을 경우 자동으로 추측
 			success : function(data, status, xhr) {
@@ -152,57 +139,96 @@ function replyRegster2(){
 				console.log("error", error);
 			}
 		});
-}
 
-var temp=0;
-
-/* 댓글 리스트 가져오기 */
-function replyList(){
-	if(temp==0){
-		$('.reply_box').css("display", "block");
-		temp=1;
 	}
-	else{
-		$('.reply_box').css("display", "none");
-		temp=0;
-	}
-	
-  	var bno = ${b.bno};
-  	
- 	 $.ajax({
-         type    : 'GET', // method
-         url     : '/reply/listReply?bno='+bno, // POST 요청은 데이터가 요청 바디에 포함됩니다.
-         async   : 'true', // true
-         processData : true,
-         contentType : 'application/json',
-         dataType  :'json', // 명시하지 않을 경우 자동으로 추측
-         success : function(data){
-          	var str="";
-          
-          	/* data-rno 값을 이용해서 댓글수정과 댓글 삭제를 구현 -> 백단에서 하는게 더 나을듯? */
-          	$.each(data,function(i,v){   /* i는  인덱스값, v는 하나의 value의 약자인듯*/
-          
-          		/* str += "<li data-rno='"+v.rno+"'><span class='nickname'>"+i+ v.nickname+"</span>"+"<br><span class='rcontent'>"+v.rcontent+"</span>";
-      	 		str += "<button class='update1' onclick='update()'>수정</button> <button class='delete1' onclick='delete()'>삭제</button></li>";  */
-      	 		str += "<tr>";
-      	 		str += "<td>"+v.nickname+"</td>";
-      	 		str += "<td>"+v.rcontent+"</td>";
-      	 		str += "<td><a class='button small'>수정</a> <a class='button small'>삭제</a></td>";
-      	 		str += "</tr>";
-      	 		
-          	 });
-          	
-          	/* str += "<button onclick='update()'>수정</button> <button onclick='delete()'>삭제</button>" */
-          	$('#reply_content').html(str);
-          	 
-          },
-          error   : function(error){
-              console.log("error", error);
-              responseError(error);
-          }
-      });
- }
 
+	//여기에는 kind 값이 2이 들어감
+	function replyRegster2() {
+		var dataset = new Object();
+		dataset.user_id = "${login.user_id}";
+		dataset.rcontent = $('#t_content2').val();
+		dataset.bno = $
+		{
+			b.bno
+		}
+		;
+		dataset.nickname = "${login.nickname}";
+		dataset.kind = 2;
+
+		$.ajax({
+			type : 'post', // method
+			//url   : 'list',
+			url : '/reply/replyinsert', // GET 요청은 데이터가 URL 파라미터로 포함되어 전송됩니다.
+			async : 'true', // true
+			data : JSON.stringify(dataset), // GET 요청은 지원되지 않습니다.
+			contentType : 'application/json', // List 컨트롤러는 application/json 형식으로만 처리하기 때문에 컨텐트 타입을 지정해야 합니다.
+			dataType : 'json', // 명시하지 않을 경우 자동으로 추측
+			success : function(data, status, xhr) {
+				console.log("data", data);
+			},
+			error : function(error) {
+				console.log("error", error);
+			}
+		});
+	}
+
+	var temp = 0;
+
+	/* 댓글 리스트 가져오기 */
+	function replyList() {
+		if (temp == 0) {
+			$('.reply_box').css("display", "block");
+			temp = 1;
+		} else {
+			$('.reply_box').css("display", "none");
+			temp = 0;
+		}
+
+		var bno = $
+		{
+			b.bno
+		}
+		;
+
+		$
+				.ajax({
+					type : 'GET', // method
+					url : '/reply/listReply?bno=' + bno, // POST 요청은 데이터가 요청 바디에 포함됩니다.
+					async : 'true', // true
+					processData : true,
+					contentType : 'application/json',
+					dataType : 'json', // 명시하지 않을 경우 자동으로 추측
+					success : function(data) {
+						var str = "";
+
+						/* data-rno 값을 이용해서 댓글수정과 댓글 삭제를 구현 -> 백단에서 하는게 더 나을듯? */
+						$
+								.each(
+										data,
+										function(i, v) { /* i는  인덱스값, v는 하나의 value의 약자인듯*/
+
+											/* str += "<li data-rno='"+v.rno+"'><span class='nickname'>"+i+ v.nickname+"</span>"+"<br><span class='rcontent'>"+v.rcontent+"</span>";
+											str += "<button class='update1' onclick='update()'>수정</button> <button class='delete1' onclick='delete()'>삭제</button></li>";  */
+											str += "<tr>";
+											str += "<td>" + v.nickname
+													+ "</td>";
+											str += "<td>" + v.rcontent
+													+ "</td>";
+											str += "<td><a class='button small'>수정</a> <a class='button small'>삭제</a></td>";
+											str += "</tr>";
+
+										});
+
+						/* str += "<button onclick='update()'>수정</button> <button onclick='delete()'>삭제</button>" */
+						$('#reply_content').html(str);
+
+					},
+					error : function(error) {
+						console.log("error", error);
+						responseError(error);
+					}
+				});
+	}
 </script>
 
 <jsp:include page="../c_info/sidebar.jsp"></jsp:include>
