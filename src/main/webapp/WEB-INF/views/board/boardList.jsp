@@ -27,7 +27,6 @@
 						<h1>게시판</h1>
 					</header>
 
-					<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
 					
 					<!-- board table -->
 					<div class="table-wrapper">
@@ -54,6 +53,10 @@
 						</table>
 					</div>
 					
+					<div >
+						<a href="${pageContext.request.contextPath}/board/boardWrite" class="button y-right">글쓰기</a>
+					</div>
+					<div class="y-clear"></div>
 				</section>
 
 			</div>

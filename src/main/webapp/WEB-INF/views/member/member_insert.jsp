@@ -20,28 +20,35 @@
 		<section>
 			<h3>Form</h3>
 
-			<form method="post" action="#">
+			<form method="post" action="${pageContext.request.contextPath}/member/member_insert_ok" onsubmit="return check();">
 				<div class="row gtr-uniform">
 					<div class="col-12">
 						<input type="email" name="user_id" id="user_id" value="" placeholder="이메일 주소 입력" />
+						<p> </p>
 					</div>
 					<div class="col-12">
-						<input type="password" name="password" id="password" value="" placeholder="비밀번호입력" />
+						<input type="password" name="user_pw" id="user_pw" value="" placeholder="비밀번호입력" />
+						<p> </p>
 					</div>
 					<div class="col-12">
-						<input type="password" name="password" id="password" value="" placeholder="비밀번호 재입력" />
+						<input type="password" name="user_pw" id="user_pw" value="" placeholder="비밀번호 재입력" />
+						<p> </p>
 					</div>
 					<div class="col-12">
-						<input type="text" name="name" id="password" value="" placeholder="이름" />
+						<input type="text" name="name" id="name" value="" placeholder="이름" />
+						<p> </p>
 					</div>
 					<div class="col-12">
-						<input type="text" name="nickname" id="password" value="" placeholder="닉네임" />
+						<input type="text" name="nickname" id="nickname" value="" placeholder="닉네임" />
+						<p> </p>
 					</div>
 					<div class="col-12">
-						<input type="tel" name="tel" id="password" value="" placeholder="전화번호" />
+						<input type="tel" name="tel" id="tel" value="" placeholder="전화번호" />
+						<p> </p>
 					</div>
 					<div class="col-12">
 						<input type="submit" value="회원가입" class="primary" />
+						<p> </p>
 					</div>
 
 				</div>
@@ -51,6 +58,37 @@
 	</div>
 </div>
 
+<script>
+
+function check(){
+    if($.trim($('#user_id').val())==""){
+        alert("아이디를 입력해주세요");
+        $('#user_id').val('').focus();
+        return false;
+    }
+    if($.trim($('#user_pw').val())==""){
+        alert("비밀번호를 입력해주세요");
+        $('#user_id').val('').focus();
+        return false;
+    }
+    if($.trim($('#name').val())==""){
+        alert("이름를 입력해주세요");
+        $('#user_id').val('').focus();
+        return false;
+    }
+    if($.trim($('#nickname').val())==""){
+        alert("닉네임를 입력해주세요");
+        $('#user_id').val('').focus();
+        return false;
+    }
+    if($.trim($('#tel').val())==""){
+        alert("전화번호를 입력해주세요");
+        $('#user_id').val('').focus();
+        return false;
+    }
+}
+
+</script>
 
 <jsp:include page="../c_info/sidebar.jsp"></jsp:include>
 <jsp:include page="../c_info/footer.jsp"></jsp:include>

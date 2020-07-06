@@ -20,18 +20,16 @@
 		<section>
 			<h3>Form</h3>
 
-			<form method="post" action="#">
+			<form method="post" action="${pageContext.request.contextPath}/member/login_ok">
 				<div class="row gtr-uniform">
 					<div class="col-12">
-						<input type="text" name="demo-name" id="user_id" value="" placeholder="이메일 주소 입력" />
+						<input type="text" name="user_id" id="user_id" value="" placeholder="이메일 주소 입력" />
 					</div>
 					<div class="col-12">
-						<input type="password" name="demo-email" id="password" value="" placeholder="비밀번호입력" />
+						<input type="password" name="user_pw" id="user_pw" value="" placeholder="비밀번호입력" />
 					</div>
 					<ul class="login-form">
-						<li><p>
-								<a>아이디</a>/<a>비밀번호</a>를 잊어버리셨나요?
-							</p></li>
+						<li><p><a>아이디</a>/<a>비밀번호</a>를 잊어버리셨나요?&#09;&#32;|&#09;&#32;<span><a href="${pageContext.request.contextPath}/member/member_insert">회원가입</a></span></p></li>
 						<li><input type="submit" value="로그인" class="primary" /></li>
 					</ul>
 

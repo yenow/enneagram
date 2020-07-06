@@ -46,15 +46,21 @@ public class MemberController {
 		PrintWriter out = response.getWriter();
 		
 		if(member.getUser_pw() == null) {
+			out.print("<script>");
 			out.print("alert('아이디가없습니다');");
 			out.print("history.back()");
+			out.print("</script>");
 		}else {
 			if(member.getUser_pw().equals(m.getUser_pw())) {
+				out.print("<script>");
 				out.print("alert('로그인에 성공하셨습니다');");   
+				out.print("</script>");
 				session.setAttribute("login", member);    // login 성공할경우 "login"세션
 			}else {
+				out.print("<script>");
 				out.print("alert('비밀번호가 틀립니다');");
 				out.print("history.back()");
+				out.print("</script>");
 			}
 		}
 		return "redirect:/";

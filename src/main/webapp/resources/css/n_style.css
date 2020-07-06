@@ -53,8 +53,32 @@ login-form ul li {width: 100%;}
 .y-center {margin: 0 auto;}
 .y-t-center {text-align: center;}
 
+.y-right {float: right;}
+
+.y-clear {clear: both;}
+
 /* li 점 살리기*/
 .y-ul li{list-style: disc;}
+
+/* 게시판 내용부분*/
+.board-content {width: 100%; min-height: 500px;}
+
+/* 댓글 */
+.nickname_bar {font-size: 15px; }
+.content_box {}
+.menu_bar {text-align: right; }
+.menu_bar .reply_bar{display: block; float: left;}
+
+/* 게시판 내용 - 댓글 */
+.reply_box {display: none; margin-top:10px; }
+.reply_box ul {}
+.reply_box ul li { padding: 3px;}
+.reply_box ul li span.nickname {font-size: 20px;  padding: 10px;}
+.reply_box ul li span.rcontent {font-size: 13px; padding: 10px;}
+.reply_box .reply_info {padding: 10px;}
+.reply_box .reply_info h5 {padding: 10px 0;}
+
+
 
 .inner .tiles {
 	padding-top: 30px;
