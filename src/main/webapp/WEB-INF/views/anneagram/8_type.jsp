@@ -1,35 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<div id="header">
-		<jsp:include page="../info/header.jsp"></jsp:include>
-	</div>
 
-	<div id="banner">
-		<jsp:include page="../info/banner.jsp"></jsp:include>
-	</div>
+<jsp:include page="../c_info/header.jsp"></jsp:include>
 
-	<div id="content">
-		<div class="container">
-			<div class="content2">
-				<ul>
-					<li class="anneagram-nav"><a href="/anneagram/anneagram">에니어그램이란</a></li>
-					<li><a href="/anneagram/nine_type">9가지의 유형</a></li>
-					<li><a href="/anneagram/history">에니어그램의 역사</a></li>
-				</ul>
-			</div>
-			<div class="content3">
-				<div class="type6" style="font-family: 'Noto Sans KR', sans-serif;">
-		<img alt="8유형" src="../../resources/img/mytype8.png">
-		<ul>
-			<li>
-				<h3>8유형이란?</h3> 
+<!-- Main -->
+<div id="main">
+	<div class="inner">
+
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo"> <strong>9가지 유형</strong>
+			</a>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"> <span class="label">Twitter</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"> <span class="label">Facebook</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-snapchat-ghost"> <span class="label">Snapchat</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-instagram"> <span class="label">Instagram</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-medium-m"> <span class="label">Medium</span>
+				</a></li>
+			</ul>
+		</header>
+
+		<!-- Banner -->
+		<section id="banner">
+			<div class="content">
+				<header>
+					<h1>8유형</h1>
+				</header>
+				<h3>8유형이란?</h3>
+				<p>
 				'강함을 추구하고 자기를 주장하는 사람'으로 자신이 옳다고 생각하는것에 대해서는 전력을 다해 싸우는 전사이다. <br>
 				용기와 힘이 넘치고 허영심등을 재빠르게 꿰둟어보며 그것에 결연히 대항한다. <br>
 				권력구조를 파악하는 능력이 뛰어나며 자신의 강한 힘을 발휘할 수 있는 위치를 확보하는 능력도 갖추고 있다. <br>
@@ -37,6 +40,21 @@
 				'힘이 있다', '할 수 있다', '힘이 넘친다' 라는 자신의 모습에 가장 만족감을 느낀다.<br>
 				이들의 자아 이미지는 '나는 강하고 힘이 있다(지배력에 집중하는)'는 것이다.<br>
 				체계적, 현실적으로 보이고 솔직하고 강인해 보이는 인상이다
+				</p>
+				
+				<!-- <ul class="actions">
+					<li><a href="#" class="button big">Learn More</a></li>
+				</ul> -->
+			</div>
+			<span class="image object"> <img src="${pageContext.request.contextPath}/resources/img/mytype8.png" alt="" />
+			</span>
+		</section>
+
+		<section>
+			
+			<ul>
+			<li>
+			
 			</li>
 			<li>
 				<h3>특징</h3> 긍정적 특징<br> 
@@ -110,15 +128,13 @@
 
 			</li>
 		</ul>
+			
+		</section>
 	</div>
-				
-			</div>
-		</div>
-	</div>
+</div>
 
+<jsp:include page="../c_info/sidebar.jsp"></jsp:include>
+<jsp:include page="../c_info/footer.jsp"></jsp:include>
 
-	<div id="tail">
-		<jsp:include page="../info/tail.jsp"></jsp:include>
-	</div>
-</body>
-</html>
+		
+	

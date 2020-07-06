@@ -1,78 +1,88 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../../resources/css/bootstrap.css?after">
-<link rel="stylesheet" href="../../resources/css/style.css?after">
-<link rel="stylesheet" href="../../resources/css/reset.css?after">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-<!-- 제이쿼리 -->
-<script src="../../resources/js/jquery.js"></script>
-</head>
-<body>
+<jsp:include page="../c_info/header.jsp"></jsp:include>
 
-	<div id="header">
-		<jsp:include page="../info/header.jsp"></jsp:include>
-	</div>
+<!-- Main -->
+<div id="main">
+	<div class="inner">
 
-	<div id="banner">
-		<jsp:include page="../info/banner.jsp"></jsp:include>
-	</div>
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo"> <strong>Introduce</strong>
+			</a>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"> <span class="label">Twitter</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"> <span class="label">Facebook</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-snapchat-ghost"> <span class="label">Snapchat</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-instagram"> <span class="label">Instagram</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-medium-m"> <span class="label">Medium</span>
+				</a></li>
+			</ul>
+		</header>
 
-	<div id="content">
-		<div class="container">
+		<!-- Banner -->
+		<section id="banner">
 			<div class="content">
-				<div class="test-notice">
-					<div class="test-notice-position">
-						<div class="notice1">
-							<p> 총 검사 시간은 12분 내외입니다</p>
+				<header>
+					<h1 class="y-t-center">성격테스트</h1>
+					<h3 class="y-t-center">주의사항</h3>
+					<div class="row">
+						<div class="col-4 col-12-medium">
+							
+							<p>1.총 검사 시간은 12분 내외입니다</p>
 						</div>
-						<div class="notice2">
-							<p> 질문이 기분 나쁘더라도 이해해주세요</p>
-						</div>
-						<div class="notice3">
-							<p> 보통은 웬만하면 기피해주세요</p>
-						</div>
-						</div>
-					</div>
-				</div>
-			<div class="test">
-					<ul>
-					
-					<c:forEach var="x" begin="1" end="10" step="1" >
-						<li class="testnum">
-							<h3 class="query"></h3>
-							<input type="radio"  name="number${x}" value="1">
-							<input type="radio"  name="number${x}" value="2">
-							<input type="radio"  name="number${x}" value="3">
-							<input type="radio"  name="number${x}" value="4">
-							<input type="radio"  name="number${x}" value="5">
-						</li>
-					</c:forEach>
+						<div class="col-4 col-12-medium">
 						
-					</ul>
-					
+							<p>2.질문이 기분 나쁘더라도 이해해주세요</p>
+						</div>
+						<div class="col-4 col-12-medium">
+							
+							<p>3.가운데 번호는 웬만하면 기피해주세요</p>
+						</div>
+						
+					</div>
+				</header>
 			</div>
-			<div class='test2'>
-				<ul>
-					<li><progress value="0" max="100"></progress></li>
-					<li><button onclick="aaa(); replace_query();">다음</button></li>
-					
-				</ul>
+			<%-- <span class="image object"> <img src="${pageContext.request.contextPath}/resources/images/pic10.jpg" alt="" />
+			</span> --%>
+		</section>
+
+		<div class="test-main">
+			<div class="container">
+				<div class="test">
+					<ul>
+						<c:forEach var="x" begin="1" end="10" step="1">
+							<li class="testnum">
+								<h3 class="query"></h3> <input type="radio" name="number${x}" value="1"> <input type="radio" name="number${x}" value="2"> <input type="radio" name="number${x}" value="3"> <input type="radio" name="number${x}" value="4"> <input type="radio" name="number${x}" value="5">
+							</li>
+						</c:forEach>
+					</ul>
+
+				</div>
+				<div class='test2'>
+					<ul>
+						<li><progress value="0" max="100"></progress></li>
+						<li><button onclick="aaa(); replace_query();">다음</button></li>
+
+					</ul>
+				</div>
+
 			</div>
 		</div>
-	</div>
-	
-	<div id="tail">
-		<jsp:include page="../info/tail.jsp"></jsp:include>
-	</div>
 
-	<script type="text/javascript">
+	</div>
+</div>
+
+
+<jsp:include page="../c_info/sidebar.jsp"></jsp:include>
+<jsp:include page="../c_info/footer.jsp"></jsp:include>
+
+<script type="text/javascript">
 		var page = 0;	// 현재 페이지
 		var value=[];   // ajax를 통해서.. 데이터를 넘김. session을 이용해서 값을 저장
 		
@@ -277,94 +287,6 @@
 				}
 			});
 		} */
-	</script>
-</body>
-</html>
+		
+</script>
 
-
-<!-- 
-					<ul>
-						<li>
-							<h3>질문1</h3>
-							<input type="radio"  name="number1" value="1">
-							<input type="radio"  name="number1" value="2">
-							<input type="radio"  name="number1" value="3">
-							<input type="radio"  name="number1" value="4">
-							<input type="radio"  name="number1" value="5">
-							</li>
-						<li>
-							<h3>질문2</h3>
-							<input type="radio" name="number2" value="1">
-							<input type="radio" name="number2" value="2">
-							<input type="radio" name="number2" value="3">
-							<input type="radio" name="number2" value="4">
-							<input type="radio" name="number2" value="5">
-						</li>
-						<li>
-							<h3>질문3</h3>
-							<input type="radio" name="number3" value="1">
-							<input type="radio" name="number3" value="2">
-							<input type="radio" name="number3" value="3">
-							<input type="radio" name="number3" value="4">
-							<input type="radio" name="number3" value="5">
-						</li>
-						<li>
-							<h3>질문4</h3>
-							<input type="radio" name="number4" value="1">
-							<input type="radio" name="number4" value="2">
-							<input type="radio" name="number4" value="3">
-							<input type="radio" name="number4" value="4">
-							<input type="radio" name="number4" value="5">
-						</li>
-					    <li>
-					    <h3>질문5</h3>	
-							<input type="radio" name="number5" value="1">
-							<input type="radio" name="number5" value="2">
-							<input type="radio" name="number5" value="3">
-							<input type="radio" name="number5" value="4">
-							<input type="radio" name="number5" value="5">
-						</li>
-						<li>
-							<h3>질문6</h3>
-							<input type="radio" name="number6" value="1">
-							<input type="radio" name="number6" value="2">
-							<input type="radio" name="number6" value="3">
-							<input type="radio" name="number6" value="4">
-							<input type="radio" name="number6" value="5">
-						</li>
-						<li>
-							<h3>질문7</h3>
-							<input type="radio" name="number7" value="1">
-							<input type="radio" name="number7" value="2">
-							<input type="radio" name="number7" value="3">
-							<input type="radio" name="number7" value="4">
-							<input type="radio" name="number7" value="5">
-						</li>
-						<li>
-							<h3>질문8</h3>
-							<input type="radio" name="number8" value="1">
-							<input type="radio" name="number8" value="2">
-							<input type="radio" name="number8" value="3">
-							<input type="radio" name="number8" value="4">
-							<input type="radio" name="number8" value="5">
-						</li>
-						<li>
-							<h3>질문9</h3>
-							<input type="radio" name="number9" value="1">
-							<input type="radio" name="number9" value="2">
-							<input type="radio" name="number9" value="3">
-							<input type="radio" name="number9" value="4">
-							<input type="radio" name="number9" value="5">
-						</li>
-						<li>
-							<h3>질문10</h3>
-							<input type="radio" name="number10" value="1">
-							<input type="radio" name="number10" value="2">
-							<input type="radio" name="number10" value="3">
-							<input type="radio" name="number10" value="4">
-							<input type="radio" name="number10" value="5">
-						</li>
-						<li><input type="submit" value="다음" onclick=""></li>
-					</ul>
-					 -->
-				

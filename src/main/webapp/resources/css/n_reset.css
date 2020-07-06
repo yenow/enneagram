@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+/* input 박스 클릭시 초기화 */
+input:focus {outline:none;}
+
+/**/
+li { list-style: none; }

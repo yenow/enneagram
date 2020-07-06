@@ -1,35 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<div id="header">
-		<jsp:include page="../info/header.jsp"></jsp:include>
-	</div>
+    
+<jsp:include page="../c_info/header.jsp"></jsp:include>
 
-	<div id="banner">
-		<jsp:include page="../info/banner.jsp"></jsp:include>
-	</div>
+<!-- Main -->
+<div id="main">
+	<div class="inner">
 
-	<div id="content">
-		<div class="container">
-			<div class="content2">
-				<ul>
-					<li class="anneagram-nav"><a href="/anneagram/anneagram">에니어그램이란</a></li>
-					<li><a href="/anneagram/nine_type">9가지의 유형</a></li>
-					<li><a href="/anneagram/history">에니어그램의 역사</a></li>
-				</ul>
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo"> <strong>9가지 유형</strong>
+			</a>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"> <span class="label">Twitter</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"> <span class="label">Facebook</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-snapchat-ghost"> <span class="label">Snapchat</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-instagram"> <span class="label">Instagram</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-medium-m"> <span class="label">Medium</span>
+				</a></li>
+			</ul>
+		</header>
+
+		<!-- Banner -->
+		<section id="banner">
+			<div class="content">
+				<header>
+					<h1>4유형</h1>
+				</header>
+				<h3>4유형이란?</h3>
+				<p>
+				'특별한 존재를 지향하는 사람'으로 자신은 특별한 사람이라고 자부하고있으며 무엇보다도 감동을 중시하고 평범함을 싫어한다. <br>
+				다른 사람들보다 슬픔이나 고독 등도 진하게 느낀다  <br>
+				타인에 대한 이해심이 많고 사람들을 받쳐주고 격려하는 것을 좋아한다<br>
+				자신을 드라마 속의 연기자처럼 느끼고 있으며 행동에서 패션까지 이르기까지 세련된 느낌과 표현력이 풍부하다는 인상을 준다<br>
+				'나는 특별한 존재이다', '나는 독특한 존재이다','나는 감수성이 풍부하다' 라는 자기모습에 가장 큰 만족을 느낀다<br>
+				자아 이미지는 나는 특별하다, 독창적이다, 다른사람과 다른다. 품위와 예법에 따라 일을 처리할 것 같은 인상을 보인다. <br>
+				
+				</p>
+				
+				<!-- <ul class="actions">
+					<li><a href="#" class="button big">Learn More</a></li>
+				</ul> -->
 			</div>
-			<div class="content3">
-				<div class="type6" style="font-family: 'Noto Sans KR', sans-serif;">
-		<img alt="4유형" src="../../resources/img/mytype4.png">
-		
+			<span class="image object"> <img src="${pageContext.request.contextPath}/resources/img/mytype4.png" alt="" />
+			</span>
+		</section>
+
+		<section>
+			
 		<ul>
-			<li>
+			<!-- <li>
 				<h3>4유형이란?</h3> 
 				'특별한 존재를 지향하는 사람'으로 자신은 특별한 사람이라고 자부하고있으며 무엇보다도 감동을 중시하고 평범함을 싫어한다.
 				다른 사람들보다 슬픔이나 고독 등도 진하게 느낀다
@@ -37,7 +61,7 @@
 				자신을 드라마 속의 연기자처럼 느끼고 있으며 행동에서 패션까지 이르기까지 세련된 느낌과 표현력이 풍부하다는 인상을 준다
 				'나는 특별한 존재이다', '나는 독특한 존재이다','나는 감수성이 풍부하다' 라는 자기모습에 가장 큰 만족을 느낀다
 				자아 이미지는 나는 특별하다, 독창적이다, 다른사람과 다른다. 품위와 예법에 따라 일을 처리할 것 같은 인상을 보인다. 
-			</li>
+			</li> -->
 			<li>
 				<h3>특징</h3> 긍정적 특징<br> 
 				첫째, 심미안이있다 <br>
@@ -107,15 +131,14 @@
 				울한 사고와 다가서면 피하고 피하면 다가서고 싶은 마음이 독창성과 균형있는 태도로 극복해나가면 본질에 가까워지는길이다
 			</li>
 		</ul>
+			
+		</section>
+	</div>
+</div>
+
+<jsp:include page="../c_info/sidebar.jsp"></jsp:include>
+<jsp:include page="../c_info/footer.jsp"></jsp:include>
+
+
 		
-	</div>
-			</div>
-		</div>
-	</div>
-
-
-	<div id="tail">
-		<jsp:include page="../info/tail.jsp"></jsp:include>
-	</div>
-</body>
-</html>
+		

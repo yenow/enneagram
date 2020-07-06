@@ -1,41 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<div id="header">
-		<jsp:include page="../info/header.jsp"></jsp:include>
-	</div>
 
-	<div id="banner">
-		<jsp:include page="../info/banner.jsp"></jsp:include>
-	</div>
+<jsp:include page="../c_info/header.jsp"></jsp:include>
 
-	<div id="content">
-		<div class="container">
-			<div class="content2">
-				<ul>
-					<li class="anneagram-nav"><a href="/anneagram/anneagram">에니어그램이란</a></li>
-					<li><a href="/anneagram/nine_type">9가지의 유형</a></li>
-					<li><a href="/anneagram/history">에니어그램의 역사</a></li>
-				</ul>
-			</div>
-			<div class="content3">
-				<div class="type6" style="font-family: 'Noto Sans KR', sans-serif;">
-	<img alt="3유형" src="../../resources/img/mytype3.png">
-		
-		<ul>
-			<li>
+<!-- Main -->
+<div id="main">
+	<div class="inner">
+
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo"> <strong>9가지 유형</strong>
+			</a>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"> <span class="label">Twitter</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"> <span class="label">Facebook</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-snapchat-ghost"> <span class="label">Snapchat</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-instagram"> <span class="label">Instagram</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-medium-m"> <span class="label">Medium</span>
+				</a></li>
+			</ul>
+		</header>
+
+		<!-- Banner -->
+		<section id="banner">
+			<div class="content">
+				<header>
+					<h1>3유형</h1>
+				</header>
 				<h3>3유형이란?</h3>
-				'성공을 추구하는 사람'으로 항상 효율을 중시하고 성공을 위해서는 자신의 생활을 희생시키더라도 개의치 않는다. 
-				자신이 세운 목표를 향해 남들도 효율적으로 매진할 것을 바라며 주위 사람들의 의욕을 고취시키는 것도 능숙하다
-				인생의 가치를 '실패냐 성공이냐' 라는 척도로 재고, 실적을 중시하는 열정적인 사람으로 그들은 일이나 인간관계에서 성공을 꿈꾼다
-				자신감에 넘친 인상으로 주위 사람들에게 좋은 인상을 심어주려 하며, '성공했다''일을 효율적이고 성공적으로 완수해냈다' 는 것에 가장 큰 만족을 얻는다
-			</li>
+				<p>
+				'성공을 추구하는 사람'으로 항상 효율을 중시하고 성공을 위해서는 자신의 생활을 희생시키더라도 개의치 않는다. </p>
+				<p> 자신이 세운 목표를 향해 남들도 효율적으로 매진할 것을 바라며 주위 사람들의 의욕을 고취시키는 것도 능숙하다 </p>
+				 <p>인생의 가치를 '실패냐 성공이냐' 라는 척도로 재고, 실적을 중시하는 열정적인 사람으로 그들은 일이나 인간관계에서 성공을 꿈꾼다 </p>
+				 <p>자신감에 넘친 인상으로 주위 사람들에게 좋은 인상을 심어주려 하며, '성공했다''일을 효율적이고 성공적으로 완수해냈다' 는 것에 가장 큰 만족을 얻는다 </p>
+				
+				<!-- <ul class="actions">
+					<li><a href="#" class="button big">Learn More</a></li>
+				</ul> -->
+			</div>
+			<span class="image object"> <img src="${pageContext.request.contextPath}/resources/img/mytype3.png" alt="" />
+			</span>
+		</section>
+
+		<section>
+			
+		<ul>
 			<li>
 				<h3>특징1</h3> 
 				긍정적 특징을 보일 때<br> 
@@ -103,15 +116,12 @@
 			자신에게 정직해지는 자세야말로 참 존재로 가는 길이 될것이다.</li>
 
 		</ul>
-		
+			
+		</section>
+	</div>
 </div>
-			</div>
-		</div>
-	</div>
 
+<jsp:include page="../c_info/sidebar.jsp"></jsp:include>
+<jsp:include page="../c_info/footer.jsp"></jsp:include>
 
-	<div id="tail">
-		<jsp:include page="../info/tail.jsp"></jsp:include>
-	</div>
-</body>
-</html>
+	

@@ -1,41 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<div id="header">
-		<jsp:include page="../info/header.jsp"></jsp:include>
-	</div>
 
-	<div id="banner">
-		<jsp:include page="../info/banner.jsp"></jsp:include>
-	</div>
+<jsp:include page="../c_info/header.jsp"></jsp:include>
 
-	<div id="content">
-		<div class="container">
-			<div class="content2">
-				<ul>
-					<li class="anneagram-nav"><a href="/anneagram/anneagram">에니어그램이란</a></li>
-					<li><a href="/anneagram/nine_type">9가지의 유형</a></li>
-					<li><a href="/anneagram/history">에니어그램의 역사</a></li>
-				</ul>
+<!-- Main -->
+<div id="main">
+	<div class="inner">
+
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo"> <strong>9가지 유형</strong>
+			</a>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"> <span class="label">Twitter</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"> <span class="label">Facebook</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-snapchat-ghost"> <span class="label">Snapchat</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-instagram"> <span class="label">Instagram</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-medium-m"> <span class="label">Medium</span>
+				</a></li>
+			</ul>
+		</header>
+
+		<!-- Banner -->
+		<section id="banner">
+			<div class="content">
+				<header>
+					<h1>6유형</h1>
+				</header>
+				<h3>6유형이란?</h3>
+				<p>
+				6유형은 "안전을 추구하고 충실한 사람"으로 책임감이 강하고 안전을 추구하는 유형으로서 친구나
+				자기가 믿는 신념에 가장 충실한 사람들이다. <br> 전통이나 단체에 강한 충성심을 갖고 잇으며 공동체의 헌신이 대단하다.<br> 신중하며
+				거짓말을 모르는 그들은 협조적이며 조화를 이루며 믿음직스럽다.<br> 상대에게 호감을 주는 유형이다. '책임감이 있다',
+				'신실하다', '충성스럽고 믿을만 하다'는 말에 가장 큰 만족을 얻는다.<br> 이 유형의 자아 이미지는 유순하고 온유하며
+				부드러운 인상을 보이고 정직하고 완고한 인상을 보인다. 동시에 사려 깊은 인상을 보인다.
+				</p>
+				
+				<!-- <ul class="actions">
+					<li><a href="#" class="button big">Learn More</a></li>
+				</ul> -->
 			</div>
-			<div class="content3">
-				<div class="type6" style="font-family: 'Noto Sans KR', sans-serif;">
-		<img alt="6유형" src="../../resources/img/mytype6.png">
-		<p>
-		<ul>
-			<li>
+			<span class="image object"> <img src="${pageContext.request.contextPath}/resources/img/mytype6.png" alt="" />
+			</span>
+		</section>
+
+		<section>
+			
+			<ul>
+			<!-- <li>
 				<h3>6유형이란?</h3> 6유형은 "안전을 추구하고 충실한 사람"으로 책임감이 강하고 안전을 추구하는 유형으로서 친구나
 				자기가 믿는 신념에 가장 충실한 사람들이다. 전통이나 단체에 강한 충성심을 갖고 잇으며 공동체의 헌신이 대단하다. 신중하며
 				거짓말을 모르는 그들은 협조적이며 조화를 이루며 믿음직스럽다. 상대에게 호감을 주는 유형이다. '책임감이 있다',
 				'신실하다', '충성스럽고 믿을만 하다'는 말에 가장 큰 만족을 얻는다. 이 유형의 자아 이미지는 유순하고 온유하며
 				부드러운 인상을 보이고 정직하고 완고한 인상을 보인다. 동시에 사려 깊은 인상을 보인다.
-			</li>
+			</li> -->
 			<li>
 				<h3>특징</h3> 긍정적 특징<br> 첫째, 규범과 규칙을 중요하게 여긴다 <br>둘째, 자기가 속한 집단에 안정감을 느끼고 최선을
 				다한다 <br>셋째, 다른 사람과 상부상조, 믿음직스러움, 협동적, 주변과 조화를 잘 한다.<br> 부정적 특징<br> 첫째, 무엇이든 극도의
@@ -87,16 +109,13 @@
 				말로 참 존재에 가까워지는 길이다.</li>
 
 		</ul>
-		</p>
+			
+		</section>
 	</div>
-				
-			</div>
-		</div>
-	</div>
+</div>
 
+<jsp:include page="../c_info/sidebar.jsp"></jsp:include>
+<jsp:include page="../c_info/footer.jsp"></jsp:include>
 
-	<div id="tail">
-		<jsp:include page="../info/tail.jsp"></jsp:include>
-	</div>
-</body>
-</html>
+		
+	

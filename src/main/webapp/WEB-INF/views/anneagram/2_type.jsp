@@ -1,40 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../../resources/css/bootstrap.css?after">
-<link rel="stylesheet" href="../../resources/css/style.css?after">
-<link rel="stylesheet" href="../../resources/css/reset.css?after">
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-</head>
-<body>
-		<div id="header">
-		<jsp:include page="../info/header.jsp"></jsp:include>
-	</div>
+<jsp:include page="../c_info/header.jsp"></jsp:include>
 
-	<div id="banner">
-		<jsp:include page="../info/banner.jsp"></jsp:include>
-	</div>
+<!-- Main -->
+<div id="main">
+	<div class="inner">
 
-	<div id="content">
-		<div class="container">
-			<div class="content2">
-				<ul>
-					<li class="anneagram-nav"><a href="/anneagram/anneagram">에니어그램이란</a></li>
-					<li><a href="/anneagram/nine_type">9가지의 유형</a></li>
-					<li><a href="/anneagram/history">에니어그램의 역사</a></li>
-				</ul>
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo"> <strong>9가지 유형</strong>
+			</a>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"> <span class="label">Twitter</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"> <span class="label">Facebook</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-snapchat-ghost"> <span class="label">Snapchat</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-instagram"> <span class="label">Instagram</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-medium-m"> <span class="label">Medium</span>
+				</a></li>
+			</ul>
+		</header>
+
+		<!-- Banner -->
+		<section id="banner">
+			<div class="content">
+				<header>
+					<h1>2유형</h1>
+				</header>
+				<h3>2유형이란?</h3>
+				<p>
+					2유형은 '타인에게 도움을 주려는 사람'으로 정이 많고 곤경에 빠진 사람들에게 
+				도움의 손길을 뻗치며 주변사람들에게 도움이 되는 일을 마다하지 않는다.  <br>
+				타인이 필요로 하는 것에 몰두하지만 타인의 도움을 필요로 하고 있는 자신에 대해서는 자각하지 못한다. <br>
+				예리한 직감을 갖고 있고 주위 사람들의 기분을 이해하고 거기에 맞출 수 있기 때문에 적응력이 뛰어나다 <br>
+				또한 다양한 자기 모습을 갖고 있어 상대방에 따라 다른 모습을 연출 할 수 있다. <br>
+				자신의 욕구를 돌보기 보다는 타인의 욕구를 돌보고 도와주는 것에 만족감을 느낀다 <br>
+				자아이미지는 나는 도움이 된다는 인상과 무언가 남에게 줄 수 있다.  <br>
+				나는 필요한 사람이다라는 인상을 주는 사람이며 체격이 있고 둥글둥글한 사람이 많다.  <br>
+				그리고 이 사람들은 친해질 수 있을 것 같은 편안한 인상이다.  <br>
+				다른사람들의 신뢰와 신용을 쉽게 얻는다.
+				</p>
+				<!-- <ul class="actions">
+					<li><a href="#" class="button big">Learn More</a></li>
+				</ul> -->
 			</div>
-			<div class="content3">
-				<div class="type6" style="font-family: 'Noto Sans KR', sans-serif;">
-		<img alt="6유형" src="../../resources/img/mytype2.png">
-		<p>
+			<span class="image object"> <img src="${pageContext.request.contextPath}/resources/img/mytype2.png" alt="" />
+			</span>
+		</section>
+
+		<section>
+			
 		<ul>
-			<li>
+			<!-- <li>
 				<h3>2유형이란?</h3>2유형은 '타인에게 도움을 주려는 사람'으로 정이 많고 곤경에 빠진 사람들에게 
 				도움의 손길을 뻗치며 주변사람들에게 도움이 되는 일을 마다하지 않는다. 
 				타인이 필요로 하는 것에 몰두하지만 타인의 도움을 필요로 하고 있는 자신에 대해서는 자각하지 못한다.
@@ -46,7 +67,7 @@
 				그리고 이 사람들은 친해질 수 있을 것 같은 편안한 인상이다. 
 				다른사람들의 신뢰와 신용을 쉽게 얻는다.
 				
-			</li>
+			</li> -->
 			<li>
 				<h3>특징</h3> 긍정적 특징<br> 
 				친절하고 세심하게 신경쓴다. 관대하고 부드럽다. 분위기를 보며 소외단 사람이 있다. 서비스 정신이 좋다. <br>
@@ -115,15 +136,14 @@
 			자유함과 항상비교하지 않고 겸손해지려는 자세를 가질 때 참 존재로 가게 되는 길이다</li>
 
 		</ul>
-		</p>
+			
+		</section>
 	</div>
-			</div>
-		</div>
-	</div>
+</div>
+
+<jsp:include page="../c_info/sidebar.jsp"></jsp:include>
+<jsp:include page="../c_info/footer.jsp"></jsp:include>
 
 
-	<div id="tail">
-		<jsp:include page="../info/tail.jsp"></jsp:include>
-	</div>
-</body>
-</html>
+
+		

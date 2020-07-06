@@ -125,4 +125,9 @@ public class BoardController {
 		return mv; 
 	} 
 	
+	//게시판 작성
+	@RequestMapping(value = "/notice_board", method = RequestMethod.GET)
+	public void notice_board() {
+			
+	}
 }

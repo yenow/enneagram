@@ -1,34 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<div id="header">
-		<jsp:include page="../info/header.jsp"></jsp:include>
-	</div>
+    
+<jsp:include page="../c_info/header.jsp"></jsp:include>
 
-	<div id="banner">
-		<jsp:include page="../info/banner.jsp"></jsp:include>
-	</div>
+<!-- Main -->
+<div id="main">
+	<div class="inner">
 
-	<div id="content">
-		<div class="container">
-			<div class="content2">
-				<ul>
-					<li class="anneagram-nav"><a href="/anneagram/anneagram">에니어그램이란</a></li>
-					<li><a href="/anneagram/nine_type">9가지의 유형</a></li>
-					<li><a href="/anneagram/history">에니어그램의 역사</a></li>
-				</ul>
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo"> <strong>9가지 유형</strong>
+			</a>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"> <span class="label">Twitter</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"> <span class="label">Facebook</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-snapchat-ghost"> <span class="label">Snapchat</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-instagram"> <span class="label">Instagram</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-medium-m"> <span class="label">Medium</span>
+				</a></li>
+			</ul>
+		</header>
+
+		<!-- Banner -->
+		<section id="banner">
+			<div class="content">
+				<header>
+					<h1>7유형</h1>
+				</header>
+				<h3>7유형이란?</h3>
+				<p>
+				
+				"즐거움을 추구하고 계획하는 사람"으로 모든 일을 낙관적으로 보려고하고 밝고 명량하다<br>
+				자기 주변에서 즐거움을 찾아내는 능력이 뛰어나다<br>
+				좋아하는 사람들이 주변에 많이 있으며 자신도 매력적인 인간이 되려고 노력한다<br>
+				아이디어와 상상력이 풍부하여 호기심이 많다 <br>
+				'항상 즐겁다', '너무나 유쾌하다', '앞으로의 계획이 무궁무진하다' 라는것이 만족을 얻는다<br>
+				풍부한 표현과 다양한 몸짓으로 이야기를 나눈다 <br>
+				한곳에 집중하기보다는 다방면에 관심을 보인다 <br>
+				무한한 가능성을 가진 미래와 이상적인 것에 열광함. 꿈꾸는 아이같은 사람들이 많음
+				</p>
+				
+				<!-- <ul class="actions">
+					<li><a href="#" class="button big">Learn More</a></li>
+				</ul> -->
 			</div>
-			<div class="content3">
-				<div class="type6" style="font-family: 'Noto Sans KR', sans-serif;">
-		<img alt="7유형" src="../../resources/img/mytype7.png">
-		<ul>
-			<li>
+			<span class="image object"> <img src="${pageContext.request.contextPath}/resources/img/mytype7.png" alt="" />
+			</span>
+		</section>
+
+		<section>
+			
+			<ul>
+			<!-- <li>
 				<h3>7유형이란?</h3> 
 				"즐거움을 추구하고 계획하는 사람"으로 모든 일을 낙관적으로 보려고하고 밝고 명량하다<br>
 				자기 주변에서 즐거움을 찾아내는 능력이 뛰어나다<br>
@@ -38,7 +65,7 @@
 				풍부한 표현과 다양한 몸짓으로 이야기를 나눈다 <br>
 				한곳에 집중하기보다는 다방면에 관심을 보인다 <br>
 				무한한 가능성을 가진 미래와 이상적인 것에 열광함. 꿈꾸는 아이같은 사람들이 많음
-			</li>
+			</li> -->
 			<li>
 				<h3>특징</h3> 긍정적 특징<br> 
 				첫째, 쾌할, 명량, 낙천적이다<br>
@@ -115,15 +142,13 @@
 
 			</li>
 		</ul>
+			
+		</section>
 	</div>
-				
-			</div>
-		</div>
-	</div>
+</div>
 
+<jsp:include page="../c_info/sidebar.jsp"></jsp:include>
+<jsp:include page="../c_info/footer.jsp"></jsp:include>
 
-	<div id="tail">
-		<jsp:include page="../info/tail.jsp"></jsp:include>
-	</div>
-</body>
-</html>
+		
+	

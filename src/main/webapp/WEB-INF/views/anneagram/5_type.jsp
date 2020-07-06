@@ -1,34 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<div id="header">
-		<jsp:include page="../info/header.jsp"></jsp:include>
-	</div>
 
-	<div id="banner">
-		<jsp:include page="../info/banner.jsp"></jsp:include>
-	</div>
+<jsp:include page="../c_info/header.jsp"></jsp:include>
 
-	<div id="content">
-		<div class="container">
-			<div class="content2">
-				<ul>
-					<li class="anneagram-nav"><a href="/anneagram/anneagram">에니어그램이란</a></li>
-					<li><a href="/anneagram/nine_type">9가지의 유형</a></li>
-					<li><a href="/anneagram/history">에니어그램의 역사</a></li>
-				</ul>
+<!-- Main -->
+<div id="main">
+	<div class="inner">
+
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo"> <strong>9가지 유형</strong>
+			</a>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"> <span class="label">Twitter</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"> <span class="label">Facebook</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-snapchat-ghost"> <span class="label">Snapchat</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-instagram"> <span class="label">Instagram</span>
+				</a></li>
+				<li><a href="#" class="icon brands fa-medium-m"> <span class="label">Medium</span>
+				</a></li>
+			</ul>
+		</header>
+
+		<!-- Banner -->
+		<section id="banner">
+			<div class="content">
+				<header>
+					<h1>5유형</h1>
+				</header>
+				<h3>5유형이란?</h3>
+				<p>
+					<h3>5유형이란?</h3> 
+				'지식을 얻고 관찰하는 사람'으로 지식을 쌓아가는 것을 좋아하며 항상 현명하게 판단하려고 노력한다 <br>
+				분석력과 통찰력이 뛰어나며 객관적이고 초연한 태도를 일관되게 유지하려고 한다<br>
+				현실을 파악하는 관찰력이 뛰어나지만 말이 적고 태도가 조심스럽다<br>
+				어리석은 판단을 내리는 것을 두려워하며 일을 시작하기 전에 정보를 열심히 수집해 상황을 정확하게 파악하려고한다. <br>
+				또한 고독을 즐기는 경향이 강하고 자신만의 시간과 공간을 아주 중요하게 여긴다.<br>
+				'지혜로운 사람', '현명한 사람', '무엇이든지 잘 알고 있는 사람'이라는 자신의 모습에 가장 큰 만족을 드러낸다<br>
+				자신의 자아 이미지로 나는 현명하다, 많이 안다, 통찰력이 있고 , 단순하고 수줍어 보이는 인상을 보인다, 반성과 의심하는 듯한 인상을 보인다
+				</p>
+				
+				<!-- <ul class="actions">
+					<li><a href="#" class="button big">Learn More</a></li>
+				</ul> -->
 			</div>
-			<div class="content3">
-				<div class="type6" style="font-family: 'Noto Sans KR', sans-serif;">
-		<img alt="5유형" src="../../resources/img/mytype5.png" >
-		<ul>
-			<li>
+			<span class="image object"> <img src="${pageContext.request.contextPath}/resources/img/mytype5.png" alt="" />
+			</span>
+		</section>
+
+		<section>
+			
+			<ul>
+			<!-- <li>
 				<h3>5유형이란?</h3> 
 				'지식을 얻고 관찰하는 사람'으로 지식을 쌓아가는 것을 좋아하며 항상 현명하게 판단하려고 노력한다 <br>
 				분석력과 통찰력이 뛰어나며 객관적이고 초연한 태도를 일관되게 유지하려고 한다<br>
@@ -37,7 +63,7 @@
 				또한 고독을 즐기는 경향이 강하고 자신만의 시간과 공간을 아주 중요하게 여긴다.<br>
 				'지혜로운 사람', '현명한 사람', '무엇이든지 잘 알고 있는 사람'이라는 자신의 모습에 가장 큰 만족을 드러낸다<br>
 				자신의 자아 이미지로 나는 현명하다, 많이 안다, 통찰력이 있고 , 단순하고 수줍어 보이는 인상을 보인다, 반성과 의심하는 듯한 인상을 보인다
-			</li>
+			</li> -->
 			<li>
 				<h3>특징</h3> 긍정적 특징<br> 
 				첫째, 지적이며 사려 깊고 수용적이다 <br>
@@ -112,15 +138,13 @@
 				이것이야말로 참 존재로 가는 길이라고 할수 있다
 			</li>
 		</ul>
+			
+		</section>
 	</div>
-				
-			</div>
-		</div>
-	</div>
+</div>
+
+<jsp:include page="../c_info/sidebar.jsp"></jsp:include>
+<jsp:include page="../c_info/footer.jsp"></jsp:include>
 
 
-	<div id="tail">
-		<jsp:include page="../info/tail.jsp"></jsp:include>
-	</div>
-</body>
-</html>
+		

@@ -27,20 +27,35 @@
 				<li><span class="opener">Test</span>
 					<ul>
 						<li><a href="${pageContext.request.contextPath}/test/test">테스트</a></li>
-						<li><a href="${pageContext.request.contextPath}/anneagram/test_complete">결과</a></li>
+						<li><a href="${pageContext.request.contextPath}/test/test_complete">결과</a></li>
 					</ul></li>
 				<li><span class="opener">Board</span>
 					<ul>
-						<li><a href="${pageContext.request.contextPath}/board/notice_board">공지사항</a></li>
+						<li><a href="#">공지사항(준비중)</a></li>
 						<li><a href="${pageContext.request.contextPath}/board/boardList">게시판</a></li>
-						<li><a href="#">실시간 채팅</a></li>
+						<li><a href="#">실시간 채팅(준비중)</a></li>
 					</ul></li>
-				<li><a href="index.html">로그인</a></li>
-				<li><a href="index.html">회원가입</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/login">로그인</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/member_insert">회원가입</a></li>
 			</ul>
 		</nav>
 
-		<!-- Section -->
+		
+		<!-- Footer -->
+		<footer id="footer">
+			<p class="copyright">
+				&copy; Untitled. All rights reserved. Demo Images:
+				<a href="https://unsplash.com">Unsplash</a>
+				. Design:
+				<a href="https://html5up.net">HTML5 UP</a>
+				.
+			</p>
+		</footer>
+
+	</div>
+</div>
+
+<%-- <!-- Section -->
 		<section>
 			<header class="major">
 				<h2>Ante interdum</h2>
@@ -82,18 +97,4 @@
 				<li class="icon solid fa-home">1234 Somewhere Road #8254<br /> Nashville, TN 00000-0000
 				</li>
 			</ul>
-		</section>
-
-		<!-- Footer -->
-		<footer id="footer">
-			<p class="copyright">
-				&copy; Untitled. All rights reserved. Demo Images:
-				<a href="https://unsplash.com">Unsplash</a>
-				. Design:
-				<a href="https://html5up.net">HTML5 UP</a>
-				.
-			</p>
-		</footer>
-
-	</div>
-</div>
+		</section> --%>

@@ -9,6 +9,7 @@
 
 </head>
 <body>
+
 <div class="type6" style="font-family: 'Noto Sans KR', sans-serif;">
 		<img alt="1유형" src="../../resources/img/mytype1.png">
 		

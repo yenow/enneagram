@@ -1,181 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>회원가입</title>
-<script src="../../resources/js/member.js"></script>
-<!-- C:\Users\ysy\Desktop\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\anneagram\WEB-INF\views\member javascript의 실제 경로인데, 
-\WEB-INF\views 는 servlet-context.xml에 생략하도록 설정이 되어있음. 그렇기 때문에 그 view에 파일이 있다면 거기서 ../ 하면 webapp로 가지는듯
--->
-<link rel="stylesheet" href="../../resources/css/bootstrap.css?after">
-<link rel="stylesheet" href="../../resources/css/style.css?after">
-<link rel="stylesheet" href="../../resources/css/reset.css?after">
 
-<style type="text/css">
-.content {text-align: left;}
+<jsp:include page="../c_info/header.jsp"></jsp:include>
 
-body {
-	background: rgba(248, 225, 225, 0.301);
-}
+<div id="main">
+	<div class="inner">
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo"><strong>회원가입</strong></a>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+				<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+			</ul>
+		</header>
 
-div, p, input, li {
-	margin: 0;
-	padding: 0;
-}
+		<section>
+			<h3>Form</h3>
 
-li {
-	list-style: none;
-}
+			<form method="post" action="#">
+				<div class="row gtr-uniform">
+					<div class="col-12">
+						<input type="email" name="user_id" id="user_id" value="" placeholder="이메일 주소 입력" />
+					</div>
+					<div class="col-12">
+						<input type="password" name="password" id="password" value="" placeholder="비밀번호입력" />
+					</div>
+					<div class="col-12">
+						<input type="password" name="password" id="password" value="" placeholder="비밀번호 재입력" />
+					</div>
+					<div class="col-12">
+						<input type="text" name="name" id="password" value="" placeholder="이름" />
+					</div>
+					<div class="col-12">
+						<input type="text" name="nickname" id="password" value="" placeholder="닉네임" />
+					</div>
+					<div class="col-12">
+						<input type="tel" name="tel" id="password" value="" placeholder="전화번호" />
+					</div>
+					<div class="col-12">
+						<input type="submit" value="회원가입" class="primary" />
+					</div>
 
-.member {
-	width: 400px;
-	margin: 0 auto;
-	padding-top: 30px;
-}
+				</div>
+			</form>
+		</section>
 
-.member-header .banner {
-	background: url("img/sp-icon.png");
-	width: 200px;
-	height: 110px;
-	margin: 0 auto;
-}
-
-.member-header h5 {
-	text-align: center;
-	margin: 10px 0;
-}
-
-.member-header h5 pre {
-	display: inline;
-	text-decoration: line-through
-}
-
-.member-body input[type="submit"] {
-	width: 100%;
-	height: 40px;
-	margin-bottom: 10px;
-	border: 1px solid #ccc;
-	background: aqua;
-	color: #fff;
-	font-size:15px;
-	border: none;
-	margin-top: 10px;
-}
-
-.member-body input[type="text"],input[type="password"]  {
-	width: 100%;
-	height: 40px;
-	margin-bottom: 10px;
-	border: 1px solid #ccc;
-}
-
-.member-body input[type="tel"] {
-	width: 60%;
-	height: 40px;
-	margin-bottom: 10px;
-	border: 1px solid #ccc;
-}
-
-.member-body button {
-	width: 38%;
-	height: 43px;
-	margin-bottom: 10px;
-	border: 1px solid #ccc;
-	margin-left: 5px;
-}
-
-.member-body button:hover {
-	border: 1px solid #ccc;
-}
-
-.member-red {
-	color: aqua ;
-}
-
-.email_login input:hover {
-	border: 1px solid #ccc;
-}
-
-.member-body h5 {margin: 10px 0;}
-
-.member-body ul li {margin: 10px 0;}
-
-.member-body p {
-	font-size: 13px;
-	font-weight: bold;
-	margin: 5px 0;
-	text-align: left;
-}
-
-.member-body p:first-child {
-	border-bottom: 1px solid black;
-	padding: 10px 0;
-}
-
-.member-body p span {
-	color: rgb(160, 160, 160);
-}
-
-input{
--webkit-appearance: none;
-}
-</style>
-
-</head>
-<body>
-	<!-- <script>
-  window.addEventListener("load",function(){
-    var memberInsert = this.document.querySelector("#member-insert");
-    var user_id = this.memberInsert.querySelector(".user_id");
-    var user_pw = this.memberInsert.querySelector(".user_pw");
-    var name = this.memberInsert.querySelector(".name");
-    var tel = this.memberInsert.querySelector(".tel");
-    var address = this.memberInsert.querySelector(".address");
-
-    
-    var check = function () {
-		if(user_id.value == ""){
-			alert("id를 입력해주세요");
-			return false;
-		}
-		
-		if(user_pw.value == ''){
-			alert("password를 입력해주세요");
-			return false;
-		}
-		
-		if(name.value == ''){
-			alert("이름를 입력해주세요");
-			return false;
-		}
-		
-		if(tel.value == ''){
-			alert("전화번호를 입력해주세요");
-			return false;
-		}
-
-		if(address.value == ''){
-			alert("주소를 입력해주세요");
-			return false;
-		}
-		
-		return true;
-	};
-	
-	 memberInsert.onsumit = return check();
-});  
-</script> -->
-
-	<div id="header">
-		<jsp:include page="../info/header.jsp"></jsp:include>
 	</div>
+</div>
 
-	<div id="banner">
-		<jsp:include page="../info/banner.jsp"></jsp:include>
-	</div>
 
+<jsp:include page="../c_info/sidebar.jsp"></jsp:include>
+<jsp:include page="../c_info/footer.jsp"></jsp:include>
+
+<!-- 
 	<div id="content">
 		<div class="container">
 			<div class="content">
@@ -258,52 +138,5 @@ input{
 
 			</div>
 		</div>
-	</div>
+	</div> -->
 
-
-	<div id="tail">
-		<jsp:include page="../info/tail.jsp"></jsp:include>
-	</div>
-
-</body>
-</html>
-
-<!-- <form action="member_insert_ok" method="post" id="member-insert"
-					onsubmit="return check();">
-					<table>
-						<caption>회원가입 양식</caption>
-						<tr>
-							<td>아이디</td>
-							<td><input type="text" name="user_id" class="user_id"></td>
-						</tr>
-						<tr>
-							<td>비밀번호</td>
-							<td><input type="password" name="user_pw" class="user_pw"></td>
-						</tr>
-						<tr>
-							<td>이름</td>
-							<td><input type="text" name="name" class="name"></td>
-						</tr>
-						<tr>
-							<td>닉네임</td>
-							<td><input type="text" name="nickname"></td>
-						</tr>
-						<tr>
-							<td>번호</td>
-							<td><input type="tel" name="tel" class="tel"></td>
-						</tr>
-						<tr>
-							<td>이메일</td>
-							<td><input type="email" name="email"></td>
-						</tr>
-						<tr>
-							<td>주소</td>
-							<td><input type="text" name="address" class="address"></td>
-						</tr>
-						<tr>
-							<td colspan="2"><input type="submit" name="제출"><input
-								type="button" value="이전"></td>
-						</tr>
-
-					</table>
-				</form> -->

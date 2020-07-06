@@ -1,5 +1,61 @@
 @charset "UTF-8";
 
+/**/
+.table-wrapper table {}
+
+login-form ul {width: 100%;}
+login-form ul li {width: 100%;}
+
+/* 테스트 */
+.test {color: #222;	}
+.test ul {text-align: center;}
+.test ul li {position:relative; border-bottom: 1px solid #ccc; margin: 10px; display:inline-block;  width: 70%;}
+.test ul li:last-child {position:relative; margin: 10px; border-bottom: none; border-bottom: 1px solid #ccc;}
+.test ul li:before {
+	content: '비동의';
+	font-weight : bolder;
+	position:absolute;
+	left: 0;
+	top:40px;
+	color:  #E77BA7;
+}
+.test ul li:after {
+	content: '동의';
+	font-weight : bolder;
+	position:absolute;
+	right: 0;
+	top:40px;
+	color:#4B9AC9;
+}
+
+/* 테스트 페이지 - 질문 */
+/* .test ul li {margin: 10px; display:inline-block;  width: 70%;} */
+/*.test input[type="radio"] {border: 1px solid #ccc; border-radius:50%; width:30px; height:30px; display:inline-block; -webkit-appearance: none; margin: 20px;}*/
+.test input[value="1"] {border: 1px solid #E77BA7; border-radius:50%; width:50px; height:50px; display:inline-block; -webkit-appearance: none;	 margin: 20px;}
+.test input[value="1"]:checked {background: #E77BA7; }
+.test input[value="2"] {border: 1px solid #E77BA7; border-radius:50%; width:40px; height:40px; display:inline-block; -webkit-appearance: none; margin: 20px;}
+.test input[value="2"]:checked {background: #E77BA7; }
+.test input[value="3"] {border: 1px solid #ccc; border-radius:50%; width:30px; height:30px; display:inline-block; -webkit-appearance: none; margin: 20px;}
+.test input[value="3"]:checked {background: #ccc; }
+.test input[value="4"] {border: 1px solid #4B9AC9; border-radius:50%; width:40px; height:40px; display:inline-block; -webkit-appearance: none; margin: 20px;}
+.test input[value="4"]:checked {background: #4B9AC9;}
+.test input[value="5"] {border: 1px solid #4B9AC9; border-radius:50%; width:50px; height:50px; display:inline-block; -webkit-appearance: none; margin: 20px;}
+.test input[value="5"]:checked {background: #4B9AC9;}
+.test input[type="submit"] {border: 1px solid #ccc; width: 50px; height: 30px; }
+
+/* test 페이지 버튼*/
+.test2 {}
+.test2 ul {text-align: center;}
+.test2 ul button {width: 50px; height: 50px; border: 1px solid #ccc; border-radius: 50%; font-size:20px; font-family: 'Nanum Pen Script', cursive;}
+.test2 ul progress {width: 300px;}
+
+/* 가운데 정렬 */
+.y-center {margin: 0 auto;}
+.y-t-center {text-align: center;}
+
+/* li 점 살리기*/
+.y-ul li{list-style: disc;}
+
 .inner .tiles {
 	padding-top: 30px;
 }
