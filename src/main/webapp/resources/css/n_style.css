@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
-h1,h2,h3,h4,h5,h6,p,button,a,input,td,span{font-family: 'Jua', sans-serif !important;}
+h1,h2,h3,h4,h5,h6,p,button,a,input,td,span,li{font-family: 'Jua', sans-serif !important;}
+
+h1,h2,h3,h4,h5,h6 {margin-top: 10px;}
 
 a.logo{font-family: 'Jua', sans-serif; }
 
@@ -86,6 +88,9 @@ login-form ul li {width: 100%;}
 .reply_box .reply_info h5 {padding: 10px 0;}
 
 
+/* */
+.select-header {position: relative;}
+.select-maxline {position: absolute; right: 0; top: 0}
 
 .inner .tiles {
 	padding-top: 30px;

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- Sidebar -->
 <div id="sidebar">
 	<div class="inner">
@@ -35,8 +35,14 @@
 						<li><a href="${pageContext.request.contextPath}/board/boardList">게시판</a></li>
 						<li><a href="#">실시간 채팅(준비중)</a></li>
 					</ul></li>
-				<li><a href="${pageContext.request.contextPath}/member/login">로그인</a></li>
-				<li><a href="${pageContext.request.contextPath}/member/member_insert">회원가입</a></li>
+				<c:if test="${login ne null }">
+					<li><a href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
+					<li><a href="#">회원정보</a></li>
+				</c:if>
+				<c:if test="${login eq null }">
+					<li><a href="${pageContext.request.contextPath}/member/login">로그인</a></li>
+					<li><a href="${pageContext.request.contextPath}/member/member_insert">회원가입</a></li>
+				</c:if>
 			</ul>
 		</nav>
 

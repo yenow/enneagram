@@ -22,4 +22,6 @@ public interface BoardDAO {
 
 	void replycnt(ReplyVO re);
 
+	void addCnt(int bno);
+
 }

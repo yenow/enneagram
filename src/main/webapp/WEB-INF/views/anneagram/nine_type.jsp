@@ -10,7 +10,7 @@
 
 		<!-- Header -->
 		<header id="header">
-			<a href="index.html" class="logo"> <strong>Introduce</strong>
+			<a href="index.html" class="logo"> <strong>9가지 유형</strong>
 			</a>
 			<ul class="icons">
 				<li><a href="#" class="icon brands fa-twitter"> <span class="label">Twitter</span>

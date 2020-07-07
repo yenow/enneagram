@@ -11,7 +11,7 @@
 
 				<!-- Header -->
 				<header id="header">
-					<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+					<a href="index.html" class="logo"><strong>게시판</strong> by HTML5 UP</a>
 					<ul class="icons">
 						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -23,12 +23,23 @@
 
 				<!-- Content -->
 				<section>
-					<header class="main">
-						<h1>게시판</h1>
-					</header>
+				<header class="main select-header">
+					<h1>게시판</h1>
 
-					
-					<!-- board table -->
+					<form id="list-target" class="select-maxline" action="${pageContext.request.contextPath}/board/boardList" method="get">
+						<select class="maxLine" name="maxLine" onchange="maxLineEX();" id="demo-category">
+							<option value="" selected disabled>개수를 선택</option>
+							<option value="10">10개</option>
+							<option value="30">30개</option>
+							<option value="50">50개</option>
+						</select>
+					</form>
+
+
+				</header>
+
+
+				<!-- board table -->
 					<div class="table-wrapper">
 						<table>
 							<thead>
@@ -50,12 +61,22 @@
 										<td><span class="board-good"></span></td>
 									</tr>
 								</c:forEach>
-						</table>
+							<tr>
+								<td colspan="5">
+									<ul class="pagination y-t-center" >
+										<li><a href="boardList?startnum=${page-1}" class="button">Prev</a></li>
+											<c:set var="n" value="1" />
+											<c:forEach var="n" end="${count }" begin="1" step="1">
+												<li><a href="boardList?startnum=${n}" class="page">${n} </a></li>
+											</c:forEach>
+										<li><a href="boardList?startnum=${page+1}" class="button">Next</a></li>
+										<a href="${pageContext.request.contextPath}/board/boardWrite" class="button y-right" style="float: right;">글쓰기</a>
+									</ul>
+									
+								</td>
+							</tr></table>
 					</div>
 					
-					<div >
-						<a href="${pageContext.request.contextPath}/board/boardWrite" class="button y-right">글쓰기</a>
-					</div>
 					<div class="y-clear"></div>
 				</section>
 
@@ -63,6 +84,14 @@
 		</div>
 	
 </body>
+
+<script type="text/javascript">
+	  function maxLineEX(){
+          var submit = document.querySelector('#list-target');
+          submit.submit();
+	  }
+</script> 
+
 
 <jsp:include page="../c_info/sidebar.jsp"></jsp:include>
 <jsp:include page="../c_info/footer.jsp"></jsp:include>
@@ -154,12 +183,7 @@
 							</tr>
 						</c:forEach>
 
-						<td colspan="5"><a href="boardList?startnum=${page-1}">이전</a>
-							<c:set var="n" value="1" /> <c:forEach var="n" end="${count }"
-								begin="1" step="1">
-								<a href="boardList?startnum=${n}">${n} </a>
-							</c:forEach> <a href="boardList?startnum=${page+1}">다음</a> <input
-							type="submit" value="글쓰기"></td>
+						
 						</tr>
 					</table>
 				</form>

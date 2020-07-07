@@ -23,7 +23,7 @@
 <body>
 
 	<header id="header">
-		<h1>Anneagram</h1>
+		<h1>Enneagram</h1>
 		<nav>
 			<ul>
 				<li><a href="${pageContext.request.contextPath}/anneagram/anneagram">Introduce</a></li>

@@ -3,6 +3,8 @@ package com.anneagram.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +28,20 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public BoardVO selectboard(int bno) {
-		return boardDAO.selectboard(bno);
+	public BoardVO selectboard(int bno,HttpSession session,String sessionId) {
+		
+		if(session.getAttribute("board"+Integer.toString(bno))==null) {
+			System.out.println("null이였어!");
+			session.setAttribute("board"+Integer.toString(bno), session.getId());
+			session.setMaxInactiveInterval(3600);
+			boardDAO.addCnt(bno);
+			return boardDAO.selectboard(bno);
+		}else {
+			System.out.println(bno);
+			System.out.println(session.getAttribute("board"+Integer.toString(bno)));
+			return boardDAO.selectboard(bno);
+		}
+
 	}
 
 	@Override

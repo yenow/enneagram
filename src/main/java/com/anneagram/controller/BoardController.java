@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -90,10 +91,15 @@ public class BoardController {
 	
 	//게시판 내용보기
 	@GetMapping("/boardCont")
-	public ModelAndView boardCont(int bno) {
+	public ModelAndView boardCont(int bno, HttpSession session) {
 		ModelAndView mv = new ModelAndView("board/boardCont");
 		
-		BoardVO b = boardService.selectboard(bno);
+		if(session.getAttribute(Integer.toString(bno))==null) {
+			session.setAttribute(Integer.toString(bno), session.getId());
+			session.setMaxInactiveInterval(3600);
+		}
+		
+		BoardVO b = boardService.selectboard(bno,session,session.getId());
 		mv.addObject("b", b);
 		
 		

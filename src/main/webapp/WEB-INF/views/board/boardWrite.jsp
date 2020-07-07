@@ -3,6 +3,13 @@
 
 <jsp:include page="../c_info/header.jsp"></jsp:include>
 
+<c:if test="${login == null }">
+	<script type="text/javascript">
+		alert("로그인이 필요합니다");
+		location.href = '../member/login';
+	</script>
+</c:if>
+
 <!-- Main -->
 <div id="main">
 	<div class="inner">

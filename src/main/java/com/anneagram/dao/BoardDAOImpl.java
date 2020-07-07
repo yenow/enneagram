@@ -30,7 +30,6 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public BoardVO selectboard(int bno) {
-		sqlSession.update("b_cnt",bno);
 		return sqlSession.selectOne("b_board",bno);
 	}
 
@@ -52,6 +51,11 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public void replycnt(ReplyVO re) {
 		sqlSession.update("b_rcnt", re);
+	}
+
+	@Override
+	public void addCnt(int bno) {
+		sqlSession.update("b_cnt",bno);
 	}
 	
 	
