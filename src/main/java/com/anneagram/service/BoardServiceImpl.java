@@ -31,14 +31,15 @@ public class BoardServiceImpl implements BoardService{
 	public BoardVO selectboard(int bno,HttpSession session,String sessionId) {
 		
 		if(session.getAttribute("board"+Integer.toString(bno))==null) {
-			System.out.println("null이였어!");
+			/* System.out.println("null이였어!"); */
 			session.setAttribute("board"+Integer.toString(bno), session.getId());
 			session.setMaxInactiveInterval(3600);
-			boardDAO.addCnt(bno);
+			boardDAO.addCnt(bno);    // 조회수 올리는 함수
 			return boardDAO.selectboard(bno);
 		}else {
+			/* 확인용 코드
 			System.out.println(bno);
-			System.out.println(session.getAttribute("board"+Integer.toString(bno)));
+			System.out.println(session.getAttribute("board"+Integer.toString(bno)));*/
 			return boardDAO.selectboard(bno);
 		}
 
