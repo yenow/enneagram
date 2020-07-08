@@ -12,9 +12,9 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-
+   
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<!-- 스프링을 통한 jdbc(java database connected) -->
+	<!-- 스프링을 통한 jdbc(java database connected)  -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
@@ -23,7 +23,7 @@
 			value="jdbc:oracle:thin:@localhost:1522:xe" />
 		<property name="username" value="week" />
 		<property name="password" value="week" />
-	</bean>
+	</bean> 
 
 	<!-- 스프링과 mybatis 연결 설정과 mybatis 환경설정 -->
 	<bean id="sqlSessionFactory"

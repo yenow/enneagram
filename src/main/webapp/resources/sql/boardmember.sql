@@ -29,9 +29,9 @@ type_regdate date
 );
 alter table member add (type_regdate date);
 
+
 -- 여기까지가 member table 정보
 
-alter table member modify (type varchar2(100));
 update member set type=null;
 select * from member;
 

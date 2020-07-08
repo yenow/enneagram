@@ -34,4 +34,21 @@ public class ReplyServiceImpl implements ReplyService{
 		return replyDAO.listReply(bno);
 	}
 
+	@Override
+	public String getPassword(int rno) {
+		
+		return replyDAO.getPassword(rno);
+	}
+
+	@Override
+	public void replyDelete(int rno) {
+		replyDAO.replyDelete(rno);		
+	}
+
+	@Override
+	public String getUserId(int rno) {
+		// TODO Auto-generated method stub
+		return replyDAO.getUserId(rno);
+	}
+
 }

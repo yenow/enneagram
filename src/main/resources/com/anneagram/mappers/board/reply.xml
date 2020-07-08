@@ -20,4 +20,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="r_list" resultType="r" >
 		select * from reply where bno=#{bno}
 	</select>
+	
+	<select id="r_password" resultType="string">
+		select no_user_passwd from reply where rno=#{rno}
+	</select>
+	
+	<select id="r_userId" resultType="string" >
+		select user_id from reply where rno=#{rno}
+	</select>
+	
+	<delete id="r_delete">
+		delete from reply where rno=#{rno}
+	</delete>
+	
 </mapper>

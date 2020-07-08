@@ -67,7 +67,7 @@
 				<div class='test2'>
 					<ul>
 						<li><progress value="0" max="100"></progress></li>
-						<li><a onclick="aaa(); replace_query();" class="button primary large">다음</a></li>
+						<li><a onclick="return aaa(); replace_query();" class="button primary large">다음</a></li>
 
 					</ul>
 				</div>
@@ -224,6 +224,7 @@
 			/* 문항이 다 선택되지 않았으면 다음으로 넘어가지 않음  */
 			if(flag!=testnum.length){
 				alert('문항을 다 선택해 주십시요');
+				return false;
 				// event.preventDefault();  이벤트가 더이상 진행되는걸 막는듯.. 근데 나는 작동이 안됨..
 				 event.preventDefault();   // 오류가 나서 진행이 안되는 그런느낌으로감..
 			}else{
@@ -235,6 +236,7 @@
 			            }
 			        }
 				}	
+				$('html').scrollTop(0);
 			}
 			
 			/* 마지막 페이지일 경우*/

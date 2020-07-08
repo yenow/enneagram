@@ -27,4 +27,20 @@ public class ReplyDAOImpl implements ReplyDAO{
 	public List<ReplyVO> listReply(int bno) {
 		return sqlSession.selectList("r_list", bno);
 	}
+
+	@Override
+	public String getPassword(int rno) {
+		return sqlSession.selectOne("r_password",rno);
+	}
+
+	@Override
+	public void replyDelete(int rno) {
+		sqlSession.delete("r_delete",rno);
+		
+	}
+
+	@Override
+	public String getUserId(int rno) {
+		return sqlSession.selectOne("r_userId",rno);
+	}
 }
