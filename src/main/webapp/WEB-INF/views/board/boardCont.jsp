@@ -64,7 +64,7 @@
 						<!-- 댓글 작성란 --> 
 						<!-- 로그인중 --> 
 						<c:if test="${login != null }">
-							<div class="reply_info">
+							<div class="reply_info login_reply">
 								<div class="row gtr-uniform">
 									<div class="col-12">
 										<textarea id="t_content1"></textarea>
@@ -85,7 +85,7 @@
 						
 						<!-- 로그인 안되어 있을시 --> 
 						<c:if test="${login == null }">
-							<div class="reply_info">
+							<div class="reply_info not_login_reply">
 								<div class="row gtr-uniform">
 									<div class="col-6 col-12-xsmall">
 										<input type="text" id="nickname" name="nickname" placeholder="닉네임">
@@ -97,7 +97,7 @@
 										<textarea id="t_content2"></textarea>
 									</div>
 									<div class="col-12">
-										<a onclick="javascript:replyRegster2(); replyList();" class="button small">등록</a>
+										<a onclick="javascript:replyRegster2(); replyList();" class="button small">등록</a>  <!-- 이거는 왜 이럴까,, javascript: -->
 									</div>
 								</div>
 
@@ -138,7 +138,7 @@
 						str += "<tr>";
 						str += "<td>" + v.nickname+ "</td>";
 						str += "<td>" + v.rcontent+ "</td>";
-						str += "<td ><a data-kind='"+v.kind+"' onclick='r_update("+v.kind+","+v.rno+","+v.user_id+");' class='button small'>수정</a> <a onclick='r_delete("+v.kind+","+v.rno+");' class='button small'>삭제</a></td>";
+						str += "<td ><a data-kind='"+v.kind+"' onclick='r_update(this,"+v.kind+","+v.rno+","+v.user_id+");' class='button small'>수정</a> <a onclick='r_delete("+v.kind+","+v.rno+");' class='button small'>삭제</a></td>";
 						str += "</tr>";
 					});
 					/* str += "<button onclick='update()'>수정</button> <button onclick='delete()'>삭제</button>" */
@@ -163,8 +163,8 @@
 		}
 	}
 
+		
 	//삭제 확인
-
 	function del_check() {
 		if (confirm("정말 삭제하시겠습니까 ?") == true) {
 			alert("삭제되었습니다");
@@ -242,8 +242,19 @@
 	var temp = 0;
 	
 	/* 댓글 업데이트*/
-	function r_update(kind){
-		console.log(kind);			
+	function r_update(e,kind){
+		console.log(e);
+		console.log(e.parentNode);
+		console.log(e.parentNode.parentNode.parentNode);
+		var tr = e.parentNode;
+		
+		if(kind==1){
+			var updateWindow = document.querySelector('.login_reply').cloneNode;
+			
+		}else{
+			var updateWindow = document.querySelector('.not_login_reply').cloneNode;
+		}
+			
 	}
 	
 		
