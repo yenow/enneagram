@@ -25,10 +25,34 @@ public class MemberController{
 
 	@Autowired
 	private MemberService memberSerivce;
-
+    
+	/* 회원가입 정보 페이지 */
+	@RequestMapping("/member_info")
+	public ModelAndView member_info(HttpSession session,HttpServletRequest request, HttpServletResponse response) throws IOException {
+		ModelAndView mv = new ModelAndView();
+		MemberVO memberVO = new MemberVO();
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		if(session.getAttribute("login")!=null) {
+			System.out.println(((MemberVO)session.getAttribute("login")).getUser_id());
+			memberVO = memberSerivce.login_confirm(((MemberVO)session.getAttribute("login")).getUser_id());
+		}else {
+			/* 혹시라도 로그인이 안된 상태에서 진입했을 경우, 경고창을 띄우고 메인페이지로 이동*/
+			out.print("<script>"); 
+			out.print("alert('로그인이 필요합니다');");
+			out.print("location.href='/'");
+			out.print("</script>");
+		}
+		mv.addObject("member_info", memberVO);
+		mv.setViewName("/member/member_info");
+		return mv;
+	}
+	
 	@RequestMapping("/member_insert")
-	public void member_insert() {
-
+	public void member_insert(){
+		
 	}
 
 	@RequestMapping("/member_insert_ok")
