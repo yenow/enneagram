@@ -226,7 +226,7 @@
 				alert('문항을 다 선택해 주십시요');
 				return false;
 				// event.preventDefault();  이벤트가 더이상 진행되는걸 막는듯.. 근데 나는 작동이 안됨..
-				 event.preventDefault();   // 오류가 나서 진행이 안되는 그런느낌으로감..
+				// event.preventDefault();   // 오류가 나서 진행이 안되는 그런느낌으로감..
 			}else{
 				/* 문항을 다 입력했으면 check가 된 라디오박스를 취소해주는 작업  */
 				for(var j=0; j<testnum.length ; j++){
@@ -236,11 +236,34 @@
 			            }
 			        }
 				}	
+				
+				/* ajax로 서버에 페이지별로 데이터 보냄 */
+				$.ajax({
+					type : 'POST', // method
+					url : '/test/test_ok?page='+page, // POST 요청은 데이터가 요청 바디에 포함됩니다.
+					async : 'true', // true
+					data : JSON.stringify(value),
+					contentType : 'application/json',
+					dataType : 'text', // 명시하지 않을 경우 자동으로 추측
+					success : function(data) {
+						console.log(data)
+					 	if(data!='success'){
+							location.href='/test/test_complete';
+						}  
+					},
+					error : function(error) {
+						console.log("error", error);
+					}
+				});
+				
+				replace_query();
 				$('html').scrollTop(0);
 			}
 			
+			
+			
 			/* 마지막 페이지일 경우*/
-			$.ajax({
+			/* $.ajax({
 				type : 'POST', // method
 				url : '/test/test_ok?page='+page, // POST 요청은 데이터가 요청 바디에 포함됩니다.
 				async : 'true', // true
@@ -256,7 +279,7 @@
 				error : function(error) {
 					console.log("error", error);
 				}
-			});
+			}); */
 			
 		}//  /aaa()
 		
