@@ -21,7 +21,7 @@
 			<artifactId>jdbc</artifactId>
 			<version>12.2.0.1</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/ojdbc8.jar</systemPath>
+			<systemPath>${project.basedir}/src/main/webapp/lib/ojdbc8.jar</systemPath>
 		</dependency>
 	
 	<!-- json 라이브러리 추가 -->

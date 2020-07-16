@@ -90,18 +90,18 @@
 					</article>
 					<article class="style5">
 						<span class="image"> <img src="${pageContext.request.contextPath}/resources/images/pic05.jpg" alt="" />
-						</span> <a href="generic.html">
+						</span> <a href="${pageContext.request.contextPath}/anneagram/5_type">
 							<h2>5유형</h2>
-							<div class="${pageContext.request.contextPath}/anneagram/5_type">
+							<div class="content">
 								<p></p>
 							</div>
 						</a>
 					</article>
 					<article class="style6">
 						<span class="image"> <img src="${pageContext.request.contextPath}/resources/images/pic06.jpg" alt="" />
-						</span> <a href="generic.html">
+						</span> <a href="${pageContext.request.contextPath}/anneagram/6_type">
 							<h2>6유형</h2>
-							<div class="${pageContext.request.contextPath}/anneagram/6_type">
+							<div class="content">
 								<p></p>
 							</div>
 						</a>

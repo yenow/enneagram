@@ -26,7 +26,13 @@ public class MemberController{
 	@Autowired
 	private MemberService memberSerivce;
     
-	/* 회원가입 정보 페이지 */
+	@RequestMapping("/member_info_update.jsp")
+	public void member_info_update(){
+		
+	}
+	
+	
+	/* 회원정보 페이지 */
 	@RequestMapping("/member_info")
 	public ModelAndView member_info(HttpSession session,HttpServletRequest request, HttpServletResponse response) throws IOException {
 		ModelAndView mv = new ModelAndView();
@@ -50,11 +56,13 @@ public class MemberController{
 		return mv;
 	}
 	
+	/* 회원가입 페이지 */
 	@RequestMapping("/member_insert")
 	public void member_insert(){
 		
 	}
-
+	
+	/* 회원가입처리 */
 	@RequestMapping("/member_insert_ok")
 	public ModelAndView member_insert_ok(MemberVO m) {
 		ModelAndView mv = new ModelAndView("redirect:/");

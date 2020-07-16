@@ -44,8 +44,8 @@
 							<td>전화번호</td>
 							<td>${member_info.tel }</td>
 						</tr>
-						<tr>
-							<td colspan="2"><a href="member_info_update" class="button primary fit">회원정보 수정하기</a></td>
+						<tr class="y-t-center">
+							<td colspan="2"><a href="member_info_update" class="button primary large">회원정보 수정하기</a></td>
 						</tr>
 					</tbody>
 				</table>
