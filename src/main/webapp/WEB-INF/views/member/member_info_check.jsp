@@ -1,12 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
 <jsp:include page="../c_info/header.jsp"></jsp:include>
 
 <div id="main">
 	<div class="inner">
 		<!-- Header -->
 		<header id="header">
-			<a href="index.html" class="logo"><strong>회원정보</strong></a>
+			<a href="${pageContext.request.contextPath}/member/member_info_check" class="logo"><strong>회원정보 수정</strong></a>
 			<ul class="icons">
 				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -17,38 +18,22 @@
 		</header>
 
 		<section>
-			<h3>회원정보</h3>
+			<h3>회원정보 수정</h3>
 			<div class="table-wrapper">
+			<form action="${pageContext.request.contextPath}/member/member_info_check_ok" method="post">
 				<table>
 					<tbody>
 						<tr>
-							<td>아이디</td>
-							<td>${login.user_id }</td>
-							
-						</tr>
-						<tr>
-							<td>비밀번호</td>
-							<td>        </td>
-						
-						</tr>
-						<tr>
-							<td>이름</td>
-							<td>${login.name }</td>
-						
-						</tr>
-						<tr>
-							<td>닉네임</td>
-							<td>${login.nickname }</td>
-						</tr>
-						<tr>
-							<td>전화번호</td>
-							<td>${login.tel }</td>
-						</tr>
-						<tr class="y-t-center">
-							<td colspan="2"><a href="member_info_update" class="button primary large">회원정보 수정하기</a></td>
-						</tr>
+							<td>
+								비밀번호 확인
+							</td>
+							<td>
+								<input type="password" name="password" />
+							</td>
+						</tr>	
 					</tbody>
 				</table>
+			</form>
 			</div>
 		</section>
 

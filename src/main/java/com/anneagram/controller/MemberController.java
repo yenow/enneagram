@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,34 +27,80 @@ public class MemberController{
 	@Autowired
 	private MemberService memberSerivce;
     
-	@RequestMapping("/member_info_update.jsp")
-	public void member_info_update(){
+
+	@RequestMapping("member_info_check")
+	public void member_info_check() {
 		
 	}
 	
+	@RequestMapping("member_info_check_ok")
+	public void member_info_check_ok(String password,HttpServletRequest request,HttpServletResponse response,HttpSession session) {
+		MemberVO memberVO = (MemberVO) session.getAttribute("login");
+			
+		/* 여기부터시작 */
+		if(memberVO.getUser_pw().equals(password)) {
+			
+		}else {
+			
+		}
+	}
+	
+	@RequestMapping("/member_info_update_ok")
+	public void member_info_update_ok(MemberVO memberVO,HttpServletRequest request,HttpServletResponse response) {
+
+		memberSerivce.memberInsert(memberVO);
+		PrintWriter out;
+		
+		try {
+			out = response.getWriter();
+			out.print("<script>");
+			out.print("alert('수정되었습니다')");
+			out.print("location.href='/'");
+			out.print("</script>");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/* 회원정보 수정 페이지 */
+	@RequestMapping("/member_info_update")
+	public String member_info_update(HttpSession session,HttpServletRequest request, HttpServletResponse response) throws IOException{
+		
+		PrintWriter out = response.getWriter();
+		/* 로그인이 안되어 있으면 경고창을 띄우고 싶음... ok페이지를 따로 만들어야하는듯*/
+		if(session.getAttribute("login")==null){
+			return "redirect:/member/login";
+		}
+		
+		return "/member/member_info_update";
+	
+	}
 	
 	/* 회원정보 페이지 */
 	@RequestMapping("/member_info")
-	public ModelAndView member_info(HttpSession session,HttpServletRequest request, HttpServletResponse response) throws IOException {
-		ModelAndView mv = new ModelAndView();
-		MemberVO memberVO = new MemberVO();
-		
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		
-		if(session.getAttribute("login")!=null) {
-			System.out.println(((MemberVO)session.getAttribute("login")).getUser_id());
-			memberVO = memberSerivce.login_confirm(((MemberVO)session.getAttribute("login")).getUser_id());
-		}else {
-			/* 혹시라도 로그인이 안된 상태에서 진입했을 경우, 경고창을 띄우고 메인페이지로 이동*/
+	public String member_info(HttpSession session,HttpServletRequest request, HttpServletResponse response) throws IOException {	   // 리턴값이 void 일경우,, 매
+		/* 혹시라도 로그인이 안된 상태에서 진입했을 경우, 경고창을 띄우고 메인페이지로 이동*/
+		/*
+		if(session.getAttribute("login")==null) {
+			PrintWriter out = response.getWriter();
 			out.print("<script>"); 
 			out.print("alert('로그인이 필요합니다');");
-			out.print("location.href='/'");
+			out.print("location.href='/member/login'");
 			out.print("</script>");
 		}
-		mv.addObject("member_info", memberVO);
-		mv.setViewName("/member/member_info");
-		return mv;
+		*/
+		//return "/member/member_info";
+		
+		PrintWriter out = response.getWriter();
+		/* 로그인이 안되어 있으면 */
+		if(session.getAttribute("login")==null){
+			session.setAttribute("notLoginAccess", true);
+			/* 스크립트 작동이 안됨  */
+			return "redirect:/member/login";
+		}
+		
+		return "/member/member_info";
 	}
 	
 	/* 회원가입 페이지 */
@@ -78,9 +125,21 @@ public class MemberController{
 	@RequestMapping("/login_ok")
 	public void login_ok(MemberVO m, HttpSession session,HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		MemberVO member = memberSerivce.login_confirm(m.getUser_id()); // user_id로 member객체 정보 가져오기
-		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
+		/*
+		System.out.println((boolean)session.getAttribute("notLoginAccess"));
+		if(session.getAttribute("notLoginAccess")!=null) {
+			if((boolean)session.getAttribute("notLoginAccess")==true) {
+				System.out.println((boolean)session.getAttribute("notLoginAccess"));
+				out.print("<script>"); 
+				out.print("alert('로그인이 필요합니다');");
+				out.print("</script>"); 
+				session.setAttribute("notLoginAccess", false);
+			}	
+		}
+		*/
+		
 		if (member.getUser_pw() == null) {
 			out.print("<script>"); 
 			out.print("alert('아이디가없습니다');");

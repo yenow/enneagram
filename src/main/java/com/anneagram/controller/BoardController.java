@@ -94,6 +94,7 @@ public class BoardController {
 	public ModelAndView boardCont(int bno, HttpSession session) {
 		ModelAndView mv = new ModelAndView("board/boardCont");
 		
+		/* 댓글 조회수 막기 기능*/
 		if(session.getAttribute(Integer.toString(bno))==null) {
 			session.setAttribute(Integer.toString(bno), session.getId());
 			session.setMaxInactiveInterval(3600);

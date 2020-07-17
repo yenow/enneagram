@@ -7,7 +7,7 @@
 	<div class="inner">
 		<!-- Header -->
 		<header id="header">
-			<a href="index.html" class="logo"><strong>회원정보</strong></a>
+			<a href="index.html" class="logo"><strong>회원정보 수정</strong></a>
 			<ul class="icons">
 				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -18,38 +18,45 @@
 		</header>
 
 		<section>
-			<h3>회원정보</h3>
+			<h3>회원정보 수정</h3>
 			<div class="table-wrapper">
+			<form action="${pageContext.request.contextPath}/member/member_info_update_ok" method="post">
 				<table>
 					<tbody>
 						<tr>
 							<td>아이디</td>
-							<td>${member_info.user_id }</td>
+							<td><input type="text" name="user_id" value="${login.user_id }"  /></td>
 							
 						</tr>
 						<tr>
 							<td>비밀번호</td>
-							<td>******</td>
+							<td><input type="password" name="user_pw" /></td>
+						
+						</tr>
+						<tr>
+							<td>비밀번호확인</td>
+							<td><input type="password" name="user_pw" /></td>
 						
 						</tr>
 						<tr>
 							<td>이름</td>
-							<td>${member_info.name }</td>
+							<td><input type="text" name="name" value="${login.name }" /></td>
 						
 						</tr>
 						<tr>
 							<td>닉네임</td>
-							<td>${member_info.nickname }</td>
+							<td><input type="text" name="nickname" value="${login.nickname }" /></td>
 						</tr>
 						<tr>
 							<td>전화번호</td>
-							<td>${member_info.tel }</td>
+							<td><input type="text" name="tel" value="${login.tel }" /></td>
 						</tr>
 						<tr>
-							<td colspan="2"><a href="member_info_update" class="button primary fit">회원정보 수정하기</a></td>
+							<td colspan="2"><a href="member_info_update" class="button primary large">등록</a></td>
 						</tr>
 					</tbody>
 				</table>
+			</form>
 			</div>
 		</section>
 
