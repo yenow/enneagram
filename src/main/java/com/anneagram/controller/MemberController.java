@@ -45,17 +45,18 @@ public class MemberController{
 		}
 	}
 	
+	/* 회원정보 수정 처리*/
 	@RequestMapping("/member_info_update_ok")
 	public void member_info_update_ok(MemberVO memberVO,HttpServletRequest request,HttpServletResponse response) {
-
-		memberSerivce.memberInsert(memberVO);
+		/* 처음알았다.. form으로 값 넘길때, name값이 같은게 있으면 'ㅇㅇㅇ','ㅇㅇㅇ'  이런식으로 값이 넘어오는군*/
+		memberSerivce.memberUpdate(memberVO);
 		PrintWriter out;
 		
 		try {
 			out = response.getWriter();
 			out.print("<script>");
-			out.print("alert('수정되었습니다')");
-			out.print("location.href='/'");
+			out.print("alert('수정되었습니다');");
+			out.print("location.href='/';");
 			out.print("</script>");
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -151,7 +152,7 @@ public class MemberController{
 				session.setAttribute("login", member); // login 성공할경우 "login"세션
 				out.print("<script>"); 
 				out.print("alert('로그인에 성공하셨습니다');");
-				out.print("location.href='/'");
+				out.print("location.href='/';");
 				out.print("</script>");
 				
 				/* 서버에서 redirect하면 왜 안될까?   PrintWriter  out.println랑  view호출을 동시에 하니까 에러가 난다.

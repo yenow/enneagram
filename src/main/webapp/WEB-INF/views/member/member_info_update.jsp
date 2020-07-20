@@ -21,11 +21,12 @@
 			<h3>회원정보 수정</h3>
 			<div class="table-wrapper">
 			<form action="${pageContext.request.contextPath}/member/member_info_update_ok" method="post">
+				<input type="hidden" name="uno" value="${login.uno }">
 				<table>
 					<tbody>
 						<tr>
 							<td>아이디</td>
-							<td><input type="text" name="user_id" value="${login.user_id }"  /></td>
+							<td><input type="text" name="user_id" value="${login.user_id }" readonly="readonly" /></td>
 							
 						</tr>
 						<tr>
@@ -35,12 +36,12 @@
 						</tr>
 						<tr>
 							<td>비밀번호확인</td>
-							<td><input type="password" name="user_pw" /></td>
+							<td><input type="password" name="user_pw_ok" /></td>
 						
 						</tr>
 						<tr>
 							<td>이름</td>
-							<td><input type="text" name="name" value="${login.name }" /></td>
+							<td><input type="text" name="name" value="${login.name }" readonly="readonly" /></td>
 						
 						</tr>
 						<tr>
@@ -52,7 +53,7 @@
 							<td><input type="text" name="tel" value="${login.tel }" /></td>
 						</tr>
 						<tr>
-							<td colspan="2"><a href="member_info_update" class="button primary large">등록</a></td>
+							<td colspan="2"><input type="submit" class="button primary large" value="등록"></td>
 						</tr>
 					</tbody>
 				</table>

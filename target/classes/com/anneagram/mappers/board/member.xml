@@ -14,4 +14,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="m_login" resultType="m">
 	select * from member where user_id = #{user_id} 
 	</select>
+	
+	<update id="m_update">
+	update member set user_pw = #{user_pw}, nickname=#{nickname}, tel=#{tel} where uno = #{uno}
+	</update>
 </mapper>

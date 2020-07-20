@@ -22,6 +22,12 @@ public class MemberServiceImpl implements MemberService {
 	
 		return memberDAO.login_confirm(user_id);
 	}
+
+	/* member 수정*/
+	@Override
+	public void memberUpdate(MemberVO memberVO) {
+		memberDAO.memberUpdate(memberVO);
+	}
 	
 	
 }

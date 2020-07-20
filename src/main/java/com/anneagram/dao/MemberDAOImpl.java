@@ -19,7 +19,11 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public MemberVO login_confirm(String user_id) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne("m_login", user_id);
+	}
+
+	@Override
+	public void memberUpdate(MemberVO memberVO) {
+		sqlSession.update("m_update", memberVO);
 	}
 }

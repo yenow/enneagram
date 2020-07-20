@@ -8,4 +8,6 @@ public interface MemberService {
 
 	MemberVO login_confirm(String user_id);
 
+	void memberUpdate(MemberVO memberVO);
+
 }
