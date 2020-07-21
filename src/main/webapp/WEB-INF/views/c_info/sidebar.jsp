@@ -37,7 +37,7 @@
 					</ul></li>
 				<c:if test="${login ne null }">
 					<li><a href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
-					<li><a href="${pageContext.request.contextPath}/member/member_info">회원정보</a></li>
+					<li><a href="${pageContext.request.contextPath}/member/member_info_check">회원정보</a></li>
 				</c:if>
 				<c:if test="${login eq null }">
 					<li><a href="${pageContext.request.contextPath}/member/login">로그인</a></li>

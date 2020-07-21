@@ -30,9 +30,13 @@
 							<td>
 								<input type="password" name="password" />
 							</td>
-						</tr>	
+						</tr>		
 					</tbody>
 				</table>
+				<div class="y-t-center">
+					<input type="submit" class="button primary large " value="확인">
+				</div>
+				
 			</form>
 			</div>
 		</section>

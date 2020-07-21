@@ -134,6 +134,7 @@ drop table member;
 
 select * from reply;
 
+select * from member;
 
 
 

@@ -34,14 +34,19 @@ public class MemberController{
 	}
 	
 	@RequestMapping("member_info_check_ok")
-	public void member_info_check_ok(String password,HttpServletRequest request,HttpServletResponse response,HttpSession session) {
+	public void member_info_check_ok(String password,HttpServletRequest request,HttpServletResponse response,HttpSession session) throws IOException {
 		MemberVO memberVO = (MemberVO) session.getAttribute("login");
-			
+		PrintWriter out = response.getWriter();
 		/* 여기부터시작 */
 		if(memberVO.getUser_pw().equals(password)) {
-			
+			out.print("<script>");
+			out.print("location.href='/member/member_info';");
+			out.print("</script>");
 		}else {
-			
+			out.print("<script>");
+			out.print("alert('비밀번호가 같지 않습니다');");
+			out.print("location.href='/member/member_info_check';");
+			out.print("</script>");
 		}
 	}
 	
