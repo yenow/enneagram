@@ -9,17 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.anneagram.function.OracleDateChange;
 import com.anneagram.service.BoardService;
 import com.anneagram.vo.BoardVO;
 
@@ -74,6 +73,11 @@ public class BoardController {
 		
 		//list 가져오기
 		List<BoardVO> blist =boardService.selectList(bo);   // ArrayList는 안되고 List는 되는 이유가 뭘까? 왜 SqlSession의 selectList는 List형만 반환할까?
+		
+		/* Date를 String으로 포맷 변환*/
+		for(BoardVO board : blist) {
+			board.setS_regdate(OracleDateChange.changeDate(board.getRegdate()));  
+		}
 		mv.addObject("blist",blist);
 		mv.addObject("count",count);
 		mv.addObject("page",page);
@@ -101,6 +105,7 @@ public class BoardController {
 		}
 		
 		BoardVO b = boardService.selectboard(bno,session,session.getId());
+		b.setS_regdate(OracleDateChange.changeDate(b.getRegdate()));
 		mv.addObject("b", b);
 		
 		

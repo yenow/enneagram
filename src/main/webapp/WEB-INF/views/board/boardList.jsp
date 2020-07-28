@@ -56,7 +56,7 @@
 									<tr>
 										<td><span class="board-title"><a href="boardCont?bno=${b.bno }">${b.title }</a></span></td>
 										<td><span class="board-nickname">${b.nickname }</span></td>
-										<td><span class="board-date">${b.regdate }</span></td>
+										<td><span class="board-date">${b.s_regdate }</span></td>
 										<td><span class="board-count">${b.cnt }</span></td>
 										<td><span class="board-good"></span></td>
 									</tr>
@@ -70,14 +70,27 @@
 												<li><a href="boardList?startnum=${n}" class="page">${n} </a></li>
 											</c:forEach>
 										<li><a href="boardList?startnum=${page+1}" class="button">Next</a></li>
-										<a href="${pageContext.request.contextPath}/board/boardWrite" class="button y-right" style="float: right;">글쓰기</a>
+										<li class="y-right" style="float: right;"><a href="${pageContext.request.contextPath}/board/boardWrite" class="button">글쓰기</a></li>
 									</ul>
 									
 								</td>
-							</tr></table>
+							</tr>
+							</table>
 					</div>
 					
 					<div class="y-clear"></div>
+					
+					<!-- 검색 폼 -->
+					<form action="${pageContext.request.contextPath}/board/boardList" method="post" style="text-align: right;">
+						<select class="" name="" onchange="" id="" style="display: inline-block; width: 20%" >
+							<option value="" selected disabled>형식</option>
+							<option value="">제목</option>
+							<option value="">글쓴이</option>
+							<option value="">내용</option>
+						</select>
+						<input type="text" name="search_name"  style="display: inline-block; width: 50%; "> 
+						<input type="submit" value="검색"  style="display: inline-block;">
+					</form>
 				</section>
 
 			</div>

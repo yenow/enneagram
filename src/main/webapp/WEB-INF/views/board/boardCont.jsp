@@ -26,7 +26,7 @@
 		<section>
 			<div class="box">
 				<h2 id="content">${b.title }</h2>
-				<p>${b.nickname}${b.regdate }</p>
+				<p>${b.nickname}   ${b.s_regdate }</p>
 				<hr>
 				<p class="board-content">${b.content}
 				<p>

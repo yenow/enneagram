@@ -1,5 +1,6 @@
 package com.anneagram.vo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BoardVO {
@@ -23,12 +24,26 @@ public class BoardVO {
 	private int start;
 	private int end;
 	private int rcnt;    // 댓글 수
+	private String s_regdate;
 	
 	public BoardVO() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	
+	
+	public String getS_regdate() {
+		return s_regdate;
+	}
+
+
+
+	public void setS_regdate(String s_regdate) {
+		this.s_regdate = s_regdate;
+	}
+
+
+
 	public String getNickname() {
 		return nickname;
 	}
