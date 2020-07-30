@@ -11,7 +11,7 @@
 
 				<!-- Header -->
 				<header id="header">
-					<a href="index.html" class="logo"><strong>게시판</strong> by HTML5 UP</a>
+					<a href="${pageContext.request.contextPath}/board/boardList" class="logo"><strong>게시판</strong> by HTML5 UP</a>
 					<ul class="icons">
 						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -81,14 +81,14 @@
 					<div class="y-clear"></div>
 					
 					<!-- 검색 폼 -->
-					<form action="${pageContext.request.contextPath}/board/boardList" method="post" style="text-align: right;">
-						<select class="" name="" onchange="" id="" style="display: inline-block; width: 20%" >
+					<form action="${pageContext.request.contextPath}/board/boardList" method="get" style="text-align: right;">
+						<select class="" name="search_type" onchange="" id="" style="display: inline-block; width: 20%" >
 							<option value="" selected disabled>형식</option>
-							<option value="">제목</option>
-							<option value="">글쓴이</option>
-							<option value="">내용</option>
+							<option value="title">제목</option>
+							<option value="nickname">글쓴이</option>
+							<option value="content">내용</option>
 						</select>
-						<input type="text" name="search_name"  style="display: inline-block; width: 50%; "> 
+						<input type="text" name="search"  style="display: inline-block; width: 50%; "> 
 						<input type="submit" value="검색"  style="display: inline-block;">
 					</form>
 				</section>

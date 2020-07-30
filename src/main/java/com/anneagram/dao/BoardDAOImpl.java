@@ -1,7 +1,8 @@
 package com.anneagram.dao;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,13 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public void addCnt(int bno) {
 		sqlSession.update("b_cnt",bno);
+	}
+
+	@Override
+	public List<BoardVO> selectListSearch(BoardVO bo) {
+
+		return sqlSession.selectList("b_list_search", bo);
+		//("b_list_search",bo);
 	}
 	
 	

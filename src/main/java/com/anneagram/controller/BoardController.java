@@ -2,6 +2,7 @@ package com.anneagram.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,8 +23,12 @@ import com.anneagram.function.OracleDateChange;
 import com.anneagram.service.BoardService;
 import com.anneagram.vo.BoardVO;
 
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping("/board")
+@Slf4j
 public class BoardController {
 
 	@Autowired
@@ -38,7 +43,7 @@ public class BoardController {
 	//게시판 리스트 ,  리스트를 jsp파일로 넘기는게 필요하다. Model을 활용해서 넘긴다.
 	@RequestMapping(value = "/boardList", method = RequestMethod.GET)  
 	public ModelAndView boardList(HttpServletRequest request, @RequestParam(defaultValue = "10", value = "maxLine") String maxLine,
-			 @RequestParam(defaultValue = "", value = "search") String search) {
+			 @RequestParam(defaultValue = "", value = "search") String search,  @RequestParam(defaultValue = "", value = "search_type") String search_type) {
 		ModelAndView mv = new ModelAndView("board/boardList");
 		
 		/* lineMax 설정 */
@@ -49,8 +54,6 @@ public class BoardController {
 		}else {
 			page = Integer.parseInt(request.getParameter("startnum"));
 		}
-		
-		
 		
 		/* count 계산 */
 		List<BoardVO> list = boardService.boardCount(); // 게시판의 개수를 가져오는 함수
@@ -64,6 +67,10 @@ public class BoardController {
 			page--;
 		}
 		
+		System.out.println(search);
+		System.out.println(search_type);
+		
+		
 		//보여줄 시작게시글번호, 마지막 게시글번호
 		BoardVO bo = new BoardVO();
 		int start = (page-1)*lineMax+1; 
@@ -71,8 +78,15 @@ public class BoardController {
 		bo.setStart(start);
 		bo.setEnd(end);
 		
-		//list 가져오기
-		List<BoardVO> blist =boardService.selectList(bo);   // ArrayList는 안되고 List는 되는 이유가 뭘까? 왜 SqlSession의 selectList는 List형만 반환할까?
+		List<BoardVO> blist =  new ArrayList<BoardVO>();
+		if(search.equals("")) {
+			//list 가져오기
+			blist =boardService.selectList(bo);   // ArrayList는 안되고 List는 되는 이유가 뭘까? 왜 SqlSession의 selectList는 List형만 반환할까?
+		}else {
+			bo.setSearch_type(search_type);
+			bo.setSearch(search);
+			blist = boardService.selectListSearch(bo);
+		}
 		
 		/* Date를 String으로 포맷 변환*/
 		for(BoardVO board : blist) {

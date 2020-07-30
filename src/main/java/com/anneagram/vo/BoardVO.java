@@ -13,6 +13,7 @@ public class BoardVO {
 	 *regdate date,
       moddate date
 	 */ 
+	/* 데이터 베이스 구조*/
 	private int bno;     
 	private String user_id;
 	private String nickname;
@@ -26,12 +27,41 @@ public class BoardVO {
 	private int rcnt;    // 댓글 수
 	private String s_regdate;
 	
+	/* */
+	private String search;
+	private String search_type;
+	
+	
 	public BoardVO() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	
 	
+	public String getSearch() {
+		return search;
+	}
+
+
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+
+
+	public String getSearch_type() {
+		return search_type;
+	}
+
+
+
+	public void setSearch_type(String search_type) {
+		this.search_type = search_type;
+	}
+
+
+
 	public String getS_regdate() {
 		return s_regdate;
 	}

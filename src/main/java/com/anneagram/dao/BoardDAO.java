@@ -24,4 +24,6 @@ public interface BoardDAO {
 
 	void addCnt(int bno);
 
+	List<BoardVO> selectListSearch(BoardVO bo);
+
 }

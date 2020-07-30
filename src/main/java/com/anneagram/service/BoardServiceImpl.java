@@ -59,4 +59,9 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardVO> boardCount() {
 		return boardDAO.boardCount();
 	}
+
+	@Override
+	public List<BoardVO> selectListSearch(BoardVO bo) {
+		return boardDAO.selectListSearch(bo);
+	}
 }

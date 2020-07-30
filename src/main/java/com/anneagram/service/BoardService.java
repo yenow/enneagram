@@ -21,4 +21,6 @@ public interface BoardService {
 
 	List<BoardVO> boardCount();
 
+	List<BoardVO> selectListSearch(BoardVO bo);
+
 }

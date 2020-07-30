@@ -41,4 +41,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update board set rcnt=rcnt+1 where bno=#{bno} 
 	</update>
 	
+	<select id="b_list_search" resultType="b">
+		select * from board where ${search_type} like '%'||#{search}||'%'      
+	</select>
+	<!-- like문은 조금 다르다.. ${}와 #{}차이도 무엇인지 알아봐야할 필요가 있다 -->
 </mapper>
