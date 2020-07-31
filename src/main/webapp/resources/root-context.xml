@@ -18,11 +18,11 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
-			value="com.mysql.jdbc.Driver" />
+			value="oracle.jdbc.OracleDriver" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/enneagram?serverTimezone=Asia/Seoul" />
-		<property name="username" value="ysy" />
-		<property name="password" value="tlsdud5089!" />
+			value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="night" />
+		<property name="password" value="night" />
 	</bean> 
 
 	<!-- 스프링과 mybatis 연결 설정과 mybatis 환경설정 -->
