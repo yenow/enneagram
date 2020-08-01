@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/classic/ckeditor.js"></script>
+
 <jsp:include page="../c_info/header.jsp"></jsp:include>
 
 <c:if test="${login == null }">
@@ -36,7 +38,7 @@
 						<input type="text" name="title" placeholder="제목">
 					</h2>
 
-					<p class="board-content">
+					<p class="board-content" id="editor">
 						<textarea rows="50" cols="100" name="content" placeholder="내용"></textarea>
 					<p>
 					<hr>
@@ -51,6 +53,14 @@
 
 	</div>
 </div>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 
 <jsp:include page="../c_info/sidebar.jsp"></jsp:include>
 <jsp:include page="../c_info/footer.jsp"></jsp:include>
