@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+ 
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="m_insert">
 	insert into member (uno,user_id,user_pw,name,nickname,tel,regdate) values
-	(nextval('uno'),#{user_id},#{user_pw},#{name},#{nickname},#{tel},sysdate())
+	(uno_seq.nextval,#{user_id},#{user_pw},#{name},#{nickname},#{tel},sysdate)
 	</insert>
 
 	<select id="m_login" resultType="m">
@@ -18,4 +18,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="m_update">
 	update member set user_pw = #{user_pw}, nickname=#{nickname}, tel=#{tel} where uno = #{uno}
 	</update>
-</mapper>
+</mapper> 

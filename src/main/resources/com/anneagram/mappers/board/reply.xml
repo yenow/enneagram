@@ -9,12 +9,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="r_insert" parameterType="r">
 		insert into reply (rno, bno, user_id, nickname , rcontent, regdate, kind) 
-		values (rno_seq.nextval, #{bno}, #{user_id}, #{nickname} ,#{rcontent}, sysdate, 1)
+		values (nextval('rno'), #{bno}, #{user_id}, #{nickname} ,#{rcontent}, sysdate(), 1)
 	</insert>
 	
 	<insert id="r_insert_no" parameterType="r">
 		insert into reply (rno, bno, rcontent, regdate, nickname, no_user_passwd, kind) 
-		values (rno_seq.nextval, #{bno}, #{rcontent}, sysdate, #{nickname}, #{no_user_passwd}, 2)
+		values (nextval('rno'), #{bno}, #{rcontent}, sysdate, #{nickname}, #{no_user_passwd}, 2)
 	</insert>
 
 	<select id="r_list" resultType="r" >

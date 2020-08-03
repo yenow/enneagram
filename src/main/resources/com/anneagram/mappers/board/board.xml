@@ -7,14 +7,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="Board">
 	<insert id="b_insert">
 		insert into board (bno,user_id,title,content,cnt,regdate,nickname) values
-		(bno_seq.nextval,#{user_id},#{title},#{content},#{cnt},sysdate,#{nickname})
+		(nextval('bno'),#{user_id},#{title},#{content},#{cnt},sysdate(),#{nickname})
 	</insert>
 
 	<select id="b_list" resultType="b">
-		<![CDATA[select * from (select rownum as rnum, e.* from (select * from board order by bno desc) e) where rnum <= #{end} and rnum >= #{start}]]>
+		<![CDATA[   select * from (select @rownum:=@rownum+1 as rnum, A.* from board A, (select @rownum:=0) TMP) TPM where rnum <= #{end} and rnum >= #{start}  ]]>
+		<!-- <![CDATA[select * from (select rownum as rnum, e.* from (select * from board order by bno desc) e) where rnum <= #{end} and rnum >= #{start}]]> -->
 		<!-- 부등호를 사용할경우 '>', '<' 같은게 코드랑 겹치기 때문에 <![CDATA[]]> 방법을 쓴다!  -->
 	</select>
-	
+	<!-- select * from (select @rownum:=@rownum+1 as rnum, A.* from board A, (select @rownum:=0) TMP) TPM where rnum > 1 and rnum < 5; -->
 	
 	<select id="b_board" resultType="b">
 		select * from board where bno =#{bno}
@@ -26,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="b_update">
 		update board set user_id=#{user_id} ,title=#{title} ,content=#{content},
-		moddate=sysdate where bno = #{bno}
+		moddate=sysdate() where bno = #{bno}
 	</insert>
 	
 	<insert id="b_delete">
