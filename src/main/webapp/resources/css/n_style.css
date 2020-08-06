@@ -17,7 +17,7 @@ login-form ul li {width: 100%;}
 /* 테스트 */
 .test {color: #222;	}
 .test ul {text-align: center;}
-.test ul li {position:relative; border-bottom: 1px solid #ccc; margin: 10px; display:inline-block;  width: 70%;}
+.test ul li {position:relative; border-bottom: 1px solid #ccc; margin: 10px; display:inline-block;  width: 100%;}
 .test ul li:last-child {position:relative; margin: 10px; border-bottom: none; border-bottom: 1px solid #ccc;}
 .test ul li:before {
 	content: '비동의';
@@ -39,15 +39,15 @@ login-form ul li {width: 100%;}
 /* 테스트 페이지 - 질문 */
 /* .test ul li {margin: 10px; display:inline-block;  width: 70%;} */
 /*.test input[type="radio"] {border: 1px solid #ccc; border-radius:50%; width:30px; height:30px; display:inline-block; -webkit-appearance: none; margin: 20px;}*/
-.test input[value="1"] {border: 1px solid #E77BA7; border-radius:50%; width:50px; height:50px; display:inline-block; -webkit-appearance: none;	 margin: 20px;}
+.test input[value="1"] {border: 1px solid #E77BA7; border-radius:50%; width:50px; height:50px; display:inline-block; -webkit-appearance: none;	 margin: 2%;}
 .test input[value="1"]:checked {background: #E77BA7; }
-.test input[value="2"] {border: 1px solid #E77BA7; border-radius:50%; width:40px; height:40px; display:inline-block; -webkit-appearance: none; margin: 20px;}
+.test input[value="2"] {border: 1px solid #E77BA7; border-radius:50%; width:40px; height:40px; display:inline-block; -webkit-appearance: none; margin: 2%;}
 .test input[value="2"]:checked {background: #E77BA7; }
-.test input[value="3"] {border: 1px solid #ccc; border-radius:50%; width:30px; height:30px; display:inline-block; -webkit-appearance: none; margin: 20px;}
+.test input[value="3"] {border: 1px solid #ccc; border-radius:50%; width:30px; height:30px; display:inline-block; -webkit-appearance: none; margin: 2%;}
 .test input[value="3"]:checked {background: #ccc; }
-.test input[value="4"] {border: 1px solid #4B9AC9; border-radius:50%; width:40px; height:40px; display:inline-block; -webkit-appearance: none; margin: 20px;}
+.test input[value="4"] {border: 1px solid #4B9AC9; border-radius:50%; width:40px; height:40px; display:inline-block; -webkit-appearance: none; margin: 2%;}
 .test input[value="4"]:checked {background: #4B9AC9;}
-.test input[value="5"] {border: 1px solid #4B9AC9; border-radius:50%; width:50px; height:50px; display:inline-block; -webkit-appearance: none; margin: 20px;}
+.test input[value="5"] {border: 1px solid #4B9AC9; border-radius:50%; width:50px; height:50px; display:inline-block; -webkit-appearance: none; margin: 2%;}
 .test input[value="5"]:checked {background: #4B9AC9;}
 .test input[type="submit"] {border: 1px solid #ccc; width: 50px; height: 30px; }
 

@@ -41,28 +41,25 @@
 
 <!-- Work -->
 <section id="work" class="main style3 primary">
-	<div class="content">
-		<header>
-			
-		</header>
+
 
 		<!-- Gallery  -->
-		<div class="gallery">
-			<article class="from-left">
-				<a href="${pageContext.request.contextPath}/anneagram/anneagram" class="button large">에니어그램 알아보기</a>
+		<div class="ttt" style="width: 100%">
+			<div class="y-t-center">
+				<a href="/anneagram/anneagram" class="button large" style="display: inline-block;">에니어그램 알아보기</a>
 				<%-- <a href="${pageContext.request.contextPath}/resources/images/fulls/01.jpg" class="image fit">
 				<img src="${pageContext.request.contextPath}/resources/images/thumbs/01.jpg" title="The Anonymous Red" alt="" /> 
 				</a>
 				<p>에니어그램 알아보기</p> --%>
-			</article>
-			<article class="from-right">
-				<a href="${pageContext.request.contextPath}/test/test" class="button large">테스트하러가기</a>
+			</div>
+			<div class="y-t-center" style="margin-top: 20px;">
+				<a href="/test/test" class="button large" style="display: inline-block; ">테스트하러가기</a>
 				<%-- <a href="${pageContext.request.contextPath}/resources/images/fulls/02.jpg" class="image fit"><img src="${pageContext.request.contextPath}/resources/images/thumbs/02.jpg" title="Airchitecture II" alt="" /></a>
 				<p>테스트하러가기</p> --%>
-			</article>
+			</div>
 		</div>
 
-	</div>
+	
 </section>
 
 <jsp:include page="n_info/footer.jsp"></jsp:include>

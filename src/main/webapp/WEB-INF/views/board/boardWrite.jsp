@@ -55,11 +55,7 @@
 </div>
 
 <script>
-    ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+
 </script>
 
 <jsp:include page="../c_info/sidebar.jsp"></jsp:include>

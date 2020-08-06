@@ -145,6 +145,14 @@ public class MemberController{
 			}	
 		}
 		*/
+		System.out.println(member);
+		if(member==null) {
+			out.print("<script>"); 
+			out.print("alert('아이디를 입력해주세요');");
+			out.print("history.back();");
+			out.print("</script>"); 
+			out.close();
+		}
 		
 		if (member.getUser_pw() == null) {
 			out.print("<script>"); 

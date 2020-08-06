@@ -203,7 +203,7 @@
 		$('#nickname').val('');
 		$('#no_user_passwd').val('');
 		$('#t_content1').val('');
-		
+		replyList();
 		
 	}
 
@@ -235,7 +235,7 @@
 		$('#nickname').val('');
 		$('#no_user_passwd').val('');
 		$('#t_content1').val('');
-	
+		replyList();
 		
 	}
 

@@ -31,7 +31,7 @@
 						<p> </p>
 					</div>
 					<div class="col-12">
-						<input type="password" name="user_pw" id="user_pw" value="" placeholder="비밀번호 재입력" />
+						<input type="password" name="user_pw2" id="user_pw" value="" placeholder="비밀번호 재입력" />
 						<p> </p>
 					</div>
 					<div class="col-12">
