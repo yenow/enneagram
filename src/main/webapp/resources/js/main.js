@@ -3,7 +3,7 @@
  	easing: 'slide'
  });
 
-(function($) {  // 그냥 함수를 정의하고 바로 실행한듯
+(function($) {  // 그냥 함수를 정의하고 바로 실행한듯 .. $(document).ready(function(){}) 와 같은 효과다
 
 	"use strict";
 
@@ -38,14 +38,24 @@
     scrollProperty: 'scroll'
   });
 
-
+	var height = $(window).height();
+	var str = document.location.href.split('/')[4];
+	
+	if(str!=''){
+		height = height/4;
+	}		
+	//console.log(str);   음... 어렵네..
+	//console.log(height);
+	
 	var fullHeight = function() {
-
-		$('.js-fullheight').css('height', $(window).height());
+		
+		$('.js-fullheight').css('height', height);
+		$('.overlay').css('height', height);
+		$('#particles-js').css('height', height);
 		$(window).resize(function(){
-			$('.js-fullheight').css('height', $(window).height());
+			$('.js-fullheight').css('height', height);
 		});
-
+		
 	};
 	fullHeight();
 

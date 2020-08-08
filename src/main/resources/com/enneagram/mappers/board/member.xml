@@ -7,15 +7,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="Member">
 
 	<insert id="m_insert">
-	insert into member (uno,user_id,user_pw,name,nickname,tel,regdate) values
-	(nextval('uno'),#{user_id},#{user_pw},#{name},#{nickname},#{tel},sysdate())
+	insert into member (mno,id,password,name,nickname,email,tel,gender,regdate,birth) values
+	(nextval('mno'),#{id},#{password},#{name},#{nickname},#{email},#{tel},#{gender},sysdate(),#{birth})
 	</insert>
 
 	<select id="m_login" resultType="m">
-	select * from member where user_id = #{user_id} 
+	select * from member where id = #{id} 
 	</select>
 	
 	<update id="m_update">
-	update member set user_pw = #{user_pw}, nickname=#{nickname}, tel=#{tel} where uno = #{uno}
+	update member set password = #{password}, nickname=#{nickname}, tel=#{tel} where mno = #{mno}
 	</update>
 </mapper>

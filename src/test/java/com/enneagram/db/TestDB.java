@@ -1,4 +1,4 @@
-package com.enneagram.controller;
+package com.enneagram.db;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,13 +20,7 @@ public class TestDB {
 	@Test
 	public void Test() throws Exception {
 		MemberVO m = new MemberVO();
-		m.setUser_id("tlsdud");
-		m.setUser_pw("1234");
-		m.setName("신영");
-		m.setAddress("주소");
-		m.setNickname("신영");
-		m.setTel("1111");
-		m.setEmail("email");
+		
 		
 	}
 }

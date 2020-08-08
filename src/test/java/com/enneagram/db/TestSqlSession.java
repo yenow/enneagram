@@ -1,4 +1,4 @@
-package com.enneagram.controller;
+package com.enneagram.db;
 
 import javax.inject.Inject;
 

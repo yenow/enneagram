@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,36 +68,28 @@
 					<li class="nav-item">
 						<a href="contact.html" class="nav-link">실시간 채팅</a>
 					</li>
-					<li class="nav-item cta">
-						<a href="contact.html" class="nav-link"> <span>로그인</span>
-						</a>
-					</li>
-					<li class="nav-item cta pl-2">
-						<a href="contact.html" class="nav-link"> <span>회원가입</span>
-						</a>
-					</li>
+
+					<!-- 비로그인시 -->
+					<c:if test="${login eq null }">
+						<li class="nav-item cta">
+							<a href="${pageContext.request.contextPath}/member/login" class="nav-link"> <span>로그인</span></a>
+						</li>
+						<li class="nav-item cta pl-2">
+							<a href="${pageContext.request.contextPath}/member/member_insert" class="nav-link"> <span>회원가입</span></a>
+						</li>
+					</c:if>
+					<!-- 로그인시 -->
+					<c:if test="${login ne null }">
+						<li class="nav-item cta">
+							<a href="${pageContext.request.contextPath}/member/logout" class="nav-link"> <span>로그아웃</span></a>
+						</li>
+						<li class="nav-item cta pl-2">
+							<a href="${pageContext.request.contextPath}/member/member_insert" class="nav-link"> <span>마이페이지</span></a>
+						</li>
+					</c:if>
+
 				</ul>
 			</div>
 		</div>
 	</nav>
 	<!-- END nav -->
-
-	<!-- <div class="js-fullheight"> -->
-	<div class="hero-wrap js-fullheight">
-		<!-- 분홍색 배경 -->
-		<div class="overlay"></div>
-		<!-- 동적인 처리 -->
-		<div id="particles-js"></div>
-		<div class="container">
-			<div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
-				<div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-					<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-						We love <strong>All People</strong> 
-					</h1>
-					<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-						<a href="#" class="btn btn-primary btn-outline-white px-5 py-3">login</a>
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>

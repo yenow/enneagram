@@ -38,7 +38,7 @@ public class MemberController{
 		MemberVO memberVO = (MemberVO) session.getAttribute("login");
 		PrintWriter out = response.getWriter();
 		/* 여기부터시작 */
-		if(memberVO.getUser_pw().equals(password)) {
+		if(memberVO.getPassword().equals(password)) {
 			out.print("<script>");
 			out.print("location.href='/member/member_info';");
 			out.print("</script>");
@@ -130,7 +130,7 @@ public class MemberController{
 
 	@RequestMapping("/login_ok")
 	public void login_ok(MemberVO m, HttpSession session,HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		MemberVO member = memberSerivce.login_confirm(m.getUser_id()); // user_id로 member객체 정보 가져오기
+		MemberVO member = memberSerivce.login_confirm(m.getId()); // user_id로 member객체 정보 가져오기
 		PrintWriter out = response.getWriter();
 
 		/*
@@ -154,14 +154,14 @@ public class MemberController{
 			out.close();
 		}
 		
-		if (member.getUser_pw() == null) {
+		if (member.getPassword() == null) {
 			out.print("<script>"); 
 			out.print("alert('아이디가없습니다');");
 			out.print("history.back();");
 			out.print("</script>"); 
 			out.close();
 		} else {
-			if (member.getUser_pw().equals(m.getUser_pw())) {
+			if (member.getPassword().equals(m.getPassword())) {
 				session.setAttribute("login", member); // login 성공할경우 "login"세션
 				out.print("<script>"); 
 				out.print("alert('로그인에 성공하셨습니다');");

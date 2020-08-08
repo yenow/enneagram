@@ -3,6 +3,26 @@
 
 <jsp:include page="info/header.jsp"></jsp:include>
 
+<!-- <div class="js-fullheight"> -->
+	<div class="hero-wrap js-fullheight">
+		<!-- 분홍색 배경 -->
+		<div class="overlay"></div>
+		<!-- 동적인 처리 -->
+		<div id="particles-js"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+				<div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+					<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+						We love <strong>All People</strong> 
+					</h1>
+					<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+						<a href="#" class="btn btn-primary btn-outline-white px-5 py-3">login</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
 <section class="ftco-section">
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-5">
