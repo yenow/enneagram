@@ -6309,6 +6309,11 @@ button.bg-dark:focus {
 .pl-5,
 .px-5 {
   padding-left: 3rem !important; }
+  
+.pl-7,
+.px-7 {
+  padding-left: 5rem !important; 
+  padding-right: 5rem !important;}
 
 .m-auto {
   margin: auto !important; }
@@ -7384,10 +7389,10 @@ h1, h2, h3, h4, h5,
     -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); }
     .ftco-navbar-light.scrolled .nav-item.active > a {
-      color: #ee76ad !important; }
+      color: #efbbcf !important; }
     .ftco-navbar-light.scrolled .nav-item.cta > a {
       color: #fff !important;
-      background: #ee76ad;
+      background: #efbbcf;
       border: none !important;
       padding-top: 0.5rem !important;
       padding-bottom: .5rem !important;

@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+.logo {
+	width: 100%;
+	height: 4em;
+}
+
+.logo2 {
+	width: 80%;
+	height: 4em;
+}
+
+/* input[type="checkbox"]:checked {
+	background: #efbbcf;
+}
+
+label {
+display: inline-block; width:17px; height: 17px; background: #fa3062;
+cursor: pointer; border-radius: 3px;float: right;}
+.agree .all_agree:after {display:block; clear:both; content:"";} */
+
+input[type="checkbox"] {
+    display:none;
+}
+
+
+input[type="checkbox"] + label span {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: -2px 10px 0 0;
+    vertical-align: middle;
+    background: url(../img/icon/checkbox.svg) left top no-repeat;
+    cursor: pointer;
+    background-size: cover;
+}
+
+input[type="checkbox"]:checked + label span {
+     background:url('../img/icon/checkbox.svg') -26px top no-repeat;
+     background-size: cover;
+}

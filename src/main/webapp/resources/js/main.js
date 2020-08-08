@@ -3,7 +3,7 @@
  	easing: 'slide'
  });
 
-(function($) {
+(function($) {  // 그냥 함수를 정의하고 바로 실행한듯
 
 	"use strict";
 
