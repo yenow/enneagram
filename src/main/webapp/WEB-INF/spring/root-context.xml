@@ -12,44 +12,52 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-   
-	<!-- config파일 자동 로드 location="classpath:database.properties"  /!-->
-   	<!--  <context:property-placeholder location="classpath:/**/config.properties" /> -->
-	
+
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="jdbcUrl" value="jdbc:log4jdbc:mariadb://localhost:3307/enneagram"></property>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:mariadb://127.0.0.1:3307/enneagram"></property>
 		<property name="username" value="ysy"></property>
 		<property name="password" value="tlsdud5089!"></property>
 	</bean>
 
 	<!-- HikariCP configuration -->
+
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
 		destroy-method="close">
 		<constructor-arg ref="hikariConfig" />
-	
 	</bean>
 
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<!-- 스프링의 setter()메서드를 통한 의존성 주입 -->
-		<property name="configLocation" value="classpath:/mybatis-config.xml" />
+		<property name="configLocation"
+			value="classpath:/mybatis-config.xml" />
 		<!-- classpath경로는 이클립스 가상경로가 src/main/resources 이다. 이 경로에 있는 mybatis-config.xml 
 			파일을 읽어들임 이 파일의 기능은 데이터 저장빈 클래스의 객체명 별칭을 관리한다. -->
-		<property name="mapperLocations" value="classpath:/com/anneagram/mappers/*/*.xml" />
+		<property name="mapperLocations"
+			value="classpath:/com/enneagram/mappers/*/*.xml" />
 		<!-- mybatis 쿼리문을 담는 매퍼태그 xml위치 -->
 	</bean>
-	
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">        <!-- 캐쉬메모리를 깨끗이 지운다 -->
-		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+
+
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate"
+		destroy-method="clearCache"> <!-- 캐쉬메모리를 깨끗이 지운다 -->
+		<constructor-arg name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
 		<!-- constructor-arg의 뜻은 생성자를 통한 의존성 주입 => DI -->
 	</bean>
-	
-	
+
+
+
 	<!-- 모델 DAOImpl의 @Repository로 설정된 부분을 스프링에서 오토스캔(자동으로 찾아서)하여 등록하게함 -->
-	<context:component-scan base-package="com.enneagram.dao" />
-	
-	<!-- 서비스 오토스캔 추가. 이 서비스 패키지의 역할은 첫번째로 컨트롤러와 모델 DAO를 연결하는 중간 매개체 역할을 한다
-	둘째, 고객의 추가요구사항을 반영한다.  셋째, 스플링의 AOP를 통한 트랜잭션을 적용함으로서 데이터 일관성과 사이트의 신뢰도를 유지한다. -->
-	<context:component-scan base-package="com.enneagram.service" />
+	<context:component-scan
+		base-package="com.enneagram.dao" />
+
+	<!-- 서비스 오토스캔 추가. 이 서비스 패키지의 역할은 첫번째로 컨트롤러와 모델 DAO를 연결하는 중간 매개체 역할을 한다 둘째, 
+		고객의 추가요구사항을 반영한다. 셋째, 스플링의 AOP를 통한 트랜잭션을 적용함으로서 데이터 일관성과 사이트의 신뢰도를 유지한다. -->
+	<context:component-scan
+		base-package="com.enneagram.service" />
 </beans>
