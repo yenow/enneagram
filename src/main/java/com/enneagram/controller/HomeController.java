@@ -73,18 +73,14 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "main";
+		return "index";
 	}
 	
-	@RequestMapping("/index")
-	public void index() {
+	@RequestMapping("/ajaxtest")
+	public void ajaxtest() {
 		
 	}
 	
-	@RequestMapping("/main")
-	public void main() {
-		
-	}
 	
 	@RequestMapping("/info/header")
 	public void header() {

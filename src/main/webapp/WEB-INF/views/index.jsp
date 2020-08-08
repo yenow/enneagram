@@ -1,220 +1,434 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+	pageEncoding="UTF-8"%>
 
-<body>
-<h1>Spring Demo Ajax - Test Case</h1>
-<ul>
-	<li>Spring boot 1.5.2</li>
-	<li>Spring 4.3.6</li>
-	<li>com.fasterxml.jackson 2.8.6</li>
-</ul>
+<jsp:include page="info/header.jsp"></jsp:include>
 
+<section class="ftco-section">
+	<div class="container">
+		<div class="row justify-content-center mb-5 pb-5">
+			<div class="col-md-6 text-center heading-section ftco-animate">
+				<span class="subheading">Our Services</span>
+				<h2 class="mb-4">Web &amp; Mobile app design, bring your ideas
+					to life</h2>
+				<p>Far far away, behind the word mountains, far from the
+					countries Vokalia and Consonantia, there live the blind texts.
+					Separated they live in</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
+				<div class="media block-6 services d-block text-center">
+					<div class="d-flex justify-content-center">
+						<div class="icon color-3 d-flex justify-content-center mb-3">
+							<span class="align-self-center icon-lightbulb-o"></span>
+						</div>
+					</div>
+					<div class="media-body p-2 mt-3">
+						<h3 class="heading">Strategy</h3>
+						<p>Even the all-powerful Pointing has no control about the
+							blind texts it is an almost unorthographic.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
+				<div class="media block-6 services d-block text-center">
+					<div class="d-flex justify-content-center">
+						<div class="icon color-1 d-flex justify-content-center mb-3">
+							<span class="align-self-center icon-laptop"></span>
+						</div>
+					</div>
+					<div class="media-body p-2 mt-3">
+						<h3 class="heading">Design</h3>
+						<p>Even the all-powerful Pointing has no control about the
+							blind texts it is an almost unorthographic.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
+				<div class="media block-6 services d-block text-center">
+					<div class="d-flex justify-content-center">
+						<div class="icon color-2 d-flex justify-content-center mb-3">
+							<span class="align-self-center icon-gear"></span>
+						</div>
+					</div>
+					<div class="media-body p-2 mt-3">
+						<h3 class="heading">Development</h3>
+						<p>Even the all-powerful Pointing has no control about the
+							blind texts it is an almost unorthographic.</p>
+					</div>
+				</div>
+			</div>
 
-<p><button onclick="ajaxList();">ajaxList[GET]</button></p>
-<p><button onclick="ajaxListModel();">ajaxListModel[GET, @ModelAttribute]</button></p>
-<p><button onclick="ajaxListNobody();">ajaxListNobody[GET, Not @ResponseBody]</button> <small>@ResponseBody가 없으므로 뷰 리졸버를 찾게됨</small></p>
-<p><button onclick="ajaxMap();">ajaxMap[PUT, @RequestBody를 지정할 경우]</button></p>
-<p><button onclick="ajaxMap_Get();">ajaxMap_Get[GET, @RequestBody를 지정할 경우]</button> <small>GET은 요청 바디에 데이터가 존재하지 않음</small></p>
-<p><button onclick="ajaxEntity();">ajaxEntity[POST, ResponseEntity]</button></p>
-<p><button onclick="ajaxEntityNobody();">ajaxEntityNobody[POST, ResponseEntity]</button></p>
-<p><button onclick="ajaxEntityNobodyParam();">ajaxEntityNobodyParam[POST, ResponseEntity+Param]</button></p>
+			<div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
+				<div class="media block-6 services d-block text-center">
+					<div class="d-flex justify-content-center">
+						<div class="icon color-4 d-flex justify-content-center mb-3">
+							<span class="align-self-center icon-live_help"></span>
+						</div>
+					</div>
+					<div class="media-body p-2 mt-3">
+						<h3 class="heading">Help &amp; Supports</h3>
+						<p>Even the all-powerful Pointing has no control about the
+							blind texts it is an almost unorthographic.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-<p></p>
+<section class="ftco-section-parallax">
+	<div class="parallax-img d-flex align-items-center">
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div
+					class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+					<h2>Subcribe to our Newsletter</h2>
+					<p>Far far away, behind the word mountains, far from the
+						countries Vokalia and Consonantia, there live the blind texts.
+						Separated they live in</p>
+					<div class="row d-flex justify-content-center mt-5">
+						<div class="col-md-6">
+							<form action="#" class="subscribe-form">
+								<div class="form-group">
+									<span class="icon icon-paper-plane"></span>
+									<input type="text" class="form-control"
+										placeholder="Enter email address">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-<div>
-<h3>Response-</h3>
-<div id="response-panel"></div>
-</div>
+<section class="ftco-section">
+	<div class="container">
+		<div class="row no-gutters justify-content-center mb-5 pb-5">
+			<div class="col-md-7 text-center heading-section ftco-animate">
+				<span class="subheading">Works</span>
+				<h2 class="mb-4">View our works below to see our design and way
+					of development.</h2>
+				<p>Far far away, behind the word mountains, far from the
+					countries Vokalia and Consonantia, there live the blind texts.
+					Separated they live in</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="block-3 d-md-flex ftco-animate"
+				data-scrollax-parent="true">
+				<a href="portfolio.html" class="image"
+					style="background-image: url('images/work-1.jpg');"
+					data-scrollax=" properties: { translateY: '-20%'}"> </a>
+				<div class="text">
+					<h4 class="subheading">Illustration</h4>
+					<h2 class="heading">
+						<a href="portfolio.html">Even the all-powerful Pointing has no
+							control</a>
+					</h2>
+					<p>Even the all-powerful Pointing has no control about the
+						blind texts it is an almost unorthographic life One day however a
+						small line of blind text by the name of Lorem Ipsum decided to
+						leave for the far World of Grammar.</p>
+					<p>
+						<a href="portfolio.html" class="btn btn-primary px-4">View
+							Portfolio</a>
+					</p>
+				</div>
+			</div>
+			<div class="block-3 d-md-flex ftco-animate"
+				data-scrollax-parent="true">
+				<a href="portfolio.html" class="image image-2 order-2"
+					style="background-image: url('images/work-2.jpg');"
+					data-scrollax=" properties: { translateY: '-20%'}"></a>
+				<div class="text order-1">
+					<h4 class="subheading">Application</h4>
+					<h2 class="heading">
+						<a href="portfolio.html">Even the all-powerful Pointing has no
+							control</a>
+					</h2>
+					<p>Even the all-powerful Pointing has no control about the
+						blind texts it is an almost unorthographic life One day however a
+						small line of blind text by the name of Lorem Ipsum decided to
+						leave for the far World of Grammar.</p>
+					<p>
+						<a href="portfolio.html" class="btn btn-primary px-4">View
+							Portfolio</a>
+					</p>
+				</div>
+			</div>
+			<div class="block-3 d-md-flex ftco-animate"
+				data-scrollax-parent="true">
+				<a href="portfolio.html" class="image"
+					style="background-image: url('images/work-3.jpg');"
+					data-scrollax=" properties: { translateY: '-20%'}"></a>
+				<div class="text">
+					<h4 class="subheading">Web Design</h4>
+					<h2 class="heading">
+						<a href="portfolio.html">Even the all-powerful Pointing has no
+							control</a>
+					</h2>
+					<p>Even the all-powerful Pointing has no control about the
+						blind texts it is an almost unorthographic life One day however a
+						small line of blind text by the name of Lorem Ipsum decided to
+						leave for the far World of Grammar.</p>
+					<p>
+						<a href="portfolio.html" class="btn btn-primary px-4">View
+							Portfolio</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<span><a href="#" class="btn btn-primary py-3 px-5">View
+						All Projects</a></span>
+			</div>
+		</div>
+	</div>
+</section>
 
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>
-var _response = $('#response-panel');
+<section class="ftco-section testimony-section bg-light">
+	<div class="container">
+		<div class="row justify-content-center mb-5 pb-5">
+			<div class="col-md-7 text-center heading-section ftco-animate">
+				<span class="subheading">Customer Says</span>
+				<h2 class="mb-4">Our satisfied customer says</h2>
+				<p>Far far away, behind the word mountains, far from the
+					countries Vokalia and Consonantia, there live the blind texts.
+					Separated they live in</p>
+			</div>
+		</div>
+		<div class="row ftco-animate">
+			<div class="col-md-12">
+				<div class="carousel-testimony owl-carousel ftco-owl">
+					<div class="item text-center">
+						<div class="testimony-wrap p-4 pb-5">
+							<div class="user-img mb-4"
+								style="background-image: url(images/person_1.jpg)">
+								<span
+									class="quote d-flex align-items-center justify-content-center">
+									<i class="icon-quote-left"></i>
+								</span>
+							</div>
+							<div class="text">
+								<p class="mb-5">Far far away, behind the word mountains, far
+									from the countries Vokalia and Consonantia, there live the
+									blind texts.</p>
+								<p class="name">Dennis Green</p>
+								<span class="position">Marketing Manager</span>
+							</div>
+						</div>
+					</div>
+					<div class="item text-center">
+						<div class="testimony-wrap p-4 pb-5">
+							<div class="user-img mb-4"
+								style="background-image: url(images/person_2.jpg)">
+								<span
+									class="quote d-flex align-items-center justify-content-center">
+									<i class="icon-quote-left"></i>
+								</span>
+							</div>
+							<div class="text">
+								<p class="mb-5">Far far away, behind the word mountains, far
+									from the countries Vokalia and Consonantia, there live the
+									blind texts.</p>
+								<p class="name">Dennis Green</p>
+								<span class="position">Interface Designer</span>
+							</div>
+						</div>
+					</div>
+					<div class="item text-center">
+						<div class="testimony-wrap p-4 pb-5">
+							<div class="user-img mb-4"
+								style="background-image: url(images/person_3.jpg)">
+								<span
+									class="quote d-flex align-items-center justify-content-center">
+									<i class="icon-quote-left"></i>
+								</span>
+							</div>
+							<div class="text">
+								<p class="mb-5">Far far away, behind the word mountains, far
+									from the countries Vokalia and Consonantia, there live the
+									blind texts.</p>
+								<p class="name">Dennis Green</p>
+								<span class="position">UI Designer</span>
+							</div>
+						</div>
+					</div>
+					<div class="item text-center">
+						<div class="testimony-wrap p-4 pb-5">
+							<div class="user-img mb-4"
+								style="background-image: url(images/person_1.jpg)">
+								<span
+									class="quote d-flex align-items-center justify-content-center">
+									<i class="icon-quote-left"></i>
+								</span>
+							</div>
+							<div class="text">
+								<p class="mb-5">Far far away, behind the word mountains, far
+									from the countries Vokalia and Consonantia, there live the
+									blind texts.</p>
+								<p class="name">Dennis Green</p>
+								<span class="position">Web Developer</span>
+							</div>
+						</div>
+					</div>
+					<div class="item text-center">
+						<div class="testimony-wrap p-4 pb-5">
+							<div class="user-img mb-4"
+								style="background-image: url(images/person_1.jpg)">
+								<span
+									class="quote d-flex align-items-center justify-content-center">
+									<i class="icon-quote-left"></i>
+								</span>
+							</div>
+							<div class="text">
+								<p class="mb-5">Far far away, behind the word mountains, far
+									from the countries Vokalia and Consonantia, there live the
+									blind texts.</p>
+								<p class="name">Dennis Green</p>
+								<span class="position">System Analytics</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-function ajaxList(){
-	var dataSet = new Object();
-	dataSet.username = "kdevkr";
-	dataSet.password = "kdevpass";
-	    $.ajax({
-	        type    : 'GET', // method
-	        //url   : 'list',
-	        url     : '/list?username=kdevkr&password=kdevpass', // GET 요청은 데이터가 URL 파라미터로 포함되어 전송됩니다.
-	        async   : 'true', // true
-	        data    : dataSet, // GET 요청은 지원되지 않습니다.
-	        processData : true, // GET 요청은 데이터가 바디에 포함되는 것이 아니기 때문에 URL에 파라미터 형식으로 추가해서 전송해줍니다.
-	        contentType : 'application/json', // List 컨트롤러는 application/json 형식으로만 처리하기 때문에 컨텐트 타입을 지정해야 합니다.
-	        dataType  : 'json', // 명시하지 않을 경우 자동으로 추측
-	        success : function(data, status, xhr){
-	        	responseJson(data);
-	        },
-	        error   : function(error){
-	            console.log("error", error);
-	            responseError(error);
-	        }
-	        });
-	}
-	
-function ajaxListNobody(){
-	var dataSet = new Object();
-	dataSet.username = "kdevkr";
-	dataSet.password = "kdevpass";
-	    $.ajax({
-	        type    : 'GET', // method
-	        //url     : 'list_nobody',
-	        url       : 'list_nobody?username=kdevkr&password=kdevpass', // GET 요청은 데이터가 URL 파라미터로 포함되어 전송됩니다.
-	        async   : 'true', // true
-	        data    : dataSet, // GET 요청은 지원되지 않습니다.
-	        processData : true, // GET 요청은 데이터가 바디에 포함되는 것이 아니기 때문에 URL에 파라미터 형식으로 추가해서 전송해줍니다.
-	        contentType : 'application/json', // List 컨트롤러는 application/json 형식으로만 처리하기 때문에 컨텐트 타입을 지정해야 합니다.
-	        dataType  : 'json', // 명시하지 않을 경우 자동으로 추측
-	        success : function(data, status, xhr){
-	        	responseJson(data);
-	        },
-	        error   : function(error){
-	            console.log("error", error);
-	            responseError(error);
-	        }
-	        });
-	}
-function ajaxListModel(){
-	var dataSet = new Object();
-	dataSet.username = "kdevkr";
-	dataSet.password = "kdevpass";
-	    $.ajax({
-	        type    : 'GET', // method
-	        //url     : 'list_model',
-	        url       : 'list?username=kdevkr&password=kdevpass', // GET 요청은 데이터가 URL 파라미터로 포함되어 전송됩니다.
-	        async   : 'true', // true
-	        data    : dataSet, // GET 요청은 지원되지 않습니다.
-	        processData : true, // GET 요청은 데이터가 바디에 포함되는 것이 아니기 때문에 URL에 파라미터 형식으로 추가해서 전송해줍니다.
-	        contentType : 'application/json', // List 컨트롤러는 application/json 형식으로만 처리하기 때문에 컨텐트 타입을 지정해야 합니다.
-	        dataType  : 'json', // 명시하지 않을 경우 자동으로 추측
-	        success : function(data, status, xhr){
-	        	responseJson(data);
-	        },
-	        error   : function(error){
-	            console.log("error", error);
-	            responseError(error);
-	        }
-	        });
-	}
-function ajaxMap(){
-    var dataSet = new Object();
-    dataSet.username = "kdevkr";
-    dataSet.password = "kdevpass";
-    $.ajax({
-        type    : 'PUT', // method
-        url     : 'map', // PUT 요청은 데이터가 요청 바디에 포함됩니다.
-        async   : 'true', // true
-        data    : JSON.stringify(dataSet),
-        contentType : 'application/json',
-        dataType  : 'json', // 명시하지 않을 경우 자동으로 추측
-        success : function(data, status, xhr){
-        	responseJson(data);
-        },
-        error   : function(error){
-            console.log("error", error);
-            responseError(error);
-        }
-        });
-}
-function ajaxMap_Get(){
-    var dataSet = new Object();
-    dataSet.username = "kdevkr";
-    dataSet.password = "kdevpass";
-    $.ajax({
-        type    : 'GET', // method
-        url     : 'map_get', 
-        async   : 'true', // true
-        data    : dataSet,
-        contentType : 'application/json',
-        dataType  :'json', // 명시하지 않을 경우 자동으로 추측
-        success : function(data, status, xhr){
-        	responseJson(data);
-        },
-        error   : function(error){
-            console.log("error", error);
-            responseError(error);
-        }
-        });
-}
-function ajaxEntity(){
-    var dataSet = new Object();
-    dataSet.username = "kdevkr";
-    dataSet.password = "kdevpass";
-    $.ajax({
-        type    : 'POST', // method
-        url     : 'entity', // POST 요청은 데이터가 요청 바디에 포함됩니다.
-        async   : 'true', // true
-        data    : JSON.stringify(dataSet),
-        contentType : 'application/json',
-        dataType  :'json', // 명시하지 않을 경우 자동으로 추측
-        success : function(data, status, xhr){
-        	responseJson(data);
-        },
-        error   : function(error){
-            console.log("error", error);
-            responseError(error);
-        }
-        });
-}
-function ajaxEntityNobody(){
-    var dataSet = new Object();
-    dataSet.username = "kdevkr";
-    dataSet.password = "kdevpass";
-    $.ajax({
-        type    : 'POST', // method
-        url     : 'entity_nobody', // POST 요청은 데이터가 요청 바디에 포함됩니다.
-        async   : 'true', // true
-        data    : JSON.stringify(dataSet),
-        contentType : 'application/json',
-        dataType  :'json', // 명시하지 않을 경우 자동으로 추측
-        success : function(data, status, xhr){
-        	responseJson(data);
-        },
-        error   : function(error){
-            console.log("error", error);
-            responseError(error);
-        }
-        });
-}
-function ajaxEntityNobodyParam(){
-    var dataSet = new Object();
-    dataSet.username = "kdevkr";
-    dataSet.password = "kdevpass";
-    $.ajax({
-        type    : 'POST', // method
-        url     : 'entity_nobody_param?param=kdevkr@gmail.com', // POST 요청은 데이터가 요청 바디에 포함됩니다.
-        async   : 'true', // true
-        data    : JSON.stringify(dataSet),
-        contentType : 'application/json',
-        dataType  :'json', // 명시하지 않을 경우 자동으로 추측
-        success : function(data, status, xhr){
-        	responseJson(data);
-        },
-        error   : function(error){
-            console.log("error", error);
-            responseError(error);
-      	  }
-        });
-}
+<section class="ftco-section ftco-counter" id="section-counter">
+	<div class="container">
+		<div class="row justify-content-center mb-5 pb-5">
+			<div
+				class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+				<h2>Our achievements</h2>
+				<p>Far far away, behind the word mountains, far from the
+					countries Vokalia and Consonantia, there live the blind texts.
+					Separated they live in</p>
+			</div>
+		</div>
+		<div class="row">
+			<div
+				class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
+				<div class="block-18 text-center">
+					<div class="text">
+						<strong class="number" data-number="400">0</strong> <span>Customers
+							are satisfied with our professional support</span>
+					</div>
+				</div>
+			</div>
+			<div
+				class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
+				<div class="block-18 text-center">
+					<div class="text">
+						<strong class="number" data-number="1000">0</strong> <span>Amazing
+							preset options to be mixed and combined</span>
+					</div>
+				</div>
+			</div>
+			<div
+				class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
+				<div class="block-18 text-center">
+					<div class="text">
+						<strong class="number" data-number="8000">0</strong> <span>Average
+							response time on live chat support channel</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-function convertJson(data){
-	return JSON.stringify(data, true, 2);
-}
+<section class="ftco-section bg-light">
+	<div class="container">
+		<div class="row justify-content-center mb-5 pb-5">
+			<div class="col-md-7 text-center heading-section ftco-animate">
+				<span class="subheading">Blog</span>
+				<h2>Recent Blog</h2>
+				<p>Far far away, behind the word mountains, far from the
+					countries Vokalia and Consonantia, there live the blind texts.
+					Separated they live in</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 ftco-animate">
+				<div class="blog-entry">
+					<a href="blog-single.html" class="block-20"
+						style="background-image: url('images/image_1.jpg');"> </a>
+					<div class="text p-4 d-block">
+						<div class="meta mb-3">
+							<div>
+								<a href="#">July 12, 2018</a>
+							</div>
+							<div>
+								<a href="#">Admin</a>
+							</div>
+							<div>
+								<a href="#" class="meta-chat"><span class="icon-chat"></span>
+									3</a>
+							</div>
+						</div>
+						<h3 class="heading">
+							<a href="#">Even the all-powerful Pointing has no control
+								about the blind texts</a>
+						</h3>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 ftco-animate">
+				<div class="blog-entry" data-aos-delay="100">
+					<a href="blog-single.html" class="block-20"
+						style="background-image: url('images/image_2.jpg');"> </a>
+					<div class="text p-4">
+						<div class="meta mb-3">
+							<div>
+								<a href="#">July 12, 2018</a>
+							</div>
+							<div>
+								<a href="#">Admin</a>
+							</div>
+							<div>
+								<a href="#" class="meta-chat"><span class="icon-chat"></span>
+									3</a>
+							</div>
+						</div>
+						<h3 class="heading">
+							<a href="#">Even the all-powerful Pointing has no control
+								about the blind texts</a>
+						</h3>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 ftco-animate">
+				<div class="blog-entry" data-aos-delay="200">
+					<a href="blog-single.html" class="block-20"
+						style="background-image: url('images/image_3.jpg');"> </a>
+					<div class="text p-4">
+						<div class="meta mb-3">
+							<div>
+								<a href="#">July 12, 2018</a>
+							</div>
+							<div>
+								<a href="#">Admin</a>
+							</div>
+							<div>
+								<a href="#" class="meta-chat"><span class="icon-chat"></span>
+									3</a>
+							</div>
+						</div>
+						<h3 class="heading">
+							<a href="#">Even the all-powerful Pointing has no control
+								about the blind texts</a>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-function responseJson(data){
-	_response.html(convertJson(data));
-}
-
-function responseError(data){
-	_response.html(data.responseText);
-}
-</script>
-</body>
-</html>
+<jsp:include page="info/footer.jsp"></jsp:include>
