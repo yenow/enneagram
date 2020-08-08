@@ -90,7 +90,7 @@ public class BoardController {
 		
 		/* Date를 String으로 포맷 변환*/
 		for(BoardVO board : blist) {
-			board.setS_regdate(OracleDateChange.changeDate(board.getRegdate()));  
+		// 여기 오류난다	board.setS_regdate(OracleDateChange.changeDate(board.getRegdate()));  
 		}
 		mv.addObject("blist",blist);
 		mv.addObject("count",count);
@@ -119,7 +119,7 @@ public class BoardController {
 		}
 		
 		BoardVO b = boardService.selectboard(bno,session,session.getId());
-		b.setS_regdate(OracleDateChange.changeDate(b.getRegdate()));
+		// b.setS_regdate(OracleDateChange.changeDate(b.getRegdate()));
 		mv.addObject("b", b);
 		
 		

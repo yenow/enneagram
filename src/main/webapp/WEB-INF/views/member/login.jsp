@@ -16,7 +16,7 @@
 		<div class="row justify-content-center content-margin">
 			<div class="login-box col-md-5 text-center">
 				<form action="${pageContext.request.contextPath}/member/login_ok" method="post">
-					<h2 class="pb-2 pt-5">로그인</h2>
+					<h2 class="pb-2 pt-2">로그인</h2>
 					<%-- <img alt="로고사진" src="${pageContext.request.contextPath}/resources/img/logo.png" class="logo"> --%>
 					<input type="text" class="form-control mt-3" placeholder="아이디">
 					<input type="password" class="form-control my-3" placeholder="비밀번호">
@@ -39,10 +39,6 @@
 		</div>
 	</div>
 </section>
-
-<script>
-
-</script>
 
 
 <jsp:include page="../info/footer.jsp"></jsp:include>

@@ -1,7 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<jsp:include page="../c_info/header.jsp"></jsp:include>
+<jsp:include page="../info/header.jsp"></jsp:include>
+
+<div class="hero-wrap js-fullheight">
+	<!-- 분홍색 배경 -->
+	<div class="overlay"></div>
+	<!-- 동적인 처리 -->
+	<div id="particles-js"></div>
+</div>
+
+<section class="">
+	<div class="container">
+		<div class="row justify-content-center content-margin text-center">
+			<h2>속닥속닥</h2>
+			<div class="table col-md-12 board-list">
+				<ul>
+					<li class="text-left"><span>[1번유형]</span>제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목</li>
+					<li>
+						<span>작성자</span> <span>조회수</span> <span>등록일</span> <span>좋아요</span>
+					</li>
+
+				</ul>
+				<ul>
+					<li>제목</li>
+					<li>
+						<span>작성자</span> <span>조회수</span> <span>등록일</span> <span>좋아요</span>
+					</li>
+				</ul>
+				<ul>
+					<li>제목</li>
+					<li>
+						<span>작성자</span> <span>조회수</span> <span>등록일</span> <span>좋아요</span>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="row mt-5">
+		<div class="col text-center">
+			<div class="block-27">
+				<ul>
+					<li>
+						<a href="#">&lt;</a>
+					</li>
+					<li class="active">
+						<span>1</span>
+					</li>
+					<li>
+						<a href="#">2</a>
+					</li>
+					<li>
+						<a href="#">3</a>
+					</li>
+					<li>
+						<a href="#">4</a>
+					</li>
+					<li>
+						<a href="#">5</a>
+					</li>
+					<li>
+						<a href="#">&gt;</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<jsp:include page="../info/footer.jsp"></jsp:include>
+
+
+<%-- 
 
 <body class="is-preload">
 
@@ -110,7 +182,7 @@
 <jsp:include page="../c_info/footer.jsp"></jsp:include>
 
 
-<%-- 
+
 <div id="content">
 	<div class="container">
 		<div class="row">
@@ -157,7 +229,7 @@
 		</div>
 	</div>
 </div>
- --%>
+
 
 
 
@@ -200,4 +272,4 @@
 						</tr>
 					</table>
 				</form>
- -->
+ --> --%>

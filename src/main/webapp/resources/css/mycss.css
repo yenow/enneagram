@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+ol, ul {
+    list-style: none;
+    margin:0px; padding:0px;
+}
+
 .logo {
 	width: 100%;
 	height: 4em;
@@ -19,10 +24,6 @@
 	margin: 1em 0;
 	color: red;
 	line-height: 1em; 
-}
-
-.text-left {
-	text-align: left;
 }
 
 /* input[type="checkbox"]:checked {
@@ -75,3 +76,61 @@ input[type="radio"]:checked + label span {
      background:url('../img/icon/checkbox.svg') -26px top no-repeat;
      background-size: cover;
 }
+
+
+.board-list {
+	margin: 0;
+	padding: 0;
+}
+
+.board-list ul {
+	border-bottom: 1px solid #ddd;
+	padding: 1em 0;
+
+}
+
+.board-list ul:first-child {
+	border-top: 1px solid #ddd;
+}
+
+
+.board-list li {
+	display: inline-block;
+	height: 1em;
+	line-height: 1em;
+}
+
+/* 글씨가 넘어가면 짤림 */
+.board-list li:first-child{
+	width: 60%;
+	font-weight: bolder;
+	overflow: hidden;
+  	text-overflow: ellipsis;
+}
+
+.board-list li:first-child span:nth-child(2){
+	
+}
+
+
+.board-list li:nth-child(2){
+	width: 39%;
+}
+
+.board-list li span{
+	padding: 0 0.5em;
+}
+
+
+@media screen and (max-width: 780px) {
+	.board-list li:first-child{
+		width: 100%;
+	}
+	.board-list li:nth-child(2){
+		display: block;
+		margin-top : 1em;
+		font-size: 12px;
+		text-align: left;
+	}
+}
+

@@ -56,12 +56,13 @@
 							<a class="dropdown-item" href="portfolio-single.html">9가지 유형</a>
 						</div>
 					</li>
+
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="portfolio.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">게시판</a>
+						<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/board/boardList" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">게시판</a>
 						<div class="dropdown-menu" aria-labelledby="dropdown04">
-							<a class="dropdown-item" href="portfolio.html">공지사항</a> 
-							<a class="dropdown-item" href="portfolio-single.html">속닥속닥</a>
-							<a class="dropdown-item" href="portfolio-single.html">자료실</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList">공지사항</a> 
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList">속닥속닥</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList">자료실</a>
 						</div>
 					</li>
 						

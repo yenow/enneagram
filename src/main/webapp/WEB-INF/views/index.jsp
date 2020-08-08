@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <jsp:include page="info/header.jsp"></jsp:include>
 
@@ -16,7 +17,10 @@
 						We love <strong>All People</strong> 
 					</h1>
 					<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-						<a href="#" class="btn btn-primary btn-outline-white px-5 py-3">login</a>
+						<c:if test="${login eq null }">
+							<a href="#" class="btn btn-primary btn-outline-white px-5 py-3">login</a>
+						</c:if>
+						
 					</p>
 				</div>
 			</div>
