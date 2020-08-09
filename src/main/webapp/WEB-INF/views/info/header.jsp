@@ -30,6 +30,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mycss.css">
 
+<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
 </head>
 <body>
 

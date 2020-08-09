@@ -134,3 +134,19 @@ input[type="radio"]:checked + label span {
 	}
 }
 
+
+.sub-9 {
+	display: none;
+}
+
+.categorys .dropdown-toggle {
+	color: #ee76ad;
+}
+
+.sub-9 {
+	margin-top: 1em;
+}
+.sub-9 li {
+	font-size: 13px;
+	padding-left: 1em;
+}
