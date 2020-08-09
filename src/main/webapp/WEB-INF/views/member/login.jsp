@@ -17,14 +17,17 @@
 			<div class="login-box col-md-5 text-center">
 				<form action="${pageContext.request.contextPath}/member/login_ok" method="post">
 					<h2 class="pb-2 pt-2">로그인</h2>
-					<%-- <img alt="로고사진" src="${pageContext.request.contextPath}/resources/img/logo.png" class="logo"> --%>
-					<input type="text" class="form-control mt-3" placeholder="아이디">
-					<input type="password" class="form-control my-3" placeholder="비밀번호">
+					<!-- 아이디 -->
+					<input type="text" name="id" class="form-control mt-3" placeholder="아이디">
+					<!-- 비밀번호 -->
+					<input type="password" name="password" class="form-control my-3" placeholder="비밀번호">
+					
 					<p>
 						<input type="checkbox" id="log-check" class="float-left">
 						<label class="float-left" for="log-check"> <span></span> 로그인 상태 유지
 						</label>
 					</p>
+					
 					<div class="comment-form-wrap"></div>
 					<p>
 						<a href="#" class="float-left">아이디찾기</a> <a href="#" class="float-left ml-2">비밀번호찾기</a> <a href="${pageContext.request.contextPath}/member/member_insert" class="float-right">회원가입</a>

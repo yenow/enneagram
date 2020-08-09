@@ -46,13 +46,9 @@ public class BoardController {
 	
 	@PostMapping("/boardWrite_ok")
 	public String boardWrite_ok(BoardVO board) {
-		System.out.println(board.getTitle());
-		System.out.println(board.getContent());
-		System.out.println(Integer.toString(board.getType()));
-		System.out.println(board.getCategory());
-		System.out.println(Integer.toString(board.getMno()));
-		// boardService.insertBoard(board);
-		return "redirect:/";
+		
+		boardService.insertBoard(board);
+		return "redirect:/board/boardList";
 	}
 	
 	/* 게시판 리스트 */
@@ -144,7 +140,8 @@ public class BoardController {
 	
 	//게시판 수정페이지로 이동
 	@RequestMapping(value = "/boardUpdate", method = RequestMethod.GET)
-	public void boardUpdate(Model m ,BoardVO b) {
+	public void boardUpdate(Model m ,int bno,HttpSession session) {
+		BoardVO b = boardService.selectboard(bno,session,session.getId());
 		m.addAttribute("b", b);
 	}
 	

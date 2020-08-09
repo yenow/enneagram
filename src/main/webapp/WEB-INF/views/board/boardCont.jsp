@@ -21,22 +21,46 @@
 						<!-- 제목 -->
 						<h2 class="col-md-12 row text-center mb-1">${b.title }</h2>
 						<!-- 서브정보 -->
-						<div class="col-md-12 row border-bottom">[${b.type }번유형]  조회수: ${b.cnt }  ${b.moddate }</div>
+						<table class="row col-md-12 my-2">
+						  <tbody class="col-md-12" style="padding: 0 !important;">
+						    <tr class="float-left">
+						      <td class="align-middle border-0 px-2" >[${b.type }번유형]</td>
+						      <td class="align-middle border-0 px-2">조회수: ${b.cnt }</td>
+						      <td class="align-middle border-0 px-2"> ${b.moddate }-top</td>
+						
+						    </tr>
+						    <tr class="float-right">
+						      
+						      <td class="align-middle border-0 px-2" ><img src="../resources/images/person_1.jpg" alt="Image placeholder" class="img-fluid my-img float-right"></td>
+						      <td class="align-middle border-0 px-2" >${b.nickname }</td>
+						    </tr>
+						  </tbody>
+						</table>
+						
 						<!-- 내용 -->
-						<div class="col-md-12 row " style="min-height: 500px;">내용</div>
+						<div class="col-md-12 row mt-1" style="min-height: 500px;">내용</div>
 						
+						<!--  태그 -->
+						<div class="tag-widget post-tag-container mb-5 mt-5">
+				              <div class="tagcloud">
+				              	<span class="float-left">
+				                <a href="#" class="tag-cloud-link">Life</a>
+				                <a href="#" class="tag-cloud-link">Sport</a>
+				                <a href="#" class="tag-cloud-link">Tech</a>
+				                <a href="#" class="tag-cloud-link">Travel</a>
+				               
+				                </span>
+				                <span class="float-right">
+				                
+				                	<c:if test="${login.mno == b.mno }">
+									  <a href="${pageContext.request.contextPath}/board/boardUpdate?bno=${b.bno}" class="btn btn-primary btn-lg">수정</a>
+				                	  <a href="${pageContext.request.contextPath}/board/boardDelete?bno=${b.bno}" class="btn btn-primary btn-lg">삭제</a>
+									</c:if>
+				                	  <a href="${pageContext.request.contextPath}/board/boardList" class="btn btn-primary btn-lg">목록</a>
+				                </span>
+				              </div>
+           				 </div>
 						
-						<!-- 자기소개 -->
-						<div class="about-author d-flex p-5 bg-light">
-							<div class="bio align-self-md-center mr-5">
-								<img src="../resources/images/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4">
-							</div>
-							<div class="desc align-self-md-center">
-								<h3>${b.nickname }</h3>
-								<p></p>
-							</div>
-						</div>
-
 						<!-- 댓글 -->
 						<div class="pt-5 mt-5">
 							<h3 class="mb-5">6 Comments</h3>

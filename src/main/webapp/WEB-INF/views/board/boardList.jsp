@@ -31,7 +31,7 @@
 		</div>
 
 		<div class="row text-right">
-			<a class="btn btn-primary" href="${pageContext.request.contextPath}/board/boardWrite">글쓰기</a>
+			<a class="btn btn-primary float-right" href="${pageContext.request.contextPath}/board/boardWrite">글쓰기</a>
 		</div>
 
 		<div class="row mt-5">

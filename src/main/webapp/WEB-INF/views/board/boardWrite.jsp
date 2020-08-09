@@ -65,7 +65,7 @@
 		<div class="content-margin">
 			<h2 class="text-center mb-3">게시판 등록</h2>
 			<form action="${pageContext.request.contextPath}/board/boardWrite_ok" method="post">
-				<input type="hidden" name="mno" value="<%-- ${login.mno } --%>1">
+				<input type="hidden" name="mno" value="${login.mno }">
 				
 				<!-- category  -->
 				<c:if test="${login.category == '관리자' }">

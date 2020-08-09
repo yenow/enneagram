@@ -8,12 +8,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="b_insert">
 		insert into board (bno,mno,title,content,category,regdate,type,moddate) values 
-		(nextval('bno'),#{id},'#{title},#{content},'속닥속닥',sysdate(),1,sysdate())
+		(nextval('bno'),#{mno},#{title},#{content},'속닥속닥',sysdate(),#{type},sysdate())
 	</insert>
 	
 	<!-- 게시판 리스트 가져오기 -->
 	<select id="b_list" resultType="b">
-		select b.*,id,nickname from member m join board b where m.mno = b.mno
+		select b.*,id,nickname from member m inner join board b where m.mno = b.mno;
 		<!-- <![CDATA[   select * from (select @rownum:=@rownum+1 as rnum, A.* from board A, (select @rownum:=0) TMP) TPM where rnum <= #{end} and rnum >= #{start}  ]]> -->
 		<!-- <![CDATA[select * from (select rownum as rnum, e.* from (select * from board order by bno desc) e) where rnum <= #{end} and rnum >= #{start}]]> -->
 		<!-- 부등호를 사용할경우 '>', '<' 같은게 코드랑 겹치기 때문에 <![CDATA[]]> 방법을 쓴다!  -->
@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 
 	<insert id="b_update">
-		update board set user_id=#{user_id} ,title=#{title} ,content=#{content},
+		update board set id=#{id} ,title=#{title} ,content=#{content}, type=#{type}
 		moddate=sysdate() where bno = #{bno}
 	</insert>
 	
