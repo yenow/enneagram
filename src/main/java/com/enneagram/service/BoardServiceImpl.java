@@ -30,6 +30,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public BoardVO selectboard(int bno,HttpSession session,String sessionId) {
 		
+		/* 세션을 줘서 조회수 하나만 오르게*/
 		if(session.getAttribute("board"+Integer.toString(bno))==null) {
 			/* System.out.println("null이였어!"); */
 			session.setAttribute("board"+Integer.toString(bno), session.getId());

@@ -15,64 +15,52 @@
 		<div class="row justify-content-center content-margin text-center">
 			<h2>속닥속닥</h2>
 			<div class="table col-md-12 board-list">
-				<ul>
-					<li class="text-left"><span>[1번유형]</span>제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목</li>
-					<li>
-						<span>작성자</span> <span>조회수</span> <span>등록일</span> <span>좋아요</span>
-					</li>
+				<c:forEach var="b" items="${blist }">
+					<ul>
+						<li class="text-left">
+							<a href="${pageContext.request.contextPath}/board/boardCont?bno=${b.bno}"> <span>[1번유형]</span>${b.title} </a>
+						</li>
+						<li>
+							<span>${b.nickname }</span> <span>${b.cnt }</span> <span>${b.regdate }</span> <span>${b.likey }</span>
+						</li>
 
-				</ul>
-				<ul>
-					<li>제목</li>
-					<li>
-						<span>작성자</span> <span>조회수</span> <span>등록일</span> <span>좋아요</span>
-					</li>
-				</ul>
-				<ul>
-					<li>제목</li>
-					<li>
-						<span>작성자</span> <span>조회수</span> <span>등록일</span> <span>좋아요</span>
-					</li>
-				</ul>
+					</ul>
+				</c:forEach>
 			</div>
 
 		</div>
-	</div>
 
-	<!-- 검색폼 -->
-	<form action="#" class="search-form">
-		<div class="form-group">
-			<span class="icon fa fa-search"></span>
-			<input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+		<div class="row text-right">
+			<a class="btn btn-primary" href="${pageContext.request.contextPath}/board/boardWrite">글쓰기</a>
 		</div>
-	</form>
 
-	<div class="row mt-5">
-		<div class="col text-center">
-			<div class="block-27">
-				<ul>
-					<li>
-						<a href="#">&lt;</a>
-					</li>
-					<li class="active">
-						<span>1</span>
-					</li>
-					<li>
-						<a href="#">2</a>
-					</li>
-					<li>
-						<a href="#">3</a>
-					</li>
-					<li>
-						<a href="#">4</a>
-					</li>
-					<li>
-						<a href="#">5</a>
-					</li>
-					<li>
-						<a href="#">&gt;</a>
-					</li>
-				</ul>
+		<div class="row mt-5">
+			<div class="col text-center">
+				<div class="block-27">
+					<ul>
+						<li>
+							<a href="#">&lt;</a>
+						</li>
+						<li class="active">
+							<span>1</span>
+						</li>
+						<li>
+							<a href="#">2</a>
+						</li>
+						<li>
+							<a href="#">3</a>
+						</li>
+						<li>
+							<a href="#">4</a>
+						</li>
+						<li>
+							<a href="#">5</a>
+						</li>
+						<li>
+							<a href="#">&gt;</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -15,10 +15,6 @@ ol, ul {
 	height: 4em;
 }
 
-.content-margin {
-	padding: 6em 0;
-}
-
 .member-insert p {
 	height: 1em;
 	margin: 1em 0;
@@ -150,3 +146,32 @@ input[type="radio"]:checked + label span {
 	font-size: 13px;
 	padding-left: 1em;
 }
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media screen and (min-width: 576px) { 
+	.content-margin {
+	padding: 1em 0;
+}
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width: 768px) { 
+	.content-margin {
+		padding: 2em 0;
+	}
+}
+
+/* Large devices (desktops, 992px and up) */
+@media screen and (min-width: 992px) { 
+	.content-margin {
+	padding: 4em 0;
+}
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media screen and (min-width: 1200px) { 
+	.content-margin {
+	padding: 6em 0;
+}
+ }

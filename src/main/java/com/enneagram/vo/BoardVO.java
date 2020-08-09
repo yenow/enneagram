@@ -23,6 +23,8 @@ public class BoardVO {
 	private int type;
 	private int start;
 	private int end;
+	private String id;
+	private String nickname;
 
 	private String search;
 	private String search_type;

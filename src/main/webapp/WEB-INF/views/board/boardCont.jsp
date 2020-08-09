@@ -2,10 +2,197 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<jsp:include page="../info/header.jsp"></jsp:include>
+
+<!-- <div class="js-fullheight"> -->
+<div class="hero-wrap js-fullheight">
+	<!-- 분홍색 배경 -->
+	<div class="overlay"></div>
+	<!-- 동적인 처리 -->
+	<div id="particles-js"></div>
+</div>
+
+<section class="">
+	<div class="container">
+		<div class="row justify-content-center content-margin">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 ftco-animate">
+						<!-- 제목 -->
+						<h2 class="col-md-12 row text-center mb-1">${b.title }</h2>
+						<!-- 서브정보 -->
+						<div class="col-md-12 row border-bottom">[${b.type }번유형]  조회수: ${b.cnt }  ${b.moddate }</div>
+						<!-- 내용 -->
+						<div class="col-md-12 row " style="min-height: 500px;">내용</div>
+						
+						
+						<!-- 자기소개 -->
+						<div class="about-author d-flex p-5 bg-light">
+							<div class="bio align-self-md-center mr-5">
+								<img src="../resources/images/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4">
+							</div>
+							<div class="desc align-self-md-center">
+								<h3>${b.nickname }</h3>
+								<p></p>
+							</div>
+						</div>
+
+						<!-- 댓글 -->
+						<div class="pt-5 mt-5">
+							<h3 class="mb-5">6 Comments</h3>
+							<ul class="comment-list">
+								<li class="comment">
+									<div class="vcard bio">
+										<img src="../resources/images/person_1.jpg" alt="Image placeholder">
+									</div>
+									<div class="comment-body">
+										<h3>John Doe</h3>
+										<div class="meta">June 27, 2018 at 2:21pm</div>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+										<p>
+											<a href="#" class="reply">Reply</a>
+										</p>
+									</div>
+								</li>
+
+								<li class="comment">
+									<div class="vcard bio">
+										<img src="images/person_1.jpg" alt="Image placeholder">
+									</div>
+									<div class="comment-body">
+										<h3>John Doe</h3>
+										<div class="meta">June 27, 2018 at 2:21pm</div>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+										<p>
+											<a href="#" class="reply">Reply</a>
+										</p>
+									</div>
+
+									<ul class="children">
+										<li class="comment">
+											<div class="vcard bio">
+												<img src="images/person_1.jpg" alt="Image placeholder">
+											</div>
+											<div class="comment-body">
+												<h3>John Doe</h3>
+												<div class="meta">June 27, 2018 at 2:21pm</div>
+												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+												<p>
+													<a href="#" class="reply">Reply</a>
+												</p>
+											</div>
+
+
+											<ul class="children">
+												<li class="comment">
+													<div class="vcard bio">
+														<img src="images/person_1.jpg" alt="Image placeholder">
+													</div>
+													<div class="comment-body">
+														<h3>John Doe</h3>
+														<div class="meta">June 27, 2018 at 2:21pm</div>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+														<p>
+															<a href="#" class="reply">Reply</a>
+														</p>
+													</div>
+
+													<ul class="children">
+														<li class="comment">
+															<div class="vcard bio">
+																<img src="images/person_1.jpg" alt="Image placeholder">
+															</div>
+															<div class="comment-body">
+																<h3>John Doe</h3>
+																<div class="meta">June 27, 2018 at 2:21pm</div>
+																<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+																<p>
+																	<a href="#" class="reply">Reply</a>
+																</p>
+															</div>
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+
+								<li class="comment">
+									<div class="vcard bio">
+										<img src="images/person_1.jpg" alt="Image placeholder">
+									</div>
+									<div class="comment-body">
+										<h3>John Doe</h3>
+										<div class="meta">June 27, 2018 at 2:21pm</div>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+										<p>
+											<a href="#" class="reply">Reply</a>
+										</p>
+									</div>
+								</li>
+							</ul>
+							<!-- END comment-list -->
+
+							<div class="comment-form-wrap pt-5">
+								<h3 class="mb-5">Leave a comment</h3>
+								<form action="#" class="p-5 bg-light">
+									<div class="form-group">
+										<label for="name">Name *</label>
+										<input type="text" class="form-control" id="name">
+									</div>
+									<div class="form-group">
+										<label for="email">Email *</label>
+										<input type="email" class="form-control" id="email">
+									</div>
+									<div class="form-group">
+										<label for="website">Website</label>
+										<input type="url" class="form-control" id="website">
+									</div>
+
+									<div class="form-group">
+										<label for="message">Message</label>
+										<textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+									</div>
+									<div class="form-group">
+										<input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+									</div>
+
+								</form>
+							</div>
+						</div>
+
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<jsp:include page="../info/footer.jsp"></jsp:include>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%-- 
 <jsp:include page="../c_info/header.jsp"></jsp:include>
 
-<%-- <span class="ir_su" id="r_user_id" data-user-id='${login.user_id }'></span>
-<span class="ir_su" id="r_nickname" data-nickname='${login.nickname }'></span> --%>
+<span class="ir_su" id="r_user_id" data-user-id='${login.user_id }'></span>
+<span class="ir_su" id="r_nickname" data-nickname='${login.nickname }'></span>
 
 <!-- Main -->
 <div id="main">
@@ -49,7 +236,7 @@
 					</c:if></li>
 
 					<li class="reply_box">
-						<%-- <span>댓글 개수 : ${b.rcnt }</span>  --%> 
+						<span>댓글 개수 : ${b.rcnt }</span>  
 						
 						 <!-- 댓글 --> 
 						 <!-- reply_content -->
@@ -303,3 +490,4 @@
 
 <jsp:include page="../c_info/sidebar.jsp"></jsp:include>
 <jsp:include page="../c_info/footer.jsp"></jsp:include>
+ --%>

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,23 +32,47 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/board")
 @Slf4j
 public class BoardController {
-
+	
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+	
 	@Autowired
 	private BoardService boardService;
 	
 	//게시판 작성
-	@RequestMapping(value = "/boardWrite", method = RequestMethod.GET)
+	@GetMapping("/boardWrite")
 	public void boardWrite() {
 		
 	}
 	
+	@PostMapping("/boardWrite_ok")
+	public String boardWrite_ok(BoardVO board) {
+		System.out.println(board.getTitle());
+		System.out.println(board.getContent());
+		System.out.println(Integer.toString(board.getType()));
+		System.out.println(board.getCategory());
+		System.out.println(Integer.toString(board.getMno()));
+		// boardService.insertBoard(board);
+		return "redirect:/";
+	}
+	
+	/* 게시판 리스트 */
+	@RequestMapping(value = "/boardList", method = RequestMethod.GET)  
+	public String boardList(Model m) {
+		BoardVO bo = new BoardVO();
+		List<BoardVO> blist = boardService.selectList(bo);
+		m.addAttribute("blist", blist);
+		
+		return "/board/boardList";
+	}
+	
 	//게시판 리스트 ,  리스트를 jsp파일로 넘기는게 필요하다. Model을 활용해서 넘긴다.
+	/*
 	@RequestMapping(value = "/boardList", method = RequestMethod.GET)  
 	public ModelAndView boardList(HttpServletRequest request, @RequestParam(defaultValue = "10", value = "maxLine") String maxLine,
 			 @RequestParam(defaultValue = "", value = "search") String search,  @RequestParam(defaultValue = "", value = "search_type") String search_type) {
 		ModelAndView mv = new ModelAndView("board/boardList");
 		
-		/* lineMax 설정 */
+		// lineMax 설정 
 		int lineMax=Integer.parseInt(maxLine);
 		int page;
 		if(request.getParameter("startnum")==null || Integer.parseInt(request.getParameter("startnum"))<=0) {
@@ -55,7 +81,7 @@ public class BoardController {
 			page = Integer.parseInt(request.getParameter("startnum"));
 		}
 		
-		/* count 계산 */
+		// count 계산 
 		List<BoardVO> list = boardService.boardCount(); // 게시판의 개수를 가져오는 함수
 		int count=0;
 		for(BoardVO a : list) {
@@ -88,7 +114,7 @@ public class BoardController {
 			blist = boardService.selectListSearch(bo);
 		}
 		
-		/* Date를 String으로 포맷 변환*/
+		// Date를 String으로 포맷 변환 
 		for(BoardVO board : blist) {
 		// 여기 오류난다	board.setS_regdate(OracleDateChange.changeDate(board.getRegdate()));  
 		}
@@ -98,31 +124,21 @@ public class BoardController {
 		
 		return mv;
 	}
+	*/
 	
-	//게시판 작성을 데이터베이스로 입력
-	@RequestMapping("/boardWrite_ok")
-	public ModelAndView boardWrite_ok(BoardVO bo) {
-		ModelAndView mv = new ModelAndView("redirect:/board/boardList");
-		boardService.insertBoard(bo);
-		return mv;
-	}
 	
 	//게시판 내용보기
 	@GetMapping("/boardCont")
 	public ModelAndView boardCont(int bno, HttpSession session) {
-		ModelAndView mv = new ModelAndView("board/boardCont");
+		ModelAndView mv = new ModelAndView("/board/boardCont");
 		
-		/* 댓글 조회수 막기 기능*/
+		/* 댓글 조회수 막기 기능 */
 		if(session.getAttribute(Integer.toString(bno))==null) {
 			session.setAttribute(Integer.toString(bno), session.getId());
 			session.setMaxInactiveInterval(3600);
 		}
-		
 		BoardVO b = boardService.selectboard(bno,session,session.getId());
-		// b.setS_regdate(OracleDateChange.changeDate(b.getRegdate()));
 		mv.addObject("b", b);
-		
-		
 		return mv;
 	}
 	
