@@ -9,5 +9,6 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 		<typeAlias type="com.enneagram.vo.MemberVO" alias="m"/>
 		<typeAlias type="com.enneagram.vo.BoardVO" alias="b"/>
 		<typeAlias type="com.enneagram.vo.ReplyVO" alias="r"/>
+		<typeAlias type="com.enneagram.vo.EnneagramVO" alias="a"/>
 	</typeAliases>
 </configuration>

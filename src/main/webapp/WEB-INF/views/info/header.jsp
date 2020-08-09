@@ -20,7 +20,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/aos.css">
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ionicons.min.css">
-
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery.timepicker.css">
 
@@ -30,7 +29,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mycss.css">
 
-<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </head>
 <body>
 

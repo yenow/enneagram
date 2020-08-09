@@ -78,10 +78,11 @@
 </div>
  -->
 
-
+<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script> 
 <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script> 
+
 <script src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery.waypoints.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery.stellar.min.js"></script>
@@ -94,10 +95,10 @@
 <script src="${pageContext.request.contextPath}/resources/js/particles.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/particle.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/scrollax.min.js"></script>
-<script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/classic/ckeditor.js"></script>
+
+<!-- <script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/classic/ckeditor.js"></script> -->
 </body>
 </html>
