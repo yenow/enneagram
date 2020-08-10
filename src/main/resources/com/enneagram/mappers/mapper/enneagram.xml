@@ -6,5 +6,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="enneagram">
 
+	<insert id="e_insert">
+		insert into enneagram values (nextval('eno'),#{title},#{content},#{category},#{type},#{eclass})
+	</insert>
 	
+	<select id="e_select_eclass" resultType="e">
+		select * from enneagram where category=#{category} and eclass=#{eclass}
+	</select>
+	
+	<select id="e_select_type"  resultType="e">
+		select * from enneagram where category=#{category} and type=#{type}
+	</select>
+	
+	<select id="e_select"  resultType="e">
+		select * from enneagram where category=#{category}
+	</select>
 </mapper>

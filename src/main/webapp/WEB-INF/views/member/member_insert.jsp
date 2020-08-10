@@ -11,7 +11,7 @@
 	<div id="particles-js"></div>
 </div>
 
-<section class="">
+<section class="member-insert">
 	<div class="container">
 		<div class="row justify-content-center content-margin member-insert">
 			<div class="col-md-6 text-center">

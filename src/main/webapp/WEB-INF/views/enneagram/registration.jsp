@@ -16,6 +16,14 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/write.css">
 </head>
 <body>
+	
+	<!-- 관리자만 입장가능 // 나중에 사용자를 관리자로 바꿔야함 -->
+	<c:if test="${login.category !='사용자' }">
+		<script type="text/javascript">
+			alert('관리자만 입장 가능합니다');
+			location.href='/enneagram';
+		</script>
+	</c:if>
 
 	<!-- nav -->
 	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #efbbcf; padding: 2px;">
@@ -38,6 +46,7 @@
 					<a class="nav-link dropdown-toggle" href="portfolio.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">에니어그램</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown04">
 						<a class="dropdown-item" href="portfolio.html">에니어그램</a>
+						<a class="dropdown-item" href="portfolio-single.html">유형</a>
 						<a class="dropdown-item" href="portfolio-single.html">역사</a>
 						<a class="dropdown-item" href="portfolio-single.html">9가지 유형</a>
 					</div>
@@ -64,23 +73,62 @@
 			<h2 class="text-center">Enneagram 등록</h2>
 			<form action="${pageContext.request.contextPath}/enneagram/regist" method="post">
 				<input type="hidden" name="mno" value="${login.mno }">
-			
-				<!-- category정하기 -->
-				<div class="input-group mb-3">
+
+				
+				<div class="input-group mb-2">
+					<!-- 제목 -->
 					<div class="input-group-prepend">
-						<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">카테고리</button>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">에니어그램</a>
-							<a class="dropdown-item" href="#">역사</a>
-							<a class="dropdown-item" href="#">1유형</a>
-							<div role="separator" class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">2유형</a>
-						</div>
+						<span class="input-group-text" id="basic-addon1">제목</span>
+						<input type="text" class="form-control" name="title" placeholder="title" aria-label="Username" aria-describedby="basic-addon1">
 					</div>
-					<input type="text" class="form-control" aria-label="Text input with dropdown button">
+				
+					<!-- category 정하기 -->
+					<div class="input-group-prepend">
+						<label class="input-group-text" for="inputGroupSelect01">카테고리</label>
+					</div>
+					<select class="custom-select select-category" id="inputGroupSelect01" name="category" onchange="categorySelect();">
+						<option disabled="disabled">카테고리</option>
+						<option value="enneagram">에니어그램이란</option>
+						<option value="history">역사</option>
+						<option value="eclass">분류</option>
+						<option value="type">유형</option>
+						
+					</select>
+					
+					<!-- class정하기 -->
+					<div class="class-div input-group-prepend" style="display: none">
+						<div class="input-group-prepend">
+							<label class="input-group-text" for="inputGroupSelect01">분류</label>
+						</div>
+						<select class="custom-select" id="inputGroupSelect01" name="eclass">
+							<option value="0" disabled="disabled" selected="selected">유형</option>
+							<option value="1">머리형</option>
+							<option value="2">가슴형</option>
+							<option value="3">장형</option>
+						</select>
+					</div>
+					
+					<!-- type정하기 -->
+					<div class="type-div input-group-prepend" style="display: none">
+						<div>
+							<label class="input-group-text" for="inputGroupSelect01">유형</label>
+						</div>
+						<select class="custom-select" id="inputGroupSelect01" name="type">
+							<option value="0" disabled="disabled" selected="selected">유형</option>
+							<option value="1">1유형</option>
+							<option value="2">2유형</option>
+							<option value="3">3유형</option>
+							<option value="4">4유형</option>
+							<option value="5">5유형</option>
+							<option value="6">6유형</option>
+							<option value="7">7유형</option>
+							<option value="8">8유형</option>
+							<option value="9">9유형</option>
+						</select>
+					</div>
 				</div>
 				<!-- textarea -->
-				<textarea id="summernote" name="editordata"></textarea>
+				<textarea id="summernote" name="content"></textarea>
 				
 				<div class="text-center">
 					<input type="submit" class="btn btn-primary" value="등록">
@@ -92,6 +140,18 @@
 
 
 	<script type="text/javascript">
+	 function categorySelect(){
+		 var selectCategory =  document.querySelector('.select-category');
+         if(selectCategory.options[selectCategory.selectedIndex].value=='class'){
+        	 $('.class-div').show();
+        	 $('.type-div').hide();
+
+         }else if(selectCategory.options[selectCategory.selectedIndex].value=='type'){
+        	 $('.class-div').hide();
+        	 $('.type-div').show();
+       		 console.log('여기');
+         }
+     }
 
 		$('#summernote').summernote({
 			height : 300, // 에디터 높이
