@@ -102,7 +102,7 @@
 						</div>
 						<select class="custom-select" id="inputGroupSelect01" name="eclass">
 							<option value="0" disabled="disabled" selected="selected">유형</option>
-							<option value="1">머리형</option>
+							<option value="1">머리형</option>  
 							<option value="2">가슴형</option>
 							<option value="3">장형</option>
 						</select>
@@ -142,7 +142,7 @@
 	<script type="text/javascript">
 	 function categorySelect(){
 		 var selectCategory =  document.querySelector('.select-category');
-         if(selectCategory.options[selectCategory.selectedIndex].value=='class'){
+         if(selectCategory.options[selectCategory.selectedIndex].value=='eclass'){
         	 $('.class-div').show();
         	 $('.type-div').hide();
 

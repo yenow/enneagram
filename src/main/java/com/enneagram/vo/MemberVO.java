@@ -39,4 +39,5 @@ create table member(
 	private Date birth;
 	private Date regdate;
 	
+	
 }

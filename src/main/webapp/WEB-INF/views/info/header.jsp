@@ -8,6 +8,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
+
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,700,800" rel="stylesheet">
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/open-iconic-bootstrap.min.css">
@@ -29,13 +31,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mycss.css">
 
-<script
-  src="https://code.jquery.com/jquery-3.5.1.js"
-  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-  crossorigin="anonymous"></script>
-<!-- include summernote css/js -->
-<!-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script> -->
+<!-- 이건 차트 라이브러리 -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -49,7 +47,7 @@
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active">
-						<a href="index.jsp" class="nav-link">Home</a>
+						<a href="${pageContext.request.contextPath}" class="nav-link">Home</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/test/test" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Test</a>
@@ -63,6 +61,7 @@
 						<div class="dropdown-menu" aria-labelledby="dropdown04">
 							<a class="dropdown-item" href="${pageContext.request.contextPath}/enneagram/enneagram?category=enneagram">에니어그램</a> 
 							<a class="dropdown-item" href="${pageContext.request.contextPath}/enneagram/enneagram?category=history">역사</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/enneagram/enneagram?category=eclass">분류</a>
 							<a class="dropdown-item" href="${pageContext.request.contextPath}/enneagram/enneagram?category=type">9가지 유형</a>
 						</div>
 					</li>
@@ -82,21 +81,24 @@
 
 					<!-- 비로그인시 -->
 					<c:if test="${login eq null }">
+						<li class="nav-item">
+							<a href="${pageContext.request.contextPath}/member/member_insert" class="nav-link"> <span>회원가입</span></a>
+						</li>
 						<li class="nav-item cta">
 							<a href="${pageContext.request.contextPath}/member/login" class="nav-link"> <span>로그인</span></a>
 						</li>
-						<li class="nav-item cta pl-2">
-							<a href="${pageContext.request.contextPath}/member/member_insert" class="nav-link"> <span>회원가입</span></a>
-						</li>
+						
 					</c:if>
 					<!-- 로그인시 -->
 					<c:if test="${login ne null }">
+					
+						<li class="nav-item">
+							<a href="${pageContext.request.contextPath}/member/myPage" class="nav-link"> <span>마이페이지</span></a>
+						</li>
 						<li class="nav-item cta">
 							<a href="${pageContext.request.contextPath}/member/logout" class="nav-link"> <span>로그아웃</span></a>
 						</li>
-						<li class="nav-item cta pl-2">
-							<a href="${pageContext.request.contextPath}/member/member_insert" class="nav-link"> <span>마이페이지</span></a>
-						</li>
+						
 					</c:if>
 
 				</ul>

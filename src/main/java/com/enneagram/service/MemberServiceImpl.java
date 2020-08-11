@@ -1,10 +1,15 @@
 package com.enneagram.service;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.enneagram.dao.MemberDAO;
 import com.enneagram.vo.MemberVO;
+import com.enneagram.vo.PersonalityVO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -28,6 +33,14 @@ public class MemberServiceImpl implements MemberService {
 	public void memberUpdate(MemberVO memberVO) {
 		memberDAO.memberUpdate(memberVO);
 	}
-	
-	
-}
+
+	/* 마이페이지 내 성향 가져오기*/
+	@Override
+	public PersonalityVO mytype(int mno) {
+		return memberDAO.getMytype(mno);
+	}
+
+	@Override
+	public List<PersonalityVO> myPersonaltiyList(int mno) {
+		return memberDAO.myPersonaltiyList(mno);
+	}}

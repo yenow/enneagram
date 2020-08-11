@@ -1,6 +1,69 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<c:if test="${type eq null }">
+	<script>
+		alert('테스트를 먼저 해주세요');
+		location.href = '/enneagram/test/test';
+	</script>
+</c:if>
+
+<jsp:include page="../info/header.jsp"></jsp:include>
+
+<!-- <div class="js-fullheight"> -->
+<div class="hero-wrap js-fullheight">
+	<!-- 분홍색 배경 -->
+	<div class="overlay"></div>
+	<!-- 동적인 처리 -->
+	<div id="particles-js"></div>
+</div>
+
+<section class="">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="text-center my-5">테스트 결과</h2>
+				<!-- 간단한 소개 -->
+				<div></div>
+
+				<!-- eclass -->
+				<c:choose>
+					<c:when test="${eclass eq 1}">
+				        	<h3 class="text-center">머리형</h3>
+				    </c:when>
+					<c:when test="${eclass eq 2}">
+				      		<h3 class="text-center">가슴형</h3>
+				    </c:when>
+					<c:otherwise>
+				      		<h3 class="text-center">장형</h3>
+				    </c:otherwise>
+				</c:choose>
+				<div style="min-height: 200px">${eclassContent }</div>
+
+
+				<!-- type -->
+				<h3 class="text-center">${type }번유형이란?</h3>
+				<div style="min-height: 500px">${typeContent }</div>
+
+
+				<p>다른유형도 있어요</p>
+
+				<div class="col-12 text-center my-3">
+					<a href="${pageContext.request.contextPath}/enneagram/enneagram?category=enneagram" class="btn btn-primary">다른유형 알아보기</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<jsp:include page="../info/footer.jsp"></jsp:include>
+
+
+
+
+
+<%-- 
 <jsp:include page="../c_info/header.jsp"></jsp:include>
 
 <!-- Main -->
@@ -47,7 +110,7 @@
 							<h2 style="text-align: center;">당신의 2등 성향은 : ${second }번 입니다!</h2>
 							<h2 style="text-align: center;">당신의 3등 성향은 : ${third }번 입니다!</h2>
 
-							<%-- <c:if test="${first ==1 }">
+							<c:if test="${first ==1 }">
 								<jsp:include page="type1.jsp"></jsp:include>
 							</c:if>
 							<c:if test="${first ==2 }">
@@ -73,7 +136,7 @@
 							</c:if>
 							<c:if test="${first ==9 }">
 								<jsp:include page="type9.jsp"></jsp:include>
-							</c:if> --%>
+							</c:if>
 
 							<div class="result y-t-center">	
 							<a href="${pageContext.request.contextPath}/anneagram/${first }_type" class="button primary large">${first }번성향</a></a>
@@ -99,4 +162,4 @@
 
 
 <jsp:include page="../c_info/sidebar.jsp"></jsp:include>
-<jsp:include page="../c_info/footer.jsp"></jsp:include>
+<jsp:include page="../c_info/footer.jsp"></jsp:include> --%>

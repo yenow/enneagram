@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Personality">
+
+	<insert id="p_insert">
+	insert into personality (pno,mno,type,eclass,one,two,three,four,five,six,seven,eight,nine,regdate) values
+	(nextval('pno'),#{mno},#{type},#{eclass},#{one},#{two},#{three},#{four},#{five},#{six},#{seven},#{eight},#{nine},sysdate())
+	</insert>
+	
+	<select id="p_eclass" resultType="string">
+		select content from enneagram where eclass= #{eclass}
+	</select>
+	
+	<select id="p_type" resultType="string">
+		select content from enneagram where type= #{type}
+	</select>
+	
+	<select id="myPersonaltiyList" resultType="p">
+		select * from personality where mno = #{mno}
+	</select>
+</mapper>

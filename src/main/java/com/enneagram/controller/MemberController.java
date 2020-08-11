@@ -2,11 +2,10 @@ package com.enneagram.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
+import java.util.List;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,8 +16,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.enneagram.service.EnneagramService;
 import com.enneagram.service.MemberService;
+import com.enneagram.vo.EnneagramVO;
 import com.enneagram.vo.MemberVO;
+import com.enneagram.vo.PersonalityVO;
 
 @Controller
 @RequestMapping("/member")
@@ -26,8 +28,72 @@ public class MemberController{
 
 	@Autowired
 	private MemberService memberSerivce;
+	@Autowired
+	private EnneagramService enneagramService;
     
+	/* 마이페이지 */
+	@RequestMapping("myPage")
+	public void myPage() {
+		
+	}
+	
+	/* 마이페이지 - 내 성향*/
+	@RequestMapping("/mytype")
+	public String mytype(HttpSession session,Model model,HttpServletResponse response) throws IOException {
+		PrintWriter out = response.getWriter();
+		
+		
+		if(session.getAttribute("login")==null) {
+			/*
+			 * out.print("<script>"); out.print("alert('로그인이 필요합니다');");
+			 * out.print("location.href='/enneagram';"); // 이런거,, contextRoot를 가져와야하는데..
+			 * out.print("</script>");
+			 */
+			return "redirect:/member/login";
+		}else {
+			int mno = ((MemberVO)session.getAttribute("login")).getMno();
+			System.out.println(mno);
+			
+			/* 내 검사 리스트를 가져옴*/
+			List<PersonalityVO> pList = memberSerivce.myPersonaltiyList(mno);
+			
+			/* 가장 최근의 성향 가져오기*/
+			PersonalityVO recently = pList.get(0);
+			Date recent = pList.get(0).getRegdate();
+			System.out.println(recent.getTime());
+			for(PersonalityVO p : pList) { 
+				System.out.println(p.getRegdate());
+				System.out.println(p.getRegdate().getTime());
+				if(recent.getTime() - p.getRegdate().getTime() < 0) {
+					recent = p.getRegdate();
+					recently = p;
+				}
+			}
+		
+			
+			EnneagramVO e = new EnneagramVO();
+			e.setCategory("eclass");
+			e.setEclass(recently.getEclass());
+			EnneagramVO eclass= enneagramService.select(e);
+			e.setCategory("type");
+			e.setType(recently.getType());
+			EnneagramVO type= enneagramService.select(e);
+			
+			System.out.println(eclass);
+			System.out.println(eclass.getEclass());
+			System.out.println(type);
+			System.out.println(type.getType());
+			
+			model.addAttribute("pList", pList);
+			model.addAttribute("recently", recently);
+			model.addAttribute("eclass", eclass);
+			model.addAttribute("type", type);
+			return "/member/mytype";
+		}
 
+		
+	}
+	
 	@RequestMapping("member_info_check")
 	public void member_info_check() {
 		
@@ -117,10 +183,26 @@ public class MemberController{
 	
 	/* 회원가입처리 */
 	@RequestMapping("/member_insert_ok")
-	public ModelAndView member_insert_ok(MemberVO m) {
+	public void member_insert_ok(MemberVO m, HttpServletResponse response) throws IOException {
 		ModelAndView mv = new ModelAndView("redirect:/");
-		memberSerivce.memberInsert(m);
-		return mv;
+		PrintWriter out = response.getWriter();
+		try {
+			memberSerivce.memberInsert(m);
+		} catch (Exception e) {
+			e.printStackTrace();
+			out.print("<script>"); 
+			out.print("alert('아이디가 중복되었습니다');");
+			out.print("history.back();");
+			out.print("</script>"); 
+			out.close();
+			
+		}
+		out.print("<script>"); 
+		out.print("alert('아이디를 입력해주세요');");
+		out.print("location.href='/enneagram';");
+		out.print("</script>"); 
+		out.close();
+		
 	}
 
 	@RequestMapping("/login")
@@ -176,7 +258,7 @@ public class MemberController{
 			} else {
 				out.print("<script>"); 
 				out.print("alert('비밀번호가 틀립니다');");
-				out.print("history.back()");
+				out.print("history.back();");
 				out.print("</script>"); 
 				out.close();
 			}

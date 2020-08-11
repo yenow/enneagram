@@ -92,12 +92,12 @@
 				<div class="sidebar-box ftco-animate fadeInUp ftco-animated text-center">
 
 					<c:if test="${login.category =='관리자' }">
-						<a href="#" class="btn btn-outline-danger">
+						<a href="${pageContext.request.contextPath}/enneagram/registration" class="btn btn-outline-danger">
 							<button type="button" class="btn btn-outline-danger">등록</button>
 						</a>
 					</c:if>
 					<!-- 나중에 삭제 -->
-					<a href="#">
+					<a href="${pageContext.request.contextPath}/enneagram/registration">
 						<button type="button" class="btn btn-outline-danger">등록</button>
 					</a>
 				</div>

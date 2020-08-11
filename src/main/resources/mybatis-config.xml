@@ -10,5 +10,6 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 		<typeAlias type="com.enneagram.vo.BoardVO" alias="b"/>
 		<typeAlias type="com.enneagram.vo.ReplyVO" alias="r"/>
 		<typeAlias type="com.enneagram.vo.EnneagramVO" alias="e"/>
+		<typeAlias type="com.enneagram.vo.PersonalityVO" alias="p"/>
 	</typeAliases>
 </configuration>

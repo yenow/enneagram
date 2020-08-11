@@ -18,7 +18,7 @@
 					</h1>
 					<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
 						<c:if test="${login eq null }">
-							<a href="#" class="btn btn-primary btn-outline-white px-5 py-3">login</a>
+							<a href="${pageContext.request.contextPath}/testr/test" class="btn btn-primary btn-outline-white px-5 py-3">Test</a>
 						</c:if>
 						
 					</p>

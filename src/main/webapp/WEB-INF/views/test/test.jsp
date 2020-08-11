@@ -11,40 +11,53 @@
 	<div id="particles-js"></div>
 </div>
 
-<section class="">
-	<div class="container">
+
+	<div class="container-sm">
 		<div class="row justify-content-center content-margin">
-			<h2>Enneagram Test</h2>
-			<h3>주의사항</h3>
-			<div class="col-md-12 test">
+		
+			<h2 class="text-center col-12">Enneagram Test</h2>
+			
+			<div class="row justify-content-center col-12 my-5 text-center">
+				<h3 class="col-12 y-notice">주의사항</h3>
+
+				<span class="col-4 py-4">총 검사 시간은 12분 내외입니다</span>
+				<span class="col-4 py-4">질문이 기분 나쁘더라도 이해해주세요</span>
+				<span class="col-4 py-4">가운데 번호는 웬만하면 기피해주세요</span>
+			</div>
+
+			<!-- 테스트 -->
+			<div class="col-12 test">
 				<ul>
 					<c:forEach var="x" begin="1" end="10" step="1">
 						<li class="testnum">
-							<h3 class="query"></h3>
-							<input type="radio" name="number${x}" value="1">
-							<input type="radio" name="number${x}" value="2">
-							<input type="radio" name="number${x}" value="3">
-							<input type="radio" name="number${x}" value="4">
-							<input type="radio" name="number${x}" value="5">
+							<h3 class="query col-12"></h3>
+							<div class="col-12 text-center">
+								<input type="radio" name="number${x}" value="1">
+								<input type="radio" name="number${x}" value="2">
+								<input type="radio" name="number${x}" value="3">
+								<input type="radio" name="number${x}" value="4">
+								<input type="radio" name="number${x}" value="5">
+							</div>
+							
 						</li>
 					</c:forEach>
 				</ul>
 
 			</div>
-			<div class="col-md-12 test2">
+			<div class="col-12 test2 my-4">
 				<ul>
 					<li>
 						<progress value="0" max="100"></progress>
 					</li>
-					<li>
-						<a onclick="return aaa(); replace_query();" class="button primary large">다음</a>
+					<li class="text-center">
+						<a onclick="return aaa(); replace_query();" class="btn btn-primary ">다음</a>
 					</li>
 
 				</ul>
 			</div>
 		</div>
 	</div>
-</section>
+
 
 <script type="text/javascript">
 	var page = 0; // 현재 페이지
@@ -205,7 +218,7 @@
 			/* ajax로 서버에 페이지별로 데이터 보냄 */
 			$.ajax({
 				type : 'POST', // method
-				url : '/test/test_ok?page=' + page, // POST 요청은 데이터가 요청 바디에 포함됩니다.
+				url : '/enneagram/test/test_ok?page=' + page, // POST 요청은 데이터가 요청 바디에 포함됩니다.
 				async : 'true', // true
 				data : JSON.stringify(value),
 				contentType : 'application/json',
@@ -213,7 +226,7 @@
 				success : function(data) {
 					console.log(data)
 					if (data != 'success') {
-						location.href = '/test/test_complete';
+						location.href = '/enneagram/test/test_complete';
 					}
 				},
 				error : function(error) {
