@@ -16,6 +16,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<update id="m_update">
-	update member set password = #{password}, nickname=#{nickname}, tel=#{tel} where mno = #{mno}
+	update member set password = #{password}, nickname=#{nickname}, email=#{email} , tel=#{tel} where mno = #{mno}
 	</update>
 </mapper>

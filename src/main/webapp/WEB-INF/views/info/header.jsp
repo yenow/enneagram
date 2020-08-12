@@ -93,7 +93,7 @@
 					<c:if test="${login ne null }">
 					
 						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/member/myPage" class="nav-link"> <span>마이페이지</span></a>
+							<a href="${pageContext.request.contextPath}/member/mytype" class="nav-link"> <span>마이페이지</span></a>
 						</li>
 						<li class="nav-item cta">
 							<a href="${pageContext.request.contextPath}/member/logout" class="nav-link"> <span>로그아웃</span></a>

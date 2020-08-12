@@ -57,22 +57,18 @@
 			</div>
 
 			<div class="col-md-3 sidebar ftco-animate order-first fadeInUp ftco-animated">
-				
-
 					<div class="sidebar-box ftco-animate fadeInUp ftco-animated">
 						<div class="categories">
 							<h3>마이페이지</h3>
 							<ul>
 								<li>
-									<a href="${pageContext.request.contextPath}/member/mypage"> 내 유형 </a>
+									<a href="${pageContext.request.contextPath}/member/mytype"> 내 유형 </a>
 								</li>
 								<li>
-									<a href="${pageContext.request.contextPath}/enneagram/enneagram?category=history"> 개인정보수정 </a>
+									<a href="${pageContext.request.contextPath}/member/myPage"> 개인정보수정 </a>
 								</li>
 							</ul>
 						</div>
-
-					
 				</div>
 			</div>
 		</div>

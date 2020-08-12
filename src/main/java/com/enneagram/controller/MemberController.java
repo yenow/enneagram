@@ -140,11 +140,7 @@ public class MemberController{
 		
 	}
 	
-	@RequestMapping("member_info_check")
-	public void member_info_check() {
-		
-	}
-	
+	/* 비밀번호 확인 -> 개인정보수정페이지 */
 	@RequestMapping("member_info_check_ok")
 	public void member_info_check_ok(String password,HttpServletRequest request,HttpServletResponse response,HttpSession session) throws IOException {
 		MemberVO memberVO = (MemberVO) session.getAttribute("login");
@@ -152,17 +148,17 @@ public class MemberController{
 		/* 여기부터시작 */
 		if(memberVO.getPassword().equals(password)) {
 			out.print("<script>");
-			out.print("location.href='/member/member_info';");
+			out.print("location.href='/enneagram/member/member_info';");  // 컨텍스트루트...
 			out.print("</script>");
 		}else {
 			out.print("<script>");
 			out.print("alert('비밀번호가 같지 않습니다');");
-			out.print("location.href='/member/member_info_check';");
+			out.print("location.href='/enneagram/member/myPage';");
 			out.print("</script>");
 		}
 	}
 	
-	/* 회원정보 수정 처리*/
+	/* 회원정보 수정 처리 */
 	@RequestMapping("/member_info_update_ok")
 	public void member_info_update_ok(MemberVO memberVO,HttpServletRequest request,HttpServletResponse response) {
 		/* 처음알았다.. form으로 값 넘길때, name값이 같은게 있으면 'ㅇㅇㅇ','ㅇㅇㅇ'  이런식으로 값이 넘어오는군*/
@@ -173,7 +169,7 @@ public class MemberController{
 			out = response.getWriter();
 			out.print("<script>");
 			out.print("alert('수정되었습니다');");
-			out.print("location.href='/';");
+			out.print("location.href='"+request.getContextPath()+"';");
 			out.print("</script>");
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -181,21 +177,7 @@ public class MemberController{
 		
 	}
 	
-	/* 회원정보 수정 페이지 */
-	@RequestMapping("/member_info_update")
-	public String member_info_update(HttpSession session,HttpServletRequest request, HttpServletResponse response) throws IOException{
-		
-		PrintWriter out = response.getWriter();
-		/* 로그인이 안되어 있으면 경고창을 띄우고 싶음... ok페이지를 따로 만들어야하는듯*/
-		if(session.getAttribute("login")==null){
-			return "redirect:/member/login";
-		}
-		
-		return "/member/member_info_update";
-	
-	}
-	
-	/* 회원정보 페이지 */
+	/* 회원정보수정 페이지 */
 	@RequestMapping("/member_info")
 	public String member_info(HttpSession session,HttpServletRequest request, HttpServletResponse response) throws IOException {	   // 리턴값이 void 일경우,, 매
 		/* 혹시라도 로그인이 안된 상태에서 진입했을 경우, 경고창을 띄우고 메인페이지로 이동*/
