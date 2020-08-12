@@ -22,4 +22,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="myPersonaltiyList" resultType="p">
 		select * from personality where mno = #{mno}
 	</select>
+	
+	<select id="myPersonal" resultType="p">
+		select * from personality where pno = #{pno}
+	</select>
 </mapper>

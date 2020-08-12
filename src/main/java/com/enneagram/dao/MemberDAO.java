@@ -16,4 +16,6 @@ public interface MemberDAO {
 	public PersonalityVO getMytype(int mno);
 
 	public List<PersonalityVO> myPersonaltiyList(int mno);
+
+	public PersonalityVO myPersonaltiy(int pno);
 }

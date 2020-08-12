@@ -37,7 +37,11 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public List<PersonalityVO> myPersonaltiyList(int mno) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList("myPersonaltiyList", mno);
+	}
+
+	@Override
+	public PersonalityVO myPersonaltiy(int pno) {
+		return sqlSession.selectOne("myPersonal", pno);
 	}
 }

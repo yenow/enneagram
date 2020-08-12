@@ -91,7 +91,8 @@
 <script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery.animateNumber.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery.timepicker.min.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/jquery.timepicker.min.js"></script> --%>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/particles.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/particle.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/scrollax.min.js"></script>

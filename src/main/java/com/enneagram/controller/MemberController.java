@@ -2,8 +2,11 @@ package com.enneagram.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +41,35 @@ public class MemberController{
 	@RequestMapping("myPage")
 	public void myPage() {
 		
+	}
+	
+	/* select태그에서 변경시 아작스로 성격 반환 */
+	@RequestMapping("/myTypeAjax")
+	@ResponseBody
+	public ResponseEntity<Map<String,EnneagramVO>> myTypeAjax(int pno){
+		ResponseEntity<Map<String,EnneagramVO>> re;
+		try {
+			
+			PersonalityVO p = memberSerivce.myPersonaltiy(pno);
+			
+			EnneagramVO e = new EnneagramVO();
+			e.setCategory("eclass");
+			e.setEclass(p.getEclass());
+			EnneagramVO eclass= enneagramService.select(e);
+			e.setCategory("type");
+			e.setType(p.getType());
+			EnneagramVO type= enneagramService.select(e);
+			
+			Map<String,EnneagramVO> map = new HashMap<String, EnneagramVO>();
+			map.put("eclass", eclass);
+			map.put("type", type);
+			
+			re = new ResponseEntity(map, HttpStatus.OK);
+			return re;
+		} catch (Exception e) {
+			return new ResponseEntity("fail", HttpStatus.BAD_REQUEST);
+		}
+
 	}
 	
 	/* 마이페이지 - 내 성향*/
@@ -72,11 +105,18 @@ public class MemberController{
 				}
 			}
 		
-			/* 리스트로 통쨰로 넘기기*/
-			List<EnneagramVO> eclassList =  enneagramService.selectEclassList();
-			List<EnneagramVO> typeList =  enneagramService.selectTypeList();
+			/*  pList sort 작업,,  가장 최신의 테스트가 맨 앞쪽으로감 */
+			pList.sort(new Comparator<PersonalityVO>() {
+
+				@Override
+				public int compare(PersonalityVO o1, PersonalityVO o2) {
+					if(o1.getRegdate().getTime() - o2.getRegdate().getTime() < 0) {
+						return 1;
+					}
+					return -1;
+				}
+			});
 			
-			/* 가장 최신의 성격결과  */
 			EnneagramVO e = new EnneagramVO();
 			e.setCategory("eclass");
 			e.setEclass(recently.getEclass());
@@ -85,10 +125,13 @@ public class MemberController{
 			e.setType(recently.getType());
 			EnneagramVO type= enneagramService.select(e);
 			
+			System.out.println(eclass);
+			System.out.println(eclass.getEclass());
+			System.out.println(type);
+			System.out.println(type.getType());
+			
 			model.addAttribute("pList", pList);
 			model.addAttribute("recently", recently);
-			model.addAttribute("eclassList", eclassList);
-			model.addAttribute("typeList", typeList);
 			model.addAttribute("eclass", eclass);
 			model.addAttribute("type", type);
 			return "/member/mytype";

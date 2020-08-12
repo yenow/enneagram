@@ -19,7 +19,7 @@
 			<div class="col-md-9 ftco-animate fadeInUp ftco-animated">
 				<h2 class="text-center">내 성향</h2>
 					<label class="my-1 mr-2" for="inlineFormCustomSelectPref">최근 검사</label>
-					 <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" onchange="">
+					 <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" onchange="changePersonality(this.value);">
 						<option selected>Choose...</option>
 						<c:forEach var="p" items="${pList }">
 							<option value="${p.pno }">${p.regdate}</option>
@@ -29,24 +29,29 @@
 
 				<canvas id="myChart"></canvas>
 				
-				<h2 class="my-3">내 성향</h2>
-				<!-- eclass -->
-				<c:choose>
-					<c:when test="${eclass.eclass eq 1}">
-				        	<h3 class="text-center">머리형</h3>
-				    </c:when>
-					<c:when test="${eclass.eclass eq 2}">
-				      		<h3 class="text-center">가슴형</h3>
-				    </c:when>
-					<c:otherwise>
-				      		<h3 class="text-center">장형</h3>
-				    </c:otherwise>
-				</c:choose> 
-				<div style="min-height: 200px">${eclass.content }</div>
 				
-				<h3 class="text-center">${type.type }번유형이란?</h3>
-				<div style="min-height: 500px">${type.content }</div>
+				<h2 class="my-3" >내 성향</h2>
+				<div class="mypage-eclass">
+					<!-- eclass -->
+					<%-- <c:choose>
+						<c:when test="${eclass.eclass eq 1}">
+					        	<h3 class="text-center">머리형</h3>
+					    </c:when>
+						<c:when test="${eclass.eclass eq 2}">
+					      		<h3 class="text-center">가슴형</h3>
+					    </c:when>
+						<c:otherwise>
+					      		<h3 class="text-center">장형</h3>
+					    </c:otherwise>
+					</c:choose>  --%>
+					<h3 class="text-center">${eclass.title }</h3>
+					<div style="min-height: 200px">${eclass.content }</div>
+				</div>
 				
+				<div class="mypage-type">
+					<h3 class="text-center">${type.title }</h3>
+					<div style="min-height: 500px">${type.content }</div>
+				</div>
 				<h2>유형별 관계</h2>
 				<div></div>
 			</div>
@@ -74,7 +79,7 @@
 	</div>
 </section>
 
-<script lang="javascript">
+<script>
 
 	var ctx = document.getElementById('myChart');
 	
@@ -111,10 +116,32 @@
 	console.log(ctx);
 	console.log(Chart); 
 	
+	var changePersonality = function () {
+		
+	};
 	
-	console.log(plist);
-	console.log(eclassList);
-	console.log(typeList)
+	$(document).ready(function() {
+		
+		
+		changePersonality = function(pno) {
+			console.log(this);
+			/* var v = $('#inlineFormCustomSelectPref option:selected').value();
+			console.log(v); */
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/member/myTypeAjax?pno="+pno ,
+				type : "GET",
+				dataType: 'json',
+				success : function (data) {
+					console.log(data);
+					$('.mypage-eclass h3').text(data.eclass.title);
+					$('.mypage-eclass div').html(data.eclass.content);
+					$('.mypage-type h3').text(data.type.title);
+					$('.mypage-type div').html(data.type.content);
+				}
+			});
+		} 
+	});
 	
 </script>
 

@@ -20,5 +20,7 @@ public interface MemberService {
 
 	List<PersonalityVO> myPersonaltiyList(int mno);
 
+	PersonalityVO myPersonaltiy(int pno);
+
 
 }

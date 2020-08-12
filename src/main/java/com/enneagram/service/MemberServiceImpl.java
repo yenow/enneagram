@@ -22,6 +22,7 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.memberInsert(m);
 	}
 
+	/* 로그인 아이디, 비밀번호 확인*/
 	@Override
 	public MemberVO login_confirm(String user_id) {
 	
@@ -43,4 +44,9 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<PersonalityVO> myPersonaltiyList(int mno) {
 		return memberDAO.myPersonaltiyList(mno);
+	}
+
+	@Override
+	public PersonalityVO myPersonaltiy(int pno) {
+		return memberDAO.myPersonaltiy(pno);
 	}}
