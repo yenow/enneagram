@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.enneagram.service.EnneagramService;
@@ -70,7 +72,11 @@ public class MemberController{
 				}
 			}
 		
+			/* 리스트로 통쨰로 넘기기*/
+			List<EnneagramVO> eclassList =  enneagramService.selectEclassList();
+			List<EnneagramVO> typeList =  enneagramService.selectTypeList();
 			
+			/* 가장 최신의 성격결과  */
 			EnneagramVO e = new EnneagramVO();
 			e.setCategory("eclass");
 			e.setEclass(recently.getEclass());
@@ -79,13 +85,10 @@ public class MemberController{
 			e.setType(recently.getType());
 			EnneagramVO type= enneagramService.select(e);
 			
-			System.out.println(eclass);
-			System.out.println(eclass.getEclass());
-			System.out.println(type);
-			System.out.println(type.getType());
-			
 			model.addAttribute("pList", pList);
 			model.addAttribute("recently", recently);
+			model.addAttribute("eclassList", eclassList);
+			model.addAttribute("typeList", typeList);
 			model.addAttribute("eclass", eclass);
 			model.addAttribute("type", type);
 			return "/member/mytype";

@@ -16,10 +16,10 @@
 <section class="">
 	<div class="container">
 		<div class="row justify-content-center content-margin">
-			<div class="col-md-8 ftco-animate fadeInUp ftco-animated">
+			<div class="col-md-9 ftco-animate fadeInUp ftco-animated">
 				<h2 class="text-center">내 성향</h2>
 					<label class="my-1 mr-2" for="inlineFormCustomSelectPref">최근 검사</label>
-					 <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+					 <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" onchange="">
 						<option selected>Choose...</option>
 						<c:forEach var="p" items="${pList }">
 							<option value="${p.pno }">${p.regdate}</option>
@@ -51,7 +51,7 @@
 				<div></div>
 			</div>
 
-			<div class="col-md-4 sidebar ftco-animate order-first fadeInUp ftco-animated">
+			<div class="col-md-3 sidebar ftco-animate order-first fadeInUp ftco-animated">
 				
 
 					<div class="sidebar-box ftco-animate fadeInUp ftco-animated">
@@ -74,7 +74,7 @@
 	</div>
 </section>
 
-<script>
+<script lang="javascript">
 
 	var ctx = document.getElementById('myChart');
 	
@@ -110,6 +110,12 @@
 	console.log(myChart);
 	console.log(ctx);
 	console.log(Chart); 
+	
+	
+	console.log(plist);
+	console.log(eclassList);
+	console.log(typeList)
+	
 </script>
 
 <jsp:include page="../info/footer.jsp"></jsp:include>

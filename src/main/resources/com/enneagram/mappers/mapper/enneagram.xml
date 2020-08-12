@@ -21,4 +21,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="e_select"  resultType="e">
 		select * from enneagram where category=#{category}
 	</select>
+		
+	<select id="eclass_list"  resultType="e">
+		select * from enneagram where category= 'eclass'
+	</select>
+	
+	<select id="type_list"  resultType="e">
+		select * from enneagram where category= 'type'
+	</select>
 </mapper>

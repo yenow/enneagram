@@ -1,5 +1,7 @@
 package com.enneagram.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -28,6 +30,16 @@ public class EnneagramDAOImpl implements EnneagramDAO {
 			return sqlSession.selectOne("e_select", en);
 		}
 		
+	}
+
+	@Override
+	public List<EnneagramVO> selectEclassList() {
+		return sqlSession.selectList("eclass_list");
+	}
+
+	@Override
+	public List<EnneagramVO> selectTypeList() {
+		return sqlSession.selectList("type_list");
 	}
 
 }
