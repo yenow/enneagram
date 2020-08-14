@@ -38,6 +38,7 @@
 				<!-- 게시물 개수 기능 -->
 				<label class="input-group-text" for="inputGroupSelect02">개수</label>
 				<select class="custom-select" id="inputGroupSelect02" name="maxLine" onchange="maxLineSelect();">
+					<option value="10" disabled="disabled" selected="selected">개수선택</option>
 					<option value="10">10개</option>
 					<option value="30">30개</option>
 					<option value="50">50개</option>
@@ -48,7 +49,7 @@
 				<c:forEach var="b" items="${blist }">
 					<ul>
 						<li class="text-left align-middle">
-							<a href="${pageContext.request.contextPath}/board/boardCont?bno=${b.bno}">
+							<a href="${pageContext.request.contextPath}/board/boardCont?bno=${b.bno}&category=${pageDTO.cri.category}&pageNum=${pageDTO.cri.pageNum}&maxLine=${pageDTO.cri.maxLine}">
 								<span>[1번유형]</span>${b.title}
 							</a>
 						</li>
@@ -83,15 +84,27 @@
 
 					<ul>
 						<!-- 이전 10개 페이지 버튼 -->
-						<li><a>&lt;</a></li>
+						<c:if test="${pageDTO.prev eq true }">
+							<li><a onclick="prevButton();">&lt;</a></li>
+						</c:if>
+						<c:if test="${pageDTO.prev eq false }">
+							<li><a>&lt;</a></li>
+						</c:if>
 						
 						<c:forEach var="page" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
 							<li class="active">
-								<a href="${pageContext.request.contextPath}/board/boardboardList?page=${page }&maxLine=${maxLine}$category=${pageDTO.cri.category}">${page }</a>
+								<a href="${pageContext.request.contextPath}/board/boardboardList?pageNum=${page }&maxLine=${maxLine}$category=${pageDTO.cri.category}">${page }</a>
 							</li>
 						</c:forEach>
+						
 						<!-- 다음  10개 페이지 버튼 -->
-						<li><a>&gt;</a></li>
+						<c:if test="${pageDTO.prev eq true }">
+							<li><a onclick="nextButton();">&gt;</a></li>
+						</c:if>
+						<c:if test="${pageDTO.prev eq false }">
+							<li><a>&gt;</a></li>
+						</c:if>
+						
 
 					</ul>
 
@@ -114,8 +127,15 @@ function maxLineSelect() {
     var maxLinevalue = $('#inputGroupSelect02 option:selected').val();
     console.log(maxLinevalue);
     location.href='${pageContext.request.contextPath}/board/boardList?category=${pageDTO.cri.category}&maxLine='+maxLinevalue;
-}
+};
 
+function prevButton() {
+	location.href='${pageContext.request.contextPath}/board/boardList?category=${pageDTO.cri.category}&maxLine=${pageDTO.cri.maxLine}&pageNum=${pageDTO.startPage-10}';
+};
+
+function nextButton() {
+	location.href='${pageContext.request.contextPath}/board/boardList?category=${pageDTO.cri.category}&maxLine=${pageDTO.cri.maxLine}&pageNum=${pageDTO.startPage+10}';
+};
 
 </script>
 

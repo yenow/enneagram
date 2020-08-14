@@ -26,7 +26,7 @@
 						    <tr class="float-left">
 						      <td class="align-middle border-0 px-2" >[${b.type }번유형]</td>
 						      <td class="align-middle border-0 px-2">조회수: ${b.cnt }</td>
-						      <td class="align-middle border-0 px-2"> ${b.moddate }-top</td>
+						      <td class="align-middle border-0 px-2"> ${b.moddate }</td>
 						
 						    </tr>
 						    <tr class="float-right">
@@ -56,7 +56,7 @@
 									  <a href="${pageContext.request.contextPath}/board/boardUpdate?bno=${b.bno}" class="btn btn-primary btn-lg">수정</a>
 				                	  <a href="${pageContext.request.contextPath}/board/boardDelete?bno=${b.bno}" class="btn btn-primary btn-lg">삭제</a>
 									</c:if>
-				                	  <a href="${pageContext.request.contextPath}/board/boardList" class="btn btn-primary btn-lg">목록</a>
+				                	  <a href="${pageContext.request.contextPath}/board/boardList?category=${pageDTO.cri.category}&pageNum=${pageDTO.cri.pageNum}&maxLine=${pageDTO.cri.maxLine}" class="btn btn-primary btn-lg">목록</a>
 				                </span>
 				              </div>
            				 </div>

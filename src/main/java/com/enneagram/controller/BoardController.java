@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.enneagram.service.BoardService;
@@ -49,11 +50,6 @@ public class BoardController {
 		return "redirect:/board/boardList";
 	}
 	
-	@RequestMapping(value = "/boardListButton", method = RequestMethod.GET)  
-	public ResponseEntity<T> boardListButton(Criteria c){
-		
-	}
-	
 	/* 게시판 리스트 */
 	@RequestMapping(value = "/boardList", method = RequestMethod.GET)  
 	public String boardList(Model m, Criteria c) {
@@ -83,72 +79,11 @@ public class BoardController {
 		m.addAttribute("page", c.getPageNum());
 		return "/board/boardList";
 	}
-	
-	//게시판 리스트 ,  리스트를 jsp파일로 넘기는게 필요하다. Model을 활용해서 넘긴다.
-	/*
-	@RequestMapping(value = "/boardList", method = RequestMethod.GET)  
-	public ModelAndView boardList(HttpServletRequest request, @RequestParam(defaultValue = "10", value = "maxLine") String maxLine,
-			 @RequestParam(defaultValue = "", value = "search") String search,  @RequestParam(defaultValue = "", value = "search_type") String search_type) {
-		ModelAndView mv = new ModelAndView("board/boardList");
 		
-		// lineMax 설정 
-		int lineMax=Integer.parseInt(maxLine);
-		int page;
-		if(request.getParameter("startnum")==null || Integer.parseInt(request.getParameter("startnum"))<=0) {
-			page = 1;
-		}else {
-			page = Integer.parseInt(request.getParameter("startnum"));
-		}
-		
-		// count 계산 
-		List<BoardVO> list = boardService.boardCount(); // 게시판의 개수를 가져오는 함수
-		int count=0;
-		for(BoardVO a : list) {
-			count++;
-		}
-		count = count/lineMax +1;
-		
-		if(page>count) {
-			page--;
-		}
-		
-		System.out.println(search);
-		System.out.println(search_type);
-		
-		
-		//보여줄 시작게시글번호, 마지막 게시글번호
-		BoardVO bo = new BoardVO();
-		int start = (page-1)*lineMax+1; 
-		int end = (page)*lineMax; 
-		bo.setStart(start);
-		bo.setEnd(end);
-		
-		List<BoardVO> blist =  new ArrayList<BoardVO>();
-		if(search.equals("")) {
-			//list 가져오기
-			blist =boardService.selectList(bo);   // ArrayList는 안되고 List는 되는 이유가 뭘까? 왜 SqlSession의 selectList는 List형만 반환할까?
-		}else {
-			bo.setSearch_type(search_type);
-			bo.setSearch(search);
-			blist = boardService.selectListSearch(bo);
-		}
-		
-		// Date를 String으로 포맷 변환 
-		for(BoardVO board : blist) {
-		// 여기 오류난다	board.setS_regdate(OracleDateChange.changeDate(board.getRegdate()));  
-		}
-		mv.addObject("blist",blist);
-		mv.addObject("count",count);
-		mv.addObject("page",page);
-		
-		return mv;
-	}
-	*/
-	
 	
 	//게시판 내용보기
 	@GetMapping("/boardCont")
-	public ModelAndView boardCont(int bno, HttpSession session) {
+	public ModelAndView boardCont(int bno, HttpSession session, Criteria c) {
 		ModelAndView mv = new ModelAndView("/board/boardCont");
 		
 		/* 댓글 조회수 막기 기능 */
@@ -158,6 +93,11 @@ public class BoardController {
 		}
 		BoardVO b = boardService.selectboard(bno,session,session.getId());
 		mv.addObject("b", b);
+		
+		int maxcount = boardService.boardAllCount(c.getCategory());
+		PageDTO pd = new PageDTO(c, maxcount);
+		mv.addObject("pageDTO", pd);
+		
 		return mv;
 	}
 	
