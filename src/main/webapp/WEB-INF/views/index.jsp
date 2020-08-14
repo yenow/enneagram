@@ -116,10 +116,9 @@
 			<div class="row d-flex justify-content-center">
 				<div
 					class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-					<h2></h2>
-					<p>Far far away, behind the word mountains, far from the
-						countries Vokalia and Consonantia, there live the blind texts.
-						Separated they live in</p>
+					<h2>more</h2>
+					<p>더 에니어그램을 알고 싶거나,<br> 더 나에 대해서 알고 싶거나 <br>
+					더 전문가에게 상담을 받고 싶다면,<br> 이메일 주소를 적어주세요!</p>
 					<div class="row d-flex justify-content-center mt-5">
 						<div class="col-md-6">
 							<form action="#" class="subscribe-form">
@@ -142,7 +141,7 @@
 		<div class="row justify-content-center mb-5 pb-5">
 			<div class="col-md-7 text-center heading-section ftco-animate">
 				<span class="subheading">famous saying</span>
-				<h2 class="mb-4">명언</h2>
+				<h2 class="mb-4">삶의 양식</h2>
 				<p></p>
 			</div>
 		</div>

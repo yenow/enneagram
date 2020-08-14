@@ -2,30 +2,28 @@ package com.enneagram.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.enneagram.function.OracleDateChange;
 import com.enneagram.service.BoardService;
 import com.enneagram.vo.BoardVO;
+import com.example.domain.Criteria;
+import com.example.domain.PageDTO;
 
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -51,13 +49,38 @@ public class BoardController {
 		return "redirect:/board/boardList";
 	}
 	
+	@RequestMapping(value = "/boardListButton", method = RequestMethod.GET)  
+	public ResponseEntity<T> boardListButton(Criteria c){
+		
+	}
+	
 	/* 게시판 리스트 */
 	@RequestMapping(value = "/boardList", method = RequestMethod.GET)  
-	public String boardList(Model m) {
+	public String boardList(Model m, Criteria c) {
 		BoardVO bo = new BoardVO();
-		List<BoardVO> blist = boardService.selectList(bo);
+		
+		System.out.println("게시물 개수"+c.getMaxLine());
+		System.out.println("게시물 개수"+c.getPageNum());
+		System.out.println("타입"+c.getType());
+		System.out.println("카테고리"+c.getCategory());
+		
+		/* 카테고리에 따른 게시물 총 개수 가져오기*/
+		int maxcount = boardService.boardAllCount(c.getCategory());
+		System.out.println(maxcount);
+		
+		PageDTO pd = new PageDTO(c, maxcount);
+		System.out.println("처음 페이지"+pd.getStartPage());
+		System.out.println("마지막페이지"+pd.getEndPage());
+		System.out.println(pd.isPrev());
+		System.out.println(pd.isNext());
+		
+		
+		/* 게시물 리스트 가져오기 */
+		List<BoardVO> blist = boardService.selectList(bo,c);
 		m.addAttribute("blist", blist);
 		
+		m.addAttribute("pageDTO", pd);
+		m.addAttribute("page", c.getPageNum());
 		return "/board/boardList";
 	}
 	

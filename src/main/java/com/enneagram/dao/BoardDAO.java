@@ -5,12 +5,13 @@ import java.util.List;
 
 import com.enneagram.vo.BoardVO;
 import com.enneagram.vo.ReplyVO;
+import com.example.domain.Criteria;
 
 public interface BoardDAO {
 
 	void insertBoard(BoardVO bo);
 
-	List<BoardVO> selectList(BoardVO bo);
+	List<BoardVO> selectList(BoardVO bo, Criteria c);
 
 	BoardVO selectboard(int bno);
 
@@ -25,5 +26,7 @@ public interface BoardDAO {
 	void addCnt(int bno);
 
 	List<BoardVO> selectListSearch(BoardVO bo);
+
+	int boardAllCount(String category);
 
 }

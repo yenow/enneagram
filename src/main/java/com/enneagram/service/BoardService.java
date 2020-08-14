@@ -6,12 +6,13 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import com.enneagram.vo.BoardVO;
+import com.example.domain.Criteria;
 
 public interface BoardService {
 
 	void insertBoard(BoardVO bo);
 
-	List<BoardVO> selectList(BoardVO bo);
+	// List<BoardVO> selectList(BoardVO bo);
 
 	BoardVO selectboard(int bno,HttpSession session,String sessionId);
 
@@ -22,5 +23,9 @@ public interface BoardService {
 	List<BoardVO> boardCount();
 
 	List<BoardVO> selectListSearch(BoardVO bo);
+
+	List<BoardVO> selectList(BoardVO bo, Criteria c);
+
+	int boardAllCount(String category);
 
 }

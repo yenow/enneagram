@@ -91,8 +91,12 @@ cursor: pointer; border-radius: 3px;float: right;}
 
 .board-list li {
 	display: inline-block;
-	height: 1em;
-	line-height: 1em;
+	height: 1.5em;
+	line-height: 1.5em;
+}
+
+.board-list li a{
+	
 }
 
 /* 글씨가 넘어가면 짤림 */
@@ -108,7 +112,7 @@ cursor: pointer; border-radius: 3px;float: right;}
 }
 
 .board-list li:nth-child(2) {
-	width: 39%;
+
 }
 
 .board-list li span {
@@ -124,6 +128,8 @@ cursor: pointer; border-radius: 3px;float: right;}
 		margin-top: 1em;
 		font-size: 12px;
 		text-align: left;
+		flex-wrap: nowrap;
+		width: 100%;
 	}
 }
 

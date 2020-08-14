@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.enneagram.dao.BoardDAO;
 import com.enneagram.vo.BoardVO;
+import com.example.domain.Criteria;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -22,9 +23,17 @@ public class BoardServiceImpl implements BoardService{
 		boardDAO.insertBoard(bo);
 	}
 
+	/*
+	 * @Override public List<BoardVO> selectList(BoardVO bo) { return
+	 * boardDAO.selectList(bo); }
+	 */
+	
+	/* 게시물리스트 ... 페이징처리 해서 가져오기*/
 	@Override
-	public List<BoardVO> selectList(BoardVO bo) {
-		return boardDAO.selectList(bo);
+	public List<BoardVO> selectList(BoardVO bo, Criteria c) {
+		c.setStart(c.getPageNum()*c.getMaxLine()-c.getMaxLine()+1);
+		c.setEnd(c.getPageNum()*c.getMaxLine());;
+		return boardDAO.selectList(bo,c);
 	}
 
 	@Override
@@ -65,4 +74,14 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardVO> selectListSearch(BoardVO bo) {
 		return boardDAO.selectListSearch(bo);
 	}
+
+	/* 게시글 총 개수,, 카테고리별로 */
+	@Override
+	public int boardAllCount(String category) {
+		// TODO Auto-generated method stub
+		return boardDAO.boardAllCount(category);
+	}
+
+
+	
 }

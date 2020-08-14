@@ -79,12 +79,21 @@
 							<option disabled="disabled">선택</option>
 							<option value="1">공지사항</option>
 							<option value="2">속닥속닥</option>
-							<option value="3">Three</option>
+							<option value="3">자료실</option>
 						</select>
 					</div>
 				</c:if>
 				<c:if test="${login.category != '관리자' }">
-					<input type="hidden" name="category" value="속닥속닥">
+					<div class="col-12 input-group mb-3">
+						<div class="input-group-prepend">
+							<label class="input-group-text" for="inputGroupSelect01">카테고리</label>
+						</div>
+						<select class="custom-select" id="inputGroupSelect01" name="category">  <!-- select 태그안에 name속성있고, form태그 안이라면 전송됨 -->
+							<option disabled="disabled">선택</option>
+							<option value="2">속닥속닥</option>
+							<option value="3">자료실</option>
+						</select>
+					</div>
 				</c:if>
 				<!-- /category  -->
 				
@@ -98,7 +107,7 @@
 					
 					<!-- type정하기 -->
 					<div class="input-group-prepend">
-						<label class="input-group-text" for="inputGroupSelect01">카테고리</label>
+						<label class="input-group-text" for="inputGroupSelect01">유형</label>
 					</div>
 					<select class="custom-select" id="inputGroupSelect01" name="type">
 						<option disabled="disabled">유형</option>

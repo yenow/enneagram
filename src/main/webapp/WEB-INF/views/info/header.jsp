@@ -69,14 +69,14 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/board/boardList" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">게시판</a>
 						<div class="dropdown-menu" aria-labelledby="dropdown04">
-							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList">공지사항</a> 
-							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList">속닥속닥</a>
-							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList">자료실</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList?category=공지사항">공지사항</a> 
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList?category=속닥속닥">속닥속닥</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList?category=자료실">자료실</a>
 						</div>
 					</li>
 						
 					<li class="nav-item">
-						<a href="contact.html" class="nav-link">실시간 채팅</a>
+						<a href="#" class="nav-link">실시간 채팅</a>
 					</li>
 
 					<!-- 비로그인시 -->

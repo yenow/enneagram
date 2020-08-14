@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.enneagram.vo.BoardVO;
 import com.enneagram.vo.ReplyVO;
+import com.example.domain.Criteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -24,8 +25,8 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public List<BoardVO> selectList(BoardVO bo) {
-		return sqlSession.selectList("b_list", bo);
+	public List<BoardVO> selectList(BoardVO bo,Criteria c) {
+		return sqlSession.selectList("b_list", c);
 		
 	}
 
@@ -64,6 +65,12 @@ public class BoardDAOImpl implements BoardDAO {
 
 		return sqlSession.selectList("b_list_search", bo);
 		//("b_list_search",bo);
+	}
+	
+	/* 게시글 총 개수*/
+	@Override
+	public int boardAllCount(String category) {
+		return sqlSession.selectOne("boardAllCount",category);
 	}
 	
 	
