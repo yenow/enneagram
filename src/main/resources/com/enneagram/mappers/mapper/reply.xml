@@ -8,17 +8,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="Reply">
 	
 	<insert id="r_insert" parameterType="r">
-		insert into reply (rno, bno, user_id, nickname , rcontent, regdate, kind) 
-		values (nextval('rno'), #{bno}, #{user_id}, #{nickname} ,#{rcontent}, sysdate(), 1)
-	</insert>
-	
-	<insert id="r_insert_no" parameterType="r">
-		insert into reply (rno, bno, rcontent, regdate, nickname, no_user_passwd, kind) 
-		values (nextval('rno'), #{bno}, #{rcontent}, sysdate, #{nickname}, #{no_user_passwd}, 2)
+		insert into reply (rno,bno,mno,content,rname,rpassword,regdate,category) values 
+		(nextval('rno'),#{bno},#{mno},#{content},#{rname},#{rpassword},sysdate(),#{category});
 	</insert>
 
 	<select id="r_list" resultType="r" >
-		select * from reply where bno=#{bno}
+		select reply.*, member.nickname from reply left join member on member.mno = reply.mno where bno = #{bno};
 	</select>
 	
 	<select id="r_password" resultType="string">

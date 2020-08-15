@@ -23,6 +23,7 @@ public class ReplyVO {
 	private int mno;
 	private int rrno;
 	private int category;
+	private String nickname;
 	private String rname;   // 댓글 쓴 사람 아이디
 	private String rpassword; 
 	private String content;   // 댓글 내용

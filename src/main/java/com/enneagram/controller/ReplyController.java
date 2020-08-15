@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,14 +39,14 @@ public class ReplyController {
 	private ReplyService replyService;
 	
 	//댓글 삽입
-	@RequestMapping("/replyRegist")
+	@PostMapping("/replyRegist")
 	public ResponseEntity<String> replyInsert(@RequestBody ReplyVO re, HttpSession session) {  
 		// @RequestBody 는 전송된 JSON데이터를 객체환 변환한다. 데이터 전송방식을 json을 이용한다. 
 		// ResponseEntity<void> 는 개발자가 문제가 되는 나쁜 상태, 404,500 같은 http 나쁜 상태 코드를 데이터와 함께 브라우저로 전송할 수 있기 때문에 좀 더 세밀한 제어가 필요한 경우 사용해 볼수 있다
 		// 400 나쁜 상태코드 BAD_REQUEST가 브라우저로 전송된다
 		ResponseEntity<String> entity= null;
 		try {
-			
+			replyService.replyInsert(re);
 			entity= new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,12 +92,22 @@ public class ReplyController {
 		return entity;
 	}
 	
-	// 댓글 삭제
-	//@RequestMapping("/deleteReply")
-	//public ResponseEntity<String> deleteReply(@RequestBody ReplyVO re){
+	 // 댓글 삭제
+	@RequestMapping("/deleteReply")
+	public ResponseEntity<String> deleteReply(@RequestBody int rno){
 		
 		
-	//}
+		ResponseEntity<String> entity= null;
+		try {
+			replyService.replyDelete(rno);
+			entity= new ResponseEntity<String>("success", HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity=new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+		
+	}
 	
 }
 

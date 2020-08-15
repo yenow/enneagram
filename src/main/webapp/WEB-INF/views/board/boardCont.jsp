@@ -57,7 +57,7 @@
 
 						<!-- 댓글 -->
 						<div class="pt-2 mt-5 border-top">
-							<h3 class="mb-5">6 Comments</h3>
+							<h3 class="mb-5">${b.rcnt } Comments</h3>
 							<ul class="comment-list">
 								<%-- <li class="comment">
 									<div class="vcard bio">
@@ -137,7 +137,7 @@
 								</li> --%>
 
 
-								<!-- <li class="comment">
+								<li class="comment">
 									<div class="vcard bio">
 										<img src="images/person_1.jpg" alt="Image placeholder">
 									</div>
@@ -146,10 +146,22 @@
 										<div class="meta">June 27, 2018 at 2:21pm</div>
 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
 										<p>
-											<a href="#" class="reply">Reply</a>
+											<a href="#" class="reply">Reply</a> 
+											<a href="#" class="reply reply-update-button" onclick="replyUpdate();">수정</a> 
+											<a  href="#" class="reply reply-delete-button" onclick="replydelete();">삭제</a>
 										</p>
+										
+										<div class="input-group mb-3 reply-update-box none">
+											<div class="input-group-prepend">
+												<span class="input-group-text" id="basic-addon1">비밀번호</span>
+											</div>
+											<input type="password" class="form-control" placeholder="댓글 비밀번호" aria-label="Username" aria-describedby="basic-addon1">
+											<div class="input-group-append">
+												<button class="btn btn-outline-secondary border rounded reply-button" type="button" id="inputGroupFileAddon04">확인</button>
+											</div>
+										</div>
 									</div>
-								</li> -->
+								</li>
 							</ul>
 							<!-- END comment-list -->
 
@@ -162,11 +174,11 @@
 									<c:if test="${login == null }">
 										<div class=" form-group">
 											<label for="rId">이름</label>
-											<input type="text" class="form-control" id="rId" name="rId">
+											<input type="text" class="form-control" id="rname" name="rname">
 										</div>
 										<div class="form-group">
 											<label for="password">비밀번호</label>
-											<input type="password" class="form-control" id="password" name="password">
+											<input type="password" class="form-control" id="rpassword" name="rpassword">
 										</div>
 									</c:if>
 									<!-- 내용 -->
@@ -190,28 +202,74 @@
 	</div>
 </section>
 
+<c:if  test="${login ne null }">
+	<div data-mno="${login.mno }" class="d-none login-mno"></div>
+</c:if>
+	
+
+
+
+<div class="alert alert-primary" role="alert">
+  A simple primary alert—check it out!
+</div>
+
 <script type="text/javascript">
 
  $(document).ready(function() {
+     
 	 
 	/* 댓글 넣는 함수*/
 	function insertReply(data) {
+		var tmno = $('.login-mno').data('mno');  // html 태그를 이용해서 값을 받았다.
 		for(var i=0; data.length; i++){
 			var content = data[i].content;
 			var regdate = data[i].regdate;
-			var name = data[i].rname;
+			var rname = data[i].rname;
+			var category = data[i].category;
+			var mno = data[i].mno;
+			var rno = data[i].rno;
+			var nickname = data[i].nickname;
 			
 			$li = $('<li class="comment"></li>');
 			$img = $('<div class="vcard bio">'
 					+'<img src="${pageContext.request.contextPath}/resources/images/person_1.jpg" alt="Image placeholder">'
 					+'</div>');
-			$content = $('<div class="comment-body">'
-					+'<h3>'+name+'</h3>' 
-					+'<div class="meta">'+regdate.year+'.'+regdate.month+'.'+regdate.dayOfMonth+'</div>'
-					+'<p>'+content+'</p>'
-					+'<p><a href="#" class="reply">Reply</a></p></div>'); 
+			$div = $('<div class="comment-body"></div>');
+			
+			if(rname!=null){
+				$rname = $('<h3>'+rname+'</h3>');
+			}else{
+				$rname = $('<h3>'+nickname+'</h3>');
+			}
+			
+			$regdate = $('<div class="meta">'+regdate.year+'.'+regdate.month+'.'+regdate.dayOfMonth+'</div>');
+			$content = $('<p>'+content+'</p>');
+			$p = $('<p></p>');
+			$reply = $('<a href="#" class="reply">Reply</a> ');
+			
+			$p.append($reply);  // p태그에 reply버튼 추가
+			if(tmno===mno){  // 진짜 이부분.. 알다가도 모르겟다... 자바스크립트는 '' 랑 0 이랑 똑같이 보는듯
+				
+				$replyUpdate = $('<a href="#" class="reply reply-update-button1" data-mno="'+mno+'" data-rno="'+rno+'" onclick="replyUpdateBox();">수정</a>');
+				$replyDelete = $('<a href="#" class="reply reply-delete-button1" data-mno="'+mno+'" data-rno="'+rno+'" onclick="replydelete();">삭제</a>');
+				$p.append($replyUpdate);
+				$p.append($replyDelete);
+			}
+			if(category==2){
+				$replyDelete = $('<a href="#" class="reply reply-delete-button2" data-mno="'+mno+'" data-rno="'+rno+'" onclick="replydelete();">삭제</a>');
+				$p.append($replyDelete);
+			}
+			$identificationButton = '<div class="input-group mb-3 reply-update-box d-none"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">비밀번호</span></div><input type="password" class="form-control" placeholder="댓글 비밀번호" aria-label="Username" aria-describedby="basic-addon1"><div class="input-group-append"><button class="btn btn-outline-secondary border rounded reply-button" type="button" id="inputGroupFileAddon04">확인</button></div></div>'
+			
+			$div.append($rname);
+			$div.append($regdate);
+			$div.append($content);
+			$div.append($p);
+			$div.append($identificationButton);
+			
 			$li.append($img);
-			$li.append($content); 
+			$li.append($div); 
+			
 			$('.comment-list').append($li);
 		}
 		
@@ -232,21 +290,82 @@
 	
 	
 	$('.reply-regist').click(function() {
-		console.log('제출');
-		console.log('${login}'=='');  
 		var bno = ${b.bno};
-		console.log(bno);
+		var rpassword = $('#rpassword').val();
+		var rname = $('#rname').val();
+		var content = $('#content').val();
+		var dataVO;
+		var category;
 		
-		/* $.ajax({
+		if('${login}'==''){
+			category = 2;
+			mno = 0;
+			dataVO = {'bno':bno,'rpassword':rpassword,'rname':rname,'content':content,'category':category };
+		}else{
+			var mno = '${login.mno}';
+			category = 1;
+			dataVO = {'bno':bno,'rpassword':rpassword,'rname':rname,'content':content ,'mno':mno ,'category':category };
+		}
+		console.log(bno+" "+rpassword+" "+rname+" "+content+" "+mno+" "+category);
+		
+		$.ajax({
 			url : '${pageContext.request.contextPath}/reply/replyRegist',
-			data : {'bno' : bno},
+			data : JSON.stringify(dataVO),
+			contentType: 'application/json',
 			method : 'POST',
-			dataType : 'json',
+			dataType : 'html',
 			success: function (data) {
-				console.log(dta);
+				console.log(data);
+				alert('댓글이 등록되었습니다');
 			}
-		}); */
+		});  
+		
+		$('.comment-list').html('');  // 댓글 리스트 비우기
+		replyList();    // 댓글 리스트 호출
+		$('html').scrollTop(0);  // 스크롤을 맨 위로
+		/* input태그 초기화 */
+		$('#rpassword').val('');
+		$('#rname').val('');
+		$('#content').val('');
 	}); 
+	
+	
+	
+	$('.reply-button').click(function () {
+		
+	});
+	
+	$('.reply-delete-button2').click(function () {
+		if($('.reply-update-button').data('category')==2){
+			$('reply-update-box').show();
+		}
+		
+	});
+	
+	/* 로그인 되어있는 사용자가 수정*/
+	$('.reply-update-button1').click(function () {
+		var flag = confirm('정말 삭제하시겠습니까?');
+		if(flag==true){
+			$.get(url, data, function(data, textStatus, req) {
+				
+			}, dataType)
+		}
+	});
+	
+	/* 로그인 되어있는 사용자가 삭제*/
+	$('.reply-delete-button1').click(function () {
+		var flag = confirm('정말 삭제하시겠습니까?');
+		var rno = $(this).data('rno');
+		console.log(rno);
+		if(flag==true){
+			$.post('${pageContext.request.contextPath}/reply/deleteReply', {'rno' : rno}, function(data, textStatus, req) {
+				console.log(data);
+			}, 'html')
+		}
+		
+	});
+	
+	
 });
  
 </script>

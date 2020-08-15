@@ -16,7 +16,7 @@ public class BoardVO {
 	private String content;
 	private String category;
 	private int cnt;     // 조회수
-	private int rcnt;
+	private int rcnt;  //  댓글 수
 	private Date regdate;   
 	private Date moddate;
 	private int likey;

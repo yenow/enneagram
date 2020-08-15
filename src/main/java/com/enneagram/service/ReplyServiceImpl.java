@@ -17,6 +17,7 @@ public class ReplyServiceImpl implements ReplyService{
 	@Autowired
 	private BoardDAO boardDAO;
 	
+	
 	@Override
 	public void replyInsert(ReplyVO re) {
 		replyDAO.replyInsert(re);
