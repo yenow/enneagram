@@ -141,7 +141,7 @@
 		<div class="row justify-content-center mb-5 pb-5">
 			<div class="col-md-7 text-center heading-section ftco-animate">
 				<span class="subheading">famous saying</span>
-				<h2 class="mb-4">삶의 양식</h2>
+				<h2 class="mb-4">마음의 양식</h2>
 				<p></p>
 			</div>
 		</div>

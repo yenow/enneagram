@@ -14,12 +14,11 @@
 				<div class="ftco-footer-widget mb-4 ml-5">
 					<h2 class="ftco-heading-2">Quick Links</h2>
 					<ul class="list-unstyled">
-						<li><a href="#" class="py-2 d-block">Home</a></li>
-						<li><a href="#" class="py-2 d-block">Case studies</a></li>
-						<li><a href="#" class="py-2 d-block">Services</a></li>
-						<li><a href="#" class="py-2 d-block">Portfolio</a></li>
-						<li><a href="#" class="py-2 d-block">About</a></li>
-						<li><a href="#" class="py-2 d-block">Contact</a></li>
+						<li><a href="${pageContext.request.contextPath}" class="py-2 d-block">Home</a></li>
+						<li><a href="${pageContext.request.contextPath}/test/test" class="py-2 d-block">테스트</a></li>
+						<li><a href="${pageContext.request.contextPath}/member/login" class="py-2 d-block">로그인</a></li>
+						<li><a href="${pageContext.request.contextPath}/member/member_insert" class="py-2 d-block">회원가입</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/dahboard" class="py-2 d-block">관리자</a></li>
 					</ul>
 				</div>
 			</div>
@@ -30,8 +29,8 @@
 						<li><a href="#" class="py-2 d-block">198 West 21th
 								Street, Suite 721 New York NY 10016</a></li>
 						<li><a href="#" class="py-2 d-block">+ 1235 2355 98</a></li>
-						<li><a href="#" class="py-2 d-block">info@yoursite.com</a></li>
-						<li><a href="#" class="py-2 d-block">email@email.com</a></li>
+						<li><a href="#" class="py-2 d-block">phantom_ysy@naver.com</a></li>
+						<li><a href="https://github.com/yenow" class="py-2 d-block">https://github.com/yenow</a></li>
 					</ul>
 				</div>
 			</div>

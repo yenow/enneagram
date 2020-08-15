@@ -50,9 +50,9 @@
 						<a href="${pageContext.request.contextPath}" class="nav-link">Home</a>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/test/test" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Test</a>
+						<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/test/test" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">테스트</a>
 						<div class="dropdown-menu" aria-labelledby="dropdown04">
-							<a class="dropdown-item" href="${pageContext.request.contextPath}/test/test">Test</a> 
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/test/test">테스트</a> 
 							<a class="dropdown-item" href="${pageContext.request.contextPath}/test/test_complete">결과</a>
 						</div>
 					</li>

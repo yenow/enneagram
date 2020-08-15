@@ -21,7 +21,7 @@
 						<!-- 제목 -->
 						<h2 class="col-md-12 row text-center mb-1">${b.title }</h2>
 						<!-- 서브정보 -->
-						<table class="row col-md-12 my-2">
+						<table class="row col-md-12 my-2 ">
 							<tbody class="col-md-12" style="padding: 0 !important;">
 								<tr class="float-left">
 									<td class="align-middle border-0 px-2">[${b.type }번유형]</td>
@@ -40,10 +40,10 @@
 						</table>
 
 						<!-- 내용 -->
-						<div class="col-md-12 row mt-1" style="min-height: 500px;">내용</div>
+						<div class="col-md-12 row mt-1 pt-2 border-top" style="min-height: 500px;">내용</div>
 
 						<!--  태그 -->
-						<div class="tag-widget post-tag-container mb-5 mt-5">
+						<div class="col-md-12 tag-widget post-tag-container mb-5 mt-5 ">
 							<div class="tagcloud">
 								<span class="float-left"> <a href="#" class="tag-cloud-link">Life</a> <a href="#" class="tag-cloud-link">Sport</a> <a href="#" class="tag-cloud-link">Tech</a> <a href="#" class="tag-cloud-link">Travel</a>
 
@@ -56,7 +56,7 @@
 						</div>
 
 						<!-- 댓글 -->
-						<div class="pt-5 mt-5">
+						<div class="pt-2 mt-5 border-top">
 							<h3 class="mb-5">6 Comments</h3>
 							<ul class="comment-list">
 								<%-- <li class="comment">
@@ -199,7 +199,7 @@
 		for(var i=0; data.length; i++){
 			var content = data[i].content;
 			var regdate = data[i].regdate;
-			var name = data[i].rid;
+			var name = data[i].rname;
 			
 			$li = $('<li class="comment"></li>');
 			$img = $('<div class="vcard bio">'
