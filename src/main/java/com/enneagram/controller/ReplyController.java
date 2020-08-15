@@ -93,9 +93,9 @@ public class ReplyController {
 	}
 	
 	 // 댓글 삭제
-	@RequestMapping("/deleteReply")
+	@PostMapping("/deleteReply")
 	public ResponseEntity<String> deleteReply(@RequestBody int rno){
-		
+		System.out.println(rno);
 		
 		ResponseEntity<String> entity= null;
 		try {

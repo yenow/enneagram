@@ -215,8 +215,36 @@
 
 <script type="text/javascript">
 
+/* 로그인 되어있는 사용자가 수정*/
+function replyUpdate1(rno) {
+	
+}
+
+/* 로그인 되어있는 사용자가 삭제*/
+function replyDelete1(rno) {
+	var flag = confirm('정말 삭제하시겠습니까?');
+	console.log(this);
+	//var rno = $(this).data('rno');
+	console.log(rno);
+	console.log(flag);
+	if(flag==true){
+		$.post('${pageContext.request.contextPath}/reply/deleteReply', rno, function(data, textStatus, req) {
+			console.log(data);
+		}, 'html')
+	}else{
+		return false;
+	}
+	alert('삭제되었습니다');
+}
+
+function replyDelete2(rno) {
+	
+	
+	console.log($('.reply-update-box'));
+}
+
+
  $(document).ready(function() {
-     
 	 
 	/* 댓글 넣는 함수*/
 	function insertReply(data) {
@@ -250,13 +278,13 @@
 			$p.append($reply);  // p태그에 reply버튼 추가
 			if(tmno===mno){  // 진짜 이부분.. 알다가도 모르겟다... 자바스크립트는 '' 랑 0 이랑 똑같이 보는듯
 				
-				$replyUpdate = $('<a href="#" class="reply reply-update-button1" data-mno="'+mno+'" data-rno="'+rno+'" onclick="replyUpdateBox();">수정</a>');
-				$replyDelete = $('<a href="#" class="reply reply-delete-button1" data-mno="'+mno+'" data-rno="'+rno+'" onclick="replydelete();">삭제</a>');
+				$replyUpdate = $('<a href="#" class="reply reply-update-button1" data-mno="'+mno+'" data-rno="'+rno+'" onclick="replyUpdate1('+rno+');">수정</a>');
+				$replyDelete = $('<a href="#" class="reply reply-delete-button1" data-mno="'+mno+'" data-rno="'+rno+'" onclick="replyDelete1('+rno+');">삭제</a>');
 				$p.append($replyUpdate);
 				$p.append($replyDelete);
 			}
 			if(category==2){
-				$replyDelete = $('<a href="#" class="reply reply-delete-button2" data-mno="'+mno+'" data-rno="'+rno+'" onclick="replydelete();">삭제</a>');
+				$replyDelete = $('<a href="#" class="reply reply-delete-button2" data-mno="'+mno+'" data-rno="'+rno+'" onclick="replyDelete2('+rno+');">삭제</a>');
 				$p.append($replyDelete);
 			}
 			$identificationButton = '<div class="input-group mb-3 reply-update-box d-none"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">비밀번호</span></div><input type="password" class="form-control" placeholder="댓글 비밀번호" aria-label="Username" aria-describedby="basic-addon1"><div class="input-group-append"><button class="btn btn-outline-secondary border rounded reply-button" type="button" id="inputGroupFileAddon04">확인</button></div></div>'
@@ -341,30 +369,6 @@
 		}
 		
 	});
-	
-	/* 로그인 되어있는 사용자가 수정*/
-	$('.reply-update-button1').click(function () {
-		var flag = confirm('정말 삭제하시겠습니까?');
-		if(flag==true){
-			$.get(url, data, function(data, textStatus, req) {
-				
-			}, dataType)
-		}
-	});
-	
-	/* 로그인 되어있는 사용자가 삭제*/
-	$('.reply-delete-button1').click(function () {
-		var flag = confirm('정말 삭제하시겠습니까?');
-		var rno = $(this).data('rno');
-		console.log(rno);
-		if(flag==true){
-			$.post('${pageContext.request.contextPath}/reply/deleteReply', {'rno' : rno}, function(data, textStatus, req) {
-				console.log(data);
-			}, 'html')
-		}
-		
-	});
-	
 	
 });
  
