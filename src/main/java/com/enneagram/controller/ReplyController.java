@@ -30,7 +30,7 @@ import com.enneagram.vo.ReplyVO;
  * 4. @RestController는 기존의 특정한 JSP와 같은 뷰를 만들어 내는 것이 목적이 아닌 REST 방식의 데이터 처리를 위해서 사용하는 어노테이션 (xml,json, 단순 문자열을 웹브라우저에 반환)
  * 
  * */
-@RestController
+@RestController  // responsebody 생략가능
 @RequestMapping("/reply")
 public class ReplyController {
 
@@ -38,25 +38,14 @@ public class ReplyController {
 	private ReplyService replyService;
 	
 	//댓글 삽입
-	@RequestMapping("/replyinsert")
+	@RequestMapping("/replyRegist")
 	public ResponseEntity<String> replyInsert(@RequestBody ReplyVO re, HttpSession session) {  
 		// @RequestBody 는 전송된 JSON데이터를 객체환 변환한다. 데이터 전송방식을 json을 이용한다. 
 		// ResponseEntity<void> 는 개발자가 문제가 되는 나쁜 상태, 404,500 같은 http 나쁜 상태 코드를 데이터와 함께 브라우저로 전송할 수 있기 때문에 좀 더 세밀한 제어가 필요한 경우 사용해 볼수 있다
 		// 400 나쁜 상태코드 BAD_REQUEST가 브라우저로 전송된다
 		ResponseEntity<String> entity= null;
 		try {
-			if(re.getKind()==1) {
 			
-				replyService.replyInsert(re);
-			}else {
-				/*
-				 * System.out.println("비로그인"); System.out.println(re.getBno());
-				 * System.out.println(re.getNickname());
-				 * System.out.println(re.getNo_user_passwd());
-				 * System.out.println(re.getRcontent());
-				 */
-				replyService.replyInsert_no(re);
-			}
 			entity= new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -68,7 +57,8 @@ public class ReplyController {
 	
 	//게시판 번호에 따라 댓글리스트 가져오기
 	@RequestMapping("/listReply")
-	public ResponseEntity<List<ReplyVO>> listReply(int bno) {  //@PathVariable은 매핑주소의 게시물 번호값을 추출하는 용도로 사용
+	public ResponseEntity<List<ReplyVO>> listReply(Integer bno) {  //@PathVariable은 매핑주소의 게시물 번호값을 추출하는 용도로 사용
+		System.out.println(bno);
 		ResponseEntity<List<ReplyVO>> entity= null;
 		try {
 			List<ReplyVO> r = replyService.listReply(bno);
@@ -102,60 +92,11 @@ public class ReplyController {
 	}
 	
 	// 댓글 삭제
-	@RequestMapping("/deleteReply")
-	public ResponseEntity<String> deleteReply(@RequestBody ReplyVO re){
-		ResponseEntity<String> entity= null;
+	//@RequestMapping("/deleteReply")
+	//public ResponseEntity<String> deleteReply(@RequestBody ReplyVO re){
 		
-		if(re.getKind()==1) {
-			
-			String user_id = replyService.getUserId(re.getRno());
-			if(user_id.equals(re.getUser_id())) {
-				replyService.replyDelete(re.getRno());
-				try {
-					entity= new ResponseEntity<String>("delete success", HttpStatus.OK);
-				} catch (Exception e) {
-					e.printStackTrace();
-					entity=new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-				}
-				return entity;
-			}else {
-				try {
-					entity= new ResponseEntity<String>("not my reply", HttpStatus.OK);
-				} catch (Exception e) {
-					e.printStackTrace();
-					entity=new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-				}
-				return entity;
-			}
-			
-		}else {
-			System.out.println(re.getRno());
-			String password = replyService.getPassword(re.getRno());
-			/* 비빌번호 비교 */
-			System.out.println("1번" +password);
-			System.out.println("2번"+re.getNo_user_passwd());
-			if(password.equals(re.getNo_user_passwd())) {
-				replyService.replyDelete(re.getRno());
-				try {
-					entity= new ResponseEntity<String>("success", HttpStatus.OK);
-				} catch (Exception e) {
-					e.printStackTrace();
-					entity=new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-				}
-				return entity;
-				
-			}else {
-				try {
-					entity= new ResponseEntity<String>("not equal password", HttpStatus.OK);
-				} catch (Exception e) {
-					e.printStackTrace();
-					entity=new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-				}
-				return entity;
-			}
-		}
 		
-	}
+	//}
 	
 }
 
