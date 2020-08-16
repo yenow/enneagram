@@ -1,23 +1,19 @@
 package com.enneagram.controller;
 
-
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.enneagram.service.ReplyService;
+import com.enneagram.vo.ReplyRno;
 import com.enneagram.vo.ReplyVO;
 
 // advanced rest client
@@ -31,87 +27,112 @@ import com.enneagram.vo.ReplyVO;
  * 4. @RestController는 기존의 특정한 JSP와 같은 뷰를 만들어 내는 것이 목적이 아닌 REST 방식의 데이터 처리를 위해서 사용하는 어노테이션 (xml,json, 단순 문자열을 웹브라우저에 반환)
  * 
  * */
-@RestController  // responsebody 생략가능
+@RestController // responsebody 생략가능
 @RequestMapping("/reply")
 public class ReplyController {
 
 	@Autowired
 	private ReplyService replyService;
-	
-	//댓글 삽입
+
+	// 댓글 삽입
 	@PostMapping("/replyRegist")
-	public ResponseEntity<String> replyInsert(@RequestBody ReplyVO re, HttpSession session) {  
-		// @RequestBody 는 전송된 JSON데이터를 객체환 변환한다. 데이터 전송방식을 json을 이용한다. 
-		// ResponseEntity<void> 는 개발자가 문제가 되는 나쁜 상태, 404,500 같은 http 나쁜 상태 코드를 데이터와 함께 브라우저로 전송할 수 있기 때문에 좀 더 세밀한 제어가 필요한 경우 사용해 볼수 있다
+	public ResponseEntity<String> replyInsert(@RequestBody ReplyVO re, HttpSession session) {
+		// @RequestBody 는 전송된 JSON데이터를 객체환 변환한다. 데이터 전송방식을 json을 이용한다.
+		// ResponseEntity<void> 는 개발자가 문제가 되는 나쁜 상태, 404,500 같은 http 나쁜 상태 코드를 데이터와 함께
+		// 브라우저로 전송할 수 있기 때문에 좀 더 세밀한 제어가 필요한 경우 사용해 볼수 있다
 		// 400 나쁜 상태코드 BAD_REQUEST가 브라우저로 전송된다
-		ResponseEntity<String> entity= null;
+		ResponseEntity<String> entity = null;
 		try {
 			replyService.replyInsert(re);
-			entity= new ResponseEntity<String>("success", HttpStatus.OK);
+			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity=new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-		 
+
 		return entity;
 	}
-	
-	//게시판 번호에 따라 댓글리스트 가져오기
+
+	// 게시판 번호에 따라 댓글리스트 가져오기
 	@RequestMapping("/listReply")
-	public ResponseEntity<List<ReplyVO>> listReply(Integer bno) {  //@PathVariable은 매핑주소의 게시물 번호값을 추출하는 용도로 사용
+	public ResponseEntity<List<ReplyVO>> listReply(Integer bno) { // @PathVariable은 매핑주소의 게시물 번호값을 추출하는 용도로 사용
 		System.out.println(bno);
-		ResponseEntity<List<ReplyVO>> entity= null;
+		ResponseEntity<List<ReplyVO>> entity = null;
 		try {
 			List<ReplyVO> r = replyService.listReply(bno);
-			entity= new ResponseEntity<List<ReplyVO>>(r, HttpStatus.OK);
-			/* 리스트 확인
-			 * for(ReplyVO r1 : r) { System.out.println(r1.getKind()); }
+			entity = new ResponseEntity<List<ReplyVO>>(r, HttpStatus.OK);
+			/*
+			 * 리스트 확인 for(ReplyVO r1 : r) { System.out.println(r1.getKind()); }
 			 */
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity=new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}
-	
-	
+
 	// 댓글 수정
 	@RequestMapping("/updateReply")
-	public ResponseEntity<List<ReplyVO>> updateReply(@RequestBody ReplyVO re) {  //@PathVariable은 매핑주소의 게시물 번호값을 추출하는 용도로 사용
-		//1번 로그인 된경우 : rno 에서 user_id 를 알아오고 비교
-		
-		//2번 안된경우 : rno에서 패스워드값 가져오고 비교
-		
-		ResponseEntity<List<ReplyVO>> entity= null;
+	public ResponseEntity<List<ReplyVO>> updateReply(@RequestBody ReplyVO re) { // @PathVariable은 매핑주소의 게시물 번호값을 추출하는
+																				// 용도로 사용
+		// 1번 로그인 된경우 : rno 에서 user_id 를 알아오고 비교
+
+		// 2번 안된경우 : rno에서 패스워드값 가져오고 비교
+
+		ResponseEntity<List<ReplyVO>> entity = null;
 		try {
-			entity= new ResponseEntity<List<ReplyVO>>(replyService.listReply(re.getBno()), HttpStatus.OK);
+			entity = new ResponseEntity<List<ReplyVO>>(replyService.listReply(re.getBno()), HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity=new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}
-	
-	 // 댓글 삭제
+
+	// 댓글 삭제
 	@PostMapping("/deleteReply")
-	public ResponseEntity<String> deleteReply(@RequestBody int rno){
+	public ResponseEntity<String> deleteReply(@RequestBody int rno) {
 		System.out.println(rno);
-		
-		ResponseEntity<String> entity= null;
+
+		ResponseEntity<String> entity = null;
 		try {
 			replyService.replyDelete(rno);
-			entity= new ResponseEntity<String>("success", HttpStatus.OK);
+			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity=new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
+
 		return entity;
-		
+
 	}
 	
+
+	@PostMapping("/deleteReply2")
+	public ResponseEntity<String> deleteReply2(@RequestBody ReplyRno rr) {
+		System.out.println(rr.getRno());
+
+		ResponseEntity<String> entity = null;
+		try {
+			ReplyVO r = replyService.getReply(rr.getRno());
+			if (r.getRpassword().equals(rr.getPs())) {
+				replyService.replyDelete(rr.getRno());
+				entity = new ResponseEntity<String>("success", HttpStatus.OK);
+			} else {
+				entity = new ResponseEntity<String>("passwordNotEquals", HttpStatus.OK);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+
+		return entity;
+	}
+
 }
 
-/*REST와 AJAX
- * 1. REST가 가장 많이 쓰이는 방식은 아작스와 결합된 형태 , 아작스는 비동기식 프로그램으로 주로 브라우저에서 화면 전환 없이 서버와 필요한 일정 영역부분만 대화형으로 데이터를 주고 받는 형태의 메세지 전송 방식
+/*
+ * REST와 AJAX 1. REST가 가장 많이 쓰이는 방식은 아작스와 결합된 형태 , 아작스는 비동기식 프로그램으로 주로 브라우저에서 화면
+ * 전환 없이 서버와 필요한 일정 영역부분만 대화형으로 데이터를 주고 받는 형태의 메세지 전송 방식
  * 
- * */
+ */

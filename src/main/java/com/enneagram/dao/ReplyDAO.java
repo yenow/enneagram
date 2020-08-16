@@ -17,4 +17,6 @@ public interface ReplyDAO {
 	void replyDelete(int rno);
 
 	String getUserId(int rno);
+
+	ReplyVO getReply(int rno);
 }

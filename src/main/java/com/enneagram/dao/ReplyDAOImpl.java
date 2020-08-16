@@ -14,6 +14,7 @@ public class ReplyDAOImpl implements ReplyDAO{
 	@Autowired
 	private SqlSession sqlSession;
 	
+	/* 댓글 등록*/
 	@Override
 	public void replyInsert(ReplyVO re) {
 		sqlSession.insert("r_insert", re);
@@ -42,5 +43,11 @@ public class ReplyDAOImpl implements ReplyDAO{
 	@Override
 	public String getUserId(int rno) {
 		return sqlSession.selectOne("r_userId",rno);
+	}
+
+	/* 댓글번호로 댓글정보 가져오기 */
+	@Override
+	public ReplyVO getReply(int rno) {
+		return sqlSession.selectOne("getReply", rno);
 	}
 }

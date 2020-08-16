@@ -137,7 +137,7 @@
 								</li> --%>
 
 
-								<li class="comment">
+								<li class="comment" onclick="replyUpdate1(1);">
 									<div class="vcard bio">
 										<img src="images/person_1.jpg" alt="Image placeholder">
 									</div>
@@ -217,6 +217,7 @@
 
 /* 로그인 되어있는 사용자가 수정*/
 function replyUpdate1(rno) {
+	console.log($('.reply-delete-button2'));
 	
 }
 
@@ -237,9 +238,29 @@ function replyDelete1(rno) {
 	alert('삭제되었습니다');
 }
 
+/* 비로그인 댓글 삭제 , onclick 함수에 등록됨*/
 function replyDelete2(rno) {
+	console.log(rno);
+	var ps = $('.replyDeleteBox'+rno).val();
+	console.log(ps);
+	var dataVO = {'rno':rno,'ps':ps};
+	console.log(dataVO);
 	
-	
+	$.ajax({
+		url : '${pageContext.request.contextPath}/reply/deleteReply2' ,
+		method : 'POST',
+		dataType : 'html',
+		data : JSON.stringify(dataVO),
+		contentType: 'application/json',
+		success : function (data) {
+			if(data=='passwordNotEquals'){
+				alert('비밀번호가 같지 않습니다');
+			}else{
+				alert('삭제되었습니다');
+				replyList();
+			}
+		}
+	});
 	console.log($('.reply-update-box'));
 }
 
@@ -278,16 +299,33 @@ function replyDelete2(rno) {
 			$p.append($reply);  // p태그에 reply버튼 추가
 			if(tmno===mno){  // 진짜 이부분.. 알다가도 모르겟다... 자바스크립트는 '' 랑 0 이랑 똑같이 보는듯
 				
-				$replyUpdate = $('<a href="#" class="reply reply-update-button1" data-mno="'+mno+'" data-rno="'+rno+'" onclick="replyUpdate1('+rno+');">수정</a>');
-				$replyDelete = $('<a href="#" class="reply reply-delete-button1" data-mno="'+mno+'" data-rno="'+rno+'" onclick="replyDelete1('+rno+');">삭제</a>');
+				$replyUpdate = $('<a class="reply reply-update-button1" data-mno="'+mno+'" data-rno="'+rno+'" onclick="replyUpdate1('+rno+');">수정</a>');
+				$replyDelete = $('<a class="reply reply-delete-button1" data-mno="'+mno+'" data-rno="'+rno+'" onclick="replyDelete1('+rno+');">삭제</a>');
 				$p.append($replyUpdate);
 				$p.append($replyDelete);
 			}
 			if(category==2){
-				$replyDelete = $('<a href="#" class="reply reply-delete-button2" data-mno="'+mno+'" data-rno="'+rno+'" onclick="replyDelete2('+rno+');">삭제</a>');
+				$replyDelete = $('<a disabled="disabled" class="reply reply-delete-button2" data-mno="'+mno+'" data-rno="'+rno+'" >삭제</a>');  //onclick="replyDelete2('+rno+');
+				$replyDelete.on('click', function() {
+					console.log(this);
+					var mother = this.parentNode;
+					var two = mother.nextSibling;
+					console.log(two);
+					console.log($(two));
+					// two.style.display='flex';
+					$(two).toggle();
+				})
 				$p.append($replyDelete);
 			}
-			$identificationButton = '<div class="input-group mb-3 reply-update-box d-none"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">비밀번호</span></div><input type="password" class="form-control" placeholder="댓글 비밀번호" aria-label="Username" aria-describedby="basic-addon1"><div class="input-group-append"><button class="btn btn-outline-secondary border rounded reply-button" type="button" id="inputGroupFileAddon04">확인</button></div></div>'
+			$identificationButton = '<div class="input-group mb-3 reply-update-box" style="display : none">'
+				+'<div class="input-group-prepend">'
+				+'<span class="input-group-text" id="basic-addon1">비밀번호</span>'
+				+'</div>'
+				+'<input type="password" class="form-control replyDeleteBox'+rno+'" placeholder="댓글 비밀번호" aria-label="Username" aria-describedby="basic-addon1">'
+				+'<div class="input-group-append">'
+				+'<button class="btn btn-outline-secondary border rounded reply-button" data-rno="'+rno+'" type="button" id="inputGroupFileAddon04" onclick="replyDelete2('+rno+');">확인</button>'
+				+'</div>'
+				+'</div>';
 			
 			$div.append($rname);
 			$div.append($regdate);
@@ -303,6 +341,7 @@ function replyDelete2(rno) {
 		
 	}
 	
+	/* 댓글 리스트 출력 */
 	function replyList() {
 		var bno = ${b.bno};
 		
@@ -311,12 +350,14 @@ function replyDelete2(rno) {
 			console.log(textStatus);
 			console.log(req);
 			insertReply(data);
+			showPassword();
+			
 		}, 'json');
 	};
 	
 	replyList();
 	
-	
+	/* 댓 글 등 록*/
 	$('.reply-regist').click(function() {
 		var bno = ${b.bno};
 		var rpassword = $('#rpassword').val();
@@ -358,17 +399,18 @@ function replyDelete2(rno) {
 	}); 
 	
 	
-	
-	$('.reply-button').click(function () {
-		
-	});
-	
-	$('.reply-delete-button2').click(function () {
-		if($('.reply-update-button').data('category')==2){
-			$('reply-update-box').show();
+	function showPassword() {
+		var list = document.querySelector('.reply-delete-button2');
+		for(var i=0; list.length; i++){
+			list[i].addEventListener('click', function(e) {
+				console.log(this);
+				var mother = this.parentNode;
+				var two = one.nextSibling;
+				two.style.display='block';
+			});
 		}
-		
-	});
+	}
+	
 	
 });
  

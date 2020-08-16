@@ -48,8 +48,12 @@ public class ReplyServiceImpl implements ReplyService{
 
 	@Override
 	public String getUserId(int rno) {
-		// TODO Auto-generated method stub
 		return replyDAO.getUserId(rno);
+	}
+
+	@Override
+	public ReplyVO getReply(int rno) {
+		return replyDAO.getReply(rno);
 	}
 
 }
