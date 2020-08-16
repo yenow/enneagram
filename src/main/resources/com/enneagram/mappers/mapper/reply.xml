@@ -31,4 +31,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getReply" resultType="r">
 		select * from reply where rno = #{rno}
 	</select>
+	
+	<update id="updateReply">
+	 	update reply set content = #{content} where rno = #{rno}
+	</update>
 </mapper>

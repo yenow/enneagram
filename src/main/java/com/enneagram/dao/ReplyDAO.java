@@ -19,4 +19,6 @@ public interface ReplyDAO {
 	String getUserId(int rno);
 
 	ReplyVO getReply(int rno);
+
+	void updateReply(ReplyVO re);
 }

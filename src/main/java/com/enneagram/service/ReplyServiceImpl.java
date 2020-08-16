@@ -56,4 +56,9 @@ public class ReplyServiceImpl implements ReplyService{
 		return replyDAO.getReply(rno);
 	}
 
+	@Override
+	public void updateReply(ReplyVO re) {
+		replyDAO.updateReply(re);
+	}
+
 }

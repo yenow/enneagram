@@ -50,4 +50,9 @@ public class ReplyDAOImpl implements ReplyDAO{
 	public ReplyVO getReply(int rno) {
 		return sqlSession.selectOne("getReply", rno);
 	}
+
+	@Override
+	public void updateReply(ReplyVO re) {
+		sqlSession.update("updateReply",re);
+	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <jsp:include page="../info/header.jsp"></jsp:include>
 
@@ -14,8 +15,9 @@
 	<div class="container">
 		<div class="row justify-content-center content-margin text-center">
 			<h2 class="col-12 mb-2">${pageDTO.cri.category }</h2>
-			<div class="col-12 input-group mb-3">
-				<c:if test="${pageDTO.cri.category eq '속닥속닥' }">
+			<div class="col-6"></div>
+			<div class="col-6 input-group mb-3">
+				<%-- <c:if test="${pageDTO.cri.category eq '속닥속닥' }">
 					<div class="input-group-prepend">
 						<label class="input-group-text" for="inputGroupSelect01">유형</label>
 					</div>
@@ -33,7 +35,7 @@
 						<option value="8">8유형</option>
 						<option value="9">9유형</option>
 					</select>
-				</c:if>
+				</c:if> --%>
 
 				<!-- 게시물 개수 기능 -->
 				<label class="input-group-text" for="inputGroupSelect02">개수</label>
@@ -54,16 +56,17 @@
 							</a>
 						</li>
 						<li>
-							<span>${b.nickname }</span> <span>${b.cnt }</span> <span>${b.regdate }</span> <span>${b.likey }</span>
+							<span>${b.nickname }</span> <span>${b.cnt }</span> 
+							<span><fmt:formatDate var="date" pattern="yyyy.MM.dd" value="${ b.regdate }" /></span> 
+							<span>${b.likey }</span>
 						</li>
-
 					</ul>
 				</c:forEach>
 			</div>
 
 			<!-- 검색기능 -->
-			<form action="${pageContext.request.contextPath}/board/boardboardList?category=${pageDTO.cri.category}&maxLine=${pageDTO.cri.maxLine}">
-				<div class="col-12 my-3 input-group">
+			<form action="${pageContext.request.contextPath}/board/boardList?category=${pageDTO.cri.category}&maxLine=${pageDTO.cri.maxLine}">
+				<div class="col-12 input-group">
 					<div class="input-group-prepend">
 						<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 0;">검색</button>
 						<div class="dropdown-menu">
@@ -74,9 +77,10 @@
 					</div>
 					<input type="text" class="form-control" name="search" aria-label="Text input with dropdown button">
 					<button type="submit" class="btn btn-primary rounded">검색</button>
-					<button class="btn btn-primary rounded ml-3" onclick="goBoardWrite();">글쓰기</button>
+					<%-- <a class="btn btn-primary rounded ml-3"  href="${pageContext.request.contextPath}/board/boardWrite">글쓰기</a> --%>
 				</div>
 			</form>
+			<button class="btn btn-primary rounded ml-3" id="toBoardWrite">글쓰기</button>
 
 			<!-- 페이징 기능 -->
 			<div class="col-12 text-center">
@@ -117,9 +121,11 @@
 
 <script>
 
-function goBoardWrite() {
-	location.href='${pageContext.request.contextPath}/board/boardWrite';
-};
+$(document).ready(function (){
+	$('#toBoardWrite').on('click', function() {
+		location.href='${pageContext.request.contextPath}/board/boardWrite';
+	})
+});
 
 console.log($('#inputGroupSelect02 option:selected'));
 
