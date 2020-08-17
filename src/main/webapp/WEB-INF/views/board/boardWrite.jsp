@@ -17,7 +17,13 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/write.css">
 </head>
 <body>
-
+	
+	<c:if test="${login eq null }">
+		<script type="text/javascript">
+			alert('로그인이 필요합니다');
+			location.href='${pageContext.request.contextPath}/member/login';
+		</script>
+	</c:if>
 	<!-- nav -->
 	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #efbbcf; padding: 2px;">
 		<a class="navbar-brand" href="#">Ennegram</a>
@@ -65,7 +71,7 @@
 	<div class="container-fluid">
 		<div class="content-margin">
 			<h2 class="text-center mb-3">게시판 등록</h2>
-			<form action="${pageContext.request.contextPath}/board/boardWrite_ok" method="post">
+			<form action="${pageContext.request.contextPath}/board/boardWrite_ok?catetgory=${category}" method="post">
 				<input type="hidden" name="mno" value="${login.mno }">
 				
 				<!-- category  -->

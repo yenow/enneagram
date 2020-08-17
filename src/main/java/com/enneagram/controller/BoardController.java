@@ -39,13 +39,13 @@ public class BoardController {
 	
 	//게시판 작성
 	@GetMapping("/boardWrite")
-	public void boardWrite() {
-		
+	public void boardWrite(BoardVO board, Model m) {
+		m.addAttribute("category", board.getCategory());
 	}
 	
 	@PostMapping("/boardWrite_ok")
-	public String boardWrite_ok(BoardVO board) {
-		
+	public String boardWrite_ok(BoardVO board, Model m) {
+		m.addAttribute("category", board.getCategory());
 		boardService.insertBoard(board);
 		return "redirect:/board/boardList";
 	}

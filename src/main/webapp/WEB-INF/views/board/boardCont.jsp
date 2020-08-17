@@ -19,7 +19,7 @@
 				<div class="row">
 					<div class="col-md-12 ftco-animate">
 						<!-- 제목 -->
-						<h2 class="col-md-12 row text-center mb-1">${b.title }</h2>
+						<h2 class="col-md-12 row text-center mb-1" onclick="test(this);">${b.title }</h2>
 						<!-- 서브정보 -->
 						<table class="row col-md-12 my-2 ">
 							<tbody class="col-md-12" style="padding: 0 !important;">
@@ -59,85 +59,7 @@
 						<div class="pt-2 mt-5 border-top">
 							<h3 class="mb-5">${b.rcnt } Comments</h3>
 							<ul class="comment-list">
-								<%-- <li class="comment">
-									<div class="vcard bio">
-										<img src="${pageContext.request.contextPath}/resources/images/person_1.jpg" alt="Image placeholder">
-									</div>
-									<div class="comment-body">
-										<h3>John Doe</h3>
-										<div class="meta">June 27, 2018 at 2:21pm</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-										<p>
-											<a href="#" class="reply">Reply</a>
-										</p>
-									</div>
-								</li>
-
-								<li class="comment">
-									<div class="vcard bio">
-										<img src="${pageContext.request.contextPath}/resources/images/person_1.jpg" alt="Image placeholder">
-									</div>
-									<div class="comment-body">
-										<h3>John Doe</h3>
-										<div class="meta">June 27, 2018 at 2:21pm</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-										<p>
-											<a href="#" class="reply">Reply</a>
-										</p>
-									</div>
-
-									<ul class="children">
-										<li class="comment">
-											<div class="vcard bio">
-												<img src="${pageContext.request.contextPath}/resources/images/person_1.jpg" alt="Image placeholder">
-											</div>
-											<div class="comment-body">
-												<h3>John Doe</h3>
-												<div class="meta">June 27, 2018 at 2:21pm</div>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-												<p>
-													<a href="#" class="reply">Reply</a>
-												</p>
-											</div>
-
-
-											<ul class="children">
-												<li class="comment">
-													<div class="vcard bio">
-														<img src="images/person_1.jpg" alt="Image placeholder">
-													</div>
-													<div class="comment-body">
-														<h3>John Doe</h3>
-														<div class="meta">June 27, 2018 at 2:21pm</div>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-														<p>
-															<a href="#" class="reply">Reply</a>
-														</p>
-													</div>
-
-													<ul class="children">
-														<li class="comment">
-															<div class="vcard bio">
-																<img src="images/person_1.jpg" alt="Image placeholder">
-															</div>
-															<div class="comment-body">
-																<h3>John Doe</h3>
-																<div class="meta">June 27, 2018 at 2:21pm</div>
-																<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-																<p>
-																	<a href="#" class="reply">Reply</a>
-																</p>
-															</div>
-														</li>
-													</ul>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li> --%>
-
-
-								<li class="comment" onclick="replyUpdate1(1);">
+								<!-- <li class="comment" onclick="replyUpdate1(1);">
 									<div class="vcard bio">
 										<img src="images/person_1.jpg" alt="Image placeholder">
 									</div>
@@ -161,7 +83,7 @@
 											</div>
 										</div>
 									</div>
-								</li>
+								</li> -->
 							</ul>
 							<!-- END comment-list -->
 
@@ -220,6 +142,10 @@
 <div class="alert alert-primary" role="alert">A simple primary alert—check it out!</div>
 
 <script type="text/javascript">
+
+function test(this) {
+	console.log(this);
+}
 
 /* 로그인 되어있는 사용자가 수정*/
 function replyUpdate1(rno) {
