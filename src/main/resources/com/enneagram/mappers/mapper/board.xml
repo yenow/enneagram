@@ -7,16 +7,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="Board">
 	
 	<insert id="b_insert">
-		insert into board (bno,mno,title,content,category,regdate,type,moddate) values 
-		(nextval('bno'),#{mno},#{title},#{content},'속닥속닥',sysdate(),#{type},sysdate())
+		insert into board (bno,mno,title,content,category,regdate,type,moddate,nickname,id) values 
+		(nextval('bno'),#{mno},#{title},#{content},#{category},sysdate(),#{type},sysdate(),#{nickname},#{id})
 	</insert>
 	
 	<!-- 게시판 리스트 가져오기 -->
 	<select id="b_list" resultType="b">
+		 <![CDATA[  select * from (select @rownum:=@rownum+1 as rnum, A.* from board A, (select @rownum:=0) TMP where category = #{category}  order by bno desc) TPM where rnum <= #{end} and rnum >= #{start} ]]>
+		<!-- <![CDATA[  select * from (select @rownum:=@rownum+1 as rnum, A.* from board A, (select @rownum:=0) TMP where category = #{category}  order by bno desc) TPM left join  member m on m.mno = TPM.mno where rnum <= #{end} and rnum >= #{start} order by TPM.bno desc  ]]> -->
 		
-		<![CDATA[  select * from (select @rownum:=@rownum+1 as rnum, A.* from board A, (select @rownum:=0) TMP where category = #{category}  order by bno desc) TPM left join  member m on m.mno = TPM.mno where rnum <= #{end} and rnum >= #{start} order by TPM.bno desc  ]]>
-		<!-- <![CDATA[   select * from (select @rownum:=@rownum+1 as rnum, A.* from board A, (select @rownum:=0) TMP) TPM where rnum <= #{end} and rnum >= #{start}  ]]> -->
-		<!-- <![CDATA[select * from (select rownum as rnum, e.* from (select * from board order by bno desc) e) where rnum <= #{end} and rnum >= #{start}]]> -->
 		<!-- 부등호를 사용할경우 '>', '<' 같은게 코드랑 겹치기 때문에 <![CDATA[]]> 방법을 쓴다!  -->
 	</select>
 	<!-- select * from (select @rownum:=@rownum+1 as rnum, A.* from board A, (select @rownum:=0) TMP) TPM where rnum > 1 and rnum < 5; -->
@@ -49,7 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<select id="b_list_search" resultType="b">
-		select * from board where ${search_type} like '%'||#{search}||'%'      
+		 <![CDATA[  select * from (select @rownum:=@rownum+1 as rnum, A.* from board A, (select @rownum:=0) TMP where ${insertCategory} like CONCAT('%',#{search},'%') and category = #{category} order by bno desc) TPM where rnum <= #{end} and rnum >= #{start} ]]>      
 	</select>
 	<!-- like문은 조금 다르다.. ${}와 #{}차이도 무엇인지 알아봐야할 필요가 있다 -->
 	

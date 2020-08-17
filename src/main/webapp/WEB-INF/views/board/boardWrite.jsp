@@ -73,6 +73,8 @@
 			<h2 class="text-center mb-3">게시판 등록</h2>
 			<form action="${pageContext.request.contextPath}/board/boardWrite_ok?catetgory=${category}" method="post">
 				<input type="hidden" name="mno" value="${login.mno }">
+				<input type="hidden" name="id" value="${login.id }">
+				<input type="hidden" name="nickname" value="${login.nickname }">
 				
 				<!-- category  -->
 				<c:if test="${login.category == '관리자' }">
@@ -83,9 +85,9 @@
 						</div>
 						<select class="custom-select" id="inputGroupSelect01" name="category">  <!-- select 태그안에 name속성있고, form태그 안이라면 전송됨 -->
 							<option disabled="disabled">선택</option>
-							<option value="1">공지사항</option>
-							<option value="2">속닥속닥</option>
-							<option value="3">자료실</option>
+							<option value="공지사항">공지사항</option>
+							<option value="속닥속닥">속닥속닥</option>
+							<option value="자료실">자료실</option>
 						</select>
 					</div>
 				</c:if>
@@ -96,8 +98,8 @@
 						</div>
 						<select class="custom-select" id="inputGroupSelect01" name="category">  <!-- select 태그안에 name속성있고, form태그 안이라면 전송됨 -->
 							<option disabled="disabled">선택</option>
-							<option value="2">속닥속닥</option>
-							<option value="3">자료실</option>
+							<option value="속닥속닥">속닥속닥</option>
+							<option value="자료실">자료실</option>
 						</select>
 					</div>
 				</c:if>
@@ -112,11 +114,11 @@
 					<input type="text" class="form-control" name="title" placeholder="제목" aria-label="Username" aria-describedby="basic-addon1">
 					
 					<!-- type정하기 -->
-					<div class="input-group-prepend">
+					<!-- <div class="input-group-prepend">
 						<label class="input-group-text" for="inputGroupSelect01">유형</label>
 					</div>
 					<select class="custom-select" id="inputGroupSelect01" name="type">
-						<option disabled="disabled">유형</option>
+						<option disabled="disabled" selected="selected">유형</option>
 						<option value="1">1유형</option>
 						<option value="2">2유형</option>
 						<option value="3">3유형</option>
@@ -126,7 +128,7 @@
 						<option value="7">7유형</option>
 						<option value="8">8유형</option>
 						<option value="9">9유형</option>
-					</select>
+					</select> -->
 				</div>
 				<!-- /type정하기 -->
 

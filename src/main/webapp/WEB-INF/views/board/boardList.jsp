@@ -13,7 +13,7 @@
 
 <section class="">
 	<div class="container">
-		<div class="row justify-content-center my-3">
+		<div class="row justify-content-center my-5">
 			<h2 class="col-12 mb-2 text-center">${pageDTO.cri.category }</h2>
 			<div class="col-6"></div>
 			<div class="col-6 input-group mb-3">
@@ -58,7 +58,7 @@
 					<ul>
 						<li class="text-left align-middle">
 							<a href="${pageContext.request.contextPath}/board/boardCont?bno=${b.bno}&category=${pageDTO.cri.category}&pageNum=${pageDTO.cri.pageNum}&maxLine=${pageDTO.cri.maxLine}">
-								<span>[1번유형]</span>${b.title}
+								${b.title}
 							</a>
 						</li>
 						<li>
@@ -70,18 +70,20 @@
 
 			<!-- 검색기능 -->
 			<div class="col-12">
-				<form action="${pageContext.request.contextPath}/board/boardList?category=${pageDTO.cri.category}&maxLine=${pageDTO.cri.maxLine}" class="mt-3 d-inlneblock">
-					<div class="input-group">
-						<div class="input-group-prepend">
-							<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 0;">검색</button>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">제목</a>
-								<a class="dropdown-item" href="#">내용</a>
-								<a class="dropdown-item" href="#">작성자</a>
-							</div>
-						</div>
-						<input type="text" class="form-control" name="search" aria-label="Text input with dropdown button">
-						<button type="submit" class="btn btn-primary rounded">검색</button>
+				<form action="${pageContext.request.contextPath}/board/boardList" method="get" class="mt-3 form-horizontal">
+					<input type="hidden" name="category" value="${pageDTO.cri.category}"> 
+					<input type="hidden" name="maxLine" value="${pageDTO.cri.maxLine}"> 
+					<div class="form-group form-group-lg">
+						<select class="custom-select col-sm-2" name="insertCategory">  <!-- select 태그안에 name속성있고, form태그 안이라면 전송됨 -->
+								<option disabled="disabled" selected="selected">검색</option>
+								<option value="title">제목</option>
+								<option value="content">내용</option>
+								<option value="nickname">작성자</option>
+						</select>
+						
+						<input type="text" class="col-sm-8" name="search" aria-label="Text input with dropdown button">
+						<input type="submit" class="btn btn-primary rounded col-sm-1" value="검색"></input>
+						
 						<%-- <a class="btn btn-primary rounded ml-3"  href="${pageContext.request.contextPath}/board/boardWrite">글쓰기</a> --%>
 					</div>
 				</form>
@@ -89,7 +91,7 @@
 
 
 			<!-- 페이징 기능 -->
-			<div class="col-12 text-center mt-4">
+			<div class="col-12 text-center mt-2">
 				<div class="block-27">
 
 					<ul>
@@ -107,7 +109,7 @@
 
 						<c:forEach var="page" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
 							<li class="active">
-								<a href="${pageContext.request.contextPath}/board/boardboardList?pageNum=${page }&maxLine=${maxLine}$category=${pageDTO.cri.category}">${page }</a>
+								<a href="${pageContext.request.contextPath}/board/boardboardList?pageNum=${page }&maxLine=${pageDTO.cri.maxLine}&category=${pageDTO.cri.category}">${page }</a>
 							</li>
 						</c:forEach>
 
@@ -124,7 +126,7 @@
 						</c:if>
 
 						<li class="float-right">
-						<button class="btn btn-primary rounded"  href="${pageContext.request.contextPath}/board/boardWrite" id="toBoardWrite">글쓰기</button>
+							<button class="btn btn-primary rounded"  href="${pageContext.request.contextPath}/board/boardWrite" id="toBoardWrite">글쓰기</button>
 						</li>
 					</ul>
 

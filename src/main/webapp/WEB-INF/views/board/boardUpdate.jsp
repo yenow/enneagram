@@ -75,6 +75,8 @@
 			<form action="${pageContext.request.contextPath}/board/boardUpdate_ok" method="post">
 				<!-- mno -->
 				<input type="hidden" name="mno" value="${login.mno}">
+				<input type="hidden" name="id" value="${login.id}">
+				<input type="hidden" name="nickname" value="${login.nickname}">
 				
 				<!-- category  -->
 				<c:if test="${login.category == '관리자' }">

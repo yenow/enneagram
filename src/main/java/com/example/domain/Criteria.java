@@ -17,6 +17,8 @@ public class Criteria { // pageNum 과 amount 값을 같이 전달하는 용도,
   private String keyword;
   private int start;
   private int end;
+  private String search;
+  private String insertCategory;
 
   public Criteria() {
     this(1, 10);

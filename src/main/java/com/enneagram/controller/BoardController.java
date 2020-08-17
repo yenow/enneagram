@@ -59,6 +59,8 @@ public class BoardController {
 		System.out.println("게시물 개수"+c.getPageNum());
 		System.out.println("타입"+c.getType());
 		System.out.println("카테고리"+c.getCategory());
+		System.out.println("검색 타입"+c.getInsertCategory());
+		System.out.println("검색"+c.getSearch());
 		
 		/* 카테고리에 따른 게시물 총 개수 가져오기*/
 		int maxcount = boardService.boardAllCount(c.getCategory());
@@ -67,8 +69,6 @@ public class BoardController {
 		PageDTO pd = new PageDTO(c, maxcount);
 		System.out.println("처음 페이지"+pd.getStartPage());
 		System.out.println("마지막페이지"+pd.getEndPage());
-		System.out.println(pd.isPrev());
-		System.out.println(pd.isNext());
 		
 		
 		/* 게시물 리스트 가져오기 */

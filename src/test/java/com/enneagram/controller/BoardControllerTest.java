@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.enneagram.dao.BoardDAO;
+import com.enneagram.service.BoardService;
 import com.enneagram.vo.BoardVO;
 import com.example.domain.Criteria;
 
@@ -32,6 +33,8 @@ public class BoardControllerTest {
 	@Autowired
 	private BoardDAO boardDAO;
 
+	@Autowired
+	private BoardService boardService;
 	
 	@Setter(onMethod_ = { @Autowired })
 	  private WebApplicationContext ctx;
@@ -47,10 +50,12 @@ public class BoardControllerTest {
 	  public void testConvert() throws Exception {
 		  BoardVO b = new BoardVO();
 		  Criteria c = new Criteria();
-		  c.setCategory("공지사항");
+		  c.setCategory("속닥속닥");
 		  c.setStart(1);
 		  c.setEnd(10);
-		  List<BoardVO> blist = boardDAO.selectList(b, c);
+		  c.setSearch("글");
+		  c.setInsertCategory("title");
+		  List<BoardVO> blist = boardService.selectList(b, c);
 		  for(BoardVO a : blist) {
 			  System.out.println(a.getNickname());
 		  }

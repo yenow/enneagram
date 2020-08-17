@@ -26,8 +26,11 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public List<BoardVO> selectList(BoardVO bo,Criteria c) {
-		return sqlSession.selectList("b_list", c);
-		
+		if(c.getSearch()==null || c.getInsertCategory()==null) {
+			return sqlSession.selectList("b_list", c);
+		}else {
+			return sqlSession.selectList("b_list_search", c);
+		}
 	}
 
 	@Override
