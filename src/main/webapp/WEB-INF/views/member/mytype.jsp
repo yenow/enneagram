@@ -86,6 +86,8 @@
 
 	var ctx = document.getElementById('myChart');
 	
+	
+	
 	new Chart(ctx, {
 		type : 'bar',
 		data : {
@@ -108,13 +110,11 @@
 			scales : {
 				yAxes : [ {
 					ticks : {
-						beginAtZero : true
+						min : 0,
+						max : 50
 					}
 				} ]
-			}, 
-			high: 45,
-			low: 0,
-			
+			} 
 		}
 	});
 	
