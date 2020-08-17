@@ -19,7 +19,7 @@
 				<div class="row">
 					<div class="col-md-12 ftco-animate">
 						<!-- 제목 -->
-						<h2 class="col-md-12 row text-center mb-1" onclick="test(this);">${b.title }</h2>
+						<h2 class="col-md-12 row text-center mb-1"">${b.title }</h2>
 						<!-- 서브정보 -->
 						<table class="row col-md-12 my-2 ">
 							<tbody class="col-md-12" style="padding: 0 !important;">
@@ -143,9 +143,6 @@
 
 <script type="text/javascript">
 
-function test(this) {
-	console.log(this);
-}
 
 /* 로그인 되어있는 사용자가 수정*/
 function replyUpdate1(rno) {

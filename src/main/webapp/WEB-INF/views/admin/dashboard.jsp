@@ -14,8 +14,8 @@
 
 
     <!-- Bootstrap core CSS     -->
-    <link href="../resources/assets/css/bootstrap.min.css" rel="stylesheet" />
-
+    <link href="${pageContext.request.contextPath}/resources/assets/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath}/resources/assets/css/floating-labels.css" rel="stylesheet" />
     <!-- Animation library for notifications   -->
     <link href="${pageContext.request.contextPath}/resources/assets/css/animate.min.css" rel="stylesheet"/>
 

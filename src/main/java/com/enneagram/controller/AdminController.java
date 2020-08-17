@@ -5,12 +5,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.enneagram.service.AdminService;
+import com.enneagram.vo.MemberVO;
 
 @Controller
+@RequestMapping("admin")
 public class AdminController {
 
 	@Autowired
 	private AdminService adminService;
+	
+	@RequestMapping("login")
+	public void login() {
+		
+	}
+	
+	@RequestMapping("login_ok")
+	public String login_ok(MemberVO m) {
+		return "/admin/dashboard";
+	}
 	
 	@RequestMapping("/dashboard")
 	public void dashboard() {

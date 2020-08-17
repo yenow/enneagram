@@ -18,7 +18,7 @@
 						<li><a href="${pageContext.request.contextPath}/test/test" class="py-2 d-block">테스트</a></li>
 						<li><a href="${pageContext.request.contextPath}/member/login" class="py-2 d-block">로그인</a></li>
 						<li><a href="${pageContext.request.contextPath}/member/member_insert" class="py-2 d-block">회원가입</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/dahboard" class="py-2 d-block">관리자</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/login" class="py-2 d-block">관리자</a></li>
 					</ul>
 				</div>
 			</div>
