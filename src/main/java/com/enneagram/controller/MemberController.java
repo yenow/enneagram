@@ -46,8 +46,8 @@ public class MemberController{
 	/* select태그에서 변경시 아작스로 성격 반환 */
 	@RequestMapping("/myTypeAjax")
 	@ResponseBody
-	public ResponseEntity<Map<String,EnneagramVO>> myTypeAjax(int pno){
-		ResponseEntity<Map<String,EnneagramVO>> re;
+	public ResponseEntity<Map<String,Object>> myTypeAjax(int pno){
+		ResponseEntity<Map<String,Object>> re;
 		try {
 			
 			PersonalityVO p = memberSerivce.myPersonaltiy(pno);
@@ -60,9 +60,10 @@ public class MemberController{
 			e.setType(p.getType());
 			EnneagramVO type= enneagramService.select(e);
 			
-			Map<String,EnneagramVO> map = new HashMap<String, EnneagramVO>();
+			Map<String,Object> map = new HashMap<String, Object>();
 			map.put("eclass", eclass);
 			map.put("type", type);
+			map.put("typeData", p);
 			
 			re = new ResponseEntity(map, HttpStatus.OK);
 			return re;
@@ -77,7 +78,7 @@ public class MemberController{
 	public String mytype(HttpSession session,Model model,HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();
 		
-		
+		int mno;
 		if(session.getAttribute("login")==null) {
 			/*
 			 * out.print("<script>"); out.print("alert('로그인이 필요합니다');");
@@ -86,14 +87,23 @@ public class MemberController{
 			 */
 			return "redirect:/member/login";
 		}else {
-			int mno = ((MemberVO)session.getAttribute("login")).getMno();
+			mno = ((MemberVO)session.getAttribute("login")).getMno();
 			System.out.println(mno);
-			
-			/* 내 검사 리스트를 가져옴*/
-			List<PersonalityVO> pList = memberSerivce.myPersonaltiyList(mno);
-			
+		}
+		
+		/* 내 검사 리스트를 가져옴*/
+		List<PersonalityVO> pList = memberSerivce.myPersonaltiyList(mno);
+		
+		PersonalityVO recently = new PersonalityVO();
+		EnneagramVO eclass =  new EnneagramVO();
+		EnneagramVO type = new EnneagramVO();
+		
+		/* 검사결과가 없을경우 */
+		if(pList.isEmpty()==true) {
+			System.out.println("리스트 없음");
+		}else {
 			/* 가장 최근의 성향 가져오기*/
-			PersonalityVO recently = pList.get(0);
+			recently = pList.get(0);
 			Date recent = pList.get(0).getRegdate();
 			System.out.println(recent.getTime());
 			for(PersonalityVO p : pList) { 
@@ -120,10 +130,10 @@ public class MemberController{
 			EnneagramVO e = new EnneagramVO();
 			e.setCategory("eclass");
 			e.setEclass(recently.getEclass());
-			EnneagramVO eclass= enneagramService.select(e);
+			eclass= enneagramService.select(e);
 			e.setCategory("type");
 			e.setType(recently.getType());
-			EnneagramVO type= enneagramService.select(e);
+			type= enneagramService.select(e);
 			
 			System.out.println(eclass);
 			System.out.println(eclass.getEclass());
@@ -134,10 +144,10 @@ public class MemberController{
 			model.addAttribute("recently", recently);
 			model.addAttribute("eclass", eclass);
 			model.addAttribute("type", type);
-			return "/member/mytype";
+			
 		}
 
-		
+		return "/member/mytype";
 	}
 	
 	/* 비밀번호 확인 -> 개인정보수정페이지 */
