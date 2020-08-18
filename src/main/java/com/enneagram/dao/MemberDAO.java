@@ -18,4 +18,6 @@ public interface MemberDAO {
 	public List<PersonalityVO> myPersonaltiyList(int mno);
 
 	public PersonalityVO myPersonaltiy(int pno);
+
+	public MemberVO isPresent(String id);
 }

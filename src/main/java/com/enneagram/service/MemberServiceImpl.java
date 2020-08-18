@@ -6,12 +6,15 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -19,6 +22,7 @@ import org.springframework.ui.Model;
 import com.enneagram.dao.MemberDAO;
 import com.enneagram.vo.MemberVO;
 import com.enneagram.vo.PersonalityVO;
+import com.example.domain.ApiExamMemberProfile;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -76,7 +80,12 @@ public class MemberServiceImpl implements MemberService {
 		apiURL += "&state=" + state;
 		String access_token = "";
 		String refresh_token = "";
+		String token_type = "";
+		String expires_in = "";
 		System.out.println("apiURL=" + apiURL);
+		
+		JSONParser jsonParse = new JSONParser();
+		JSONObject jsonObj;
 		try {
 			URL url = new URL(apiURL);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -97,11 +106,71 @@ public class MemberServiceImpl implements MemberService {
 			}
 
 			br.close();
+			// 정상실행 됬을 경우
 			if (responseCode == 200) {
 				
 				System.out.println();
 				System.out.println(res.toString());   // 문자열로 Json  이네,,  여기에 접근토큰  , refresh_token , token_type, expires_in 이런 속성값들이 있ㄷ음,, 이걸 파싱해야함
 				// 이거 json 형태 데이터인데 변환하는거 필요함
+				jsonObj = (JSONObject) jsonParse.parse(res.toString());
+				access_token = (String) jsonObj.get("access_token");
+				refresh_token = (String) jsonObj.get("refresh_token");
+				token_type = (String) jsonObj.get("token_type");
+				expires_in = (String) jsonObj.get("expires_in");
+				System.out.println(access_token);
+				System.out.println(refresh_token);
+				System.out.println(token_type);
+				System.out.println(expires_in);
+				
+				// 로그인 데이터 가져오기
+				String apiURL2 = "https://openapi.naver.com/v1/nid/me";
+				Map<String, String> requestHeaders = new HashMap<>();
+				requestHeaders.put("Authorization", token_type +" "+access_token); 
+				String responseBody = ApiExamMemberProfile.get(apiURL2,requestHeaders);
+				System.out.println(responseBody);
+				jsonObj = (JSONObject) jsonParse.parse(responseBody);
+				jsonObj = (JSONObject) jsonObj.get("response");
+				String id = (String) jsonObj.get("id");
+				String nickname = (String) jsonObj.get("nickname");
+				String profile_image = (String) jsonObj.get("profile_image");
+				String age = (String) jsonObj.get("age");
+				String gender = (String) jsonObj.get("gender");
+				String email = (String) jsonObj.get("email");
+				String name = (String) jsonObj.get("name");
+				String birthday = (String) jsonObj.get("birthday");
+				
+				// id 값으로 멤버객체 가져오기
+				MemberVO membervo = memberDAO.isPresent(id);
+				// 없으면 데이터베이스에 넣기
+				if(membervo==null) {
+					MemberVO memberVO = new MemberVO();
+					
+					memberVO.setId(id);
+					memberVO.setName(name);
+					memberVO.setNickname(nickname);
+					memberVO.setEmail(email);
+					memberVO.setGender(gender);
+					memberVO.setBirth(birthday);;
+					memberVO.setCategory("네이버");;
+					memberDAO.memberInsert(memberVO);
+					memberVO =  memberDAO.isPresent(id);
+					request.getSession().setAttribute("login", memberVO);
+				}else {
+					request.getSession().setAttribute("login", membervo);
+				}
+				
+		
+				
+				System.out.println(id);
+				System.out.println(nickname);
+				System.out.println(profile_image);
+				System.out.println(age);
+				System.out.println(gender);
+				System.out.println(email);
+				System.out.println(name);
+				System.out.println(birthday);
+				
+		
 			}
 			
 			

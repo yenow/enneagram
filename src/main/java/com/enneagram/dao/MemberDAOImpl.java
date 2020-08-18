@@ -44,4 +44,10 @@ public class MemberDAOImpl implements MemberDAO {
 	public PersonalityVO myPersonaltiy(int pno) {
 		return sqlSession.selectOne("myPersonal", pno);
 	}
+	
+	// 윤신영 - 아이디가 있는지 확인
+	@Override
+	public MemberVO isPresent(String id) {
+		 return sqlSession.selectOne("isPresent", id);
+	}
 }

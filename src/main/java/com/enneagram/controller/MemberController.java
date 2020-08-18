@@ -50,8 +50,8 @@ public class MemberController{
 	@RequestMapping("callback")
 	public String callback(String state, String code, HttpServletRequest request, HttpServletResponse response, Model m) throws IOException {
 		
-		// memberSerivce.naverlogin(state,code,request,response,m);
-		
+		memberSerivce.naverlogin(state,code,request,response,m);
+		/*
 		PrintWriter out = response.getWriter();
 
 		String clientId = "zu4797T1LS7jgoNCtB7V";// 애플리케이션 클라이언트 아이디값";
@@ -98,12 +98,8 @@ public class MemberController{
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		
-		
+		*/
 
-		// 사용자 프로필 조회 url : https://openapi.naver.com/v1/nid/me    
-		// Authorization: {토큰 타입] {접근 토큰]
-		
 		/* 여기서부터 데이터베이스에 회원테이블에 저장을 하고 만약 똑같은 사람이 있으면 안하고, 
 		 * 로그인을 한거니까 로그인 세션에 등록을 해야지
 		 * */

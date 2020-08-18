@@ -18,4 +18,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="m_update">
 	update member set password = #{password}, nickname=#{nickname}, email=#{email} , tel=#{tel} where mno = #{mno}
 	</update>
+	
+	<select id="isPresent" resultType="m">
+		select * from member where id = #{id}
+	</select>
 </mapper>

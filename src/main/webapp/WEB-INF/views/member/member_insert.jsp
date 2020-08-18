@@ -39,9 +39,9 @@
 					<input type="email" class="form-control  my-2" name="email" id="email"  placeholder="이메일" />
 					<p class="text-left"></p>
 					
-					<input type="radio" class="form-control  my-2" name="gender" id="male" value="남" />
+					<input type="radio" class="form-control  my-2" name="gender" id="male" value="M" />
 						<label for="male" class="mx-3"><span></span>남자</label>
-					<input type="radio" class="form-control  my-2" name="gender" id="female" value="여" />
+					<input type="radio" class="form-control  my-2" name="gender" id="female" value="F" />
 						<label for="female" class="mx-3"><span></span>여자</label>
 					
 					<p class="text-left"></p>

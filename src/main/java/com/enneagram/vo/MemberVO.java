@@ -36,7 +36,7 @@ create table member(
 	private String gender;
 	private String category;
 	private String type;
-	private Date birth;
+	private String birth;
 	private Date regdate;
 	
 	
