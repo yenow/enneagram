@@ -31,6 +31,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mycss.css">
 
+<!-- 네이버 라이브러리 -->
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/naver.js" charset="utf-8"></script>
 <%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/chartist.min.css"> --%>
 
 <!-- 이건 차트 라이브러리 -->

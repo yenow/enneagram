@@ -37,11 +37,30 @@
 					<hr>
 					<%-- <a><img alt="" src="${pageContext.request.contextPath}/resources/img/icon/kakao_login.png" class="logo2 mb-3"></a>
 					<a><img alt="" src="${pageContext.request.contextPath}/resources/img/icon/naverLogin.PNG" class="logo2 mb-3"></a> --%>
+					
 				</form>
+				 <a href="${apiURL }"><img height="50" src="${pageContext.request.contextPath}/resources/img/naverLogin.PNG" /></a>
 			</div>
+				
 		</div>
 	</div>
 </section>
 
+<!-- 네이버아디디로로그인 초기화 Script -->
+<script type="text/javascript">
+
+	var naverLogin = new naver.LoginWithNaverId(
+		{
+			clientId: "zu4797T1LS7jgoNCtB7V",
+			callbackUrl: "http://localhost:8383/enneagram/member/callback",
+			isPopup: false, /* 팝업을 통한 연동처리 여부 */
+			loginButton: {color: "green", type: 3, height: 60} /* 로그인 버튼의 타입을 지정 */
+		}
+	);
+	
+	/* 설정정보를 초기화하고 연동을 준비 */
+	naverLogin.init();
+	
+</script>
 
 <jsp:include page="../info/footer.jsp"></jsp:include>

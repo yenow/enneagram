@@ -99,6 +99,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 
+
 <%-- <script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script> --%>
 <!-- <script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/classic/ckeditor.js"></script> -->
 </body>
