@@ -22,15 +22,14 @@
 					<!-- 비밀번호 -->
 					<input type="password" name="password" class="form-control my-3" placeholder="비밀번호">
 					
-					<p>
-						<input type="checkbox" id="log-check" class="float-left">
-						<label class="float-left" for="log-check"> <span></span> 로그인 상태 유지
-						</label>
+					<p class="d-flex justify-content-start">
+						<input type="checkbox" id="log-check" class="align-self-center ml-2">
+						<label class="align-self-center" for="log-check" style="height: 100%; margin: 0;"> <span> 로그인 상태 유지 </span> </label>
 					</p>
 					
 					<div class="comment-form-wrap"></div>
 					<p>
-						<a href="#" class="float-left">아이디찾기</a> <a href="#" class="float-left ml-2">비밀번호찾기</a> <a href="${pageContext.request.contextPath}/member/member_insert" class="float-right">회원가입</a>
+						<a href="#" class="float-left">아이디찾기 /</a> <a href="#" class="float-left ml-2">비밀번호찾기</a> <a href="${pageContext.request.contextPath}/member/member_insert" class="float-right">회원가입</a>
 					</p>
 					<div class="comment-form-wrap"></div>
 					<input type="submit" value="로그인" class="btn btn-primary py-3 px-7 mt-2">

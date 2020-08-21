@@ -31,8 +31,7 @@
 		<label for="inputPassword" class="sr-only">Password</label>
 		<input type="password" id="inputPassword" name="password" class="form-control" placeholder="비밀번호" required="">
 		<div class="checkbox mb-3">
-			<label> <input type="checkbox" value="remember-me"> Remember me
-			</label>
+			<label> <input type="checkbox" value="remember-me"> Remember me </label>
 		</div>
 		<button class="btn btn-lg btn-primary btn-block" type="submit" style="color: #efbbcf; border-color: #efbbcf">로그인</button>
 		<p class="mt-5 mb-3 text-muted">© 2017-2020</p>

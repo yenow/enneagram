@@ -15,8 +15,8 @@
 
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="jdbcUrl" value="jdbc:log4jdbc:mariadb://127.0.0.1:3307/enneagram"></property>
-		<property name="username" value="ysy"></property>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:mariadb://phantom1994.cafe24.com:3306/phantom1994"></property>
+		<property name="username" value="phantom1994"></property>
 		<property name="password" value="tlsdud5089!"></property>
 	</bean>
 

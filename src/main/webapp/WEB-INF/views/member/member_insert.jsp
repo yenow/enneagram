@@ -15,36 +15,34 @@
 	<div class="container">
 		<div class="row justify-content-center content-margin member-insert">
 			<div class="col-md-6 text-center">
-				<form method="post" action="${pageContext.request.contextPath}/member/member_insert_ok" onsubmit="return check();">
+				<form method="post" action="${pageContext.request.contextPath}/member/member_insert_ok" id="signUpForm" onsubmit="return check();">
 					<h2 class="text-center mb-5">회원가입</h2>
 
 					<input type="text" class="form-control my-2" name="id" id="id"  placeholder="아이디 입력" />
-					<p class="text-left">유효성 검증</p>
+					<p class="text-left" id="p_id"></p>
 
 					<input type="password" class="form-control  my-2" name="password" id="password" placeholder="비밀번호입력" />
-					<p class="text-left"></p>
-
-					<input type="password" class="form-control my-2" name="password2" id="password"  placeholder="비밀번호 재입력" />
-					<p class="text-left"></p>
+					<input type="password" class="form-control my-2" name="password2" id="password2"  placeholder="비밀번호 재입력" />
+					<p class="text-left" id="p_password"></p>
 
 					<input type="text" class="form-control  my-2" name="name" id="name"  placeholder="이름" />
-					<p class="text-left"></p>
+					<p class="text-left" id="p_name"></p>
 
 					<input type="text" class="form-control  my-2" name="nickname" id="nickname"  placeholder="닉네임" />
-					<p class="text-left"></p>
+					<p class="text-left" id="p_nickname"></p>
 
 					<input type="tel" class="form-control  my-2" name="tel" id="tel"  placeholder="전화번호" />
-					<p class="text-left"></p>
+					<p class="text-left" id="p_tel"></p>
 					
 					<input type="email" class="form-control  my-2" name="email" id="email"  placeholder="이메일" />
-					<p class="text-left"></p>
+					<p class="text-left" id="p_email"></p>
 					
 					<input type="radio" class="form-control  my-2" name="gender" id="male" value="M" />
 						<label for="male" class="mx-3"><span></span>남자</label>
 					<input type="radio" class="form-control  my-2" name="gender" id="female" value="F" />
 						<label for="female" class="mx-3"><span></span>여자</label>
 					
-					<p class="text-left"></p>
+					<p class="text-left" id="p_gender"></p>
 
 					<input type="submit" value="회원가입" class="btn btn-primary form-control">
 					
@@ -58,7 +56,91 @@
 
 <script>
 // 아작스로 구현해야함,, 유효성검증
+$(document).ready(function () {
+	// 포커스를 벗어날 때
+	$('#id').blur(function () {
+		if($('#id').val()==''){
+			$('#p_id').html('아이디를 입력해주세요');
+		}
+	});
+	
+	$('#password').blur(function () {
+		if($('#password').val()==''){
+			$('#p_password').html('비밀번호를 입력해주세요');
+		}
+	});
+		
+	$('#password2').blur(function () {
+		if($('#password').val()==''){
+			$('#p_password').html('비밀번호를 입력해주세요');
+		}
+	});
+		
+	$('#name').blur(function () {
+		if($('#name').val()==''){
+			$('#p_name').html('이름을 입력해주세요');
+		}
+	});
+	
+	$('#nickname').blur(function () {
+		if($('#nickname').val()==''){
+			$('#p_nickname').html('닉네임을 입력해주세요');
+		}
+	});
+	
+	$('#tel').blur(function () {
+		if($('#tel').val()==''){
+			$('#p_tel').html('전화번호를 입력해주세요');
+		}
+	});
+	
+	$('#email').blur(function () {
+		if($('#email').val()==''){
+			$('#p_email').html('이메일을 입력해주세요');
+		}
+	});
+	
+	
 
+	$('#signUpForm').submit(function () {
+		
+		if($('#id').val()==''){
+			alert('아이디를 입력해주세요');
+			document.querySelector('#id').scrollIntoView();
+			return false;
+		}
+		if($('#password').val()==''){
+			alert('비밀번호를 입력해주세요');
+			document.querySelector('#password').scrollIntoView();
+			return false;
+		}
+		if($('#name').val()==''){
+			alert('이름을 입력해주세요');
+			document.querySelector('#name').scrollIntoView();
+			return false;
+		}
+		if($('#nickname').val()==''){
+			alert('닉네임을 입력해주세요');
+			document.querySelector('#nickname').scrollIntoView();
+			return false;
+		}
+		if($('#tel').val()==''){
+			alert('전화번호를 입력해주세요');
+			document.querySelector('#tel').scrollIntoView();
+			return false;
+		}
+		if($('#email').val()==''){
+			alert('이메일을 입력해주세요');
+			document.querySelector('#email').scrollIntoView();
+			return false;
+		}
+		if($('#male').val()=='' && $('#female').val()==''){
+			alert('성별을 입력해주세요');
+			return false;
+		}
+		
+	});
+});
 
 </script>
 
