@@ -29,5 +29,7 @@ public interface MemberService {
 
 	void naverlogin(String state, String code, HttpServletRequest request, HttpServletResponse response, Model m) throws UnsupportedEncodingException;
 
+	Boolean idValidate(String id);
+
 
 }

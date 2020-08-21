@@ -140,7 +140,7 @@ public class MemberServiceImpl implements MemberService {
 				String birthday = (String) jsonObj.get("birthday");
 				
 				// id 값으로 멤버객체 가져오기
-				MemberVO membervo = memberDAO.isPresent(id);
+				MemberVO membervo = memberDAO.isPresent(id);   // 네이버 아이디는 우리 데이터베이스랑 겹치지 않도록 다른 문자로 변형되어서옴
 				// 없으면 데이터베이스에 넣기
 				if(membervo==null) {
 					MemberVO memberVO = new MemberVO();
@@ -178,4 +178,17 @@ public class MemberServiceImpl implements MemberService {
 			System.out.println(e);
 		}
 		
-	}}
+	}
+
+	// 회원가입 유효성 검증, 아이디가 있는지 확인
+	@Override
+	public Boolean idValidate(String id) {
+		MemberVO m = memberDAO.isPresent(id);
+		if(m==null) {
+			return false;
+		}else {
+			return true;
+		}
+		
+	}
+}

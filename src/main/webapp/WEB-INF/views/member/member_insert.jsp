@@ -62,6 +62,23 @@ $(document).ready(function () {
 		if($('#id').val()==''){
 			$('#p_id').html('아이디를 입력해주세요');
 		}
+		
+		var id = $('#id').val();
+		var data = {'id' : id};
+		$.get('${pageContext.request.contextPath}/member/idValidate', data, function(data, textStatus, req) {
+			console.log(data);
+			if(data==true){
+				$('#p_id').html('중복된 아이디가 있습니다');
+			}
+			
+			if($('#id').val()!='' && data==false){
+				$('#p_id').html('');
+			}
+			
+		}, 'json');
+		
+		
+		
 	});
 	
 	$('#password').blur(function () {

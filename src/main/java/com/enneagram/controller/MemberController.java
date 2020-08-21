@@ -1,13 +1,9 @@
 package com.enneagram.controller;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.net.URLEncoder;
 import java.security.SecureRandom;
 import java.util.Comparator;
@@ -27,6 +23,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,7 +34,7 @@ import com.enneagram.vo.MemberVO;
 import com.enneagram.vo.PersonalityVO;
 
 @Controller
-@RequestMapping("/member")
+@RequestMapping("member")
 public class MemberController{
 
 	@Autowired
@@ -45,65 +42,26 @@ public class MemberController{
 	@Autowired
 	private EnneagramService enneagramService;
     
+	@RequestMapping(value = "idValidate", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<Boolean> idValidate(String id){
+		ResponseEntity<Boolean> re;
+		
+		try {
+			Boolean flag = memberSerivce.idValidate(id);
+			re =  new ResponseEntity<Boolean>(flag,HttpStatus.OK);
+		} catch (Exception e) {
+			re =  new ResponseEntity<Boolean>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return re;
+	}
 	
 	/* 윤신영 - 네이버 콜백함수 */
 	@RequestMapping("callback")
 	public String callback(String state, String code, HttpServletRequest request, HttpServletResponse response, Model m) throws IOException {
 		
 		memberSerivce.naverlogin(state,code,request,response,m);
-		/*
-		PrintWriter out = response.getWriter();
-
-		String clientId = "zu4797T1LS7jgoNCtB7V";// 애플리케이션 클라이언트 아이디값";
-		String clientSecret = "7PAKNjszhO";// 애플리케이션 클라이언트 시크릿값";
-		String redirectURI = URLEncoder.encode("http://localhost:8383/enneagram/member/callback", "UTF-8");
-		String apiURL;
-		apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
-		apiURL += "client_id=" + clientId;
-		apiURL += "&client_secret=" + clientSecret;
-		apiURL += "&redirect_uri=" + redirectURI;
-		apiURL += "&code=" + code;
-		apiURL += "&state=" + state;
-		String access_token = "";
-		String refresh_token = "";
-		System.out.println("apiURL=" + apiURL);
-		try {
-			URL url = new URL(apiURL);
-			HttpURLConnection con = (HttpURLConnection) url.openConnection();
-			con.setRequestMethod("GET");
-			int responseCode = con.getResponseCode();
-			BufferedReader br;
-			System.out.print("responseCode=" + responseCode);
-			if (responseCode == 200) { // 정상 호출
-				br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-			} else { // 에러 발생
-				br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-			}
-			String inputLine;
-			StringBuffer res = new StringBuffer();
-			
-			while ((inputLine = br.readLine()) != null) {
-				res.append(inputLine);
-			}
-
-			br.close();
-			if (responseCode == 200) {
-				out.println(res.toString());
-				System.out.println();
-				System.out.println(res.toString());   // 문자열로 Json  이네,,  여기에 접근토큰  , refresh_token , token_type, expires_in 이런 속성값들이 있ㄷ음,, 이걸 파싱해야함
-				// 이거 json 형태 데이터인데 변환하는거 필요함
-			}
-			
-			
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		*/
-
-		/* 여기서부터 데이터베이스에 회원테이블에 저장을 하고 만약 똑같은 사람이 있으면 안하고, 
-		 * 로그인을 한거니까 로그인 세션에 등록을 해야지
-		 * */
-		
 		return "redirect:/";
 	}
 	
