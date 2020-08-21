@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
 
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="info/header.jsp"></jsp:include>
 
 <!-- <div class="wrapper">
 	<div class="content">
@@ -34,10 +34,29 @@
 			<label> <input type="checkbox" value="remember-me"> Remember me
 			</label>
 		</div>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
+		<button class="btn btn-lg btn-primary btn-block" type="submit" style="color: #efbbcf; border-color: #efbbcf">로그인</button>
 		<p class="mt-5 mb-3 text-muted">© 2017-2020</p>
 	</form>
 	</div>
 </body>
+<!--   Core JS Files   -->
+    <script src="../resources/assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+	<script src="../resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
 
-<jsp:include page="footer.jsp"></jsp:include>
+	<!--  Charts Plugin -->
+	<script src="../resources/assets/js/chartist.min.js"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="../resources/assets/js/bootstrap-notify.js"></script>
+
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+	<script src="../resources/assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+
+	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+	<script src="../resources/assets/js/demo.js"></script>
+
+
+</html>

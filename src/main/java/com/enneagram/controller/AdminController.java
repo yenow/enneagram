@@ -14,6 +14,7 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	
+	// 관리자 로그인
 	@RequestMapping("login")
 	public void login() {
 		
@@ -22,6 +23,24 @@ public class AdminController {
 	@RequestMapping("login_ok")
 	public String login_ok(MemberVO m) {
 		return "/admin/dashboard";
+	}
+	
+	//회원 관리 페이지 이동
+	@RequestMapping("/memberManage")
+	public void memberManage() {
+		
+	}
+	
+	//게시글 관리 페이지 이동
+	@RequestMapping("/boardManage")
+	public void boardManage() {
+		
+	}
+	
+	//댓글 관리 페이지 이동
+	@RequestMapping("/replyManage")
+	public void replyManage() {
+		
 	}
 	
 	@RequestMapping("/dashboard")
