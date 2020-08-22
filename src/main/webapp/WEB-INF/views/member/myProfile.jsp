@@ -64,8 +64,15 @@
 <script>
 
 $(document).ready(function() {
+	
 	// 수정버튼 클릭시 사진 등록
 	$('#profileSubmit').click(function() {
+		// 파일첨부가 안됬을 시
+		if($('#inputGroupFile03')[0].files.length==0){ 
+		
+			alert('사진을 첨부해주세요');
+			return false;
+		}
 		
 		var formData = new FormData(); 
 		var files = $('#inputGroupFile03')[0].files;
@@ -91,6 +98,7 @@ $(document).ready(function() {
 			}
 		});
 		
+		$('#inputGroupFile03')[0].files = null; // 파일태그 초기화
 		$('#inputGroupFile03label').html(''); // 파일첨부가 끝나면, 파일 이름 지우기
 		getProfile();  //  서버로부터 URL 가져옴
 		//window.location.reload();
@@ -114,18 +122,18 @@ $(document).ready(function() {
 		
 		$('.my-image img').attr('src','${pageContext.request.contextPath}/resources/images/normal.png');
 		// window.location.reload();
-	})
+	});
 	
+	// 파일첨부에 사진 올렸을때, label에도 파일의 이름이 보이도록
 	$('#inputGroupFile03').change(function() {
 		$('#inputGroupFile03label').html(this.files[0].name);
 		console.log(this.files[0].name);
 	});
 	
-	
 	var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");   // 파일 확장자 제외,,  정규식
 	var maxSize = 5242880; //5MB
 	
-	/* 파일의 사이즈랑, 확장자를 통해서 이미지인지 아닌지를 확인 */
+	/* 파일의 사이즈랑, 확장자를 통해서 이미지인지 아닌지를 확인하는 함수 */
 	function checkExtension(fileName, fileSize) {
 
 		if (fileSize >= maxSize) {
@@ -140,7 +148,7 @@ $(document).ready(function() {
 		return true;
 	}
 	
-	// 내 프로필 사진과 별명 정보를 꺼내오는 작업 필요
+	// 내 프로필 사진과 별명 정보를 가져오는 함수,  ajax 사용
 	function getProfile() {
 		var id = '${login.id}';
 		var data = { 'id' : id};
