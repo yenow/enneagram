@@ -99,6 +99,7 @@ public class UploadController {
 
 	}
 	
+	// 사진업로드
 	@PostMapping("myProfileUpload")
 	@ResponseBody
 	public ResponseEntity<String> myProfileUpload(@RequestParam("files") MultipartFile multipartFile,HttpServletRequest request) {
@@ -153,15 +154,17 @@ public class UploadController {
 		return re;
 	}
 	
+	// 업로드 사진 삭제, 실제경로, 데이터베이스 모두
 	@GetMapping("myProfileDelete")
 	@ResponseBody
 	public ResponseEntity<String> myProfileDelete(HttpServletRequest request){
 		ResponseEntity<String> re;
 		HttpSession session = request.getSession();
 		MemberVO m = (MemberVO) session.getAttribute("login");
+		MemberVO rm = memberService.getMemberVO(m.getMno());
 		try {
 			// 파일 삭제
-			File uuidPath = new File(m.getUUIDPath());
+			File uuidPath = new File(rm.getUUIDPath());
 			if(uuidPath.exists()) {
 				uuidPath.delete();
 			}  

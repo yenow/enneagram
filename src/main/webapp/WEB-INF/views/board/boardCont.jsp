@@ -19,7 +19,7 @@
 				<div class="row">
 					<div class="col-md-12 ftco-animate">
 						<!-- 제목 -->
-						<h2 class="col-md-12 row text-center mb-1"">${b.title }</h2>
+						<h2 class="col-md-12 row text-center mb-1">${b.title }</h2>
 						<!-- 서브정보 -->
 						<table class="row col-md-12 my-2 ">
 							<tbody class="col-md-12" style="padding: 0 !important;">
@@ -32,12 +32,12 @@
 								<tr class="float-right">
 
 									<td class="align-middle border-0 px-2">
-										<c:if test="${login.UUIDPath eq null }">
+										<c:if test="${boardMember.UUIDPath eq null }">
 											<img src="../resources/images/normal.png" alt="Image placeholder" class="img-fluid my-img float-right">
 										</c:if>
 										
-										<c:if test="${login.UUIDPath ne null }">
-											<img src="${login.UUIDPath }" alt="Image placeholder" class="img-fluid my-img float-right">
+										<c:if test="${boardMember.UUIDPath ne null }">
+										<img src="${boardMember.UUIDPath }" alt="Image placeholder" class="img-fluid my-img float-right">
 										</c:if>
 									</td>
 									<td class="align-middle border-0 px-2">${b.nickname }</td>
@@ -46,7 +46,7 @@
 						</table>
 
 						<!-- 내용 -->
-						<div class="col-md-12 row mt-1 pt-2 border-top" style="min-height: 500px;">내용</div>
+						<div class="col-md-12 row mt-1 pt-2 border-top" style="min-height: 500px;">${b.content }</div>
 
 						<!--  태그 -->
 						<div class="col-md-12 tag-widget post-tag-container mb-5 mt-5 ">

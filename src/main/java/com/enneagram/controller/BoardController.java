@@ -10,18 +10,18 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.enneagram.service.BoardService;
+import com.enneagram.service.MemberService;
 import com.enneagram.vo.BoardVO;
+import com.enneagram.vo.MemberVO;
 import com.example.domain.Criteria;
 import com.example.domain.PageDTO;
 
@@ -36,6 +36,8 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService boardService;
+	@Autowired
+	private MemberService memberService;
 	
 	//게시판 작성
 	@GetMapping("/boardWrite")
@@ -93,10 +95,14 @@ public class BoardController {
 		}
 		BoardVO b = boardService.selectboard(bno,session,session.getId());
 		mv.addObject("b", b);
-		
+		// 게시판 글쓴이 정보가져오기
+		MemberVO m = memberService.login_confirm(b.getId());
+		mv.addObject("boardMember", m);
+		System.out.println(m.getUUIDPath());
 		int maxcount = boardService.boardAllCount(c.getCategory());
 		PageDTO pd = new PageDTO(c, maxcount);
 		mv.addObject("pageDTO", pd);
+	
 		
 		return mv;
 	}

@@ -18,6 +18,8 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.enneagram.dao.MemberDAO;
 import com.enneagram.vo.MemberVO;
@@ -38,8 +40,20 @@ public class MemberServiceImpl implements MemberService {
 	/* 로그인 아이디, 비밀번호 확인*/
 	@Override
 	public MemberVO login_confirm(String user_id) {
-	
-		return memberDAO.login_confirm(user_id);
+		// contextPath 가져오기
+		ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+		String contextPath = attr.getRequest().getContextPath(); 
+		
+		// uuid 변경
+		MemberVO memberVO = memberDAO.login_confirm(user_id);
+		// uuid가 존재할때
+		if(memberVO.getUUIDPath()!=null) {
+			String uuidPath =memberVO.getUUIDPath();
+			String temp = uuidPath.substring(uuidPath.indexOf("\\")).replace("\\", "/");
+			System.out.println(temp);
+			memberVO.setUUIDPath(contextPath+temp);
+		}
+		return memberVO;
 	}
 
 	/* member 수정*/
@@ -192,15 +206,21 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
-	// 프로필사진 업데
+	// 프로필사진 등록
 	@Override
 	public void updateProfile(MemberVO m) {
 		memberDAO.updateProfile(m);
 	}
 
+	// 프로필 사진 삭제
 	@Override
 	public void deleteProfile(int mno) {
 		memberDAO.deleteProfile(mno);
-		
+	}
+
+	// 회원번호로 회원정보 가져오기
+	@Override
+	public MemberVO getMemberVO(int mno) {
+		return memberDAO.getMemberVO(mno);
 	}
 }

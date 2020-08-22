@@ -17,7 +17,7 @@
 				<!-- 내 프로필 -->
 				<h4 class="mb-5 h2">나의 프로필</h4>
 				<div class="d-flex justify-content-start align-items-center my-image">
-					<img src="../resources/images/normal.png" width="90" height="90" alt="Image placeholder" class="img-fluid my-img float-right"> <span class="ml-5"><strong>별명 </strong> <span> ${login.nickname }</span> </span>
+					<img src="../resources/images/normal.png" width="100" height="100" alt="Image placeholder" class="img-fluid my-img float-right mx-3"> <span class="ml-5"><strong>별명 </strong> <span> ${login.nickname }</span> </span>
 				</div>
 				<!-- 프로필 사진 변경 -->
 				<div class="input-group my-4">
@@ -100,8 +100,8 @@ $(document).ready(function() {
 		
 		$('#inputGroupFile03')[0].files = null; // 파일태그 초기화
 		$('#inputGroupFile03label').html(''); // 파일첨부가 끝나면, 파일 이름 지우기
-		getProfile();  //  서버로부터 URL 가져옴
-		//window.location.reload();
+		
+		window.location.reload();
 	});
 	
 	// 클릭시 프로필 사진 정보 삭제
@@ -151,7 +151,8 @@ $(document).ready(function() {
 	// 내 프로필 사진과 별명 정보를 가져오는 함수,  ajax 사용
 	function getProfile() {
 		var id = '${login.id}';
-		var data = { 'id' : id};
+		var mno = ${login.mno};
+		var data = { 'id' : id, 'mno' : mno};
 		$.ajax({
 			url : '${pageContext.request.contextPath}/member/getProfile',
 			method : 'POST',

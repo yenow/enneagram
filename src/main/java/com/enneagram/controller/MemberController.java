@@ -46,15 +46,16 @@ public class MemberController{
 	// 프로필 파일 정보 가져오는 AJAX
 	@RequestMapping("getProfile")
 	@ResponseBody
-	public ResponseEntity<MemberVO> getProfile(String id) {
+	public ResponseEntity<MemberVO> getProfile(String id,int mno) {
 		ResponseEntity<MemberVO> re;
 		System.out.println(id);
 		try {
-			MemberVO m = memberSerivce.login_confirm(id); // 멤버 객체 가져오기
-			
+			MemberVO m = memberSerivce.getMemberVO(mno); // 멤버 객체 가져오기
+			System.out.println(m.getUUIDPath());
 			if(m.getUUIDPath()==null) {
 				re = new ResponseEntity<MemberVO>(HttpStatus.OK);
 			}else {
+				
 				String uuidPath =m.getUUIDPath();
 				File uuidpath = new File(uuidPath);   
 				if(uuidpath.exists()==false) {   // 만약에 파일이 존재하지 않는다면

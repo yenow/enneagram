@@ -24,4 +24,6 @@ public interface MemberDAO {
 	public void updateProfile(MemberVO m);
 
 	public void deleteProfile(int mno);
+
+	public MemberVO getMemberVO(int mno);
 }

@@ -35,5 +35,7 @@ public interface MemberService {
 
 	void deleteProfile(int mno);
 
+	MemberVO getMemberVO(int mno);
+
 
 }

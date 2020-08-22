@@ -60,4 +60,9 @@ public class MemberDAOImpl implements MemberDAO {
 	public void deleteProfile(int mno) {
 		sqlSession.update("deleteProfile",mno);
 	}
+
+	@Override
+	public MemberVO getMemberVO(int mno) {
+		return sqlSession.selectOne("getMemberVO",mno);
+	}
 }

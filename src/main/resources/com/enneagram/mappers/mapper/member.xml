@@ -30,4 +30,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="deleteProfile">
 		update member set originalName = null, UUIDPath = null where mno = #{mno}
 	</update>
+	
+	<select id="getMemberVO" resultType="m">
+		select * from member where mno = #{mno}
+	</select>
 </mapper>
