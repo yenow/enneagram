@@ -32,7 +32,13 @@
 								<tr class="float-right">
 
 									<td class="align-middle border-0 px-2">
-										<img src="../resources/images/person_1.jpg" alt="Image placeholder" class="img-fluid my-img float-right">
+										<c:if test="${login.UUIDPath eq null }">
+											<img src="../resources/images/normal.png" alt="Image placeholder" class="img-fluid my-img float-right">
+										</c:if>
+										
+										<c:if test="${login.UUIDPath ne null }">
+											<img src="${login.UUIDPath }" alt="Image placeholder" class="img-fluid my-img float-right">
+										</c:if>
 									</td>
 									<td class="align-middle border-0 px-2">${b.nickname }</td>
 								</tr>
@@ -252,7 +258,7 @@ function replyDelete2(rno) {
 			
 			$li = $('<li class="comment"></li>');
 			$img = $('<div class="vcard bio">'
-					+'<img src="${pageContext.request.contextPath}/resources/images/person_1.jpg" alt="Image placeholder">'
+					+'<img src="${pageContext.request.contextPath}/resources/images/normal.png" alt="Image placeholder">'
 					+'</div>');
 			$div = $('<div class="comment-body"></div>');
 			

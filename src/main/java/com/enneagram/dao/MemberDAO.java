@@ -20,4 +20,8 @@ public interface MemberDAO {
 	public PersonalityVO myPersonaltiy(int pno);
 
 	public MemberVO isPresent(String id);
+
+	public void updateProfile(MemberVO m);
+
+	public void deleteProfile(int mno);
 }

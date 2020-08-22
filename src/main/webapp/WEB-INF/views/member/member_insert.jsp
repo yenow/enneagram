@@ -15,7 +15,7 @@
 	<div class="container">
 		<div class="row justify-content-center content-margin member-insert">
 			<div class="col-md-6 text-center">
-				<form method="post" action="${pageContext.request.contextPath}/member/member_insert_ok" id="signUpForm" onsubmit="return check();">
+				<form method="post" action="${pageContext.request.contextPath}/member/member_insert_ok" id="signUpForm">
 					<h2 class="text-center mb-5">회원가입</h2>
 
 					<input type="text" class="form-control my-2" name="id" id="id"  placeholder="아이디 입력" />
@@ -53,6 +53,9 @@
 	</div>
 </section>
 
+<div class="alert alert-danger" role="alert" style="display: none;">
+  A simple danger alert—check it out!
+</div>
 
 <script>
 // 아작스로 구현해야함,, 유효성검증
@@ -122,37 +125,37 @@ $(document).ready(function () {
 	$('#signUpForm').submit(function () {
 		
 		if($('#id').val()==''){
-			alert('아이디를 입력해주세요');
+			$('.alert').alert('아이디를 입력해주세요');
 			document.querySelector('#id').scrollIntoView();
 			return false;
 		}
 		if($('#password').val()==''){
-			alert('비밀번호를 입력해주세요');
+			$('.alert').alert('비밀번호를 입력해주세요');
 			document.querySelector('#password').scrollIntoView();
 			return false;
 		}
 		if($('#name').val()==''){
-			alert('이름을 입력해주세요');
+			$('.alert').alert('이름을 입력해주세요');
 			document.querySelector('#name').scrollIntoView();
 			return false;
 		}
 		if($('#nickname').val()==''){
-			alert('닉네임을 입력해주세요');
+			$('.alert').alert('닉네임을 입력해주세요');
 			document.querySelector('#nickname').scrollIntoView();
 			return false;
 		}
 		if($('#tel').val()==''){
-			alert('전화번호를 입력해주세요');
+			$('.alert').alert('전화번호를 입력해주세요');
 			document.querySelector('#tel').scrollIntoView();
 			return false;
 		}
 		if($('#email').val()==''){
-			alert('이메일을 입력해주세요');
+			$('.alert').alert('이메일을 입력해주세요');
 			document.querySelector('#email').scrollIntoView();
 			return false;
 		}
 		if($('#male').val()=='' && $('#female').val()==''){
-			alert('성별을 입력해주세요');
+			$('.alert').alert('성별을 입력해주세요');
 			return false;
 		}
 		

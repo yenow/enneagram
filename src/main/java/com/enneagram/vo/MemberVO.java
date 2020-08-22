@@ -38,6 +38,8 @@ create table member(
 	private String type;
 	private String birth;
 	private Date regdate;
+	private String originalName;
+	private String UUIDPath;
 	
 	
 }

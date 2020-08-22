@@ -1,5 +1,6 @@
 package com.enneagram.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -42,6 +43,58 @@ public class MemberController{
 	@Autowired
 	private EnneagramService enneagramService;
     
+	// 프로필 파일 정보 가져오는 AJAX
+	@RequestMapping("getProfile")
+	@ResponseBody
+	public ResponseEntity<MemberVO> getProfile(String id) {
+		ResponseEntity<MemberVO> re;
+		System.out.println(id);
+		try {
+			MemberVO m = memberSerivce.login_confirm(id); // 멤버 객체 가져오기
+			
+			if(m.getUUIDPath()==null) {
+				re = new ResponseEntity<MemberVO>(HttpStatus.OK);
+			}else {
+				String uuidPath =m.getUUIDPath();
+				File uuidpath = new File(uuidPath);   
+				if(uuidpath.exists()==false) {   // 만약에 파일이 존재하지 않는다면
+					
+				}
+				String temp = uuidPath.substring(uuidPath.indexOf("\\")).replace("\\", "/");
+				System.out.println(temp);
+				m.setUUIDPath(temp);
+				re = new ResponseEntity<MemberVO>(m,HttpStatus.OK);
+			}
+			
+			
+		} catch (Exception e) {
+			re = new ResponseEntity<MemberVO>(HttpStatus.BAD_REQUEST);
+			e.printStackTrace();
+
+		}
+		
+		return re;
+	}
+	
+	// 나의 프로필 페이지
+	@RequestMapping("myProfile")
+	public String myProfile(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+
+		if (session.getAttribute("login") == null) {
+			return "redirect:/member/login";
+		}else {
+			return "/member/myProfile";
+		}
+
+	}
+
+	// 비밀번호확인 페이지
+	@RequestMapping("is_member")
+	public void is_member() {
+		
+	}
+	
+	// 아작스로 회원가입 아이디 유효성 검증 - 중복되는 아이디가 있는지 검사
 	@RequestMapping(value = "idValidate", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<Boolean> idValidate(String id){

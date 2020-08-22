@@ -22,4 +22,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="isPresent" resultType="m">
 		select * from member where id = #{id}
 	</select>
+	
+	<update id="updateProfile">
+		update member set originalName = #{originalName}, UUIDPath = #{UUIDPath} where mno = #{mno}
+	</update>
+	
+	<update id="deleteProfile">
+		update member set originalName = null, UUIDPath = null where mno = #{mno}
+	</update>
 </mapper>

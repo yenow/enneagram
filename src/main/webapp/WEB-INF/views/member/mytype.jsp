@@ -70,7 +70,7 @@
 								<a href="${pageContext.request.contextPath}/member/mytype"> 내 유형 </a>
 							</li>
 							<li>
-								<a href="${pageContext.request.contextPath}/member/myPage"> 개인정보수정 </a>
+								<a href="${pageContext.request.contextPath}/member/myProfile"> 나의 프로필 </a>
 							</li>
 						</ul>
 					</div>

@@ -65,6 +65,7 @@
 	</div>
 </footer>
 
+<!-- <img src="../resources/images/person_1.jpg" alt="Image placeholder" class="img-fluid my-img float-right"> 저작권 -->
 
 
 <!-- loader -->

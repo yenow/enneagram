@@ -191,4 +191,16 @@ public class MemberServiceImpl implements MemberService {
 		}
 		
 	}
+
+	// 프로필사진 업데
+	@Override
+	public void updateProfile(MemberVO m) {
+		memberDAO.updateProfile(m);
+	}
+
+	@Override
+	public void deleteProfile(int mno) {
+		memberDAO.deleteProfile(mno);
+		
+	}
 }
