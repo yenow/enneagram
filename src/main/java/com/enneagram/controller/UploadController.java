@@ -160,6 +160,11 @@ public class UploadController {
 		HttpSession session = request.getSession();
 		MemberVO m = (MemberVO) session.getAttribute("login");
 		try {
+			// 파일 삭제
+			File uuidPath = new File(m.getUUIDPath());
+			if(uuidPath.exists()) {
+				uuidPath.delete();
+			}  
 			memberService.deleteProfile(m.getMno());
 			re = new ResponseEntity<String>("success",HttpStatus.OK);
 		} catch (Exception e) {

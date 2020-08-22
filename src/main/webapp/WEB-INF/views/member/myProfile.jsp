@@ -17,7 +17,7 @@
 				<!-- 내 프로필 -->
 				<h4 class="mb-5 h2">나의 프로필</h4>
 				<div class="d-flex justify-content-start align-items-center my-image">
-					<img src="../resources/images/normal.png" width="90" height="90" alt="Image placeholder" class="img-fluid my-img float-right"> <span class="ml-5"><strong>별명 </strong> <span> mooon</span> </span>
+					<img src="../resources/images/normal.png" width="90" height="90" alt="Image placeholder" class="img-fluid my-img float-right"> <span class="ml-5"><strong>별명 </strong> <span> ${login.nickname }</span> </span>
 				</div>
 				<!-- 프로필 사진 변경 -->
 				<div class="input-group my-4">
@@ -31,7 +31,7 @@
 				</div>
 				<div class="text-center">
 					<!-- 수정버튼 -->
-					<a href="#" id="profileSubmit" class="btn btn-primary">수정</a> <a href="#" id="profiledelete" class="btn btn-primary">프로필 사진 삭제</a>
+					<a href="#" id="profileSubmit" class="btn btn-primary">등록</a> <a href="#" id="profiledelete" class="btn btn-primary">삭제</a>
 				</div>
 				<hr />
 				<!-- 비밀번호 -->
@@ -80,10 +80,11 @@ $(document).ready(function() {
 			method : "POST",
 			processData : false,   // 이 두개를 반드시 false로 해야한다고함.. 이유는 모름
 			contentType : false, 
-			dataType : 'json',
+			dataType : 'html',
 			data : formData,
 			success : function (data) {
 				console.log(data);
+				alert('수정성공');
 			},
 			error : function () {
 				
@@ -92,6 +93,7 @@ $(document).ready(function() {
 		
 		$('#inputGroupFile03label').html(''); // 파일첨부가 끝나면, 파일 이름 지우기
 		getProfile();  //  서버로부터 URL 가져옴
+		//window.location.reload();
 	});
 	
 	// 클릭시 프로필 사진 정보 삭제
@@ -100,14 +102,18 @@ $(document).ready(function() {
 		$.ajax({
 			url : "${pageContext.request.contextPath}/myProfileDelete",
 			method : "GET",
-			dataType : 'json',
+			dataType : 'html',
 			success : function (data) {
 				console.log(data);
+				alert('삭제성공');
 			},
 			error : function () {
 				
 			}
 		});
+		
+		$('.my-image img').attr('src','${pageContext.request.contextPath}/resources/images/normal.png');
+		// window.location.reload();
 	})
 	
 	$('#inputGroupFile03').change(function() {
