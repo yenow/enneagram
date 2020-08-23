@@ -32,6 +32,7 @@ public class AjaxController {
 	// Test Case - 1
 	@ResponseBody
 	@RequestMapping(value="/list", method=RequestMethod.GET, consumes=MediaType.APPLICATION_JSON_VALUE)
+	//@ModelAttribute("username") String username, @RequestParam("password") String password
 	public List<String> list(@ModelAttribute("username") String username, @RequestParam("password") String password){
 		logger.info("Request List....");
 		logger.info("username : "+username);

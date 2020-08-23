@@ -28,6 +28,14 @@ public class AttachFileDTO {
 		
 	}
 	
+	public AttachFileDTO(String originalFileName, String uploadPath, String uuid, String realName) {
+		super();
+		this.originalFileName = originalFileName;
+		this.uploadPath = uploadPath;
+		this.uuid = uuid;
+		this.realName = realName;
+	}
+	
 	public void addMappingURL(String standardString) {
 		if(this.uploadPath!=null) {
 			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
@@ -38,4 +46,8 @@ public class AttachFileDTO {
 			this.mappingURL = contextPath+temp;
 		}
 	}
+
+
+
+	
 }

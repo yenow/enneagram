@@ -126,7 +126,7 @@
 						</c:if>
 
 						<li class="float-right">
-							<button class="btn btn-primary rounded"  href="${pageContext.request.contextPath}/board/boardWrite" id="toBoardWrite">글쓰기</button>
+							<button class="btn btn-primary rounded"  href="${pageContext.request.contextPath}/board/boardWrite?category=${pageDTO.cri.category}" id="toBoardWrite">글쓰기</button>
 						</li>
 					</ul>
 

@@ -69,88 +69,87 @@
 
 	<!-- content -->
 	<div class="container-fluid">
-		<div class="content-margin">
-			<h2 class="text-center mb-3">게시판 등록</h2>
-			<%-- action="${pageContext.request.contextPath}/board/boardWrite_ok?catetgory=${category} --%>
-			<form id="boardWrite-form" >
-				<input type="hidden" name="mno" value="${login.mno }">
-				<input type="hidden" name="id" value="${login.id }">
-				<input type="hidden" name="nickname" value="${login.nickname }">
-				
+		<h2 class="text-center my-3">게시판 등록</h2>
+		<%-- action="${pageContext.request.contextPath}/board/boardWrite_ok?catetgory=${category} --%>
+		<form id="boardWrite-form">
+			<input type="hidden" name="mno" value="${login.mno }">
+			<input type="hidden" name="id" value="${login.id }">
+			<input type="hidden" name="nickname" value="${login.nickname }">
+			<input type="hidden" name="category" value="${category }">
+			
+			<div class="row justify-content-end" style="padding: 0 30px;">
 				<!-- category  -->
-				<c:if test="${login.category == '관리자' }">
+			<%-- 	<div class="col-5" style="padding: 0;">
+					<c:if test="${category == '자료실' }">
 					
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<label class="input-group-text" for="inputGroupSelect01">카테고리</label>
+					</c:if>
+					<c:if test=""></c:if>
+				
+					<c:if test="${login.category == '관리자' }">
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<label class="input-group-text" for="inputGroupSelect01">카테고리</label>
+							</div>
+							<select class="custom-select" id="inputGroupSelect01" name="category">
+								<!-- select 태그안에 name속성있고, form태그 안이라면 전송됨 -->
+								<option disabled="disabled">선택</option>
+								<option value="공지사항">공지사항</option>
+								<option value="속닥속닥">속닥속닥</option>
+								<option value="자료실">자료실</option>
+							</select>
 						</div>
-						<select class="custom-select" id="inputGroupSelect01" name="category">  <!-- select 태그안에 name속성있고, form태그 안이라면 전송됨 -->
-							<option disabled="disabled">선택</option>
-							<option value="공지사항">공지사항</option>
-							<option value="속닥속닥">속닥속닥</option>
-							<option value="자료실">자료실</option>
-						</select>
+					</c:if>
+					<c:if test="${login.category != '관리자' }">
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<label class="input-group-text" for="inputGroupSelect01">카테고리</label>
+							</div>
+							<select class="custom-select" id="inputGroupSelect01" name="category">
+								<!-- select 태그안에 name속성있고, form태그 안이라면 전송됨 -->
+								<option disabled="disabled">선택</option>
+								<option value="속닥속닥">속닥속닥</option>
+								<option value="자료실">자료실</option>
+							</select>
+						</div>
+					</c:if>
+				</div>
+				<!-- /category  --> --%>
+			
+				<!-- 파일첨부 -->
+				<c:if test="${category == '자료실' }">
+					<div class="input-group">
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="customFile" aria-describedby="inputGroupFileAddon04" multiple="multiple">
+							<label class="custom-file-label" for="customFile">파일선택</label>
+						</div>
+						<!-- 등록버튼 -->
+						<div class="input-group-append">
+							<a href="${pageContext.request.contextPath}/board/boardList?category=${category}" class="btn btn-outline-secondary submit-button" type="submit" id="inputGroupFileAddon04">등록</a>
+						</div>
 					</div>
 				</c:if>
-				<c:if test="${login.category != '관리자' }">
-					<div class="col-12 input-group mb-3">
-						<div class="input-group-prepend">
-							<label class="input-group-text" for="inputGroupSelect01">카테고리</label>
-						</div>
-						<select class="custom-select" id="inputGroupSelect01" name="category">  <!-- select 태그안에 name속성있고, form태그 안이라면 전송됨 -->
-							<option disabled="disabled">선택</option>
-							<option value="속닥속닥">속닥속닥</option>
-							<option value="자료실">자료실</option>
-						</select>
-					</div>
-				</c:if>
-				<!-- /category  -->
-				
-				
-				<div class="input-group mb-2 col-md-12">
-					<!-- 제목 -->
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="basic-addon1">제목</span>
-					</div>
-					<input type="text" class="form-control" name="title" placeholder="제목" aria-label="Username" aria-describedby="basic-addon1">
+			</div>
+			<!--  첨부된 파일 표시  -->
+			<div class="col-12 attach-div">
+				<ul class="list-group" style="margin: 0.5em 0">
 					
-					<!-- type정하기 -->
-					<!-- <div class="input-group-prepend">
-						<label class="input-group-text" for="inputGroupSelect01">유형</label>
-					</div>
-					<select class="custom-select" id="inputGroupSelect01" name="type">
-						<option disabled="disabled" selected="selected">유형</option>
-						<option value="1">1유형</option>
-						<option value="2">2유형</option>
-						<option value="3">3유형</option>
-						<option value="4">4유형</option>
-						<option value="5">5유형</option>
-						<option value="6">6유형</option>
-						<option value="7">7유형</option>
-						<option value="8">8유형</option>
-						<option value="9">9유형</option>
-					</select> -->
-				</div>
-				<!-- /type정하기 -->
-
-				<!-- 내용 -->
-				<div class="col-md-12 mb-2"><textarea id="summernote" name="content"></textarea></div>
-
-				<div class="text-center">
-					<input type="submit" class="btn btn-primary boardWrite-button" value="등록">
-				</div>
-			</form>
-
-		</div>
+				</ul>
+			</div>
+			<!-- 제목 -->
+			<div class="input-group col-12">
+				<input type="text" class="form-control" name="title" id="title" placeholder="제목" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+			</div>
+			<!-- /제목 -->
+			<!-- 내용 -->
+			<div class="col-12 mb-2">
+				<textarea id="summernote" name="content"></textarea>
+			</div>
+		</form>
 	</div>
-
-
 	<script type="text/javascript">
-		
-	
 		$('#summernote').summernote({
 			height : 300, // 에디터 높이
-			minHeight : 600, // 최소 높이
+			minHeight : 500, // 최소 높이
 			maxHeight : null, // 최대 높이
 			focus : true, // 에디터 로딩후 포커스를 맞출지 여부
 			lang : "ko-KR", // 한글 설정
@@ -164,7 +163,7 @@
 
 		var AttachFileDTOArray = new Array();
 		var AttachFileDTO = new Object();
-		 
+
 		/* 이미지 파일 업로드 */
 		function uploadSummernoteImageFile(file, editor) {
 			data = new FormData();
@@ -176,70 +175,145 @@
 				contentType : false,
 				processData : false,
 				success : function(data) {
-					//항상 업로드된 파일의 url이 있어야 한다.
+							//항상 업로드된 파일의 url이 있어야 한다.
 					console.log(data);
 					AttachFileDTOArray.push(data.attachFileDTO);
 					console.log(AttachFileDTOArray);
-					$(editor).summernote('insertImage', data.attachFileDTO.mappingURL);
+					$(editor).summernote('insertImage',
+					data.attachFileDTO.mappingURL);
+					}
+				});
+		}
+
+
+	    $(document).ready(function () {
+	    	
+	    	// 제출될때 이벤트 발생
+	        $('.submit-button').click(function () {
+	        		// 제목 유효성 검증
+	        		if($('#title').val()==''){
+	        			alert('제목을 입력해주세요');
+	        			return false;
+	        		}
+
+	        	
+	                //폼 태그도 ajax로 보내야함;; 그리고 다 되었으면 다시 ajax로 보내고,, 그리고 location.href로 이동
+	                var data = {};
+	                //serialize() 활용하기
+	                var str = $("form").serialize();
+	                console.log(str);
+	                var category = '${category}';
+	                data.str = str;
+	                // data.AttachFileDTOArray = AttachFileDTOArray;
+	                // data.category = category;
+	                console.log(data);
+
+	                $.ajax({
+	                    data: str,
+	                    type: 'POST',
+	                    dataType: 'html',
+	                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+	                    url: "${pageContext.request.contextPath}/board/boardWriteAjax",
+	                    success: function (data) {
+
+	                        console.log(data);
+	                        data *= 1; // bno 숫자타입으로 만들기
+	                        console.log(typeof bno);
+	                        AttachFileDTOArray[0].bno = data;
+	                        console.log(AttachFileDTOArray[0]);
+
+	                        for (var i = 0; i < AttachFileDTOArray.length; i++) {
+	                            AttachFileDTOArray[i].bno = data;
+	                            AttachFileDTOArray[i].mno = null;
+	                        }
+	                        console.log(AttachFileDTOArray);
+
+	                        $.ajax({
+	                                data: JSON.stringify(AttachFileDTOArray),
+	                                type: 'POST',
+	                                dataType: 'html',
+	                                contentType: 'application/json; charset=UTF-8',
+	                                url: "${pageContext.request.contextPath}/board/boardAttachFileDTO",
+	                                success: function (data) {
+	                                    console.log(data);
+	                                    if (data == "success") {
+	                                    	
+	                                    	window.location.replace='${pageContext.request.contextPath}/board/boardList?category=${category}';
+	                                    } else {
+	                                        alert('등록이 되지 않았습니다');
+	                                       
+	                                    }
+	                                }
+	                            }); // end ajax
+
+	                    } // end success function
+	                }); // end ajax	  	
+	                // window.location.replace='${pageContext.request.contextPath}/board/boardList?category=${category}';
+	            }); // end  $('#boardWrite-form').submit(function()
+	            	
+	        // 파일 선택시 호출됨 -> upload폴더에 파일 저장 및 파일HTML태그 추가
+	    	$('#customFile').change(function() {
+				// console.log('change');  //// console.log(this.files); //// console.log(this.files[0]); //
+				
+				var files= this.files;
+				var formdata = new FormData();
+				for(var i=0; i<files.length ; i++){
+					formdata.append('file',files[i]);   // name은 키값인가?
 				}
+				// console.log(formdata);  //// console.log(formdata.get('file'));  //
+				$.ajax({
+					url: '${pageContext.request.contextPath}/fileupload', // 클라이언트가 요청을 보낼 서버의 URL 주소
+					processData : false,   // 이 두개를 반드시 false로 해야한다고함.. 이유는 모름
+					contentType : false, 
+					data: formdata,        // HTTP 요청과 함께 서버로 보낼 데이터
+					type: 'POST',          // HTTP 요청 방식(GET, POST)
+					dataType: 'json',      // 호출 했을 때 결과타입
+					success : function(data) {
+						console.log(data);
+						if(data!=null){
+							attachFileAppend(data);
+						} 
+					}
+				});
+			});
+	            
+	       	function fileSizeCheck(file) {
+				if(file.size>20971520){ // 20MB
+					alert('20MB이상 첨부 불가능');
+					return false; 
+				}  
+			}
+	       	
+	       	function attachFileAppend(attachFile) {
+				
+	       		for(var i=0; i<attachFile.length; i++){
+	       			console.log(attachFile);
+	       			$('.attach-div ul').append($('<li class="list-group-item" style="font-size: 15px; padding: 0.25rem 0.5rem;">'+attachFile[i].originalFileName+' <a data-realName="'+attachFile[i].realName+'" data-uploadPath="'+attachFile[i].uploadPath+'" onclick="deleteAttachtFile(this);"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x float-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/><path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/></svg></a></li>'));   
+	       		}
+			}
+	    }); // end $(document).ready
+		
+		// x표시 클릭할시, 태그와 upload폴더의 파일 삭제
+		function deleteAttachtFile(data) {
+			$aTag = data;
+			var dataSet = new Object(); 
+			dataSet.realName = $(data).data('realname');
+			dataSet.uploadPath = $(data).data('uploadpath');
+			$.ajax({
+				url: '${pageContext.request.contextPath}/fileDelete', // 클라이언트가 요청을 보낼 서버의 URL 주소
+				data: dataSet,        // HTTP 요청과 함께 서버로 보낼 데이터
+				type: 'GET',          // HTTP 요청 방식(GET, POST)
+				dataType: 'html',      // 호출 했을 때 결과타입
+				success : function(data) {
+					console.log(data);
+					if(data=='success'){
+						$parent = $aTag.parentNode;
+						$parent.remove();
+					}
+				}	
 			});
 		}
-		
-		$(document).ready(function() {
-			$('#boardWrite-form').submit(function() {
-				//폼 태그도 ajax로 보내야함;; 그리고 다 되었으면 다시 ajax로 보내고,, 그리고 location.href로 이동
-				var data = {};
-				//serialize() 활용하기
-				var str = $( "form" ).serialize();
-			 	console.log(str);
-			 	var category =  '${category}';
-			 	data.str = str;
-			 	// data.AttachFileDTOArray = AttachFileDTOArray;
-			 	// data.category = category;
-			 	console.log(data);
-			 	
-			 	$.ajax({
-			 		data :  str,
-					type : 'POST',
-					dataType : 'html',
-					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',   
-					url : "${pageContext.request.contextPath}/board/boardWriteAjax",
-					success : function(data) {
-						
-						console.log(data);
-						data *= 1;  // bno 숫자타입으로 만들기
-						console.log(typeof bno);
-						AttachFileDTOArray[0].bno = data;
-						console.log(AttachFileDTOArray[0]);
-					
-						for(var i=0; i < AttachFileDTOArray.length ; i++){
-							AttachFileDTOArray[i].bno = data;
-							AttachFileDTOArray[i].mno = null;
-						}
-						console.log(AttachFileDTOArray);
-						
-						
-						$.ajax({
-							data :  JSON.stringify(AttachFileDTOArray),
-							type : 'POST',
-							dataType : 'html',
-							contentType :  'application/json; charset=UTF-8',
-							url : "${pageContext.request.contextPath}/board/boardAttachFileDTO",
-							success : function(data) {
-								console.log(data);
-							}
-						});
-						
-					}
-			 	});			 	
-			 	
-			 	return false;
-			
-			});
-		});
-		
-	
-		
+	    
 	</script>
 
 

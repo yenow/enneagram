@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -14,8 +16,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.datetime.DateFormatter;
-import org.springframework.format.datetime.joda.DateTimeFormatterFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.enneagram.domain.AttachFileDTO;
 import com.enneagram.service.MemberService;
@@ -35,6 +36,7 @@ public class UploadController {
 	@Autowired
 	private MemberService memberService;
 	
+	// summernote
 	@PostMapping(value="/uploadSummernoteImageFile", produces = "application/json")
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>> uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
@@ -168,9 +170,58 @@ public class UploadController {
 		return  re;
 	}
 	
+	// 파일업로드
+	@PostMapping("fileupload")
+	@ResponseBody
+	public ResponseEntity<List<AttachFileDTO>> fileupload( MultipartHttpServletRequest mrequest){
+		ResponseEntity<List<AttachFileDTO>> r ;
+		List<MultipartFile> mlist = mrequest.getFiles("file");
+		List<AttachFileDTO> alist = new ArrayList<AttachFileDTO>();
+		
+		String uploadPath = "C:\\upload\\fileUpLoad\\";   // 저장될 외부 파일 경로
+		String currentDay = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		uploadPath = uploadPath + currentDay + "\\";
+		File uploadPathFile = new File(uploadPath);
+		if(uploadPathFile.exists()==false) {
+			uploadPathFile.mkdirs();
+		}
+		
+		for(MultipartFile m : mlist ) {
+			String originalFileName = m.getOriginalFilename();
+			UUID uuidname = UUID.randomUUID();
+			String uuid = uuidname.toString();
+			String realName = uuid+"_"+originalFileName;
+			
+			AttachFileDTO attachFileDTO = new AttachFileDTO(originalFileName,uploadPath,uuid,realName);
+			attachFileDTO.addMappingURL("upload");
+			File f = new File(uploadPath+realName);
+			try {
+				m.transferTo(f);
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+				return new ResponseEntity<List<AttachFileDTO>>(HttpStatus.BAD_REQUEST);
+			}
+			alist.add(attachFileDTO);
+		}
+		r = new ResponseEntity<List<AttachFileDTO>>(alist,HttpStatus.OK);
+		return r;
+	}
 	
-
-
+	@GetMapping("fileDelete")
+	@ResponseBody
+	public String fileDelete(@RequestParam("uploadPath") String uploadPath, String realName) {
+		
+		try {
+			File f = new File(uploadPath+realName);
+			if(f.exists()) {
+				f.delete();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "fail";
+		}
+		return "success";
+	}
 
 
 
