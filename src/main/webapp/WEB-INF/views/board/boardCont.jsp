@@ -32,12 +32,12 @@
 								<tr class="float-right">
 
 									<td class="align-middle border-0 px-2">
-										<c:if test="${boardMember.UUIDPath eq null }">
+										<c:if test="${attachFileMember eq null }">
 											<img src="../resources/images/normal.png" alt="Image placeholder" class="img-fluid my-img float-right">
 										</c:if>
 										
-										<c:if test="${boardMember.UUIDPath ne null }">
-										<img src="${boardMember.UUIDPath }" alt="Image placeholder" class="img-fluid my-img float-right">
+										<c:if test="${attachFileMember ne null }">
+										<img src="${attachFileMember.mappingURL }" alt="Image placeholder" class="img-fluid my-img float-right">
 										</c:if>
 									</td>
 									<td class="align-middle border-0 px-2">${b.nickname }</td>

@@ -69,7 +69,6 @@ $(document).ready(function() {
 	$('#profileSubmit').click(function() {
 		// 파일첨부가 안됬을 시
 		if($('#inputGroupFile03')[0].files.length==0){ 
-		
 			alert('사진을 첨부해주세요');
 			return false;
 		}
@@ -150,17 +149,16 @@ $(document).ready(function() {
 	
 	// 내 프로필 사진과 별명 정보를 가져오는 함수,  ajax 사용
 	function getProfile() {
-		var id = '${login.id}';
 		var mno = ${login.mno};
-		var data = { 'id' : id, 'mno' : mno};
+		var data = {'mno' : mno};
 		$.ajax({
 			url : '${pageContext.request.contextPath}/member/getProfile',
 			method : 'POST',
 			data : data,
 			dataType : 'json',
-			success : function(data) {
-				console.log(data);
-				$('.my-image img').attr('src','${pageContext.request.contextPath}'+data.uuidpath);
+			success : function(attachFileDTO) {
+				console.log(attachFileDTO);
+				$('.my-image img').attr('src',attachFileDTO.mappingURL);
 			},
 		});
 	}

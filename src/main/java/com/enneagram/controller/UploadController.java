@@ -34,6 +34,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.enneagram.domain.AttachFileDTO;
+import com.enneagram.service.AttachFileService;
 import com.enneagram.service.MemberService;
 import com.enneagram.vo.MemberVO;
 
@@ -42,6 +43,8 @@ public class UploadController {
 
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private AttachFileService attachFileService;
 	
 	// summernote
 	@PostMapping(value="/uploadSummernoteImageFile", produces = "application/json")
@@ -104,55 +107,66 @@ public class UploadController {
 	// 사진업로드
 	@PostMapping("myProfileUpload")
 	@ResponseBody
-	public ResponseEntity<String> myProfileUpload(@RequestParam("files") MultipartFile multipartFile,HttpServletRequest request) {
-		ResponseEntity<String> re ;
+	public ResponseEntity<AttachFileDTO> myProfileUpload(@RequestParam("files") MultipartFile multipartFile,HttpServletRequest request) {
+		ResponseEntity<AttachFileDTO> re ;
 		
-		LocalDate currentTime = LocalDate.now();    // 현재 시간 반환
-		String currentDay = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		HttpSession session = request.getSession(); 
+		if(session.getAttribute("login")==null) {   // 로그인 세션이 없을시
+			return new ResponseEntity<AttachFileDTO>(HttpStatus.OK);
+		}
+		MemberVO m = (MemberVO) session.getAttribute("login");  // 세션으로부터 login 정보를 가져옴
+		
+		// 예전 파일이 있을 경우 -> 삭제
+		AttachFileDTO attachFile = attachFileService.getAttachFile(m.getMno());
+		if(attachFile!=null) {
+			File beforeAttachFile = new File(attachFile.getUploadPath()+attachFile.getRealName());
+			beforeAttachFile.delete();   // 예전 파일 삭제
+			attachFileService.deleteMemberAttach(m.getMno());
+		}
+		
+		String currentDay = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));  //  현재시간을 포맷팅
 		System.out.println("날짜 폴더이름 : "+currentDay);
-		
-		
 		
 		System.out.println(multipartFile.getName());
 		System.out.println(multipartFile.getOriginalFilename());
 		System.out.println(multipartFile.getContentType());
 		
-		String uploadPath = "C:\\upload\\profileImage\\"+currentDay+"\\";
+		String uploadPath = "C:\\upload\\profileImage\\"+currentDay+"\\";  // upload될 파일 경로
 		File f = new File(uploadPath);
-		if(f.exists()==false) {
+		if(f.exists()==false) {   // 폴더가 존재하지 않을시 생성
 			f.mkdirs();
 		}
 		
-		// uuid 생성
+		String uuid = UUID.randomUUID().toString();   // uuid 생성
+		String originalFileName = multipartFile.getOriginalFilename();  // originalFilename
+		String realName = uuid + "_"+ originalFileName;
+		AttachFileDTO attachFileDTO =  new AttachFileDTO(originalFileName, uploadPath, uuid, realName);
+		attachFileDTO.addMappingURL("upload");
+		attachFileDTO.setImage(true);
+		attachFileDTO.setMno(m.getMno());
 		
-		String uuid = UUID.randomUUID().toString();
-		String originalName = multipartFile.getOriginalFilename();
-		String realName = uuid + "_"+ originalName;
-		String UUIDPath = uploadPath + realName;
-		
-		File uuidFile = new File(UUIDPath);
+		File fullPath = new File(uploadPath + realName);
 
+		try {
+			multipartFile.transferTo(fullPath);    // 파일 생성
+			attachFileService.insertAttachFileToMember(attachFileDTO);
+			re = new ResponseEntity<AttachFileDTO>(attachFileDTO,HttpStatus.OK);
+		} catch (IllegalStateException | IOException e) {
+			re = new ResponseEntity<AttachFileDTO>(HttpStatus.BAD_REQUEST);
+			e.printStackTrace();
+		}
+		
 		// 세션으로부터 login 정보를 가져옴
-		HttpSession session = request.getSession();
-		MemberVO m = (MemberVO) session.getAttribute("login");
+		/*
 		if(m.getOriginalName()!=null) {
-			
 			File deletePath = new File(m.getUUIDPath());   // 예전 파일 삭제
 			if(deletePath.exists()==true) {   // 파일이 존재 할 떄 삭제
 				deletePath.delete();
 			}
-		}
-		m.setOriginalName(originalName);
-		m.setUUIDPath(UUIDPath);
-		memberService.updateProfile(m);  //  이미지 경로를 member 테이블에 등록
-		
-		try {
-			multipartFile.transferTo(uuidFile);
-			re = new ResponseEntity<String>("success",HttpStatus.OK);
-		} catch (IllegalStateException | IOException e) {
-			re = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
-			e.printStackTrace();
-		}
+		}*/
+		// m.setOriginalName(originalName);
+		// m.setUUIDPath(UUIDPath);
+		//memberService.updateProfile(m);  //  이미지 경로를 member 테이블에 등록
 		
 		return re;
 	}
@@ -164,14 +178,15 @@ public class UploadController {
 		ResponseEntity<String> re;
 		HttpSession session = request.getSession();
 		MemberVO m = (MemberVO) session.getAttribute("login");
-		MemberVO rm = memberService.getMemberVO(m.getMno());
+		
 		try {
+			AttachFileDTO attachFileDTO = attachFileService.getAttachFile(m.getMno());
+			attachFileService.deleteMemberAttach(m.getMno());
 			// 파일 삭제
-			File uuidPath = new File(rm.getUUIDPath());
-			if(uuidPath.exists()) {
-				uuidPath.delete();
+			File fullPath = new File(attachFileDTO.getUploadPath()+attachFileDTO.getRealName());
+			if(fullPath.exists()) {
+				fullPath.delete();
 			}  
-			memberService.deleteProfile(m.getMno());
 			re = new ResponseEntity<String>("success",HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();

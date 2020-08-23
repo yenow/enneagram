@@ -28,6 +28,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.enneagram.domain.AttachFileDTO;
+import com.enneagram.service.AttachFileService;
 import com.enneagram.service.EnneagramService;
 import com.enneagram.service.MemberService;
 import com.enneagram.vo.EnneagramVO;
@@ -42,38 +44,26 @@ public class MemberController{
 	private MemberService memberSerivce;
 	@Autowired
 	private EnneagramService enneagramService;
+    @Autowired
+    private AttachFileService attachFileService;
     
-	// 프로필 파일 정보 가져오는 AJAX
+	// 프로필 사진 정보 가져오는 AJAX
 	@RequestMapping("getProfile")
 	@ResponseBody
-	public ResponseEntity<MemberVO> getProfile(String id,int mno) {
-		ResponseEntity<MemberVO> re;
-		System.out.println(id);
+	public ResponseEntity<AttachFileDTO> getProfile(String id,int mno) {
+		ResponseEntity<AttachFileDTO> re;
 		try {
-			MemberVO m = memberSerivce.getMemberVO(mno); // 멤버 객체 가져오기
-			System.out.println(m.getUUIDPath());
-			if(m.getUUIDPath()==null) {
-				re = new ResponseEntity<MemberVO>(HttpStatus.OK);
+			AttachFileDTO attachFileDTO = attachFileService.getAttachFile(mno);
+			if(attachFileDTO==null) {
+				re = new ResponseEntity<AttachFileDTO>(HttpStatus.OK);
 			}else {
-				
-				String uuidPath =m.getUUIDPath();
-				File uuidpath = new File(uuidPath);   
-				if(uuidpath.exists()==false) {   // 만약에 파일이 존재하지 않는다면
-					
-				}
-				String temp = uuidPath.substring(uuidPath.indexOf("\\")).replace("\\", "/");
-				System.out.println(temp);
-				m.setUUIDPath(temp);
-				re = new ResponseEntity<MemberVO>(m,HttpStatus.OK);
+				re = new ResponseEntity<AttachFileDTO>(attachFileDTO,HttpStatus.OK);
 			}
-			
-			
-		} catch (Exception e) {
-			re = new ResponseEntity<MemberVO>(HttpStatus.BAD_REQUEST);
-			e.printStackTrace();
 
+		} catch (Exception e) {
+			re = new ResponseEntity<AttachFileDTO>(HttpStatus.BAD_REQUEST);
+			e.printStackTrace();
 		}
-		
 		return re;
 	}
 	

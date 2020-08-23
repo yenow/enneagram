@@ -24,4 +24,19 @@ public class AttachFileDAOImpl implements AttachFileDAO {
 	public List<AttachFileDTO> selectAttachList(int bno) {
 		return sqlsession.selectList("selectAttachList", bno);
 	}
+
+	@Override
+	public AttachFileDTO getAttachFile(int mno) {
+		return sqlsession.selectOne("getAttachFile", mno);
+	}
+
+	@Override
+	public void insertAttachFileToMember(AttachFileDTO attachFileDTO) {
+		sqlsession.insert("insertAttachFileToMember", attachFileDTO);
+	}
+
+	@Override
+	public void deleteMemberAttach(int mno) {
+		sqlsession.delete("deleteMemberAttach", mno);
+	}
 }

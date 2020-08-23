@@ -24,4 +24,21 @@ public class AttachFileServiceImpl implements AttachFileService {
 	public List<AttachFileDTO> selectAttachList(int bno) {
 		return attachFileDAO.selectAttachList(bno);
 	}
+	
+	// attachFile객체 가져오기
+	@Override
+	public AttachFileDTO getAttachFile(int mno) {
+		return attachFileDAO.getAttachFile(mno);
+	}
+
+	// member attach insert
+	@Override
+	public void insertAttachFileToMember(AttachFileDTO attachFileDTO) {
+		attachFileDAO.insertAttachFileToMember(attachFileDTO);
+	}
+
+	@Override
+	public void deleteMemberAttach(int mno) {
+		attachFileDAO.deleteMemberAttach(mno);
+	}
 }

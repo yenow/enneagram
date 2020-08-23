@@ -149,18 +149,19 @@ public class BoardController {
 			session.setMaxInactiveInterval(3600);
 		}
 		BoardVO b = boardService.selectboard(bno,session,session.getId());
-		List<AttachFileDTO> attachList =  attachFileService.selectAttachList(bno);  // 첨부파일 리스트 가져오기
+		List<AttachFileDTO> attachList =  attachFileService.selectAttachList(bno);  // 게시판 첨부파일 리스트 가져오기, 
+		AttachFileDTO attachFileMember = attachFileService.getAttachFile(b.getMno());  //  회원의 프로필 사진 가져오기
 		mv.addObject("b", b);
 		// 게시판 글쓴이 정보가져오기
 		MemberVO m = memberService.login_confirm(b.getId());
 		mv.addObject("boardMember", m);
-		System.out.println(m.getUUIDPath());
-		int maxcount = boardService.boardAllCount(c.getCategory());
+		
+		int maxcount = boardService.boardAllCount(c.getCategory());   // 게시글 총 개수
 		PageDTO pd = new PageDTO(c, maxcount);
 		
 		mv.addObject("pageDTO", pd);
 		mv.addObject("attachList",attachList);
-	
+		mv.addObject("attachFileMember",attachFileMember);
 		
 		return mv;
 	}

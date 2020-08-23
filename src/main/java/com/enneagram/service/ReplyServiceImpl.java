@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.enneagram.dao.BoardDAO;
 import com.enneagram.dao.ReplyDAO;
@@ -24,6 +25,7 @@ public class ReplyServiceImpl implements ReplyService{
 		boardDAO.replyrcnt(re);
 	}
 
+	@Transactional
 	@Override
 	public void replyInsert_no(ReplyVO re) {
 		replyDAO.replyInsert_no(re);
@@ -40,7 +42,8 @@ public class ReplyServiceImpl implements ReplyService{
 		
 		return replyDAO.getPassword(rno);
 	}
-
+	
+	@Transactional
 	@Override
 	public void replyDelete(int rno, int bno) {
 		replyDAO.replyDelete(rno);	
