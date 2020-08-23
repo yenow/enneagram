@@ -18,7 +18,7 @@ public class AttachFileDTO {
 	private String uploadPath;   //  업로드 경로
 	private String uuid;   // uuid
 	private String mappingURL;
-	private String realName;
+	private String realName;   // uuid가 첨가된 파일이름
 	private boolean image;    //   이미지 여부
 	private int bno;
 	private int mno;
@@ -43,7 +43,7 @@ public class AttachFileDTO {
 			
 			String temp = this.uploadPath;
 			temp = temp.substring(temp.indexOf(standardString)-1).replace("\\", "/");
-			this.mappingURL = contextPath+temp;
+			this.mappingURL = contextPath+temp+realName;
 		}
 	}
 

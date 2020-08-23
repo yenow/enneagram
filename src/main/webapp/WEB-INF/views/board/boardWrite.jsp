@@ -161,6 +161,7 @@
 			}
 		});
 
+		var attachFileList = new Object();
 		var AttachFileDTOArray = new Array();
 		var AttachFileDTO = new Object();
 
@@ -225,6 +226,7 @@
 	                        for (var i = 0; i < AttachFileDTOArray.length; i++) {
 	                            AttachFileDTOArray[i].bno = data;
 	                            AttachFileDTOArray[i].mno = null;
+	                            
 	                        }
 	                        console.log(AttachFileDTOArray);
 
@@ -245,12 +247,20 @@
 	                                    }
 	                                }
 	                            }); // end ajax
+	                            
+	                            
+	                    	$.ajax({
+	                    		
+	                    	});
 
 	                    } // end success function
 	                }); // end ajax	  	
 	                // window.location.replace='${pageContext.request.contextPath}/board/boardList?category=${category}';
 	            }); // end  $('#boardWrite-form').submit(function()
 	            	
+	        //summersnote Imagefile 보내기
+	        
+	            		
 	        // 파일 선택시 호출됨 -> upload폴더에 파일 저장 및 파일HTML태그 추가
 	    	$('#customFile').change(function() {
 				// console.log('change');  //// console.log(this.files); //// console.log(this.files[0]); //
@@ -268,10 +278,14 @@
 					data: formdata,        // HTTP 요청과 함께 서버로 보낼 데이터
 					type: 'POST',          // HTTP 요청 방식(GET, POST)
 					dataType: 'json',      // 호출 했을 때 결과타입
-					success : function(data) {
-						console.log(data);
-						if(data!=null){
-							attachFileAppend(data);
+					success : function(AttachFileDTOList) {
+						
+						for(var i=0; i<AttachFileDTOList.length; i++){
+							AttachFileDTOArray.push(AttachFileDTOList[i]);
+						}
+						// AttachFileDTO 객체를 받으면
+						if(AttachFileDTOList!=null){
+							attachFileAppend(AttachFileDTOList);
 						} 
 					}
 				});

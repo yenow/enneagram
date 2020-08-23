@@ -44,11 +44,12 @@ public class UploadController {
 		Map<String, Object> map =  new HashMap<String, Object>();
 		ResponseEntity<Map<String, Object>> r ;
 		AttachFileDTO attachFileDTO = new AttachFileDTO();
+		String uploadPath;
 		
 		String fileRoot = "C:\\summernoteImage\\";	//저장될 외부 파일 경로
 		String currentDay = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-		fileRoot = fileRoot + currentDay+"\\";
-		File f = new File(fileRoot);
+		uploadPath = fileRoot + currentDay+"\\";
+		File f = new File(uploadPath);
 		if(f.exists()==false) {
 			f.mkdirs();
 		}
@@ -65,11 +66,12 @@ public class UploadController {
 		attachFileDTO.setOriginalFileName(originalFileName);
 		attachFileDTO.setUuid(savedFileName);
 		attachFileDTO.setRealName(realName);
-		String uploadPath = fileRoot+realName;
-		attachFileDTO.setUploadPath(uploadPath);
-		attachFileDTO.addMappingURL("summernoteImage");
+		attachFileDTO.setUploadPath(uploadPath);  // 업로드 경로
 		
-		File targetFile = new File(uploadPath);	
+		
+		attachFileDTO.addMappingURL("summernoteImage");
+		attachFileDTO.setImage(true);    //  이미지 true
+		File targetFile = new File(uploadPath+realName);	
 		
 		try {
 			InputStream fileStream = multipartFile.getInputStream();
@@ -115,10 +117,11 @@ public class UploadController {
 		}
 		
 		// uuid 생성
-		UUID uuid = UUID.randomUUID();
-		String uuidName = uuid.toString();
-		String originalName = uploadPath+multipartFile.getOriginalFilename();
-		String UUIDPath = uploadPath+uuidName+originalName.substring(originalName.lastIndexOf("."));
+		
+		String uuid = UUID.randomUUID().toString();
+		String originalName = multipartFile.getOriginalFilename();
+		String realName = uuid + "_"+ originalName;
+		String UUIDPath = uploadPath + realName;
 		
 		File uuidFile = new File(UUIDPath);
 
@@ -194,6 +197,7 @@ public class UploadController {
 			
 			AttachFileDTO attachFileDTO = new AttachFileDTO(originalFileName,uploadPath,uuid,realName);
 			attachFileDTO.addMappingURL("upload");
+			attachFileDTO.setImage(false);   // image false -> 이건 자료실 첨부용이기때문
 			File f = new File(uploadPath+realName);
 			try {
 				m.transferTo(f);

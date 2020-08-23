@@ -74,6 +74,7 @@ public class BoardController {
 		 return r;
 	}
 	
+	// board 내용 받기
 	@PostMapping("/boardWriteAjax")
 	@ResponseBody
 	public ResponseEntity<String> boardWriteAjax(BoardVO board) {
