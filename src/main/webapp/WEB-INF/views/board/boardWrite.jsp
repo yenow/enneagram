@@ -207,13 +207,23 @@
 					success : function(data) {
 						
 						console.log(data);
+						data *= 1;  // bno 숫자타입으로 만들기
+						console.log(typeof bno);
+						AttachFileDTOArray[0].bno = data;
+						console.log(AttachFileDTOArray[0]);
+					
+						for(var i=0; i < AttachFileDTOArray.length ; i++){
+							AttachFileDTOArray[i].bno = data;
+							AttachFileDTOArray[i].mno = null;
+						}
+						console.log(AttachFileDTOArray);
+						
 						
 						$.ajax({
 							data :  JSON.stringify(AttachFileDTOArray),
 							type : 'POST',
 							dataType : 'html',
 							contentType :  'application/json; charset=UTF-8',
-						
 							url : "${pageContext.request.contextPath}/board/boardAttachFileDTO",
 							success : function(data) {
 								console.log(data);
@@ -224,24 +234,7 @@
 			 	});			 	
 			 	
 			 	return false;
-				/*
-				var data = {'bno'}
-				
-				$.ajax({
-					data : data,
-					type : "POST",
-					url : "${pageContext.request.contextPath}/board/boardAttachFileDTO",
-					contentType : false,
-					processData : false,
-					success : function(data) {
-						//항상 업로드된 파일의 url이 있어야 한다.
-						console.log(data);
-						AttachFileDTOArray.push(data.attachFileDTO);
-						console.log(AttachFileDTOArray);
-						$(editor).summernote('insertImage', data.attachFileDTO.mappingURL);
-					}
-				});
-				*/
+			
 			});
 		});
 		
@@ -253,127 +246,3 @@
 
 </body>
 </html>
-
-
-<%-- 
-<script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/classic/ckeditor.js"></script>
-
-<jsp:include page="../c_info/header.jsp"></jsp:include>
-
-<c:if test="${login == null }">
-	<script type="text/javascript">
-		alert("로그인이 필요합니다");
-		location.href = '../member/login';
-	</script>
-</c:if>
-
-<!-- Main -->
-<div id="main">
-	<div class="inner">
-
-		<!-- Header -->
-		<header id="header">
-			<a href="index.html" class="logo"><strong>게시판 글쓰기</strong></a>
-			<ul class="icons">
-				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-				<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-				<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
-			</ul>
-		</header>
-
-		<section>
-
-			<div class="box">
-				<form action="boardWrite_ok" method="post">
-					<input type="hidden" name="user_id" value="${login.user_id }"> <input type="hidden" name="nickname" value="${login.nickname }">
-
-					<h2 id="content">
-						<input type="text" name="title" placeholder="제목">
-					</h2>
-
-					<p class="board-content" id="editor">
-						<textarea rows="50" cols="100" name="content" placeholder="내용"></textarea>
-					<p>
-					<hr>
-					<p class="y-t-center">
-						<input type="submit" value="등록"> 
-						<input type="button" value="취소" onclick="history.back();">
-					</p>
-				</form>
-			</div>
-
-		</section>
-
-	</div>
-</div>
-
-<script>
-
-</script>
-
-<jsp:include page="../c_info/sidebar.jsp"></jsp:include>
-<jsp:include page="../c_info/footer.jsp"></jsp:include> --%>
-
-
-
-
-
-<%-- <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>게시판 글쓰기</title>
-<link rel="stylesheet" href="../../resources/css/bootstrap.css?after">
-<link rel="stylesheet" href="../../resources/css/style.css?after">
-<link rel="stylesheet" href="../../resources/css/reset.css?after">
-</head>
-
-<body>
-	<c:if test="${login == null }">
-		<script type="text/javascript">
-			alert("로그인이 필요합니다");
-			location.href = '../member/login';
-		</script>
-	</c:if>
-
-	<div id="header">
-		<jsp:include page="../info/header.jsp"></jsp:include>
-	</div>
-
-	<div id="banner">
-		<jsp:include page="../info/banner.jsp"></jsp:include>
-	</div>
-
-	<div id="content">
-		<div class="container">
-			<div class="row">
-				<div class="content">
-					<div class="boardWrite">
-						<h1>게시판 글쓰기</h1>
-	
-						<form action="boardWrite_ok" method="post">
-							<input type="hidden" name="user_id" value="${login.user_id }">
-							<input type="hidden" name="nickname" value="${login.nickname }">
-							
-							<ul>
-								<li><input type="text" name="title" placeholder="제목"></li>
-								<li><textarea rows="50" cols="100" name="content" placeholder="내용"></textarea></li>
-								<li>
-								<input type="submit" value="등록"> 
-								<input type="button" value="취소" onclick="history.back();">
-								</li>
-							</ul>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div id="tail">
-		<jsp:include page="../info/tail.jsp"></jsp:include>
-	</div>
-</body>
-</html> --%>

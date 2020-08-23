@@ -2,6 +2,7 @@ package com.enneagram.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -30,6 +31,8 @@ import com.enneagram.service.BoardService;
 import com.enneagram.service.MemberService;
 import com.enneagram.vo.BoardVO;
 import com.enneagram.vo.MemberVO;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -46,15 +49,21 @@ public class BoardController {
 	private MemberService memberService;
 	@Autowired
 	private AttachFileService attachFileService;
-	
+
 	// Attach 받기
 	@PostMapping("boardAttachFileDTO")
 	@ResponseBody
-	public ResponseEntity<String> boardAttachFileDTO(@RequestBody AttachFileDTO[] attachFileDTO){
-		 ResponseEntity<String> r;
+	//@RequestBody AttachFileDTO[] attachFileDTO, Integer bno
+	public ResponseEntity<String> boardAttachFileDTO(@RequestBody AttachFileDTO[] AttachFileDTOArray){
+		
+	
+		ResponseEntity<String> r;
 		 try {
-			 for(AttachFileDTO a : attachFileDTO) {
-				 System.out.println(a.getMappingURL());
+			 for(AttachFileDTO a : AttachFileDTOArray) {
+				 System.out.println("   "+a.getMappingURL());
+				 System.out.println("   "+a.getBno());
+				 System.out.println("   "+a.getMno());
+				 
 				 attachFileService.insertAttachFile(a);
 			 }
 			
@@ -73,7 +82,7 @@ public class BoardController {
 		System.out.println("내용/ "+board.getContent());
 		try {
 			int bno = boardService.insertBoardReturnBno(board);
-			r = new ResponseEntity<String>(Integer.toString(bno),HttpStatus.OK);
+			r = new ResponseEntity<String>(Integer.toString(board.getBno()),HttpStatus.OK);
 		} catch (Exception e) {
 			r = new ResponseEntity<String>("fail",HttpStatus.BAD_REQUEST);
 		}
