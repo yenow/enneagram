@@ -61,6 +61,14 @@
 							</div>
 						</div>
 
+						<div class="col-md-12">
+							<ul class="list-group">
+								<c:forEach var="attach" items="${attachList }">
+									 <li class="list-group-item"><a href="${pageContext.request.contextPath}/download?realName=${attach.realName}&uploadPath=${attach.uploadPath}">${attach.originalFileName }</a></li>
+								</c:forEach>
+							</ul>
+						</div>
+
 						<!-- 댓글 -->
 						<div class="pt-2 mt-5 border-top">
 							<h3 class="mb-5">${b.rcnt } Comments</h3>
@@ -385,10 +393,10 @@ function replyDelete2(rno) {
 		$('#content').val('');
 	}); 
 	
-	
+	// 패스워드 창 보이게하기
 	function showPassword() {
 		var list = document.querySelector('.reply-delete-button2');
-		for(var i=0; list.length; i++){
+		for(var i=0; i<list.length; i++){
 			list[i].addEventListener('click', function(e) {
 				console.log(this);
 				var mother = this.parentNode;

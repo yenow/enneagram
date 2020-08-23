@@ -3,6 +3,8 @@ package com.enneagram.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -16,11 +18,16 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -211,6 +218,7 @@ public class UploadController {
 		return r;
 	}
 	
+	// 첨부파일 삭제 ajax
 	@GetMapping("fileDelete")
 	@ResponseBody
 	public String fileDelete(@RequestParam("uploadPath") String uploadPath, String realName) {
@@ -227,6 +235,37 @@ public class UploadController {
 		return "success";
 	}
 
+	// 다운로드
+	@GetMapping(value = "/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@ResponseBody
+	public ResponseEntity<Resource> downloadFile(@RequestHeader("User-Agent") String userAgent,String uploadPath ,String realName) {  // @RequestHeader 를 이용해서 필요한 HTTP 헤더 메세지의 내용을 수집할수 있다
+		
+		Resource resource = new FileSystemResource(uploadPath + realName);  // 다운로드할 파일 경로와 이름으로 생성
+		if (resource.exists() == false) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		String resourceName = resource.getFilename();
+		// remove UUID
+		String resourceOriginalName = resourceName.substring(resourceName.indexOf("_") + 1);  // 여기서 짜르네 ??
+		
+		HttpHeaders headers = new HttpHeaders(); // HttpHeaders 객체를 이용해서 다운로드시 파일 이름 처리
+		try {
 
+			boolean checkIE = (userAgent.indexOf("MSIE") > -1 || userAgent.indexOf("Trident") > -1);
+			String downloadName = null;
 
+			// IE일 경우
+			if (checkIE) {
+				downloadName = URLEncoder.encode(resourceOriginalName, "UTF8").replaceAll("\\+", " ");
+			} else {
+				downloadName = new String(resourceOriginalName.getBytes("UTF-8"), "ISO-8859-1");  // 파일이름에 대한 문자열처리는 파일 이름이 한글인 경우 깨지는것을 막기위함	
+			}
+			headers.add("Content-Disposition", "attachment; filename=" + downloadName);  // 다운로드 시 저장되는 이름을  "Content-Disposition"로 처리
+
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
+	}
 }

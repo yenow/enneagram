@@ -149,6 +149,7 @@ public class BoardController {
 			session.setMaxInactiveInterval(3600);
 		}
 		BoardVO b = boardService.selectboard(bno,session,session.getId());
+		List<AttachFileDTO> attachList =  attachFileService.selectAttachList(bno);  // 첨부파일 리스트 가져오기
 		mv.addObject("b", b);
 		// 게시판 글쓴이 정보가져오기
 		MemberVO m = memberService.login_confirm(b.getId());
@@ -156,7 +157,9 @@ public class BoardController {
 		System.out.println(m.getUUIDPath());
 		int maxcount = boardService.boardAllCount(c.getCategory());
 		PageDTO pd = new PageDTO(c, maxcount);
+		
 		mv.addObject("pageDTO", pd);
+		mv.addObject("attachList",attachList);
 	
 		
 		return mv;

@@ -11,4 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(nextval('atno') ,#{bno},#{originalFileName},#{uploadPath},#{uuid},#{mappingURL},#{realName},#{image})
 	</insert>
 	
+	<select id="selectAttachList" resultType="com.enneagram.domain.AttachFileDTO">
+		select * from attachFile where bno = #{bno} and image=false
+	</select>
 </mapper>
