@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.enneagram.domain.Criteria;
 import com.enneagram.vo.BoardVO;
-import com.example.domain.Criteria;
 
 public interface BoardService {
 
@@ -27,5 +27,7 @@ public interface BoardService {
 	List<BoardVO> selectList(BoardVO bo, Criteria c);
 
 	int boardAllCount(String category);
+
+	int insertBoardReturnBno(BoardVO board);
 
 }

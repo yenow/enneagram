@@ -15,9 +15,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.enneagram.dao.BoardDAO;
+import com.enneagram.domain.Criteria;
 import com.enneagram.service.BoardService;
 import com.enneagram.vo.BoardVO;
-import com.example.domain.Criteria;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;

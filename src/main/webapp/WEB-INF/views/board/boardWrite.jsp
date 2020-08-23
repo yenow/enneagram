@@ -49,7 +49,7 @@
 						<a class="dropdown-item" href="portfolio-single.html">9가지 유형</a>
 					</div>
 				</li>
-
+				
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/board/boardList" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">게시판</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown04">
@@ -71,7 +71,8 @@
 	<div class="container-fluid">
 		<div class="content-margin">
 			<h2 class="text-center mb-3">게시판 등록</h2>
-			<form action="${pageContext.request.contextPath}/board/boardWrite_ok?catetgory=${category}" method="post">
+			<%-- action="${pageContext.request.contextPath}/board/boardWrite_ok?catetgory=${category} --%>
+			<form id="boardWrite-form" >
 				<input type="hidden" name="mno" value="${login.mno }">
 				<input type="hidden" name="id" value="${login.id }">
 				<input type="hidden" name="nickname" value="${login.nickname }">
@@ -136,7 +137,7 @@
 				<div class="col-md-12 mb-2"><textarea id="summernote" name="content"></textarea></div>
 
 				<div class="text-center">
-					<input type="submit" class="btn btn-primary" value="등록">
+					<input type="submit" class="btn btn-primary boardWrite-button" value="등록">
 				</div>
 			</form>
 
@@ -145,6 +146,8 @@
 
 
 	<script type="text/javascript">
+		
+	
 		$('#summernote').summernote({
 			height : 300, // 에디터 높이
 			minHeight : 600, // 최소 높이
@@ -159,60 +162,91 @@
 			}
 		});
 
-		/**
-		 * 이미지 파일 업로드
-		 */
+		var AttachFileDTOArray = new Array();
+		var AttachFileDTO = new Object();
+		 
+		/* 이미지 파일 업로드 */
 		function uploadSummernoteImageFile(file, editor) {
 			data = new FormData();
 			data.append("file", file);
 			$.ajax({
 				data : data,
 				type : "POST",
-				url : "/enneagram/uploadSummernoteImageFile",
+				url : "${pageContext.request.contextPath}/uploadSummernoteImageFile",
 				contentType : false,
 				processData : false,
 				success : function(data) {
 					//항상 업로드된 파일의 url이 있어야 한다.
 					console.log(data);
-					$(editor).summernote('insertImage', data.url);
+					AttachFileDTOArray.push(data.attachFileDTO);
+					console.log(AttachFileDTOArray);
+					$(editor).summernote('insertImage', data.attachFileDTO.mappingURL);
 				}
 			});
 		}
-		/* 
+		
 		$(document).ready(function() {
-		  $('#summernote').summernote({
-		    height: 300,
-		    minHeight: null,
-		    maxHeight: null,
-		    focus: true,
-		    callbacks: {    // 이 부분 지정해주지 않으면 이미지가 data 형식으로 들어간다고함 
-		      onImageUpload: function(files, editor, welEditable) {
-		        for (var i = files.length - 1; i >= 0; i--) {
-		          sendFile(files[i], this);
-		        }
-		      }
-		    }
-		  });
+			$('#boardWrite-form').submit(function() {
+				//폼 태그도 ajax로 보내야함;; 그리고 다 되었으면 다시 ajax로 보내고,, 그리고 location.href로 이동
+				var data = {};
+				//serialize() 활용하기
+				var str = $( "form" ).serialize();
+			 	console.log(str);
+			 	var category =  '${category}';
+			 	data.str = str;
+			 	// data.AttachFileDTOArray = AttachFileDTOArray;
+			 	// data.category = category;
+			 	console.log(data);
+			 	
+			 	$.ajax({
+			 		data :  str,
+					type : 'POST',
+					dataType : 'html',
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',   
+					url : "${pageContext.request.contextPath}/board/boardWriteAjax",
+					success : function(data) {
+						
+						console.log(data);
+						
+						$.ajax({
+							data :  JSON.stringify(AttachFileDTOArray),
+							type : 'POST',
+							dataType : 'html',
+							contentType :  'application/json; charset=UTF-8',
+						
+							url : "${pageContext.request.contextPath}/board/boardAttachFileDTO",
+							success : function(data) {
+								console.log(data);
+							}
+						});
+						
+					}
+			 	});			 	
+			 	
+			 	return false;
+				/*
+				var data = {'bno'}
+				
+				$.ajax({
+					data : data,
+					type : "POST",
+					url : "${pageContext.request.contextPath}/board/boardAttachFileDTO",
+					contentType : false,
+					processData : false,
+					success : function(data) {
+						//항상 업로드된 파일의 url이 있어야 한다.
+						console.log(data);
+						AttachFileDTOArray.push(data.attachFileDTO);
+						console.log(AttachFileDTOArray);
+						$(editor).summernote('insertImage', data.attachFileDTO.mappingURL);
+					}
+				});
+				*/
+			});
 		});
 		
-		function sendFile(file, el) {    // 이미지 파일을 서버에 저장하고, 이미지를 호출 할 수 있는 url을 리턴하는 함수
-		  var form_data = new FormData();
-		  form_data.append('file', file);
-		  $.ajax({
-		    data: form_data,
-		    type: "POST",
-		    url: '/enneagram/uploadSummernoteImageFile',
-		    cache: false,
-		    contentType: false,
-		    enctype: 'multipart/form-data',   //중요
-		    processData: false,
-		    success: function(url) {   // 성공하면 url을 받음
-		    	console.log(url);
-		      $(el).summernote('editor.insertImage', url);    // editor.insertImage  이부분으 이미지를 삽입
-		      $('#imageBoard > ul').append('<li><img src="'+url+'" width="480" height="auto"/></li>');  // 이부분은 확인차 해놓았다고함
-		    }
-		  });
-		} */
+	
+		
 	</script>
 
 

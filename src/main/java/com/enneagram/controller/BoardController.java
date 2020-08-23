@@ -10,20 +10,26 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.enneagram.domain.AttachFileDTO;
+import com.enneagram.domain.Criteria;
+import com.enneagram.domain.PageDTO;
+import com.enneagram.service.AttachFileService;
 import com.enneagram.service.BoardService;
 import com.enneagram.service.MemberService;
 import com.enneagram.vo.BoardVO;
 import com.enneagram.vo.MemberVO;
-import com.example.domain.Criteria;
-import com.example.domain.PageDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -38,6 +44,41 @@ public class BoardController {
 	private BoardService boardService;
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private AttachFileService attachFileService;
+	
+	// Attach 받기
+	@PostMapping("boardAttachFileDTO")
+	@ResponseBody
+	public ResponseEntity<String> boardAttachFileDTO(@RequestBody AttachFileDTO[] attachFileDTO){
+		 ResponseEntity<String> r;
+		 try {
+			 for(AttachFileDTO a : attachFileDTO) {
+				 System.out.println(a.getMappingURL());
+				 attachFileService.insertAttachFile(a);
+			 }
+			
+			 r = new ResponseEntity<String>("success",HttpStatus.OK);
+		} catch (Exception e) {
+			r = new ResponseEntity<String>("fail",HttpStatus.BAD_REQUEST);
+		}
+		 return r;
+	}
+	
+	@PostMapping("/boardWriteAjax")
+	@ResponseBody
+	public ResponseEntity<String> boardWriteAjax(BoardVO board) {
+		ResponseEntity<String> r;
+		System.out.println("카테고리/ "+board.getCategory());
+		System.out.println("내용/ "+board.getContent());
+		try {
+			int bno = boardService.insertBoardReturnBno(board);
+			r = new ResponseEntity<String>(Integer.toString(bno),HttpStatus.OK);
+		} catch (Exception e) {
+			r = new ResponseEntity<String>("fail",HttpStatus.BAD_REQUEST);
+		}
+		return r;
+	}
 	
 	//게시판 작성
 	@GetMapping("/boardWrite")
@@ -57,20 +98,24 @@ public class BoardController {
 	public String boardList(Model m, Criteria c) {
 		BoardVO bo = new BoardVO();
 		
-		System.out.println("게시물 개수"+c.getMaxLine());
-		System.out.println("게시물 개수"+c.getPageNum());
-		System.out.println("타입"+c.getType());
-		System.out.println("카테고리"+c.getCategory());
-		System.out.println("검색 타입"+c.getInsertCategory());
-		System.out.println("검색"+c.getSearch());
+		/*
+		 * System.out.println("게시물 개수"+c.getMaxLine());
+		 * System.out.println("게시물 개수"+c.getPageNum());
+		 * System.out.println("타입"+c.getType());
+		 * System.out.println("카테고리"+c.getCategory());
+		 * System.out.println("검색 타입"+c.getInsertCategory());
+		 * System.out.println("검색"+c.getSearch());
+		 */
 		
 		/* 카테고리에 따른 게시물 총 개수 가져오기*/
 		int maxcount = boardService.boardAllCount(c.getCategory());
 		System.out.println(maxcount);
 		
 		PageDTO pd = new PageDTO(c, maxcount);
-		System.out.println("처음 페이지"+pd.getStartPage());
-		System.out.println("마지막페이지"+pd.getEndPage());
+		/*
+		 * System.out.println("처음 페이지"+pd.getStartPage());
+		 * System.out.println("마지막페이지"+pd.getEndPage());
+		 */
 		
 		
 		/* 게시물 리스트 가져오기 */

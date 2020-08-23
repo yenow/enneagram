@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +14,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.datetime.DateFormatter;
+import org.springframework.format.datetime.joda.DateTimeFormatterFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,67 +25,57 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.enneagram.domain.AttachFileDTO;
 import com.enneagram.service.MemberService;
 import com.enneagram.vo.MemberVO;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators.UUIDGenerator;
 
 @Controller
 public class UploadController {
 
 	@Autowired
 	private MemberService memberService;
-	/*
-	@PostMapping(value="/uploadSummernoteImageFile", produces = "application/json")
-	@ResponseBody
-	public JsonObject uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
-		
-		JsonObject jsonObject = new JsonObject();
-		
-		String fileRoot = "C:\\summernote_image\\";	//저장될 외부 파일 경로
-		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
-		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
-				
-		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
-		
-		File targetFile = new File(fileRoot + savedFileName);	
-		
-		try {
-			InputStream fileStream = multipartFile.getInputStream();
-			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
-			jsonObject.addProperty("url", "/summernoteImage/"+savedFileName);
-			jsonObject.addProperty("responseCode", "success");
-				
-		} catch (IOException e) {
-			FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
-			jsonObject.addProperty("responseCode", "error");
-			e.printStackTrace();
-		}
-		
-		return jsonObject;
-	}
-	*/
 	
 	@PostMapping(value="/uploadSummernoteImageFile", produces = "application/json")
 	@ResponseBody
-	public ResponseEntity<Map<String, String>> uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
+	public ResponseEntity<Map<String, Object>> uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
 		
-		Map<String, String> map =  new HashMap<String, String>();
-		ResponseEntity<Map<String, String>> r ;
+		Map<String, Object> map =  new HashMap<String, Object>();
+		ResponseEntity<Map<String, Object>> r ;
+		AttachFileDTO attachFileDTO = new AttachFileDTO();
 		
-		String fileRoot = "C:\\summernote_image\\";	//저장될 외부 파일 경로
+		String fileRoot = "C:\\summernoteImage\\";	//저장될 외부 파일 경로
+		String currentDay = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		fileRoot = fileRoot + currentDay+"\\";
+		File f = new File(fileRoot);
+		if(f.exists()==false) {
+			f.mkdirs();
+		}
+		
 		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
 		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
-				
-		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
+		UUID uuid = UUID.randomUUID();
+		String savedFileName = uuid.toString() + extension;	//저장될 파일 명
 		
-		File targetFile = new File(fileRoot + savedFileName);	
+		// + IE일때 오리지날 파일명 처리해주기
+		
+		// attachFileDTO 생성
+		String realName = uuid.toString()+"_"+originalFileName;
+		attachFileDTO.setOriginalFileName(originalFileName);
+		attachFileDTO.setUuid(savedFileName);
+		attachFileDTO.setRealName(realName);
+		String uploadPath = fileRoot+realName;
+		attachFileDTO.setUploadPath(uploadPath);
+		attachFileDTO.addMappingURL("summernoteImage");
+		
+		File targetFile = new File(uploadPath);	
 		
 		try {
 			InputStream fileStream = multipartFile.getInputStream();
 			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
 			map.put("url", "/enneagram/summernoteImage/"+savedFileName);
 			map.put("responseCode", "success");
-			r = new ResponseEntity<Map<String,String>>(map,HttpStatus.OK);
+			map.put("attachFileDTO", attachFileDTO);
+			r = new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
 			return  r;  // ResponseEntity.ok().body("/summernoteImage/" + savedFileName);
 			//jsonObject.addProperty("url", "/summernoteImage/"+savedFileName);
 			//jsonObject.addProperty("responseCode", "success");
@@ -93,7 +84,7 @@ public class UploadController {
 			// FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
 			// jsonObject.addProperty("responseCode", "error");
 			e.printStackTrace();
-			r = new ResponseEntity<Map<String,String>>(HttpStatus.BAD_REQUEST);
+			r = new ResponseEntity<Map<String,Object>>(HttpStatus.BAD_REQUEST);
 	        return r;
 		}
 

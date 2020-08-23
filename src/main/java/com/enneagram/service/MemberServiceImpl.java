@@ -22,9 +22,9 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.enneagram.dao.MemberDAO;
+import com.enneagram.domain.ApiExamMemberProfile;
 import com.enneagram.vo.MemberVO;
 import com.enneagram.vo.PersonalityVO;
-import com.example.domain.ApiExamMemberProfile;
 
 @Service
 public class MemberServiceImpl implements MemberService {

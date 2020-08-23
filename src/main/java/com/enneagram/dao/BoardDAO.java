@@ -3,9 +3,9 @@ package com.enneagram.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.enneagram.domain.Criteria;
 import com.enneagram.vo.BoardVO;
 import com.enneagram.vo.ReplyVO;
-import com.example.domain.Criteria;
 
 public interface BoardDAO {
 
@@ -28,5 +28,7 @@ public interface BoardDAO {
 	List<BoardVO> selectListSearch(BoardVO bo);
 
 	int boardAllCount(String category);
+
+	int insertBoardReturnBno(BoardVO board);
 
 }

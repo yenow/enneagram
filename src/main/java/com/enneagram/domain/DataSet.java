@@ -1,4 +1,4 @@
-package com.example.domain;
+package com.enneagram.domain;
 
 
 public class DataSet {

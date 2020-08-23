@@ -46,4 +46,10 @@ public class JsonTest {
 		
 		
 	}
+	
+	@Test
+	public void Test2() {
+		String aaaa = "/aaaaa/bbbb/ccccc/dddd/";
+		System.out.println(aaaa.indexOf("bbbb"));
+	}
 }

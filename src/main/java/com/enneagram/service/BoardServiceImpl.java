@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.enneagram.dao.BoardDAO;
+import com.enneagram.domain.Criteria;
 import com.enneagram.vo.BoardVO;
-import com.example.domain.Criteria;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -80,6 +80,12 @@ public class BoardServiceImpl implements BoardService{
 	public int boardAllCount(String category) {
 		// TODO Auto-generated method stub
 		return boardDAO.boardAllCount(category);
+	}
+
+	// insert 후 생성된 bno값 리턴
+	@Override
+	public int insertBoardReturnBno(BoardVO board) {
+		return boardDAO.insertBoardReturnBno(board);
 	}
 
 

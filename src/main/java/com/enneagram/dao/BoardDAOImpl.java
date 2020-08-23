@@ -8,9 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.enneagram.domain.Criteria;
 import com.enneagram.vo.BoardVO;
 import com.enneagram.vo.ReplyVO;
-import com.example.domain.Criteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -74,6 +74,11 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public int boardAllCount(String category) {
 		return sqlSession.selectOne("boardAllCount",category);
+	}
+
+	@Override
+	public int insertBoardReturnBno(BoardVO board) {
+		return sqlSession.insert("insertBoardReturnBno",board);
 	}
 	
 	

@@ -1,4 +1,4 @@
-package com.example.domain;
+package com.enneagram.domain;
 
 //네이버 API 예제 - 회원프로필 조회
 import java.io.BufferedReader;
