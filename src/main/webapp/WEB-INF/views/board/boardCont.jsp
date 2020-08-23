@@ -209,7 +209,7 @@ function replyDelete1(rno) {
 			}
 		}); */
 		
-		 $.post('${pageContext.request.contextPath}/reply/deleteReply', {'rno': rno} , function(data, textStatus, req) {
+		 $.post('${pageContext.request.contextPath}/reply/deleteReply', {'rno': rno, 'bno': ${b.bno}} , function(data, textStatus, req) {
 			 if(data!='success'){
 				 alert('댓글 삭제 실패');
 			 }else{
@@ -381,12 +381,13 @@ function replyDelete2(rno) {
 			success: function (data) {
 				console.log(data);
 				alert('댓글이 등록되었습니다');
-			}
+				replyList();
+				}
 			});  
 		
 		$('.comment-list').html('');  // 댓글 리스트 비우기
-		replyList();    // 댓글 리스트 호출
-		$('html').scrollTop(0);  // 스크롤을 맨 위로
+		//	replyList();    // 댓글 리스트 호출
+		// $('html').scrollTop(0);  // 스크롤을 맨 위로
 		/* input태그 초기화 */
 		$('#rpassword').val('');
 		$('#rname').val('');

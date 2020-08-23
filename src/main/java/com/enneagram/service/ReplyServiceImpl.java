@@ -21,13 +21,13 @@ public class ReplyServiceImpl implements ReplyService{
 	@Override
 	public void replyInsert(ReplyVO re) {
 		replyDAO.replyInsert(re);
-		boardDAO.replycnt(re);
+		boardDAO.replyrcnt(re);
 	}
 
 	@Override
 	public void replyInsert_no(ReplyVO re) {
 		replyDAO.replyInsert_no(re);
-		boardDAO.replycnt(re);
+		boardDAO.replyrcnt(re);
 	}
 
 	@Override
@@ -42,8 +42,9 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 
 	@Override
-	public void replyDelete(int rno) {
-		replyDAO.replyDelete(rno);		
+	public void replyDelete(int rno, int bno) {
+		replyDAO.replyDelete(rno);	
+		boardDAO.replyRcntDown(bno);
 	}
 
 	@Override

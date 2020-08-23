@@ -14,7 +14,7 @@ public interface ReplyService {
 
 	String getPassword(int rno);
 
-	void replyDelete(int rno);
+	void replyDelete(int rno, int bno);
 
 	String getUserId(int rno);
 

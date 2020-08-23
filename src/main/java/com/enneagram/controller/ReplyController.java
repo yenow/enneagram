@@ -91,12 +91,12 @@ public class ReplyController {
 
 	// 댓글 삭제
 	@PostMapping("/deleteReply")
-	public ResponseEntity<String> deleteReply(Integer rno) { 
+	public ResponseEntity<String> deleteReply(Integer rno,Integer bno) { 
 		System.out.println(rno);
 
 		ResponseEntity<String> entity = null;
 		try {
-			replyService.replyDelete(rno);
+			replyService.replyDelete(rno, bno);
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -116,7 +116,7 @@ public class ReplyController {
 		try {
 			ReplyVO r = replyService.getReply(rr.getRno());
 			if (r.getRpassword().equals(rr.getPs())) {
-				replyService.replyDelete(rr.getRno());
+				replyService.replyDelete(rr.getRno(),r.getBno());
 				entity = new ResponseEntity<String>("success", HttpStatus.OK);
 			} else {
 				entity = new ResponseEntity<String>("passwordNotEquals", HttpStatus.OK);

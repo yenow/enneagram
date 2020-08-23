@@ -63,4 +63,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<selectKey keyProperty="bno" resultType="Integer" order="AFTER"> select currval('bno') from dual </selectKey>
 
 	</insert>
+	
+	<update id="replyRcntDown">
+		update board set rcnt = rcnt-1 where bno = #{bno}
+	</update>
 </mapper>

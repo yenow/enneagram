@@ -21,7 +21,7 @@ public interface BoardDAO {
 
 	List<BoardVO> boardCount();
 
-	void replycnt(ReplyVO re);
+	void replyrcnt(ReplyVO re);
 
 	void addCnt(int bno);
 
@@ -30,5 +30,7 @@ public interface BoardDAO {
 	int boardAllCount(String category);
 
 	int insertBoardReturnBno(BoardVO board);
+
+	void replyRcntDown(int bno);
 
 }
