@@ -77,7 +77,6 @@
 			<input type="hidden" name="nickname" value="${login.nickname }">
 			<input type="hidden" name="category" value="${category }">
 			
-			
 			<div class="row justify-content-end" style="padding: 0 30px;">
 				<!-- category  -->
 			<%-- 	<div class="col-5" style="padding: 0;">
@@ -197,14 +196,15 @@
 	        			alert('제목을 입력해주세요');
 	        			return false;
 	        		}
+
+	        	
 	                //폼 태그도 ajax로 보내야함;; 그리고 다 되었으면 다시 ajax로 보내고,, 그리고 location.href로 이동
 	                var data = {};
 	                //serialize() 활용하기
 	                var str = $("form").serialize();
 	                console.log(str);
-	                str.isReboard = true;
-	                str.rebno = bno;
-	            
+	                var category = '${category}';
+	                data.str = str;
 	                // data.AttachFileDTOArray = AttachFileDTOArray;
 	                // data.category = category;
 	                console.log(data);
