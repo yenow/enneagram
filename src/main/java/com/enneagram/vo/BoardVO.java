@@ -25,8 +25,6 @@ public class BoardVO {
 	private int end;
 	private String id;
 	private String nickname;
-	private boolean isReboard;
-	private int rebno;
 
 	private String search;
 	private String search_type;

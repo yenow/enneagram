@@ -1,8 +1,5 @@
 package com.enneagram.test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -54,20 +51,5 @@ public class JsonTest {
 	public void Test2() {
 		String aaaa = "/aaaaa/bbbb/ccccc/dddd/";
 		System.out.println(aaaa.indexOf("bbbb"));
-	}
-	
-	@Test
-	public void Test3() {
-		List<String> list = new ArrayList<String>();
-		list.add("1");
-		list.add("2");
-		list.add("3");
-		
-		List<String> list2 = new ArrayList<String>();
-		list2.add("일");
-		list2.add("이");
-		
-		list.addAll(2, list2);
-		System.out.println(list);
 	}
 }
