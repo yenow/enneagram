@@ -86,6 +86,16 @@ public class BoardDAOImpl implements BoardDAO {
 		sqlSession.update("replyRcntDown",bno);
 		
 	}
+
+	@Override
+	public void likeyPlus(Integer bno) {
+		sqlSession.update("b_likeyPlus", bno);
+	}
+
+	@Override
+	public void likeydelete(Integer bno) {
+		sqlSession.update("b_likeydelete", bno);
+	}
 	
 	
 	

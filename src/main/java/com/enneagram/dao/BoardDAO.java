@@ -33,4 +33,8 @@ public interface BoardDAO {
 
 	void replyRcntDown(int bno);
 
+	void likeyPlus(Integer bno);
+
+	void likeydelete(Integer bno);
+
 }

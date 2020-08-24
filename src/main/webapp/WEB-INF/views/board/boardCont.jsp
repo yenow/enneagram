@@ -17,11 +17,28 @@
 		<div class="row justify-content-center content-margin">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12 ftco-animate">
+					<div class="col-12 ftco-animate">
 						<!-- 제목 -->
-						<h2 class="col-md-12 row text-center mb-1">${b.title }</h2>
+						<h2 class="mb-1"><span>${b.title }</span> 
+							<!-- 좋아요버튼 , 로그인시만 보이도록 -->
+							<c:if test="${login !=null }">
+								<!-- 좋아요 가능 상태 -->
+								<c:if test="${likey == null }">
+									<a class="float-right" onclick="likeyPlus(this);">
+										<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+										  <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+										</svg>
+									</a>
+								</c:if>
+								<c:if test="${likey != null }">
+									<a class="float-right" onclick="likeyDelete(this);">
+										<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg>
+									</a>
+								</c:if>
+							</c:if>
+						</h2>
 						<!-- 서브정보 -->
-						<table class="row col-md-12 my-2 ">
+						<table class="my-2">
 							<tbody class="col-md-12" style="padding: 0 !important;">
 								<tr class="float-left">
 									<td class="align-middle border-0 px-2">[${b.type }번유형]</td>
@@ -73,31 +90,7 @@
 						<div class="pt-2 mt-5 border-top">
 							<h3 class="mb-5">${b.rcnt } Comments</h3>
 							<ul class="comment-list">
-								<!-- <li class="comment" onclick="replyUpdate1(1);">
-									<div class="vcard bio">
-										<img src="images/person_1.jpg" alt="Image placeholder">
-									</div>
-									<div class="comment-body">
-										<h3>John Doe</h3>
-										<div class="meta">June 27, 2018 at 2:21pm</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-										<p>
-											<a href="#" class="reply">Reply</a>
-											<a href="#" class="reply reply-update-button" onclick="replyUpdate();">수정</a>
-											<a href="#" class="reply reply-delete-button" onclick="replydelete();">삭제</a>
-										</p>
-
-										<div class="input-group mb-3 reply-update-box none">
-											<div class="input-group-prepend">
-												<span class="input-group-text" id="basic-addon1">비밀번호</span>
-											</div>
-											<input type="password" class="form-control" placeholder="댓글 비밀번호" aria-label="Username" aria-describedby="basic-addon1">
-											<div class="input-group-append">
-												<button class="btn btn-outline-secondary border rounded reply-button" type="button" id="inputGroupFileAddon04">확인</button>
-											</div>
-										</div>
-									</div>
-								</li> -->
+								<!-- 댓글리스트 -->
 							</ul>
 							<!-- END comment-list -->
 
@@ -157,6 +150,41 @@
 
 <script type="text/javascript">
 
+
+/* 좋아요 추가 - 로그인 시에만 좋아요 가능*/
+function likeyPlus(data) {
+	console.log(data);
+	$(data).empty();
+	$(data).attr('onclick','likeyDelete(this);');   // onclick 속성 바꾸기
+	$(data).append($('<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg>'));
+	
+	$.ajax({
+		 url : '${pageContext.request.contextPath}/board/likeyPlus',
+		 method : 'GET',
+		 data :  {'bno' : ${b.bno} , 'mno' : ${login.mno}} ,
+		 dataType : 'html',
+		 success : function (data) {
+				 console.log(data);
+		 }
+	});
+}
+
+/* 좋아요 취소 - 로그인 시에만 취소 가능 */
+function likeyDelete(data) {
+	$(data).empty();
+	$(data).attr('onclick','likeyPlus(this);');
+	$(data).append('<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/></svg>');   
+	
+	$.ajax({
+		 url : '${pageContext.request.contextPath}/board/likeydelete',
+		 method : 'GET',
+		 data :  {'bno' : ${b.bno} , 'mno' : ${login.mno}} ,
+		 dataType : 'html',
+		 success : function (data) {
+				 console.log(data);
+		 }
+	});
+}
 
 /* 로그인 되어있는 사용자가 수정*/
 function replyUpdate1(rno) {

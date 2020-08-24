@@ -109,7 +109,7 @@
 
 						<c:forEach var="page" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
 							<li class="active">
-								<a href="${pageContext.request.contextPath}/board/boardboardList?pageNum=${page }&maxLine=${pageDTO.cri.maxLine}&category=${pageDTO.cri.category}">${page }</a>
+								<a href="${pageContext.request.contextPath}/board/boardList?pageNum=${page }&maxLine=${pageDTO.cri.maxLine}&category=${pageDTO.cri.category}">${page }</a>
 							</li>
 						</c:forEach>
 

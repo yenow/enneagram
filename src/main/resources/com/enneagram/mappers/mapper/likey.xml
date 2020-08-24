@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="likey">
+	
+	<insert id="likeyPlus">
+		insert into likey values (nextval('lno'),#{bno},#{mno},sysdate())
+	</insert>
+	
+	<select id="getLikey" resultType="com.enneagram.vo.LikeyVO">
+		select * from likey where bno =#{bno} and  mno =#{mno}
+	</select>
+	
+	<delete id="likeydelete">
+		delete from likey where bno =#{bno} and  mno =#{mno}
+	</delete>
+</mapper>

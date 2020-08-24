@@ -28,8 +28,10 @@ import com.enneagram.domain.Criteria;
 import com.enneagram.domain.PageDTO;
 import com.enneagram.service.AttachFileService;
 import com.enneagram.service.BoardService;
+import com.enneagram.service.LikeyService;
 import com.enneagram.service.MemberService;
 import com.enneagram.vo.BoardVO;
+import com.enneagram.vo.LikeyVO;
 import com.enneagram.vo.MemberVO;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -49,7 +51,37 @@ public class BoardController {
 	private MemberService memberService;
 	@Autowired
 	private AttachFileService attachFileService;
-
+	@Autowired
+	private LikeyService likeyService;
+	
+	// 좋아요 취소 ajax
+	@GetMapping("likeydelete")
+	@ResponseBody
+	public String likeydelete(Integer bno, int mno) {
+		System.out.println("likeydelete");
+		
+		LikeyVO likey = likeyService.getLikey(bno,mno);
+		if(likey!=null) {    // likey가 있으면 삭제
+			likeyService.likeydelete(bno,mno);
+		}
+		
+		return "success";
+	}
+	
+	// 좋아요 추가 ajax
+	@GetMapping("likeyPlus")
+	@ResponseBody
+	public String likeyPlus(Integer bno, int mno) {
+		System.out.println("likeyPlus");
+		
+		LikeyVO likey = likeyService.getLikey(bno,mno);
+		if(likey==null) {    // likey가 없을때 추가
+			likeyService.likeyPlus(bno,mno);
+		}
+		
+		return "success";
+	}
+	
 	// Attach 받기
 	@PostMapping("boardAttachFileDTO")
 	@ResponseBody
@@ -81,6 +113,7 @@ public class BoardController {
 		ResponseEntity<String> r;
 		System.out.println("카테고리/ "+board.getCategory());
 		System.out.println("내용/ "+board.getContent());
+		
 		try {
 			int bno = boardService.insertBoardReturnBno(board);
 			r = new ResponseEntity<String>(Integer.toString(board.getBno()),HttpStatus.OK);
@@ -158,6 +191,14 @@ public class BoardController {
 		
 		int maxcount = boardService.boardAllCount(c.getCategory());   // 게시글 총 개수
 		PageDTO pd = new PageDTO(c, maxcount);
+		
+		MemberVO member = (MemberVO) session.getAttribute("login");
+		// 로그인이 되어있을 때
+		if(member!=null) {
+			int mno = member.getMno();
+			LikeyVO likey = likeyService.getLikey(bno, mno);
+			mv.addObject("likey", likey);
+		}
 		
 		mv.addObject("pageDTO", pd);
 		mv.addObject("attachList",attachList);

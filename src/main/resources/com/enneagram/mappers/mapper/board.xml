@@ -67,4 +67,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="replyRcntDown">
 		update board set rcnt = rcnt-1 where bno = #{bno}
 	</update>
+	
+	<update id="b_likeyPlus">
+		update board set likey = likey+1 where bno = #{bno}
+	</update>
+	
+	<update id="b_likeydelete">
+		update board set likey = likey-1 where bno = #{bno}
+	</update>
+	
 </mapper>
