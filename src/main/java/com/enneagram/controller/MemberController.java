@@ -301,14 +301,14 @@ public class MemberController{
 		} catch (Exception e) {
 			e.printStackTrace();
 			out.print("<script>"); 
-			out.print("alert('아이디가 중복되었습니다');");
+			out.print("alert('회원가입에 실패하였습니다');");
 			out.print("history.back();");
 			out.print("</script>"); 
 			out.close();
 			
 		}
 		out.print("<script>"); 
-		out.print("alert('아이디를 입력해주세요');");
+		out.print("alert('회원가입에 성공하셨습니다');");
 		out.print("location.href='/enneagram';");
 		out.print("</script>"); 
 		out.close();
