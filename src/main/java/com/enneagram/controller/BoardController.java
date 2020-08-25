@@ -54,6 +54,7 @@ public class BoardController {
 	@Autowired
 	private LikeyService likeyService;
 	
+	
 	// 좋아요 취소 ajax
 	@GetMapping("likeydelete")
 	@ResponseBody
