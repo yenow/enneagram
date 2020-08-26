@@ -15,7 +15,9 @@
 	<div class="container">
 		<div class="row justify-content-center content-margin">
 			<div class="login-box col-md-5 text-center">
-				<form action="${pageContext.request.contextPath}/member/login_ok" method="post">
+				<form action="${pageContext.request.contextPath}/member/login_ok" method="post" >
+					<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+					
 					<h2 class="pb-2 pt-2">로그인</h2>
 					<!-- 아이디 -->
 					<input type="text" name="id" class="form-control mt-3" placeholder="아이디">
