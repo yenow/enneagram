@@ -17,10 +17,7 @@
 						We love <strong>All People</strong> 
 					</h1>
 					<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-						<c:if test="${login eq null }">
-							<a href="${pageContext.request.contextPath}/testr/test" class="btn btn-primary btn-outline-white px-5 py-3">Test</a>
-						</c:if>
-						
+						<a href="${pageContext.request.contextPath}/test/test" class="btn btn-primary btn-outline-white px-5 py-3">Test</a>
 					</p>
 				</div>
 			</div>

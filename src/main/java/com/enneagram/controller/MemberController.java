@@ -325,7 +325,7 @@ public class MemberController{
 		String state = generateState();
 		request.getSession().setAttribute("state", state);
 
-		String clientId = "zu4797T1LS7jgoNCtB7V";// 애플리케이션 클라이언트 아이디값";
+		String clientId = "5Kd_7rp0z6uT6U5CnjhW";// 애플리케이션 클라이언트 아이디값";
 		String redirectURI = URLEncoder.encode("http://localhost:8383/enneagram/member/callback", "UTF-8");
 		SecureRandom random = new SecureRandom();
 		// String state = new BigInteger(130, random).toString();

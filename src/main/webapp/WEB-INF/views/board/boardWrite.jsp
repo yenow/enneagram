@@ -26,7 +26,7 @@
 	</c:if>
 	<!-- nav -->
 	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #efbbcf; padding: 2px;">
-		<a class="navbar-brand" href="#">Ennegram</a>
+		<a class="navbar-brand" href="${pageContext.request.contextPath}">Ennegram</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -34,28 +34,31 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="#">
-						Home<span class="sr-only">(current)</span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Test</a>
+					<a href="${pageContext.request.contextPath}" class="nav-link">Home</a>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="portfolio.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">에니어그램</a>
+						<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/test/test" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">테스트</a>
+						<div class="dropdown-menu" aria-labelledby="dropdown04">
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/test/test">테스트</a> 
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/test/test_complete">결과</a>
+						</div>
+					</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/enneagram/enneagram?category=enneagram" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">에니어그램</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown04">
-						<a class="dropdown-item" href="portfolio.html">에니어그램</a>
-						<a class="dropdown-item" href="portfolio-single.html">역사</a>
-						<a class="dropdown-item" href="portfolio-single.html">9가지 유형</a>
+						<a class="dropdown-item" href="${pageContext.request.contextPath}/enneagram/enneagram?category=enneagram">에니어그램</a> 
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/enneagram/enneagram?category=history">역사</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/enneagram/enneagram?category=eclass">분류</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/enneagram/enneagram?category=type">9가지 유형</a>
 					</div>
 				</li>
 				
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/board/boardList" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">게시판</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown04">
-						<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList">공지사항</a>
-						<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList">속닥속닥</a>
-						<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList">자료실</a>
+						<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList?category=공지사항">공지사항</a> 
+						<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList?category=속닥속닥">속닥속닥</a>
+						<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList?category=자료실">자료실</a>
 					</div>
 				</li>
 

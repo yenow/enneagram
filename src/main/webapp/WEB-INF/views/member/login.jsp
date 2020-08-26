@@ -50,7 +50,7 @@
 
 	var naverLogin = new naver.LoginWithNaverId(
 		{
-			clientId: "zu4797T1LS7jgoNCtB7V",
+			clientId: "5Kd_7rp0z6uT6U5CnjhW",
 			callbackUrl: "http://localhost:8383/enneagram/member/callback",
 			isPopup: false, /* 팝업을 통한 연동처리 여부 */
 			loginButton: {color: "green", type: 3, height: 60} /* 로그인 버튼의 타입을 지정 */

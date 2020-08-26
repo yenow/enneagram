@@ -5,9 +5,9 @@
 		<div class="row mb-5">
 			<div class="col-md">
 				<div class="ftco-footer-widget mb-4">
-					<h2 class="ftco-heading-2">Snipp.</h2>
+					<!-- <h2 class="ftco-heading-2">Snipp.</h2>
 					<p>Far far away, behind the word mountains, far from the
-						countries Vokalia and Consonantia, there live the blind texts.</p>
+						countries Vokalia and Consonantia, there live the blind texts.</p> -->
 				</div>
 			</div>
 			<div class="col-md">
@@ -26,9 +26,8 @@
 				<div class="ftco-footer-widget mb-4">
 					<h2 class="ftco-heading-2">Contact Information</h2>
 					<ul class="list-unstyled">
-						<li><a href="#" class="py-2 d-block">198 West 21th
-								Street, Suite 721 New York NY 10016</a></li>
-						<li><a href="#" class="py-2 d-block">+ 1235 2355 98</a></li>
+						<li><a href="#" class="py-2 d-block">인천시 부평구 청천동</a></li>
+						<li><a href="#" class="py-2 d-block">010 2124 5690</a></li>
 						<li><a href="#" class="py-2 d-block">phantom_ysy@naver.com</a></li>
 						<li><a href="https://github.com/yenow" class="py-2 d-block">https://github.com/yenow</a></li>
 					</ul>

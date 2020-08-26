@@ -82,8 +82,8 @@ public class MemberServiceImpl implements MemberService {
 	public void naverlogin(String state, String code, HttpServletRequest request, HttpServletResponse response,
 			Model m) throws UnsupportedEncodingException {
 		
-		String clientId = "zu4797T1LS7jgoNCtB7V";// 애플리케이션 클라이언트 아이디값";
-		String clientSecret = "7PAKNjszhO";// 애플리케이션 클라이언트 시크릿값";
+		String clientId = "5Kd_7rp0z6uT6U5CnjhW";// 애플리케이션 클라이언트 아이디값";
+		String clientSecret = "5I50DzZFfz";// 애플리케이션 클라이언트 시크릿값";
 		String redirectURI = URLEncoder.encode("http://localhost:8383/enneagram/member/callback", "UTF-8");
 		String apiURL;
 		apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
