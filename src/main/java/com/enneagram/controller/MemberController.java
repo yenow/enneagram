@@ -321,7 +321,7 @@ public class MemberController{
 	}
 	
 	@RequestMapping("/login")
-	public void login(String error, String logout, HttpServletRequest request,Model m) throws UnsupportedEncodingException {
+	public void login(HttpServletRequest request,Model m) throws UnsupportedEncodingException {
 		String state = generateState();
 		request.getSession().setAttribute("state", state);
 
@@ -334,13 +334,6 @@ public class MemberController{
 		apiURL += "&redirect_uri=" + redirectURI;
 		apiURL += "&state=" + state;
 		m.addAttribute("apiURL", apiURL);
-		
-		if(error != null) {
-			m.addAttribute("error", "login error");
-		}
-		if(logout != null) {
-			m.addAttribute("logout", "logout!!");
-		}
 	}
 
 	@RequestMapping("/login_ok")
