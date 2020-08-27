@@ -29,4 +29,6 @@ public class MemberVO {
 	private String birth;
 	private Date regdate;
 	
+	
+	
 }

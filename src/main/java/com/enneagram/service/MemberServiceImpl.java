@@ -40,20 +40,7 @@ public class MemberServiceImpl implements MemberService {
 	/* 로그인 아이디, 비밀번호 확인*/
 	@Override
 	public MemberVO login_confirm(String user_id) {
-		// contextPath 가져오기
-		ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-		String contextPath = attr.getRequest().getContextPath(); 
-		
-		// uuid 변경
-		MemberVO memberVO = memberDAO.login_confirm(user_id);
-		// uuid가 존재할때
-		if(memberVO.getUUIDPath()!=null) {
-			String uuidPath =memberVO.getUUIDPath();
-			String temp = uuidPath.substring(uuidPath.indexOf("\\")).replace("\\", "/");
-			System.out.println(temp);
-			memberVO.setUUIDPath(contextPath+temp);
-		}
-		return memberVO;
+		return memberDAO.login_confirm(user_id);
 	}
 
 	/* member 수정*/

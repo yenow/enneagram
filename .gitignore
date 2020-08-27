@@ -8,6 +8,8 @@
 *.war
 *.ear
 
+.properties
+
 #Gradle temporary files
 target/
 

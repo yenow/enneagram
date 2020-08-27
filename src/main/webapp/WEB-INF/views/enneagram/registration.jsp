@@ -17,8 +17,8 @@
 </head>
 <body>
 	
-	<!-- 관리자만 입장가능 // 나중에 사용자를 관리자로 바꿔야함 -->
-	<c:if test="${login.category !='사용자' }">
+	
+	<c:if test="${login.category != '관리자' }">
 		<script type="text/javascript">
 			alert('관리자만 입장 가능합니다');
 			location.href='/enneagram';
