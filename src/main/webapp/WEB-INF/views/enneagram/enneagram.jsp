@@ -15,7 +15,7 @@
 	<div class="container">
 		<div class="row content-margin">
 			<!-- 본문부분 -->
-			<div class="col-md-8 ftco-animate fadeInUp ftco-animated">
+			<div class="col-md-9 ftco-animate fadeInUp ftco-animated">
 				<h2 class="mb-1">${e.title }</h2>
 				<div class="my-2" style="min-height: 500px;">${e.content }</div>
 
@@ -24,7 +24,7 @@
 			
 			
 			
-			<div class="col-md-4 sidebar ftco-animate order-first fadeInUp ftco-animated">
+			<div class="col-md-3 sidebar ftco-animate order-first fadeInUp ftco-animated">
 
 				<div class="sidebar-box ftco-animate fadeInUp ftco-animated">
 					<div class="categories">

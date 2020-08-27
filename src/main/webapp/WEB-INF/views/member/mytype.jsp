@@ -160,11 +160,11 @@
 							scales : {
 								yAxes : [ {
 									ticks : {
-										beginAtZero : true
+										min : 0,
+										max : 50
 									}
 								} ]
-							},
-							high: 45,
+							} 
 						}
 					});
 

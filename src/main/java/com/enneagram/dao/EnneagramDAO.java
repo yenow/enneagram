@@ -8,4 +8,6 @@ public interface EnneagramDAO {
 
 	EnneagramVO select(EnneagramVO en);
 
+	void delete(EnneagramVO en);
+
 }

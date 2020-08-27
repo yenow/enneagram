@@ -32,11 +32,7 @@ public class EnneagramController {
 	/* 에니어그램 등록 */
 	@RequestMapping("/regist")
 	public String regist(EnneagramVO en) {
-		System.out.println(en.getCategory());
-		System.out.println(en.getContent());
-		System.out.println(en.getType());
-		System.out.println(en.getTitle());
-		System.out.println(en.getEclass());
+
 		enneagramService.insert(en);
 		return "redirect:/";
 	}

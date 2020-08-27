@@ -30,4 +30,9 @@ public class EnneagramDAOImpl implements EnneagramDAO {
 		
 	}
 
+	@Override
+	public void delete(EnneagramVO en) {
+		sqlSession.delete("e_delete", en);
+	}
+
 }

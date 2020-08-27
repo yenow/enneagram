@@ -27,7 +27,7 @@
 
 	<!-- nav -->
 	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #efbbcf; padding: 2px;">
-		<a class="navbar-brand" href="#">Ennegram</a>
+		<a class="navbar-brand" href="${pageContext.request.contextPath}">Ennegram</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -35,20 +35,19 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="#">
-						Home<span class="sr-only">(current)</span>
-					</a>
+					<a href="${pageContext.request.contextPath}" class="nav-link">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Test</a>
+					<a class="dropdown-item" href="${pageContext.request.contextPath}/test/test">테스트</a> 
+					<a class="dropdown-item" href="${pageContext.request.contextPath}/test/test_complete">결과</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="portfolio.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">에니어그램</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown04">
-						<a class="dropdown-item" href="portfolio.html">에니어그램</a>
-						<a class="dropdown-item" href="portfolio-single.html">유형</a>
-						<a class="dropdown-item" href="portfolio-single.html">역사</a>
-						<a class="dropdown-item" href="portfolio-single.html">9가지 유형</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/enneagram/enneagram?category=enneagram">에니어그램</a> 
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/enneagram/enneagram?category=history">역사</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/enneagram/enneagram?category=eclass&eclass=1">분류</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/enneagram/enneagram?category=type%type=1">9가지 유형</a>
 					</div>
 				</li>
 

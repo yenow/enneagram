@@ -65,8 +65,8 @@
 						<div class="dropdown-menu" aria-labelledby="dropdown04">
 							<a class="dropdown-item" href="${pageContext.request.contextPath}/enneagram/enneagram?category=enneagram">에니어그램</a> 
 							<a class="dropdown-item" href="${pageContext.request.contextPath}/enneagram/enneagram?category=history">역사</a>
-							<a class="dropdown-item" href="${pageContext.request.contextPath}/enneagram/enneagram?category=eclass">분류</a>
-							<a class="dropdown-item" href="${pageContext.request.contextPath}/enneagram/enneagram?category=type">9가지 유형</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/enneagram/enneagram?category=eclass&eclass=1">분류</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/enneagram/enneagram?category=type&type=1">9가지 유형</a>
 						</div>
 					</li>
 

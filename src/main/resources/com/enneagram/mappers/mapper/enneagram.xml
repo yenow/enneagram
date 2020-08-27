@@ -21,4 +21,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="e_select"  resultType="e">
 		select * from enneagram where category=#{category}
 	</select>
+	
+	<delete id="e_delete">
+		delete from enneagram where category=#{category} and type=#{type} and eclass = #{eclass}
+	</delete>
 </mapper>
