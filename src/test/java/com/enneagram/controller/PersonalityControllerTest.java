@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @RunWith(SpringJUnit4ClassRunner.class)
 //Test for Controller
 @WebAppConfiguration
-@ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
+@ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/test-context.xml",
 "file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" })
 @Slf4j
 public class PersonalityControllerTest {

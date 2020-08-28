@@ -34,4 +34,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getMemberVO" resultType="m">
 		select * from member where mno = #{mno}
 	</select>
+	
+	<delete id="m_deleteALL">
+		delete from member
+	</delete>
+	
+	<select id="m_getTotalCount" resultType="int">
+		select count(*) from member
+	</select>
+	
+	<delete id="m_deleteById">
+		delete from member where id = #{id}
+	</delete>
 </mapper>

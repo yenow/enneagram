@@ -13,14 +13,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-	<context:property-placeholder location="classpath:/config.properties"/> 
-
-	<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="/WEB-INF/config/config.properties"/>
-        <property name="fileEncoding" value="UTF-8" />
-    </bean>  -->
-    
-
+	<context:property-placeholder location="classpath:/testConfig.properties"/>
 
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="${db.driver}"></property>

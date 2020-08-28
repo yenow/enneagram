@@ -65,4 +65,22 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO getMemberVO(int mno) {
 		return sqlSession.selectOne("getMemberVO",mno);
 	}
+
+	// 모든 멤버 테이블 삭제
+	@Override
+	public void deleteALL() {
+		sqlSession.delete("m_deleteALL");
+	}
+
+	// 전체 멤버 개수를 가져옴
+	@Override
+	public int getTotalCount() {
+		return sqlSession.selectOne("m_getTotalCount");
+	}
+	
+	// Id 값으로 멤버 레코드 삭제
+	@Override
+	public void deleteById(String id) {
+		sqlSession.delete("m_deleteById", id);
+	}
 }

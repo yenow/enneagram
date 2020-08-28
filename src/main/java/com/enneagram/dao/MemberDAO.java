@@ -26,4 +26,10 @@ public interface MemberDAO {
 	public void deleteProfile(int mno);
 
 	public MemberVO getMemberVO(int mno);
+
+	public void deleteALL();
+
+	public int getTotalCount();
+
+	public void deleteById(String string);
 }
