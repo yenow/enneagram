@@ -72,7 +72,13 @@
 
 	<!-- content -->
 	<div class="container-fluid">
-		<h2 class="text-center my-3">게시판 등록</h2>
+		<h2 class="text-center my-3 pt-3"><span class="pl-4">게시판 등록</span>
+			<c:if test="${category != '자료실' }">
+				<a href="${pageContext.request.contextPath}/board/boardList?category=${category}" class="btn btn-outline-secondary float-right" type="submit" id="inputGroupFileAddon04" style="margin-right: 15px;">목록</a>
+				<a href="${pageContext.request.contextPath}/board/boardList?category=${category}" class="btn btn-outline-secondary submit-button float-right" type="submit" id="inputGroupFileAddon04" style="margin-right: 15px;">등록</a>
+			</c:if>		
+		
+		</h2>
 		<%-- action="${pageContext.request.contextPath}/board/boardWrite_ok?catetgory=${category} --%>
 		<form id="boardWrite-form">
 			<input type="hidden" name="mno" value="${login.mno }">
@@ -90,13 +96,9 @@
 						</div>
 						<!-- 등록버튼 -->
 						<div class="input-group-append">
-							<a href="${pageContext.request.contextPath}/board/boardList?category=${category}" class="btn btn-outline-secondary submit-button" type="submit" id="inputGroupFileAddon04">등록</a>
+							<a href="${pageContext.request.contextPath}/board/boardList?category=${category}" class="btn btn-outline-secondary submit-button" type="submit" id="inputGroupFileAddon04" >등록</a>
+							<a href="${pageContext.request.contextPath}/board/boardList?category=${category}" class="btn btn-outline-secondary float-right" type="submit" id="inputGroupFileAddon04" >목록</a>
 						</div>
-					</div>
-				</c:if>
-				<c:if test="${category != '자료실' }">
-					<div class="input-group-append">
-						<a href="${pageContext.request.contextPath}/board/boardList?category=${category}" class="btn btn-outline-secondary submit-button" type="submit" id="inputGroupFileAddon04">등록</a>
 					</div>
 				</c:if>
 			</div>

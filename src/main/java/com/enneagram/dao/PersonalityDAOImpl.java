@@ -1,5 +1,7 @@
 package com.enneagram.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -30,5 +32,20 @@ public class PersonalityDAOImpl implements PersonalityDAO {
 	@Override
 	public int getTotalCount() {
 		return sqlSession.selectOne("p_getTotalCount");
+	}
+
+	@Override
+	public PersonalityVO getMytype(int mno) {
+		return sqlSession.selectOne("getMytype", mno);
+	}
+
+	@Override
+	public List<PersonalityVO> myPersonaltiyList(int mno) {
+		return sqlSession.selectList("myPersonaltiyList", mno);
+	}
+
+	@Override
+	public PersonalityVO myPersonaltiy(int pno) {
+		return sqlSession.selectOne("myPersonal", pno);
 	}
 }

@@ -80,23 +80,28 @@
 									<li>
 										<a href="${pageContext.request.contextPath}/enneagram/enneagram?category=type&type=9">9유형</a>
 									</li>
+									
 								</ul>
 							</li>
-
+							<c:if test="${login.category =='관리자' }">
+								<li>
+									<a href="${pageContext.request.contextPath}/enneagram/registration" class="btn btn-outline-danger"> 등록 </a>
+								</li>
+							</c:if>
 						</ul>
 					</div>
 
 				</div>
 
 
-				<div class="sidebar-box ftco-animate fadeInUp ftco-animated text-center">
+			<%-- 	<div class="sidebar-box ftco-animate fadeInUp ftco-animated text-center">
 
 					<c:if test="${login.category =='관리자' }">
 						<a href="${pageContext.request.contextPath}/enneagram/registration" class="btn btn-outline-danger">
-							<button type="button" class="btn btn-outline-danger">등록</button>
+							등록
 						</a>
 					</c:if>
-				</div>
+				</div> --%>
 
 			</div>
 		</div>

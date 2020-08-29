@@ -29,21 +29,6 @@ public class MemberDAOImpl implements MemberDAO {
 	public void memberUpdate(MemberVO memberVO) {
 		sqlSession.update("m_update", memberVO);
 	}
-
-	@Override
-	public PersonalityVO getMytype(int mno) {
-		return sqlSession.selectOne("getMytype", mno);
-	}
-
-	@Override
-	public List<PersonalityVO> myPersonaltiyList(int mno) {
-		return sqlSession.selectList("myPersonaltiyList", mno);
-	}
-
-	@Override
-	public PersonalityVO myPersonaltiy(int pno) {
-		return sqlSession.selectOne("myPersonal", pno);
-	}
 	
 	// 윤신영 - 아이디가 있는지 확인
 	@Override

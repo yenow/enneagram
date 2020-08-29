@@ -13,12 +13,6 @@ public interface MemberDAO {
 
 	public void memberUpdate(MemberVO memberVO);
 
-	public PersonalityVO getMytype(int mno);
-
-	public List<PersonalityVO> myPersonaltiyList(int mno);
-
-	public PersonalityVO myPersonaltiy(int pno);
-
 	public MemberVO isPresent(String id);
 
 	public MemberVO getMemberVO(int mno);

@@ -21,12 +21,6 @@ public interface MemberService {
 
 	void memberUpdate(MemberVO memberVO);
 
-	PersonalityVO mytype(int mno);
-
-	List<PersonalityVO> myPersonaltiyList(int mno);
-
-	PersonalityVO myPersonaltiy(int pno);
-
 	void naverlogin(String state, String code, HttpServletRequest request, HttpServletResponse response, Model m) throws UnsupportedEncodingException;
 
 	Boolean idValidate(String id);

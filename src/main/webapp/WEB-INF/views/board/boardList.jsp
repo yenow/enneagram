@@ -124,10 +124,20 @@
 								<a>&gt;</a>
 							</li>
 						</c:if>
-
-						<li class="float-right">
+						
+						<c:if test="${pageDTO.cri.category == '공지사항' }">
+							<c:if test="${login.category == '관리자' }">
+								<li class="float-right">
+									<button class="btn btn-primary rounded"  href="${pageContext.request.contextPath}/board/boardWrite?category=${pageDTO.cri.category}" id="toBoardWrite">글쓰기</button>
+								</li>
+							</c:if>
+						</c:if>
+						<c:if test="${pageDTO.cri.category != '공지사항' }">
+							<li class="float-right">
 							<button class="btn btn-primary rounded"  href="${pageContext.request.contextPath}/board/boardWrite?category=${pageDTO.cri.category}" id="toBoardWrite">글쓰기</button>
-						</li>
+							</li>
+						</c:if>
+						
 					</ul>
 
 				</div>

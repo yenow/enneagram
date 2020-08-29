@@ -13,6 +13,7 @@
 
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/summernote-ko-KR.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/write.css">
 </head>
 <body>
@@ -37,9 +38,12 @@
 				<li class="nav-item active">
 					<a href="${pageContext.request.contextPath}" class="nav-link">Home</a>
 				</li>
-				<li class="nav-item">
-					<a class="dropdown-item" href="${pageContext.request.contextPath}/test/test">테스트</a> 
-					<a class="dropdown-item" href="${pageContext.request.contextPath}/test/test_complete">결과</a>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="portfolio.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">테스트</a>
+					<div class="dropdown-menu" aria-labelledby="dropdown04">
+						<a class="dropdown-item" href="${pageContext.request.contextPath}/test/test">테스트</a> 
+						<a class="dropdown-item" href="${pageContext.request.contextPath}/test/test_complete">결과</a>
+					</div>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="portfolio.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">에니어그램</a>
@@ -54,9 +58,9 @@
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/board/boardList" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">게시판</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown04">
-						<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList">공지사항</a>
-						<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList">속닥속닥</a>
-						<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList">자료실</a>
+						<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList?category=공지사항">공지사항</a>
+						<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList?category=속닥속닥">속닥속닥</a>
+						<a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList?category=자료실">자료실</a>
 					</div>
 				</li>
 
@@ -69,7 +73,11 @@
 
 	<div class="container-fluid">
 		<div class="content-margin">
-			<h2 class="text-center">Enneagram 등록</h2>
+			<h2 class="text-center position-relative">Enneagram 등록 
+				<div class="text-center position-absolute" style="right: 0; top:0;">
+					<input type="submit" class="btn btn-outline-secondary submit-button" value="등록" style="width: 200px;">
+				</div>
+			</h2>
 			<form action="${pageContext.request.contextPath}/enneagram/regist" method="post">
 				<input type="hidden" name="mno" value="${login.mno }">
 
@@ -128,10 +136,6 @@
 				</div>
 				<!-- textarea -->
 				<textarea id="summernote" name="content"></textarea>
-				
-				<div class="text-center">
-					<input type="submit" class="btn btn-primary" value="등록">
-				</div>
 			</form>
 
 		</div>
@@ -139,6 +143,8 @@
 
 
 	<script type="text/javascript">
+	
+	
 	 function categorySelect(){
 		 var selectCategory =  document.querySelector('.select-category');
          if(selectCategory.options[selectCategory.selectedIndex].value=='eclass'){
@@ -154,7 +160,7 @@
 
 		$('#summernote').summernote({
 			height : 300, // 에디터 높이
-			minHeight : null, // 최소 높이
+			minHeight : 500, // 최소 높이
 			maxHeight : null, // 최대 높이
 			focus : true, // 에디터 로딩후 포커스를 맞출지 여부
 			lang : "ko-KR", // 한글 설정
@@ -185,41 +191,7 @@
 				}
 			});
 		}
-		/* 
-		$(document).ready(function() {
-		  $('#summernote').summernote({
-		    height: 300,
-		    minHeight: null,
-		    maxHeight: null,
-		    focus: true,
-		    callbacks: {    // 이 부분 지정해주지 않으면 이미지가 data 형식으로 들어간다고함 
-		      onImageUpload: function(files, editor, welEditable) {
-		        for (var i = files.length - 1; i >= 0; i--) {
-		          sendFile(files[i], this);
-		        }
-		      }
-		    }
-		  });
-		});
 		
-		function sendFile(file, el) {    // 이미지 파일을 서버에 저장하고, 이미지를 호출 할 수 있는 url을 리턴하는 함수
-		  var form_data = new FormData();
-		  form_data.append('file', file);
-		  $.ajax({
-		    data: form_data,
-		    type: "POST",
-		    url: '/enneagram/uploadSummernoteImageFile',
-		    cache: false,
-		    contentType: false,
-		    enctype: 'multipart/form-data',   //중요
-		    processData: false,
-		    success: function(url) {   // 성공하면 url을 받음
-		    	console.log(url);
-		      $(el).summernote('editor.insertImage', url);    // editor.insertImage  이부분으 이미지를 삽입
-		      $('#imageBoard > ul').append('<li><img src="'+url+'" width="480" height="auto"/></li>');  // 이부분은 확인차 해놓았다고함
-		    }
-		  });
-		} */
 	</script>
 
 

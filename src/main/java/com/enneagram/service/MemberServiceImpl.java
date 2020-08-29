@@ -49,22 +49,7 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.memberUpdate(memberVO);
 	}
 
-	/* 마이페이지 내 성향 가져오기*/
-	@Override
-	public PersonalityVO mytype(int mno) {
-		return memberDAO.getMytype(mno);
-	}
-
-	@Override
-	public List<PersonalityVO> myPersonaltiyList(int mno) {
-		return memberDAO.myPersonaltiyList(mno);
-	}
-
-	@Override
-	public PersonalityVO myPersonaltiy(int pno) {
-		return memberDAO.myPersonaltiy(pno);
-	}
-
+	// 네이버 로그인
 	@Override
 	public void naverlogin(String state, String code, HttpServletRequest request, HttpServletResponse response,
 			Model m) throws UnsupportedEncodingException {

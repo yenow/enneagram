@@ -31,6 +31,7 @@ import com.enneagram.domain.AttachFileDTO;
 import com.enneagram.service.AttachFileService;
 import com.enneagram.service.EnneagramService;
 import com.enneagram.service.MemberService;
+import com.enneagram.service.PersonalitySerivce;
 import com.enneagram.vo.EnneagramVO;
 import com.enneagram.vo.MemberVO;
 import com.enneagram.vo.PersonalityVO;
@@ -45,6 +46,8 @@ public class MemberController{
 	private EnneagramService enneagramService;
     @Autowired
     private AttachFileService attachFileService;
+    @Autowired
+    private PersonalitySerivce personalitySerivce;
     
 	// 프로필 사진 정보 가져오는 AJAX
 	@RequestMapping("getProfile")
@@ -121,7 +124,7 @@ public class MemberController{
 		ResponseEntity<Map<String,Object>> re;
 		try {
 			
-			PersonalityVO p = memberSerivce.myPersonaltiy(pno);
+			PersonalityVO p = personalitySerivce.myPersonaltiy(pno);
 			
 			EnneagramVO e = new EnneagramVO();
 			e.setCategory("eclass");
@@ -163,7 +166,7 @@ public class MemberController{
 		}
 		
 		/* 내 검사 리스트를 가져옴*/
-		List<PersonalityVO> pList = memberSerivce.myPersonaltiyList(mno);
+		List<PersonalityVO> pList = personalitySerivce.myPersonaltiyList(mno);
 		
 		PersonalityVO recently = new PersonalityVO();
 		EnneagramVO eclass =  new EnneagramVO();

@@ -38,6 +38,21 @@ public class PersonalityServiceImpl implements PersonalitySerivce {
 	public String getType(Integer type) {
 		return PersonalityDAO.getType(type);
 	}
+	
+	@Override
+	public PersonalityVO mytype(int mno) {
+		return PersonalityDAO.getMytype(mno);
+	}
+
+	@Override
+	public List<PersonalityVO> myPersonaltiyList(int mno) {
+		return PersonalityDAO.myPersonaltiyList(mno);
+	}
+
+	@Override
+	public PersonalityVO myPersonaltiy(int pno) {
+		return PersonalityDAO.myPersonaltiy(pno);
+	}
 
 	@Override
 	public String test_complete(HttpServletRequest request, HttpSession Session, HttpServletResponse response) {
@@ -211,4 +226,5 @@ public class PersonalityServiceImpl implements PersonalitySerivce {
 		
 		return "/test/test_complete";
 	}
+
 }
