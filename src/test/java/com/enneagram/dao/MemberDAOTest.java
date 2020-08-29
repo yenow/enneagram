@@ -1,10 +1,8 @@
 package com.enneagram.dao;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThat;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -17,7 +15,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.enneagram.controller.LogExample;
 import com.enneagram.vo.MemberVO;
-import com.enneagram.vo.PersonalityVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(value = "file:src/main/webapp/WEB-INF/spring/test-context.xml")

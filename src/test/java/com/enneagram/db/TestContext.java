@@ -1,7 +1,6 @@
 package com.enneagram.db;
 
 import org.apache.commons.logging.Log;
-
 import org.apache.commons.logging.LogFactory;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
