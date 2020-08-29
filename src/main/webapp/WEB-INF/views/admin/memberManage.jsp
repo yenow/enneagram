@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -22,6 +24,14 @@
 <link href="../resources/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 </head>
 <body>
+
+<c:if test="${login.category != '관리자' }">
+	<script>
+		alert('관리자만 입장할수 있습니다');
+		location.href='${pageContext.request.contextPath}/admin/login';
+	</script>
+</c:if>
+
 	<div class="wrapper">
 		<jsp:include page="info/sidebar.jsp"></jsp:include>
 		<div class="main-panel">

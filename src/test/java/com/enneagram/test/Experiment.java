@@ -1,7 +1,7 @@
 package com.enneagram.test;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.isA;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
@@ -34,7 +34,7 @@ public class Experiment {
 		A a = new A(10, "str");
 		A a2 = new A(10, "str");
 		assertThat(a.num, is(a2.num));   
-		assertThat(a, isA(A.class));  // isA 는 클래스 타입을 비교하나보군
+		//assertThat(a, isA(A.class));  // isA 는 클래스 타입을 비교하나보군
 		assertSame(a, a);
 		
 	}

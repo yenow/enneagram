@@ -1,35 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
 
 <jsp:include page="info/header.jsp"></jsp:include>
 
-<!-- <div class="wrapper">
-	<div class="content">
-		<div class="container-fluid">
-			<div class="row justify-content-center">
-				<div class="col-md-8">
-					<div class="card">
-						<form action="">
-							<h2 class="text-center">관리자 로그인</h2>
-							
-						</form>
-					
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-</div> -->
 <body class="text-center login-body">
 	<div class="login-main">
-	<form action="${pageContext.request.contextPath}/admin/login_ok" class="form-signin mt-5">
+	<form action="${pageContext.request.contextPath}/admin/login_ok" class="form-signin mt-5" method="post">
 
 		<h1 class="h3 mb-3 font-weight-normal">관리자 로그인</h1>
 		<label for="inputEmail" class="sr-only">관리자 아이디</label>
-		<input type="email" id="inputEmail" name="id" class="form-control" placeholder="관리자 아이디" required="" autofocus="">
+		<!-- 아이디 입력 -->
+		<input type="text" id="inputEmail" name="id" class="form-control" placeholder="관리자 아이디" >
 		<label for="inputPassword" class="sr-only">Password</label>
-		<input type="password" id="inputPassword" name="password" class="form-control" placeholder="비밀번호" required="">
+		<!-- 비밀번호 입력 -->
+		<input type="password" id="inputPassword" name="password" class="form-control" placeholder="비밀번호">
 		<div class="checkbox mb-3">
 			<label> <input type="checkbox" value="remember-me"> Remember me </label>
 		</div>

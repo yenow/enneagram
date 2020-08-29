@@ -374,7 +374,7 @@ public class MemberController{
 				session.setAttribute("login", member); // login 성공할경우 "login"세션
 				out.print("<script>"); 
 				out.print("alert('로그인에 성공하셨습니다');");
-				out.print("location.href='/enneagram';");
+				out.print("location.href='"+request.getContextPath()+"';");
 				out.print("</script>");
 				
 				/* 서버에서 redirect하면 왜 안될까?   PrintWriter  out.println랑  view호출을 동시에 하니까 에러가 난다.

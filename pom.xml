@@ -15,7 +15,12 @@
 	</properties>
 	
 	<dependencies>
-		
+		<!-- mockito -->
+		<dependency>
+		    <groupId>org.mockito</groupId>
+		    <artifactId>mockito-all</artifactId>
+		    <version>1.10.19</version>
+		</dependency>
 		<!-- mariaDB 드라이버 -->
 		<dependency>
 		    <groupId>org.mariadb.jdbc</groupId>
