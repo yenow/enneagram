@@ -1,7 +1,10 @@
 package com.enneagram.dao;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThat;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -17,41 +20,63 @@ import com.enneagram.vo.MemberVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(value = "file:src/main/webapp/WEB-INF/spring/test-context.xml")
+/* MemberDAO 테스트 클래스 */
 public class MemberDAOTest {
 	private static final Log LOG = LogFactory.getLog( LogExample.class );
 	
 	@Autowired
 	private MemberDAO memberDAO;
-	private MemberVO memberVO;
+	
 	
 	@Before
 	@Test
 	public void setMemberVO() {
 		memberDAO.deleteById("testId");
-		memberVO = new MemberVO(0, "testId", "testPassword", "테스트", "테스트", "test@test.com", "01000000000", "M", "관리자", null, "12-12", null);
+		MemberVO memberVO = new MemberVO(0, "testId", "testPassword", "테스트", "테스트", "test@test.com", "01000000000", "M", "관리자", null, "12-12", null);
+		memberDAO.memberInsert(memberVO);  
 	}
 	
+	/* memberInsert() Test 코드 */
 	@Test
-	public void memberInsertTest() {   // 멤버 insert가 잘 되는지 확인, insert 후 member 테이블의 개수가 1개 늘어남을 확인?
+	public void memberInsertTest() {   
 		
 		memberDAO.deleteALL();
 		assertSame(memberDAO.getTotalCount(), 0);  // deleteALL 검증
 		
 		int beforeCount = memberDAO.getTotalCount();
-		memberVO = new MemberVO(0, "testId2", "testPassword", "테스트", "테스트", "test@test.com", "01000000000", "M", "관리자", null, "12-12", null);
+		MemberVO memberVO = new MemberVO(0, "testId2", "testPassword", "테스트", "테스트", "test@test.com", "01000000000", "M", "관리자", null, "12-12", null);
 		memberDAO.memberInsert(memberVO);
 		assertSame(memberDAO.getTotalCount(), beforeCount+1);
 		
 		memberDAO.deleteById("testId2");
 	}
 	
+	/* login_confirm() Test */
 	@Test
 	public void login_confirmTest() {
-		System.out.println(memberDAO.login_confirm(memberVO.getId()));
+
+		MemberVO member = memberDAO.login_confirm("testId");
+		assertThat(member.getId(), is("testId"));
+		memberDAO.deleteById("testId");
+		LOG.info("login_confirm() : success");
+		
+
 	}
 	
 	@Test
-	public void myPersonaltiyListTest() {
-		System.out.println(memberDAO.myPersonaltiyList(memberVO.getMno()));
+	public void memberUpdateTest() {
+		MemberVO member = memberDAO.login_confirm("testId");
+		member.setPassword("TestPassword");
+		member.setNickname("TestNickName");
+		member.setEmail("TestEMail");
+		member.setTel("000-0000-0000");
+		memberDAO.memberUpdate(member);
+		MemberVO member2 = memberDAO.login_confirm("testId");
+		
+		assertThat(member.getPassword(), is(member2.getPassword()));
+		assertThat(member.getNickname(), is(member2.getNickname()));
+		assertThat(member.getEmail(), is(member2.getEmail()));
+		assertThat(member.getTel(), is(member2.getTel()));
+		
 	}
 }
