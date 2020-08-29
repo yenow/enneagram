@@ -31,10 +31,6 @@ public interface MemberService {
 
 	Boolean idValidate(String id);
 
-	void updateProfile(MemberVO m);
-
-	void deleteProfile(int mno);
-
 	MemberVO getMemberVO(int mno);
 
 

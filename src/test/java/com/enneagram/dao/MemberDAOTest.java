@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.enneagram.controller.LogExample;
 import com.enneagram.vo.MemberVO;
+import com.enneagram.vo.PersonalityVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(value = "file:src/main/webapp/WEB-INF/spring/test-context.xml")
@@ -26,6 +27,8 @@ public class MemberDAOTest {
 	
 	@Autowired
 	private MemberDAO memberDAO;
+	@Autowired
+	private TestDAO testDAO;
 	
 	
 	@Before
@@ -54,7 +57,6 @@ public class MemberDAOTest {
 	/* login_confirm() Test */
 	@Test
 	public void login_confirmTest() {
-
 		MemberVO member = memberDAO.login_confirm("testId");
 		assertThat(member.getId(), is("testId"));
 		memberDAO.deleteById("testId");
@@ -63,6 +65,7 @@ public class MemberDAOTest {
 
 	}
 	
+	/* memberUpdate() Test */
 	@Test
 	public void memberUpdateTest() {
 		MemberVO member = memberDAO.login_confirm("testId");
@@ -78,5 +81,20 @@ public class MemberDAOTest {
 		assertThat(member.getEmail(), is(member2.getEmail()));
 		assertThat(member.getTel(), is(member2.getTel()));
 		
+	}
+	
+	/* getMemberVO() Test */
+	@Test
+	public void getMemberVOTest() {
+		MemberVO member = memberDAO.login_confirm("testId");
+		MemberVO memberVo = memberDAO.getMemberVO(member.getMno());
+		assertThat(memberVo.getId(), is(member.getId()));
+	}
+	
+	@Test
+	public void getMytypeTest() {
+		
+		
+		//PersonalityVO person = memberDAO.getMytype(mno);
 	}
 }

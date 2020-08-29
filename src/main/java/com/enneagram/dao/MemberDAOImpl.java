@@ -50,17 +50,8 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO isPresent(String id) {
 		 return sqlSession.selectOne("isPresent", id);
 	}
-
-	@Override
-	public void updateProfile(MemberVO m) {
-		sqlSession.update("updateProfile",m);
-	}
-
-	@Override
-	public void deleteProfile(int mno) {
-		sqlSession.update("deleteProfile",mno);
-	}
-
+	
+	// 회원번호로 memberVO 객체 가져오기
 	@Override
 	public MemberVO getMemberVO(int mno) {
 		return sqlSession.selectOne("getMemberVO",mno);

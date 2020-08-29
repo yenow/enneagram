@@ -193,18 +193,6 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
-	// 프로필사진 등록
-	@Override
-	public void updateProfile(MemberVO m) {
-		memberDAO.updateProfile(m);
-	}
-
-	// 프로필 사진 삭제
-	@Override
-	public void deleteProfile(int mno) {
-		memberDAO.deleteProfile(mno);
-	}
-
 	// 회원번호로 회원정보 가져오기
 	@Override
 	public MemberVO getMemberVO(int mno) {

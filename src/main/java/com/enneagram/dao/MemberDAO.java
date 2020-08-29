@@ -21,10 +21,6 @@ public interface MemberDAO {
 
 	public MemberVO isPresent(String id);
 
-	public void updateProfile(MemberVO m);
-
-	public void deleteProfile(int mno);
-
 	public MemberVO getMemberVO(int mno);
 
 	public void deleteALL();

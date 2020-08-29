@@ -81,43 +81,6 @@
 			<input type="hidden" name="category" value="${category }">
 			
 			<div class="row justify-content-end" style="padding: 0 30px;">
-				<!-- category  -->
-			<%-- 	<div class="col-5" style="padding: 0;">
-					<c:if test="${category == '자료실' }">
-					
-					</c:if>
-					<c:if test=""></c:if>
-				
-					<c:if test="${login.category == '관리자' }">
-						<div class="input-group mb-3">
-							<div class="input-group-prepend">
-								<label class="input-group-text" for="inputGroupSelect01">카테고리</label>
-							</div>
-							<select class="custom-select" id="inputGroupSelect01" name="category">
-								<!-- select 태그안에 name속성있고, form태그 안이라면 전송됨 -->
-								<option disabled="disabled">선택</option>
-								<option value="공지사항">공지사항</option>
-								<option value="속닥속닥">속닥속닥</option>
-								<option value="자료실">자료실</option>
-							</select>
-						</div>
-					</c:if>
-					<c:if test="${login.category != '관리자' }">
-						<div class="input-group mb-3">
-							<div class="input-group-prepend">
-								<label class="input-group-text" for="inputGroupSelect01">카테고리</label>
-							</div>
-							<select class="custom-select" id="inputGroupSelect01" name="category">
-								<!-- select 태그안에 name속성있고, form태그 안이라면 전송됨 -->
-								<option disabled="disabled">선택</option>
-								<option value="속닥속닥">속닥속닥</option>
-								<option value="자료실">자료실</option>
-							</select>
-						</div>
-					</c:if>
-				</div>
-				<!-- /category  --> --%>
-			
 				<!-- 파일첨부 -->
 				<c:if test="${category == '자료실' }">
 					<div class="input-group">
@@ -129,6 +92,11 @@
 						<div class="input-group-append">
 							<a href="${pageContext.request.contextPath}/board/boardList?category=${category}" class="btn btn-outline-secondary submit-button" type="submit" id="inputGroupFileAddon04">등록</a>
 						</div>
+					</div>
+				</c:if>
+				<c:if test="${category != '자료실' }">
+					<div class="input-group-append">
+						<a href="${pageContext.request.contextPath}/board/boardList?category=${category}" class="btn btn-outline-secondary submit-button" type="submit" id="inputGroupFileAddon04">등록</a>
 					</div>
 				</c:if>
 			</div>
