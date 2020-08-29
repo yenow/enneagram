@@ -1,14 +1,13 @@
 package com.enneagram.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.net.URLEncoder;
 import java.security.SecureRandom;
+import java.time.LocalDateTime;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -176,12 +175,11 @@ public class MemberController{
 		}else {
 			/* 가장 최근의 성향 가져오기*/
 			recently = pList.get(0);
-			Date recent = pList.get(0).getRegdate();
-			System.out.println(recent.getTime());
+			LocalDateTime recent = pList.get(0).getRegdate();
+	
 			for(PersonalityVO p : pList) { 
-				System.out.println(p.getRegdate());
-				System.out.println(p.getRegdate().getTime());
-				if(recent.getTime() - p.getRegdate().getTime() < 0) {
+
+				if(recent.isBefore(p.getRegdate())) {
 					recent = p.getRegdate();
 					recently = p;
 				}
@@ -192,7 +190,7 @@ public class MemberController{
 
 				@Override
 				public int compare(PersonalityVO o1, PersonalityVO o2) {
-					if(o1.getRegdate().getTime() - o2.getRegdate().getTime() < 0) {
+					if(o1.getRegdate().isBefore(o2.getRegdate())) {
 						return 1;
 					}
 					return -1;

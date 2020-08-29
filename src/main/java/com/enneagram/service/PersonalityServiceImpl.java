@@ -1,4 +1,4 @@
-package com.enneagram.controller;
+package com.enneagram.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,91 +12,37 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.stereotype.Service;
 
-import com.enneagram.service.PersonalitySerivce;
+import com.enneagram.dao.PersonalityDAO;
 import com.enneagram.vo.MemberVO;
 import com.enneagram.vo.PersonalityVO;
 
-@Controller
-@RequestMapping("/test")
-public class TestController {
+@Service
+public class PersonalityServiceImpl implements PersonalitySerivce {
 
 	@Autowired
-	private PersonalitySerivce personalityService;
-	
-	/* 사용자의 ip주소를 가져오는 메서드 */
-	public String getRemoteIP(HttpServletRequest request){
-		String ip = request.getHeader("X-FORWARDED-FOR"); 
+	private PersonalityDAO PersonalityDAO;
 
-		//proxy 환경일 경우
-		if (ip == null || ip.length() == 0) {
-			ip = request.getHeader("Proxy-Client-IP");
-		}
-
-		//웹로직 서버일 경우
-		if (ip == null || ip.length() == 0) {
-			ip = request.getHeader("WL-Proxy-Client-IP");
-		}
-
-		if (ip == null || ip.length() == 0) {
-			ip = request.getRemoteAddr() ;
-		}
-
-		return ip;
+	@Override
+	public void insertPersonality(PersonalityVO p) {
+		PersonalityDAO.insertPersonality(p);
 	}
-	
-	@RequestMapping("/test")
-	public void test() {
-		
-	}
-	
-	@ResponseBody
-	@RequestMapping("/test_ok")             // @RequestParam 은 get방식을 받는듯하다..
-	public ResponseEntity<String> test_ok(@RequestBody List<String> n,  @RequestParam("page") int page, HttpServletRequest request, HttpSession Session) {
-		
-		System.out.println(n);
-		System.out.println(page);
-		
-		// 테스트를 하다가 중간에 처음부터 시작할 경우를 대비, test를 리셋
-		if(page==1) {
-			Session.removeAttribute("test");
-		}
-		
-		if(Session.getAttribute("test")!=null) {
-			System.out.println(Session.getAttribute("test"));
-			
-			List<String> temp =  (List<String>) Session.getAttribute("test");
-			temp.addAll(n);
-			Session.setAttribute("test", temp);
-			System.out.println(temp);   // 확인용
-			
-			if(temp.size()==81) {
-				ResponseEntity<String> response = new ResponseEntity<String>("/test/test_complete", HttpStatus.OK);
-				return response;
-			}
-		}else {
-			Session.setAttribute("test", n);
-			System.out.println(n);
-		}
-		
-		ResponseEntity<String> response = new ResponseEntity<String>("success", HttpStatus.OK);
-		return response;
-	}
-	
-	/* 테스트 완료 페이지 */
-	@RequestMapping("/test_complete")
-	public String test_complete(HttpServletRequest request, HttpSession Session, HttpServletResponse Response) {
-		return personalityService.test_complete(request, Session, Response);
 
+	@Override
+	public String getEclass(int eclass) {
+		return PersonalityDAO.getEclass(eclass);
+	}
+
+	@Override
+	public String getType(Integer type) {
+		return PersonalityDAO.getType(type);
+	}
+
+	@Override
+	public String test_complete(HttpServletRequest request, HttpSession Session, HttpServletResponse response) {
+		
 		/* 로그인이 되었다면,, 이 정보를 넣어야함*/
-		/*
 		List<String> temp = new ArrayList<String>();
 		if(Session.getAttribute("test")!=null) {
 			temp = (List<String>) Session.getAttribute("test");
@@ -106,7 +52,7 @@ public class TestController {
 		
 		
 		System.out.println(temp);
-		// 각 성향별 값
+		/* 각 성향별 값*/
 		int[] testNum = new int[9];
 		//1번 성향
 		testNum[0] = Integer.parseInt(temp.get(2)) + 
@@ -201,7 +147,7 @@ public class TestController {
 				Integer.parseInt(temp.get(69));
 		
 		
-		// map에는 1등과 그 점수가 매핑되어있음 
+		/* map에는 1등과 그 점수가 매핑되어있음 */
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 		for(int i=1; i<=testNum.length; i++) {
 			map.put(i,testNum[i-1]);
@@ -212,7 +158,7 @@ public class TestController {
 			rank[i] = i+1;
 		}
 		
-		// rank에는 순서대로 높은 성향이 들어가있음  
+		/*  rank에는 순서대로 높은 성향이 들어가있음  */
 		Arrays.sort(rank, new Comparator<Integer>() {
 			@Override
 			public int compare(Integer o1, Integer o2) {
@@ -226,7 +172,7 @@ public class TestController {
 			
 		} );
 		
-		// rank확인! 순위대로 나온다  
+		/* rank확인! 순위대로 나온다  */
 		for(int a : rank) {
 			System.out.print(a+" ");
 		}
@@ -241,19 +187,19 @@ public class TestController {
 		int c = testNum[0]+testNum[7]+testNum[8];  // 장형
 		int eclass = (a>b) ? ((a>c) ? 1:3) : ((b>c) ? 2: 3);
 		
-		// 로그인 되어있을 때, 테이블에 저장
+		/* 로그인 되어있을 때, 테이블에 저장*/
 		if(((MemberVO)Session.getAttribute("login"))!=null) {
 			PersonalityVO p = new PersonalityVO(testNum[0],testNum[1],testNum[2],testNum[3],testNum[4],testNum[5],testNum[6],testNum[7],testNum[8]);
 			p.setType(rank[0]);
 			p.setMno(((MemberVO)Session.getAttribute("login")).getMno());
 			p.setEclass(eclass);
 			
-			personalityService.insertPersonality(p);
+			PersonalityDAO.insertPersonality(p);
 		}
 		
 		// rank[0], eclass
-		String eclassContent =  personalityService.getEclass(eclass);
-		String typeContent =  personalityService.getType(rank[0]);
+		String eclassContent =  PersonalityDAO.getEclass(eclass);
+		String typeContent =  PersonalityDAO.getType(rank[0]);
 		
 		
 		Session.setAttribute("type", rank[0]);
@@ -263,6 +209,6 @@ public class TestController {
 		Session.setAttribute("rank", rank);
 		
 		
-		return "/test/test_complete"; */
+		return "/test/test_complete";
 	}
 }

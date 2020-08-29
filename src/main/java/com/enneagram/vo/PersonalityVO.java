@@ -1,12 +1,14 @@
 package com.enneagram.vo;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class PersonalityVO {
 	
 	/*pno int(30),
@@ -15,7 +17,7 @@ public class PersonalityVO {
 	eclass int(2),*/
 	private int pno;
 	private int mno;
-	private Date regdate;
+	private LocalDateTime regdate;
 	private int eclass;
 	private int type;
 	

@@ -28,7 +28,7 @@ public class MemberDAOTest {
 	@Autowired
 	private MemberDAO memberDAO;
 	@Autowired
-	private TestDAO testDAO;
+	private PersonalityDAO testDAO;
 	
 	
 	@Before

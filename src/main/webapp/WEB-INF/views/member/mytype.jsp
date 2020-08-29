@@ -23,8 +23,9 @@
 				<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" onchange="changePersonality(this.value);">
 					<option selected>Choose...</option>
 					<c:forEach var="p" items="${pList }">
-						<fmt:formatDate var="date" pattern="yyyy-MM-dd" value="${p.regdate}" />
-						<option value="${p.pno }">${date}</option>
+						
+						<%-- <fmt:formatDate var="date" pattern="yyyy-MM-dd" value="${p.regdate}" /> --%>
+						<option value="${p.pno }">${p.regdate}</option>
 					</c:forEach>
 				</select>
 

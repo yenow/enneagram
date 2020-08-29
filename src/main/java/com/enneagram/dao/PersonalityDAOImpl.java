@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.enneagram.vo.PersonalityVO;
 
 @Repository
-public class TestDAOImpl implements TestDAO {
+public class PersonalityDAOImpl implements PersonalityDAO {
 
 	@Autowired
 	private SqlSession sqlSession;
@@ -25,5 +25,10 @@ public class TestDAOImpl implements TestDAO {
 	@Override
 	public String getType(Integer type) {
 		return sqlSession.selectOne("p_type", type);
+	}
+
+	@Override
+	public int getTotalCount() {
+		return sqlSession.selectOne("p_getTotalCount");
 	}
 }
