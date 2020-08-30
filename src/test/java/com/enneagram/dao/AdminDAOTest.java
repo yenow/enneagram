@@ -55,17 +55,16 @@ public class AdminDAOTest {
 		log.info("totalCount :" +memberDAO.getTotalCount());
 		List<MemberVO> mList = adminDAO.getMemberList(c);   // 정확한 페이지를 가져왔다는걸 어떻게 알수있을까?
 		log.info("mList :" +mList.get(0).getId());
-		
 		assertThat(mList.size(), is(10));
 	
 	}
 	
-	/*
+	
 	@After
 	public void memberTestFinal() {
 		for(int i=0; i<100; i++) {
 			memberDAO.deleteById("adminTest"+i);;
 		}
 	}
-	*/
+	
 }

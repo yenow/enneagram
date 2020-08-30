@@ -9,8 +9,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.enneagram.domain.Criteria;
 import com.enneagram.service.AdminService;
 import com.enneagram.service.MemberService;
 import com.enneagram.vo.MemberVO;
@@ -44,6 +46,7 @@ public class AdminController {
 		return "admin/login";
 	}
 	
+	// 로그인 인증 처리
 	@RequestMapping("login_ok")
 	public void login_ok(MemberVO m, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
 		MemberVO member = memberService.login_confirm(m.getId());
@@ -81,8 +84,9 @@ public class AdminController {
 	
 	//회원 관리 페이지 이동
 	@RequestMapping("/memberManage")
-	public void memberManage() {
-		
+	public String memberManage(Criteria c,Model m) {
+		adminService.memberManage(c,m);
+		return "admin/memberManage";
 	}
 	
 	//게시글 관리 페이지 이동

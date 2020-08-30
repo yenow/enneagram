@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+.border-1 {
+	border: 1px solid #ccc;
+}
+
+.color-gray {
+	color: gray;
+}
+
+.border-rounded {
+	border-radius: 3px; 
+}
+
+.w70p {
+	width: 70%;
+}
+
+.w10p {
+	width: 10%;
+}
+
+.w20p {
+	width: 20%;
+}
+
+.w30p {
+	width: 50%;
+}
+
+.w40p {
+	width: 50%;
+}
+
+.w50p {
+	width: 50%;
+}

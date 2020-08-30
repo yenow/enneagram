@@ -22,6 +22,7 @@
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
 <link href="../resources/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+<link href="../resources/assets/css/myStyle.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -33,8 +34,10 @@
 </c:if>
 
 	<div class="wrapper">
+		<!-- sidebar -->
 		<jsp:include page="info/sidebar.jsp"></jsp:include>
 		<div class="main-panel">
+			<!-- navbar -->
 			<jsp:include page="info/navbar.jsp"></jsp:include>
 			<div class="content">
 				<div class="container-fluid">
@@ -48,56 +51,60 @@
 								<div class="content table-responsive table-full-width">
 									<table class="table table-hover table-striped">
 										<thead>
-											<th>ID</th>
-											<th>Name</th>
-											<th>Salary</th>
-											<th>Country</th>
-											<th>City</th>
+											<tr>
+												<th>No</th>
+												<th>아이디</th>
+												<th>비밀번호</th>
+												<th>이름</th>
+												<th>닉네임</th>
+												<th>이메일</th>
+												<th>전화번호</th>
+											</tr>
 										</thead>
 										<tbody>
+											<c:forEach var="m" items="${mList }">
+												<tr>
+													<td>${m.mno }</td>
+													<td>${m.id }</td>
+													<td>${m.password }</td>
+													<td>${m.name }</td>
+													<td>${m.nickname }</td>
+													<td>${m.email }</td>
+													<td>${m.tel }</td>
+												</tr>
+											</c:forEach>
 											<tr>
-												<td>1</td>
-												<td>Dakota Rice</td>
-												<td>$36,738</td>
-												<td>Niger</td>
-												<td>Oud-Turnhout</td>
-											</tr>
-											<tr>
-												<td>2</td>
-												<td>Minerva Hooper</td>
-												<td>$23,789</td>
-												<td>CuraÃ§ao</td>
-												<td>Sinaai-Waas</td>
-											</tr>
-											<tr>
-												<td>3</td>
-												<td>Sage Rodriguez</td>
-												<td>$56,142</td>
-												<td>Netherlands</td>
-												<td>Baileux</td>
-											</tr>
-											<tr>
-												<td>4</td>
-												<td>Philip Chaney</td>
-												<td>$38,735</td>
-												<td>Korea, South</td>
-												<td>Overland Park</td>
-											</tr>
-											<tr>
-												<td>5</td>
-												<td>Doris Greene</td>
-												<td>$63,542</td>
-												<td>Malawi</td>
-												<td>Feldkirchen in KÃ¤rnten</td>
-											</tr>
-											<tr>
-												<td>6</td>
-												<td>Mason Porter</td>
-												<td>$78,615</td>
-												<td>Chile</td>
-												<td>Gloucester</td>
+												<!--  style="display: flex; justify-content: center; align-content: center" -->
+												<td colspan="7">
+													<div style="display: flex; justify-content: center; align-content: center">
+														<select class="border-rounded border-1 color-gray" >
+															<option class="color-gray">no</option>
+															<option class="color-gray">아이디</option>
+															<option class="color-gray">비밀번호</option>
+															<option class="color-gray">이름</option>
+															<option class="color-gray">닉네임</option>
+															<option class="color-gray">이메일</option>
+															<option class="color-gray">전화번호</option>
+														</select>
+														<input type="text" class="border-rounded align-self-stretch border-1 w50p" >
+														<button class="btn btn-outline-secondary border-1">검색</button>
+													</div>
+												</td>
 											</tr>
 										</tbody>
+										<tfoot>
+											<tr>
+												<td colspan="7" class="text-center">
+													<!-- 이전페이지 10개 -->
+													<button class="btn btn-outline-secondary btn-sm border-1">&#60;</button>
+													<c:forEach var="p" begin="${pageDTO.startPage }" end="${pageDTO.endPage }">
+														<button class="btn btn-outline-secondary btn-sm border-1" >${p}</button>
+													</c:forEach>
+													<!-- 다음페이지 10개 -->
+													<button class="btn btn-outline-secondary btn-sm border-1" >&#62;</button>
+												</td>
+											</tr>
+										</tfoot>
 									</table>
 								</div>
 							</div>
