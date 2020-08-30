@@ -1,6 +1,7 @@
 package com.enneagram.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -36,13 +37,15 @@ public class AdminControllerTest {
     }
 	
 	@Test
-	public void adminTest() throws Exception {
+	public void adminLoginTest() throws Exception {
 		RequestBuilder reqBuilder = MockMvcRequestBuilders.get("/admin/login");
 		mockMvc.perform(reqBuilder).andExpect(status().isOk()).andExpect(view().name("admin/login")).andDo(print());
 		
 		// perform 메서드가 ResultActions을 반환
 		// andExpect에  ResultMatcher 요게 들어간다.
 	}
+	
+	
 }
 
 

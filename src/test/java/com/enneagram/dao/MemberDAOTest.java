@@ -32,7 +32,7 @@ public class MemberDAOTest {
 	@Test
 	public void setMemberVO() {
 		memberDAO.deleteById("testId");
-		MemberVO memberVO = new MemberVO(0, "testId", "testPassword", "테스트", "테스트", "test@test.com", "01000000000", "M", "관리자", null, "12-12", null);
+		MemberVO memberVO = new MemberVO(0, "testId", "testPassword", "테스트", "테스트", "test@test.com", "01000000000", "M", "관리자", "12-12", null);
 		memberDAO.memberInsert(memberVO);  
 	}
 	
@@ -44,7 +44,7 @@ public class MemberDAOTest {
 		assertSame(memberDAO.getTotalCount(), 0);  // deleteALL 검증
 		
 		int beforeCount = memberDAO.getTotalCount();
-		MemberVO memberVO = new MemberVO(0, "testId2", "testPassword", "테스트", "테스트", "test@test.com", "01000000000", "M", "관리자", null, "12-12", null);
+		MemberVO memberVO = new MemberVO(0, "testId2", "testPassword", "테스트", "테스트", "test@test.com", "01000000000", "M", "관리자",  "12-12", null);
 		memberDAO.memberInsert(memberVO);
 		assertSame(memberDAO.getTotalCount(), beforeCount+1);
 		

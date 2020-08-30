@@ -25,7 +25,6 @@ public class MemberVO {
 	private String tel;
 	private String gender;
 	private String category;
-	private String type;
 	private String birth;
 	private Date regdate;
 	

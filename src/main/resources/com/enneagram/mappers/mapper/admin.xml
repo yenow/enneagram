@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+	
+	<select id="a_getMemberList" resultType="m" >
+	<![CDATA[
+ 		select * from (select @rownum:=@rownum+1 as rownum, m.* FROM member m, (select @rownum:=0) TPM order by mno desc) emp 
+		where emp.rownum <= (#{pageNum} * #{maxLine}) and emp.rownum > (#{pageNum} *#{maxLine} - #{maxLine})
+    ]]>   
+	</select>
+</mapper>
