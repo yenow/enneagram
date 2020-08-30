@@ -25,6 +25,7 @@ public class AjaxController {
 	private static Logger logger = LoggerFactory.getLogger(AjaxController.class);
 	
 	/*
+	 * 
 	 * @RequestMapping(value="/", method=RequestMethod.GET) public String home(){
 	 * return "index"; }
 	 */

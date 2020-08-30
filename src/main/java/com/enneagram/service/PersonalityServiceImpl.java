@@ -1,5 +1,6 @@
 package com.enneagram.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -13,8 +14,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
+import com.enneagram.dao.EnneagramDAO;
 import com.enneagram.dao.PersonalityDAO;
+import com.enneagram.vo.EnneagramVO;
 import com.enneagram.vo.MemberVO;
 import com.enneagram.vo.PersonalityVO;
 
@@ -23,6 +27,8 @@ public class PersonalityServiceImpl implements PersonalitySerivce {
 
 	@Autowired
 	private PersonalityDAO PersonalityDAO;
+	@Autowired
+	private EnneagramDAO enneagramDAO;
 
 	@Override
 	public void insertPersonality(PersonalityVO p) {
@@ -54,6 +60,7 @@ public class PersonalityServiceImpl implements PersonalitySerivce {
 		return PersonalityDAO.myPersonaltiy(pno);
 	}
 
+	// 테스트 완료시 처리 메서드
 	@Override
 	public String test_complete(HttpServletRequest request, HttpSession Session, HttpServletResponse response) {
 		
@@ -225,6 +232,73 @@ public class PersonalityServiceImpl implements PersonalitySerivce {
 		
 		
 		return "/test/test_complete";
+	}
+
+	@Override
+	public String getMyType(HttpSession session, Model model, HttpServletResponse response) {
+		
+		int mno;
+		if(session.getAttribute("login")==null) {
+			return "redirect:/member/login";
+		}else {
+			mno = ((MemberVO)session.getAttribute("login")).getMno();
+			System.out.println(mno);
+		}
+		
+		// 내 검사 리스트를 가져옴
+		List<PersonalityVO> pList = PersonalityDAO.myPersonaltiyList(mno);
+		PersonalityVO recently = new PersonalityVO();  //
+		EnneagramVO eclass =  new EnneagramVO();
+		EnneagramVO type = new EnneagramVO();
+		
+		/* 검사결과가 없을경우 */
+		if(pList.isEmpty()==true) {
+			System.out.println("리스트 없음");
+		}else {
+			/* 가장 최근의 성향 가져오기*/
+			recently = pList.get(0);
+			LocalDateTime recent = pList.get(0).getRegdate();
+	
+			for(PersonalityVO p : pList) { 
+
+				if(recent.isBefore(p.getRegdate())) {
+					recent = p.getRegdate();
+					recently = p;
+				}
+			}
+		
+			/*  pList sort 작업,,  가장 최신의 테스트가 맨 앞쪽으로감 */
+			pList.sort(new Comparator<PersonalityVO>() {
+
+				@Override
+				public int compare(PersonalityVO o1, PersonalityVO o2) {
+					if(o1.getRegdate().isBefore(o2.getRegdate())) {
+						return 1;
+					}
+					return -1;
+				}
+			});
+			
+			EnneagramVO e = new EnneagramVO();
+			e.setCategory("eclass");
+			e.setEclass(recently.getEclass());
+			eclass= enneagramDAO.select(e);
+			e.setCategory("type");
+			e.setType(recently.getType());
+			type= enneagramDAO.select(e);
+			
+			System.out.println(eclass);
+			System.out.println(eclass.getEclass());
+			System.out.println(type);
+			System.out.println(type.getType());
+			
+			model.addAttribute("pList", pList);           //  정렬된 성향리스트
+			model.addAttribute("recently", recently);     //  가장 최근 성향
+			model.addAttribute("eclass", eclass);  	      //  성향에 해당하는 성격설명      
+			model.addAttribute("type", type);             //  성향에 해당하는 성격설명    
+			
+		}
+		return "/member/mytype";
 	}
 
 }

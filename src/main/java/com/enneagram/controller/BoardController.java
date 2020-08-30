@@ -231,6 +231,7 @@ public class BoardController {
 		PrintWriter out = response.getWriter();
 		
 		out.println("alert('게시글이 삭제되었습니다');");
+		out.close();
 		return mv; 
 	} 
 	

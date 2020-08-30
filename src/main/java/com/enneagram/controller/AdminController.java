@@ -41,18 +41,15 @@ public class AdminController {
 				return "redirect:/admin/memberManage";
 			}
 		}
-		return "/admin/login";
+		return "admin/login";
 	}
 	
 	@RequestMapping("login_ok")
 	public void login_ok(MemberVO m, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
 		MemberVO member = memberService.login_confirm(m.getId());
 		PrintWriter out = response.getWriter();
-		
-		log.warn("sl이건되냐");
-		log.info("sl이건되냐");
+
 		if(member==null) {
-			
 			System.out.println(1);
 			out.print("<script>");
 			out.print("alert('아이디가없습니다');");
@@ -60,24 +57,18 @@ public class AdminController {
 			out.print("</script>");
 		}else {
 			if(!(member.getPassword().equals(m.getPassword()))) {
-				
-				System.out.println(2);
 				out.print("<script>");
 				out.print("alert('비밀번호가 같지 않습니다');");
 				out.print("location.href='"+request.getContextPath()+"/admin/login';");
 				out.print("</script>");
 			}else {
 				if(member.getCategory().equals("관리자")) {
-					
-					System.out.println(3);
 					session.setAttribute("login", member);
 					out.print("<script>");
 					out.print("location.href='"+request.getContextPath()+"/admin/memberManage';");
 					out.print("</script>");
 				}else {
-					
 					out.print("<script>");
-					System.out.println(4);
 					out.print("alert('관리자 아이디가 아닙니다');");
 					out.print("location.href='"+request.getContextPath()+"/admin/memberManage';");
 					out.print("</script>");

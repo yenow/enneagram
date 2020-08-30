@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.ui.Model;
+
 import com.enneagram.vo.PersonalityVO;
 
 public interface PersonalitySerivce {
@@ -23,4 +25,6 @@ public interface PersonalitySerivce {
 	List<PersonalityVO> myPersonaltiyList(int mno);
 
 	PersonalityVO myPersonaltiy(int pno);
+
+	String getMyType(HttpSession session, Model model, HttpServletResponse response);
 }

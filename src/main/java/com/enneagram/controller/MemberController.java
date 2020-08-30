@@ -150,33 +150,30 @@ public class MemberController{
 	/* 마이페이지 - 내 성향*/
 	@RequestMapping("/mytype")
 	public String mytype(HttpSession session,Model model,HttpServletResponse response) throws IOException {
-		PrintWriter out = response.getWriter();
 		
+		
+		String str = personalitySerivce.getMyType(session,model,response);
+		/*
 		int mno;
 		if(session.getAttribute("login")==null) {
-			/*
-			 * out.print("<script>"); out.print("alert('로그인이 필요합니다');");
-			 * out.print("location.href='/enneagram';"); // 이런거,, contextRoot를 가져와야하는데..
-			 * out.print("</script>");
-			 */
 			return "redirect:/member/login";
 		}else {
 			mno = ((MemberVO)session.getAttribute("login")).getMno();
 			System.out.println(mno);
 		}
 		
-		/* 내 검사 리스트를 가져옴*/
+		// 내 검사 리스트를 가져옴
 		List<PersonalityVO> pList = personalitySerivce.myPersonaltiyList(mno);
 		
 		PersonalityVO recently = new PersonalityVO();
 		EnneagramVO eclass =  new EnneagramVO();
 		EnneagramVO type = new EnneagramVO();
 		
-		/* 검사결과가 없을경우 */
+		// 검사결과가 없을경우 
 		if(pList.isEmpty()==true) {
 			System.out.println("리스트 없음");
 		}else {
-			/* 가장 최근의 성향 가져오기*/
+			// 가장 최근의 성향 가져오기
 			recently = pList.get(0);
 			LocalDateTime recent = pList.get(0).getRegdate();
 	
@@ -188,7 +185,7 @@ public class MemberController{
 				}
 			}
 		
-			/*  pList sort 작업,,  가장 최신의 테스트가 맨 앞쪽으로감 */
+			//  pList sort 작업,,  가장 최신의 테스트가 맨 앞쪽으로감 
 			pList.sort(new Comparator<PersonalityVO>() {
 
 				@Override
@@ -219,8 +216,8 @@ public class MemberController{
 			model.addAttribute("type", type);
 			
 		}
-
-		return "/member/mytype";
+		*/
+		return str;
 	}
 	
 	/* 비밀번호 확인 -> 개인정보수정페이지 */
@@ -239,6 +236,7 @@ public class MemberController{
 			out.print("location.href='/enneagram/member/myPage';");
 			out.print("</script>");
 		}
+		out.close();
 	}
 	
 	/* 회원정보 수정 처리 */
@@ -254,6 +252,7 @@ public class MemberController{
 			out.print("alert('수정되었습니다');");
 			out.print("location.href='"+request.getContextPath()+"';");
 			out.print("</script>");
+			out.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -282,7 +281,7 @@ public class MemberController{
 			/* 스크립트 작동이 안됨  */
 			return "redirect:/member/login";
 		}
-		
+		out.close();
 		return "/member/member_info";
 	}
 	
