@@ -40,4 +40,6 @@ public interface BoardDAO {
 
 	void boardDeleteById(String string);
 
+	int boardTotalCount();
+
 }

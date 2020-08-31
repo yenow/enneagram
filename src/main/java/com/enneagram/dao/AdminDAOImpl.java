@@ -24,4 +24,9 @@ public class AdminDAOImpl implements AdminDAO {
 	public List<BoardVO> getBoardListByCategory(Criteria c) {
 		return sqlSession.selectList("a_getBoardListByCategory", c);
 	}
+
+	@Override
+	public List<BoardVO> getBoardList(Criteria c) {
+		return sqlSession.selectList("a_getBoardList", c);
+	}
 }

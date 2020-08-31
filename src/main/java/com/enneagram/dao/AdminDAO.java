@@ -11,4 +11,6 @@ public interface AdminDAO {
 	public List<MemberVO> getMemberList(Criteria c);
 
 	public List<BoardVO> getBoardListByCategory(Criteria c);
+
+	public List<BoardVO> getBoardList(Criteria c);
 }

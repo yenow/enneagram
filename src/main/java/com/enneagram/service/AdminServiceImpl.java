@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.enneagram.dao.AdminDAO;
+import com.enneagram.dao.BoardDAO;
 import com.enneagram.dao.MemberDAO;
 import com.enneagram.domain.Criteria;
 import com.enneagram.domain.PageDTO;
@@ -20,6 +21,8 @@ public class AdminServiceImpl implements AdminService {
 	private AdminDAO adminDAO;
 	@Autowired
 	private MemberDAO memberDAO;
+	@Autowired
+	private BoardDAO boardDAO;
 
 	// 회원 관리 페이지 - 멤버 리스트 가져오기
 	@Override
@@ -34,6 +37,11 @@ public class AdminServiceImpl implements AdminService {
 	// 게시판 관리 페이지 - 게시판 리스트 가져오기
 	@Override
 	public void boardManage(Criteria c, Model m) {
-		List<BoardVO> blist = adminDAO.getBoardListByCategory(c);
+
+		List<BoardVO> bList = adminDAO.getBoardList(c);
+		m.addAttribute("bList", bList);
+		int total = boardDAO.boardTotalCount();
+		PageDTO pageDTO = new PageDTO(c, total);
+		m.addAttribute("pageDTO", pageDTO);
 	}
 }

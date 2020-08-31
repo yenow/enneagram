@@ -37,9 +37,7 @@ public class AdminDAOTest {
 	
 	@Before
 	public void memberTestCase() {
-		MemberTestCase mtc = new MemberTestCase(memberDAO);
 		BoardTestCase btc = new BoardTestCase(memberDAO,boardDAO);
-		mtc.TestCaseInput();
 		btc.TestCaseInput();
 	}
 	
@@ -55,20 +53,18 @@ public class AdminDAOTest {
 	
 	@Test
 	public void getBoardList() {
-		
-		
 		Criteria c = new Criteria();
-		c.setCategory("속닥속닥");
-		log.info("totalCount :" +boardDAO.boardTotalCountByCategory(c));
-		List<BoardVO> bList = adminDAO.getBoardListByCategory(c);
-		
+		// 카테고리가 잘못들어간다면?? 없다면?
+		log.info("totalCount :" +boardDAO.boardTotalCount());
+		List<BoardVO> bList = adminDAO.getBoardList(c);
+		assertThat(bList.size(), is(10)); // 제대로된 테스트 x ,,,
 	}
 	
 	@After
 	public void memberTestFinal() {
-		MemberTestCase mtc = new MemberTestCase(memberDAO);
 		BoardTestCase btc = new BoardTestCase(memberDAO,boardDAO);
-		mtc.TestCaseOutput();
+		btc.TestCaseOutput();
+
 	}
 	
 }

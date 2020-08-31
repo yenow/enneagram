@@ -14,6 +14,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="a_getBoardListByCategory" resultType="b">
+	<![CDATA[
+ 		select * from (select @rownum:=@rownum+1 as rownum, b.* FROM board b, (select @rownum:=0) TPM where b.category = #{category} order by b.bno desc ) emp 
+		where emp.rownum <= (#{pageNum} * #{maxLine}) and emp.rownum > (#{pageNum} *#{maxLine} - #{maxLine})
+    ]]>   
+	</select>
 	
+	<select id="a_getBoardList" resultType="b">
+	<![CDATA[
+ 		select * from (select @rownum:=@rownum+1 as rownum, b.* FROM board b, (select @rownum:=0) TPM order by b.bno desc ) emp 
+		where emp.rownum <= (#{pageNum} * #{maxLine}) and emp.rownum > (#{pageNum} *#{maxLine} - #{maxLine})
+    ]]>   
 	</select>
 </mapper>

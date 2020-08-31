@@ -15,7 +15,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="b_list" resultType="b">
 		 <![CDATA[  select * from (select @rownum:=@rownum+1 as rnum, A.* from board A, (select @rownum:=0) TMP where category = #{category}  order by bno desc) TPM where rnum <= #{end} and rnum >= #{start} ]]>
 		<!-- <![CDATA[  select * from (select @rownum:=@rownum+1 as rnum, A.* from board A, (select @rownum:=0) TMP where category = #{category}  order by bno desc) TPM left join  member m on m.mno = TPM.mno where rnum <= #{end} and rnum >= #{start} order by TPM.bno desc  ]]> -->
-		
 		<!-- 부등호를 사용할경우 '>', '<' 같은게 코드랑 겹치기 때문에 <![CDATA[]]> 방법을 쓴다!  -->
 	</select>
 	<!-- select * from (select @rownum:=@rownum+1 as rnum, A.* from board A, (select @rownum:=0) TMP) TPM where rnum > 1 and rnum < 5; -->
@@ -83,4 +82,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="b_boardDeleteById">
 		delete from board where id = #{id}
 	</delete>
+	
+	<select id="b_boardTotalCount" resultType="int">
+		select count(*) from board 
+	</select>
 </mapper>

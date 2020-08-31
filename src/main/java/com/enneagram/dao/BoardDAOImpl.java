@@ -106,6 +106,11 @@ public class BoardDAOImpl implements BoardDAO {
 	public void boardDeleteById(String id) {
 		sqlSession.delete("b_boardDeleteById",id);
 	}
+
+	@Override
+	public int boardTotalCount() {
+		return sqlSession.selectOne("b_boardTotalCount");
+	}
 	
 	
 	
