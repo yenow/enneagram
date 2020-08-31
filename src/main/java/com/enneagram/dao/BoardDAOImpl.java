@@ -96,6 +96,16 @@ public class BoardDAOImpl implements BoardDAO {
 	public void likeydelete(Integer bno) {
 		sqlSession.update("b_likeydelete", bno);
 	}
+
+	@Override
+	public int boardTotalCountByCategory(Criteria c) {
+		return sqlSession.selectOne("b_boardTotalCountByCategory","c");
+	}
+
+	@Override
+	public void boardDeleteById(String id) {
+		sqlSession.delete("b_boardDeleteById",id);
+	}
 	
 	
 	

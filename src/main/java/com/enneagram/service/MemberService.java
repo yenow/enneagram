@@ -17,7 +17,7 @@ public interface MemberService {
 
 	void memberInsert(MemberVO m);
 
-	MemberVO login_confirm(String user_id);
+	MemberVO getMemberById(String id);
 
 	void memberUpdate(MemberVO memberVO);
 

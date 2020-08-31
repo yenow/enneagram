@@ -3,11 +3,15 @@ package com.enneagram.vo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class BoardVO {
 
 	private int bno;   
@@ -20,9 +24,6 @@ public class BoardVO {
 	private Date regdate;   
 	private Date moddate;
 	private int likey;
-	private int type;
-	private int start;
-	private int end;
 	private String id;
 	private String nickname;
 

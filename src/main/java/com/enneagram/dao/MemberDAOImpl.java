@@ -21,8 +21,8 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public MemberVO login_confirm(String user_id) {
-		return sqlSession.selectOne("m_login", user_id);
+	public MemberVO getMemberById(String id) {
+		return sqlSession.selectOne("m_login", id);
 	}
 
 	@Override

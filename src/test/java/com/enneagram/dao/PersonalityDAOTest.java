@@ -30,7 +30,7 @@ public class PersonalityDAOTest {
 		memberDAO.deleteById("testId");
 		MemberVO memberVO = new MemberVO(0, "testId", "testPassword", "테스트", "테스트", "test@test.com", "01000000000", "M", "관리자", "12-12", null);
 		memberDAO.memberInsert(memberVO);  
-		memberVO = memberDAO.login_confirm(memberVO.getId());
+		memberVO = memberDAO.getMemberById(memberVO.getId());
 		
 		person = new PersonalityVO(0,memberVO.getMno(),null,2,5,1,1,1,1,1,1,1,1,1);
 		//(int pno, int mno, LocalDateTime regdate, int eclass, int type, int one, int two, int three, int four, int five, int six, int seven, int eight, int nine)

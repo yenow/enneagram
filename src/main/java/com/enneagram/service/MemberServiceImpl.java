@@ -39,8 +39,8 @@ public class MemberServiceImpl implements MemberService {
 
 	/* 로그인 아이디, 비밀번호 확인*/
 	@Override
-	public MemberVO login_confirm(String user_id) {
-		return memberDAO.login_confirm(user_id);
+	public MemberVO getMemberById(String id) {
+		return memberDAO.getMemberById(id);
 	}
 
 	/* member 수정*/

@@ -49,7 +49,7 @@ public class AdminController {
 	// 로그인 인증 처리
 	@RequestMapping("login_ok")
 	public void login_ok(MemberVO m, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
-		MemberVO member = memberService.login_confirm(m.getId());
+		MemberVO member = memberService.getMemberById(m.getId());
 		PrintWriter out = response.getWriter();
 
 		if(member==null) {
@@ -91,8 +91,8 @@ public class AdminController {
 	
 	//게시글 관리 페이지 이동
 	@RequestMapping("/boardManage")
-	public void boardManage() {
-		
+	public void boardManage(Criteria c,Model m) {
+		adminService.boardManage(c,m);
 	}
 	
 	//댓글 관리 페이지 이동

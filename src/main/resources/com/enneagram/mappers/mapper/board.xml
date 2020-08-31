@@ -7,8 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="Board">
 	
 	<insert id="b_insert">
-		insert into board (bno,mno,title,content,category,regdate,type,moddate,nickname,id) values 
-		(nextval('bno'),#{mno},#{title},#{content},#{category},sysdate(),#{type},sysdate(),#{nickname},#{id})
+		insert into board (bno,mno,title,content,category,regdate,moddate,nickname,id) values 
+		(nextval('bno'),#{mno},#{title},#{content},#{category},sysdate(),sysdate(),#{nickname},#{id})
 	</insert>
 	
 	<!-- 게시판 리스트 가져오기 -->
@@ -76,4 +76,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update board set likey = likey-1 where bno = #{bno}
 	</update>
 	
+	<select id="b_boardTotalCountByCategory" resultType="int">
+		select count(*) from board where category = #{category}
+	</select>
+	
+	<delete id="b_boardDeleteById">
+		delete from board where id = #{id}
+	</delete>
 </mapper>

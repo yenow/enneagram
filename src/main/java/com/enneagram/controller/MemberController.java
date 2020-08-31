@@ -338,7 +338,7 @@ public class MemberController{
 
 	@RequestMapping("/login_ok")
 	public void login_ok(MemberVO m, HttpSession session,HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		MemberVO member = memberSerivce.login_confirm(m.getId()); // user_id로 member객체 정보 가져오기
+		MemberVO member = memberSerivce.getMemberById(m.getId()); // user_id로 member객체 정보 가져오기
 		PrintWriter out = response.getWriter();
 
 		/*

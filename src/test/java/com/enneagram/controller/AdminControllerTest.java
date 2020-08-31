@@ -63,7 +63,7 @@ public class AdminControllerTest {
 		// 데이터베이스에 데이터 새로 주입
 		int before = memberDAO.getTotalCount();  // 이게 되려면 그전에 데이터가 없어야함..
 		for(int i=0; i<100; i++) {
-			if(memberDAO.login_confirm("adminTest"+i)!=null) {
+			if(memberDAO.getMemberById("adminTest"+i)!=null) {
 				memberDAO.deleteById("adminTest"+i);
 				before = before-1;
 			}

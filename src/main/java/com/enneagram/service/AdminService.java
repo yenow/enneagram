@@ -10,4 +10,6 @@ import com.enneagram.vo.MemberVO;
 public interface AdminService {
 
 	public void memberManage(Criteria c, Model m);
+
+	public void boardManage(Criteria c, Model m);
 }

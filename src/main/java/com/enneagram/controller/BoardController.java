@@ -187,7 +187,7 @@ public class BoardController {
 		AttachFileDTO attachFileMember = attachFileService.getAttachFile(b.getMno());  //  회원의 프로필 사진 가져오기
 		mv.addObject("b", b);
 		// 게시판 글쓴이 정보가져오기
-		MemberVO m = memberService.login_confirm(b.getId());
+		MemberVO m = memberService.getMemberById(b.getId());
 		mv.addObject("boardMember", m);
 		
 		int maxcount = boardService.boardAllCount(c.getCategory());   // 게시글 총 개수

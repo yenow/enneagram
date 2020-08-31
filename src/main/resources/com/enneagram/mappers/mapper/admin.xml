@@ -12,4 +12,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where emp.rownum <= (#{pageNum} * #{maxLine}) and emp.rownum > (#{pageNum} *#{maxLine} - #{maxLine})
     ]]>   
 	</select>
+	
+	<select id="a_getBoardListByCategory" resultType="b">
+	
+	</select>
 </mapper>

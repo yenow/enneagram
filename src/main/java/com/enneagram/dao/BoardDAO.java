@@ -1,6 +1,5 @@
 package com.enneagram.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.enneagram.domain.Criteria;
@@ -36,5 +35,9 @@ public interface BoardDAO {
 	void likeyPlus(Integer bno);
 
 	void likeydelete(Integer bno);
+
+	int boardTotalCountByCategory(Criteria c);
+
+	void boardDeleteById(String string);
 
 }

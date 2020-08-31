@@ -54,7 +54,7 @@ public class MemberDAOTest {
 	/* login_confirm() Test */
 	@Test
 	public void login_confirmTest() {
-		MemberVO member = memberDAO.login_confirm("testId");
+		MemberVO member = memberDAO.getMemberById("testId");
 		assertThat(member.getId(), is("testId"));
 		memberDAO.deleteById("testId");
 		LOG.info("login_confirm() : success");
@@ -65,13 +65,13 @@ public class MemberDAOTest {
 	/* memberUpdate() Test */
 	@Test
 	public void memberUpdateTest() {
-		MemberVO member = memberDAO.login_confirm("testId");
+		MemberVO member = memberDAO.getMemberById("testId");
 		member.setPassword("TestPassword");
 		member.setNickname("TestNickName");
 		member.setEmail("TestEMail");
 		member.setTel("000-0000-0000");
 		memberDAO.memberUpdate(member);
-		MemberVO member2 = memberDAO.login_confirm("testId");
+		MemberVO member2 = memberDAO.getMemberById("testId");
 		
 		assertThat(member.getPassword(), is(member2.getPassword()));
 		assertThat(member.getNickname(), is(member2.getNickname()));
@@ -83,7 +83,7 @@ public class MemberDAOTest {
 	/* getMemberVO() Test */
 	@Test
 	public void getMemberVOTest() {
-		MemberVO member = memberDAO.login_confirm("testId");
+		MemberVO member = memberDAO.getMemberById("testId");
 		MemberVO memberVo = memberDAO.getMemberVO(member.getMno());
 		assertThat(memberVo.getId(), is(member.getId()));
 	}

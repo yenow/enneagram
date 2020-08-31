@@ -14,6 +14,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.enneagram.domain.Criteria;
+import com.enneagram.testcase.BoardTestCase;
+import com.enneagram.testcase.MemberTestCase;
+import com.enneagram.vo.BoardVO;
 import com.enneagram.vo.MemberVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -28,29 +31,20 @@ public class AdminDAOTest {
 	AdminDAO adminDAO;
 	@Autowired
 	MemberDAO memberDAO;
+	@Autowired
+	BoardDAO boardDAO;
+	
 	
 	@Before
 	public void memberTestCase() {
-		int before = memberDAO.getTotalCount();  // 이게 되려면 그전에 데이터가 없어야함..
-		for(int i=0; i<100; i++) {
-			if(memberDAO.login_confirm("adminTest"+i)!=null) {
-				memberDAO.deleteById("adminTest"+i);
-				before = before-1;
-			}
-			
-			MemberVO member =  new MemberVO(0, "adminTest"+i, "password"+i, "name"+i, "nickname"+i, 
-					i+"email@naver.com", "010-0000-0000", "M", "사용자", "12-25", null);
-			memberDAO.memberInsert(member);
-		}
-		int after = memberDAO.getTotalCount();
-		log.info("before :" +before);
-		log.info("after :" +after);
-		assertThat(before, is(after-100));
-		
+		MemberTestCase mtc = new MemberTestCase(memberDAO);
+		BoardTestCase btc = new BoardTestCase(memberDAO,boardDAO);
+		mtc.TestCaseInput();
+		btc.TestCaseInput();
 	}
 	
 	@Test
-	public void getMemberList_Test() {
+	public void getMemberList() {
 		Criteria c = new Criteria();
 		log.info("totalCount :" +memberDAO.getTotalCount());
 		List<MemberVO> mList = adminDAO.getMemberList(c);   // 정확한 페이지를 가져왔다는걸 어떻게 알수있을까?
@@ -59,12 +53,22 @@ public class AdminDAOTest {
 	
 	}
 	
+	@Test
+	public void getBoardList() {
+		
+		
+		Criteria c = new Criteria();
+		c.setCategory("속닥속닥");
+		log.info("totalCount :" +boardDAO.boardTotalCountByCategory(c));
+		List<BoardVO> bList = adminDAO.getBoardListByCategory(c);
+		
+	}
 	
 	@After
 	public void memberTestFinal() {
-		for(int i=0; i<100; i++) {
-			memberDAO.deleteById("adminTest"+i);;
-		}
+		MemberTestCase mtc = new MemberTestCase(memberDAO);
+		BoardTestCase btc = new BoardTestCase(memberDAO,boardDAO);
+		mtc.TestCaseOutput();
 	}
 	
 }
