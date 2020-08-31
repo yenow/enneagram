@@ -26,4 +26,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where emp.rownum <= (#{pageNum} * #{maxLine}) and emp.rownum > (#{pageNum} *#{maxLine} - #{maxLine})
     ]]>   
 	</select>
+	
+	<select id="a_getReplyList" resultType="r">
+		<![CDATA[
+ 		select * from (select @rownum:=@rownum+1 as rownum, r.* FROM reply r, (select @rownum:=0) TPM order by r.rno desc ) emp 
+		where emp.rownum <= (#{pageNum} * #{maxLine}) and emp.rownum > (#{pageNum} *#{maxLine} - #{maxLine})
+    ]]>   
+	</select>
 </mapper>

@@ -59,6 +59,7 @@
 												<th>닉네임</th>
 												<th>이메일</th>
 												<th>전화번호</th>
+												<th>삭제</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -71,11 +72,12 @@
 													<td>${m.nickname }</td>
 													<td>${m.email }</td>
 													<td>${m.tel }</td>
+													<td>삭제</td>
 												</tr>
 											</c:forEach>
 											<tr>
 												<!--  style="display: flex; justify-content: center; align-content: center" -->
-												<td colspan="7">
+												<td colspan="8">
 													<div style="display: flex; justify-content: center; align-content: center">
 														<select class="border-rounded border-1 color-gray" >
 															<option class="color-gray">no</option>
@@ -94,7 +96,7 @@
 										</tbody>
 										<tfoot>
 											<tr>
-												<td colspan="7" class="text-center">
+												<td colspan="8" class="text-center">
 													<!-- 이전페이지 10개 -->
 													<button class="btn btn-outline-secondary btn-sm border-1">&#60;</button>
 													<c:forEach var="p" begin="${pageDTO.startPage }" end="${pageDTO.endPage }">

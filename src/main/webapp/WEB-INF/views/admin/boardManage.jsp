@@ -23,6 +23,7 @@
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
 <link href="../resources/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+<link href="../resources/assets/css/myStyle.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -56,7 +57,7 @@
 												<th>아이디</th>
 												<th>닉네임</th>
 												<th>등록시간</th>
-												
+												<th>삭제</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -68,12 +69,12 @@
 													<td>${b.id }</td>
 													<td>${b.nickname }</td>
 													<td>${b.regdate }</td>
-													
+													<td>삭제</td>
 												</tr>
 											</c:forEach>
 											<tr>
 												<!--  style="display: flex; justify-content: center; align-content: center" -->
-												<td colspan="7">
+												<td colspan="8">
 													<div style="display: flex; justify-content: center; align-content: center">
 														<select class="border-rounded border-1 color-gray" >
 															<option class="color-gray">no</option>
@@ -92,7 +93,7 @@
 										</tbody>
 										<tfoot>
 											<tr>
-												<td colspan="6" class="text-center">
+												<td colspan="8" class="text-center">
 													<!-- 이전페이지 10개 -->
 													<button class="btn btn-outline-secondary btn-sm border-1">&#60;</button>
 													<c:forEach var="p" begin="${pageDTO.startPage }" end="${pageDTO.endPage }">

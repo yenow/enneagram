@@ -21,4 +21,6 @@ public interface ReplyDAO {
 	ReplyVO getReply(int rno);
 
 	void updateReply(ReplyVO re);
+
+	int getTotalCount();
 }

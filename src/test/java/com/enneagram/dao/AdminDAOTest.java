@@ -15,9 +15,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.enneagram.domain.Criteria;
 import com.enneagram.testcase.BoardTestCase;
-import com.enneagram.testcase.MemberTestCase;
 import com.enneagram.vo.BoardVO;
 import com.enneagram.vo.MemberVO;
+import com.enneagram.vo.ReplyVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -58,6 +58,13 @@ public class AdminDAOTest {
 		log.info("totalCount :" +boardDAO.boardTotalCount());
 		List<BoardVO> bList = adminDAO.getBoardList(c);
 		assertThat(bList.size(), is(10)); // 제대로된 테스트 x ,,,
+	}
+	
+	@Test
+	public void getReplyList() {
+		Criteria c = new Criteria();
+		List<ReplyVO> rList = adminDAO.getReplyList(c);
+		assertThat(rList.size(), is(10)); // 제대로된 테스트 x ,,,
 	}
 	
 	@After

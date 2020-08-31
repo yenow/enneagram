@@ -97,8 +97,20 @@ public class AdminController {
 	
 	//댓글 관리 페이지 이동
 	@RequestMapping("/replyManage")
-	public void replyManage() {
-		
+	public void replyManage(Criteria c,Model m) {
+		adminService.replyManage(c,m);
+	}
+	
+	@RequestMapping("logout")
+	public void logout(HttpSession session,HttpServletRequest request ,HttpServletResponse response) throws IOException {
+		session.removeAttribute("login");
+		PrintWriter out = response.getWriter();
+		out.print("<script>");
+		out.print("alert('로그아웃되었습니다');");
+		out.print("location.href='"+request.getContextPath()+"';");
+		out.print("</script>");
+		out.close();
+	
 	}
 	
 	@RequestMapping("/dashboard")

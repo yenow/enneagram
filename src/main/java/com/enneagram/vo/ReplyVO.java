@@ -21,7 +21,6 @@ public class ReplyVO {
 	private int rno;    // 
 	private int bno;
 	private int mno;
-	private int rrno;
 	private int category;
 	private String nickname;
 	private String rname;   // 댓글 쓴 사람 아이디

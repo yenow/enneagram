@@ -55,4 +55,9 @@ public class ReplyDAOImpl implements ReplyDAO{
 	public void updateReply(ReplyVO re) {
 		sqlSession.update("updateReply",re);
 	}
+
+	@Override
+	public int getTotalCount() {
+		return sqlSession.selectOne("r_getTotalCount");
+	}
 }

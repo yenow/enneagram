@@ -12,4 +12,6 @@ public interface AdminService {
 	public void memberManage(Criteria c, Model m);
 
 	public void boardManage(Criteria c, Model m);
+
+	public void replyManage(Criteria c, Model m);
 }

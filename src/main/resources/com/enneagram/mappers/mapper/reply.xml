@@ -35,4 +35,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateReply">
 	 	update reply set content = #{content} where rno = #{rno}
 	</update>
+	
+	<select id="r_getTotalCount" resultType="int">
+		select count(*) from reply 
+	</select>
 </mapper>

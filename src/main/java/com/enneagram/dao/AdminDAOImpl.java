@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.enneagram.domain.Criteria;
 import com.enneagram.vo.BoardVO;
 import com.enneagram.vo.MemberVO;
+import com.enneagram.vo.ReplyVO;
 
 @Repository
 public class AdminDAOImpl implements AdminDAO {
@@ -28,5 +29,10 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public List<BoardVO> getBoardList(Criteria c) {
 		return sqlSession.selectList("a_getBoardList", c);
+	}
+
+	@Override
+	public List<ReplyVO> getReplyList(Criteria c) {
+		return sqlSession.selectList("a_getReplyList", c);
 	}
 }
