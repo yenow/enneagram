@@ -48,4 +48,9 @@ public class PersonalityDAOImpl implements PersonalityDAO {
 	public PersonalityVO myPersonaltiy(int pno) {
 		return sqlSession.selectOne("myPersonal", pno);
 	}
+
+	@Override
+	public void deletePersonalityByMno(int mno) {
+		sqlSession.delete("p_deletePersonalityByMno", mno);
+	}
 }

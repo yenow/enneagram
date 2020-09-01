@@ -25,4 +25,6 @@ public interface MemberDAO {
 	public void deleteById(String string);
 
 	public int getTotalCountBySearch(Criteria c);
+
+	public void memberDeleteByMno(int mno);
 }

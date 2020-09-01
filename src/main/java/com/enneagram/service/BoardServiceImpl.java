@@ -1,6 +1,6 @@
 package com.enneagram.service;
 
-import java.util.ArrayList;
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -8,15 +8,31 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.enneagram.dao.AttachFileDAO;
 import com.enneagram.dao.BoardDAO;
+import com.enneagram.dao.LikeyDAO;
+import com.enneagram.dao.ReplyDAO;
+import com.enneagram.domain.AttachFileDTO;
 import com.enneagram.domain.Criteria;
 import com.enneagram.vo.BoardVO;
+import com.enneagram.vo.LikeyVO;
+import com.enneagram.vo.ReplyVO;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class BoardServiceImpl implements BoardService{
 
 	@Autowired
 	private BoardDAO boardDAO;
+	@Autowired
+	private AttachFileDAO attachFileDAO;
+	@Autowired
+	private LikeyDAO likeyDAO;
+	@Autowired
+	private ReplyDAO replyDAO;
+	
 
 	@Override
 	public void insertBoard(BoardVO bo) {
@@ -60,8 +76,25 @@ public class BoardServiceImpl implements BoardService{
 		boardDAO.boardUpdate(b);
 	}
 
+	// 게시판삭제,  삭제할때 관련된 첨부파일까지 모두 삭제
 	@Override
 	public void boardDelete(int bno) {
+		// 첨부파일 삭제
+		List<AttachFileDTO> aList = attachFileDAO.selectAttachListByBno(bno);
+		for(AttachFileDTO a : aList) {
+			String path  = a.getMappingURL()+a.getRealName();
+			log.info("삭제할 경로 :"+path);
+			File f = new File(path);
+			if(f.exists()) {
+				f.delete();
+			}
+			attachFileDAO.deleteAttachByAtno(a.getAtno());
+		}
+		// 좋아요삭제
+		likeyDAO.likeyDeleteByBno(bno);
+		// 댓글 삭제
+		replyDAO.replyDeleteByBno(bno);
+		// 게시글 삭제
 		boardDAO.boardDelete(bno);
 	}
 

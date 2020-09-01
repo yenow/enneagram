@@ -11,10 +11,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="getLikey" resultType="com.enneagram.vo.LikeyVO">
-		select * from likey where bno =#{bno} and  mno =#{mno}
+		select * from likey where bno =#{bno} and mno =#{mno}
 	</select>
 	
 	<delete id="likeydelete">
 		delete from likey where bno =#{bno} and  mno =#{mno}
+	</delete>
+	
+	<select id="l_getLikeyByBno" resultType="com.enneagram.vo.LikeyVO">
+		select * from likey where bno = #{bno}
+	</select>
+	
+	<delete id="l_likeyDeleteByLno" >
+		delete from likey where lno= #{lno}
+	</delete>
+	
+	<select id="l_getLikeyByMno" resultType="com.enneagram.vo.LikeyVO">
+		select * from likey where mno = #{mno}
+	</select>
+	
+	<delete id="l_likeyDeleteByMno">
+		delete from likey where mno= #{mno}
+	</delete>
+	
+	<delete id="l_likeyDeleteByBno">
+		delete from likey where bno= #{bno}
 	</delete>
 </mapper>

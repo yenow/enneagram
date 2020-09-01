@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.enneagram.domain.Criteria;
 import com.enneagram.service.AdminService;
+import com.enneagram.service.BoardService;
 import com.enneagram.service.MemberService;
+import com.enneagram.service.ReplyService;
 import com.enneagram.vo.MemberVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +34,10 @@ public class AdminController {
 	private AdminService adminService;
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private BoardService boardService;
+	@Autowired
+	private ReplyService replyService;
 	
 	// 관리자 로그인
 	@RequestMapping("login")
@@ -113,6 +119,27 @@ public class AdminController {
 		out.print("</script>");
 		out.close();
 	
+	}
+	
+	// 게시물 삭제
+	@RequestMapping("boardDelete")
+	public String boardDelete(int bno) {
+		boardService.boardDelete(bno);
+		return "redirect:/admin/boardManage";
+	}
+	
+	// 회원 삭제
+	@RequestMapping("memberDelete")
+	public String memberDelete(int mno) {
+		memberService.memberDeleteByMno(mno);
+		return "redirect:/admin/memberManage";
+	}
+	
+	// 댓글삭제
+	@RequestMapping("replyDelete")
+	public String replyDelete(int rno, int bno) {
+		replyService.replyDelete(rno, bno);
+		return "redirect:/admin/replyManage";
 	}
 	
 	@RequestMapping("/dashboard")

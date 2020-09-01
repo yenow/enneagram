@@ -116,6 +116,11 @@ public class BoardDAOImpl implements BoardDAO {
 	public int boardTotalCountBySearch(Criteria c) {
 		return sqlSession.selectOne("b_boardTotalCountBySearch",c);
 	}
+
+	@Override
+	public List<BoardVO> getBoardByMno(int mno) {
+		return sqlSession.selectList("b_getBoardByMno", mno);
+	}
 	
 	
 	

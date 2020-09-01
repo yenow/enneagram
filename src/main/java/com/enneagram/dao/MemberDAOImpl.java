@@ -65,4 +65,9 @@ public class MemberDAOImpl implements MemberDAO {
 	public int getTotalCountBySearch(Criteria c) {
 		return sqlSession.selectOne("m_getTotalCountBySearch",c);
 	}
+
+	@Override
+	public void memberDeleteByMno(int mno) {
+		sqlSession.delete("m_memberDeleteByMno", mno);
+	}
 }

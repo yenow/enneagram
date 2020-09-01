@@ -60,7 +60,7 @@
 													<td colspan="3">${r.content }</td>
 													<td>${r.rname }</td>
 													<td>${r.regdate }</td>
-													<th>삭제</th>
+													<th><a class="btn btn-outline-secondary border-1" href="${pageContext.request.contextPath}/admin/replyDelete?bno=${r.bno}&rno=${r.rno}" onclick="return deleteConfirm();">삭제</a></th>
 												</tr>
 											</c:forEach>
 											<tr>
@@ -128,6 +128,16 @@
 	  	console.log(page);
 	  	console.log(data);
 		$('#pageForm').submit();
+	}
+	
+	function deleteConfirm() {
+		var flag = confirm("정말 삭제하시겠습니까?");
+		if(flag==true){
+			alert("삭제되었습니다");
+			return true;
+		}else{
+			return false;
+		}
 	}
 	</script>
 </body>

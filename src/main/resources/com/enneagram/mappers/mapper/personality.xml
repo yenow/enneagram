@@ -30,4 +30,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="p_getTotalCount" resultType="int">
 		select count(*) from personality
 	</select>
+	
+	<delete id="p_deletePersonalityByMno">
+		delete from personality where mno = #{mno}
+	</delete>
 </mapper>

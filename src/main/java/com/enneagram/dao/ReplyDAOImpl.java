@@ -66,4 +66,21 @@ public class ReplyDAOImpl implements ReplyDAO{
 	public int getTotalCountBySearch(Criteria c) {
 		return  sqlSession.selectOne("r_getTotalCountBySearch",c);
 	}
+
+	@Override
+	public List<ReplyVO> getReplyListByMno(int mno) {
+		return sqlSession.selectList("r_getReplyListByMno", mno);
+	}
+
+	@Override
+	public void replyDeleteByMno(int mno) {
+		sqlSession.delete("r_replyDeleteByMno", mno);
+		
+	}
+
+	@Override
+	public void replyDeleteByBno(int bno) {
+		sqlSession.delete("r_replyDeleteByBno", bno);
+	}
+
 }

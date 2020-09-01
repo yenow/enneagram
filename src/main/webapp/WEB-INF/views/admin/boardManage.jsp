@@ -69,7 +69,7 @@
 													<td>${b.id }</td>
 													<td>${b.nickname }</td>
 													<td>${b.regdate }</td>
-													<td>삭제</td>
+													<td><a class="btn btn-outline-secondary border-1" href="${pageContext.request.contextPath}/admin/boardDelete?bno=${b.bno}" onclick="return deleteConfirm();">삭제</a></td>
 												</tr>
 											</c:forEach>
 											<tr>
@@ -147,6 +147,16 @@
 		document.location.href='${pageContext.request.contextPath}/admin/boardManage?pageNum=${pageDTO.cri.pageNum}&search='+search+'&insertCategory='+insertCategory;
 	} 
 	
+	function deleteConfirm() {
+		var flag = confirm("정말 삭제하시겠습니까?");
+		if(flag==true){
+			alert("삭제되었습니다");
+			return true;
+		}else{
+			
+			return false;
+		}
+	}
 	</script>
 </body>
 <!--   Core JS Files   -->

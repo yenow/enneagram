@@ -72,7 +72,7 @@
 													<td>${m.nickname }</td>
 													<td>${m.email }</td>
 													<td>${m.tel }</td>
-													<td>삭제</td>
+													<td><a class="btn btn-outline-secondary border-1" href="${pageContext.request.contextPath}/admin/memberDelete?mno=${m.mno}" onclick="return deleteConfirm();">삭제</a></td>
 												</tr>
 											</c:forEach>
 											<tr>
@@ -111,39 +111,6 @@
 														</c:if>
 													
 													</form>
-													
-													<%-- <!-- 이전페이지 10개 -->
-													<c:if test="${pageDTO.prev == true }">
-														<!-- search를 한경우 -->
-														<c:if test="${pageDTO.cri.search !=null }">
-															<a class="btn btn-outline-secondary btn-sm border-1" href="${pageContext.request.contextPath}/admin/memberManage?pageNum=${pageDTO.starPage-10}&search=${pageDTO.cri.search}&insertCategory=${pageDTO.cri.insertCategory}">&#60;</a>
-														</c:if>
-														<!-- search를 안한경우 -->
-														<c:if test="${pageDTO.cri.search ==null }">
-															<a class="btn btn-outline-secondary btn-sm border-1" href="${pageContext.request.contextPath}/admin/memberManage?pageNum=${pageDTO.starPage-10}">&#60;</a>
-														</c:if>
-													</c:if>
-													<c:forEach var="p" begin="${pageDTO.startPage }" end="${pageDTO.endPage }">
-														<!-- search를 한경우 -->
-														<c:if test="${pageDTO.cri.search !=null }">
-															<a class="btn btn-outline-secondary btn-sm border-1" href="${pageContext.request.contextPath}/admin/memberManage?pageNum=${p}&search=${pageDTO.cri.search}&insertCategory=${pageDTO.cri.insertCategory}">${p}</a>
-														</c:if>
-														<!-- search를 안한경우 -->
-														<c:if test="${pageDTO.cri.search ==null }">
-															<a class="btn btn-outline-secondary btn-sm border-1" href="${pageContext.request.contextPath}/admin/memberManage?pageNum=${p}">${p}</a>
-														</c:if>
-													</c:forEach>
-													<!-- 다음페이지 10개 -->
-													<c:if test="${pageDTO.next == true }">
-														<!-- search를 한경우 -->
-														<c:if test="${pageDTO.cri.search !=null }">
-															<a class="btn btn-outline-secondary btn-sm border-1" href="${pageContext.request.contextPath}/admin/memberManage?pageNum=${pageDTO.starPage+10}&search=${pageDTO.cri.search}&insertCategory=${pageDTO.cri.insertCategory}">&#62;</a>
-														</c:if>
-														<!-- search를 안한경우 -->
-														<c:if test="${pageDTO.cri.search ==null }">
-															<a class="btn btn-outline-secondary btn-sm border-1" href="${pageContext.request.contextPath}/admin/memberManage?pageNum=${pageDTO.starPage+10}">&#62;</a>
-														</c:if>
-													</c:if> --%>
 												</td>
 											</tr>
 										</tfoot>
@@ -172,6 +139,17 @@
 		  	console.log(page);
 		  	console.log(data);
 			$('#pageForm').submit();
+		}
+		
+		function deleteConfirm() {
+			var flag = confirm("정말 삭제하시겠습니까? 관련된 게시물이 모두 삭제됩니다.");
+			if(flag==true){
+				alert("삭제되었습니다");
+				return true;
+			}else{
+				
+				return false;
+			}
 		}
 	</script>
 </body>

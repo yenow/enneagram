@@ -229,7 +229,6 @@ public class BoardController {
 		ModelAndView mv = new ModelAndView("redirect:/board/boardList");
 		boardService.boardDelete(bno);
 		PrintWriter out = response.getWriter();
-		
 		out.println("alert('게시글이 삭제되었습니다');");
 		out.close();
 		return mv; 

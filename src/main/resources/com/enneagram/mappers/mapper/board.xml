@@ -90,4 +90,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="b_boardTotalCountBySearch" resultType="int">
 		select count(*) from board where ${insertCategory} like CONCAT('%',#{search},'%')
 	</select>
+	
+	<select id="b_getBoardByMno" resultType="b">
+		select * from board where mno = #{mno}
+	</select>
 </mapper>

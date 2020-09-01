@@ -20,4 +20,6 @@ public interface PersonalityDAO {
 	
 	int getTotalCount();
 
+	void deletePersonalityByMno(int mno);
+
 }

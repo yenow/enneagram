@@ -43,4 +43,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="r_getTotalCountBySearch" resultType="int">
 		select count(*) from reply where ${insertCategory} like CONCAT('%',#{search},'%')
 	</select>
+	
+	<select id="r_getReplyListByMno" resultType="r">
+		select * from reply where mno = #{mno}
+	</select>
+	
+	<delete id="r_replyDeleteByMno">
+		delete from reply where mno = #{mno}
+	</delete>
+	
+	<delete id="r_replyDeleteByBno">
+		delete from reply where bno = #{bno}
+	</delete>
 </mapper>

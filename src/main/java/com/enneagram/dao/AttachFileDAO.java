@@ -16,4 +16,8 @@ public interface AttachFileDAO {
 
 	void deleteMemberAttach(int mno);
 
+	void deleteAttachByAtno(int atno);
+
+	List<AttachFileDTO> selectAttachListByBno(int bno);
+
 }

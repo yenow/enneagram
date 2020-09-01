@@ -44,4 +44,6 @@ public interface BoardDAO {
 
 	int boardTotalCountBySearch(Criteria c);
 
+	List<BoardVO> getBoardByMno(int mno);
+
 }

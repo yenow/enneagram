@@ -18,19 +18,38 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.enneagram.dao.AttachFileDAO;
+import com.enneagram.dao.BoardDAO;
+import com.enneagram.dao.LikeyDAO;
 import com.enneagram.dao.MemberDAO;
+import com.enneagram.dao.PersonalityDAO;
+import com.enneagram.dao.ReplyDAO;
 import com.enneagram.domain.ApiExamMemberProfile;
+import com.enneagram.domain.AttachFileDTO;
+import com.enneagram.vo.BoardVO;
+import com.enneagram.vo.LikeyVO;
 import com.enneagram.vo.MemberVO;
 import com.enneagram.vo.PersonalityVO;
+import com.enneagram.vo.ReplyVO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private MemberDAO memberDAO;
+	@Autowired
+	private BoardDAO boardDAO;
+	@Autowired
+	private BoardService boardSerivce;
+	@Autowired
+	private AttachFileDAO attachFileDAO;
+	@Autowired
+	private LikeyDAO likeyDAO;
+	@Autowired
+	private ReplyDAO replyDAO;
+	@Autowired
+	private PersonalityDAO personalityDAO;
 
 	@Override
 	public void memberInsert(MemberVO m) {
@@ -182,5 +201,28 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO getMemberVO(int mno) {
 		return memberDAO.getMemberVO(mno);
+	}
+
+	
+	@Override
+	public void memberDeleteByMno(int mno) {
+		// 게시물삭제
+		List<BoardVO> bList = boardDAO.getBoardByMno(mno);
+		for(BoardVO b : bList) {
+			boardSerivce.boardDelete(b.getBno());
+		}
+		// 첨부파일 삭제
+		AttachFileDTO attach = attachFileDAO.getAttachFile(mno);
+		if(attach!=null) {
+			attachFileDAO.deleteMemberAttach(mno);
+		}
+		// 댓글 삭제
+		replyDAO.replyDeleteByMno(mno);
+		// 좋아요 삭제
+		likeyDAO.likeyDeleteByMno(mno);
+		// 성격 삭제
+		personalityDAO.deletePersonalityByMno(mno);
+		// 회원삭제
+		memberDAO.memberDeleteByMno(mno);
 	}
 }

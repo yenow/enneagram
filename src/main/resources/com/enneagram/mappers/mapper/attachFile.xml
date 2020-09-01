@@ -27,4 +27,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteMemberAttach">
 		delete from attachFile where mno = #{mno}
 	</delete>
+	
+	<delete id="a_deleteAttachByAtno">
+		delete from attachFile where atno = #{atno} 
+	</delete>
+	
+	<select id="a_selectAttachListByBno" resultType="com.enneagram.domain.AttachFileDTO">
+		select * from attachFile where bno = #{bno} 
+	</select>
 </mapper>

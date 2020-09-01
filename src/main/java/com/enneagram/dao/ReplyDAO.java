@@ -26,4 +26,11 @@ public interface ReplyDAO {
 	int getTotalCount();
 
 	int getTotalCountBySearch(Criteria c);
+
+	List<ReplyVO> getReplyListByMno(int mno);
+
+	void replyDeleteByMno(int mno);
+
+	void replyDeleteByBno(int bno);
+
 }

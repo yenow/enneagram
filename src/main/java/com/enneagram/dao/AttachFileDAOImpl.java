@@ -39,4 +39,15 @@ public class AttachFileDAOImpl implements AttachFileDAO {
 	public void deleteMemberAttach(int mno) {
 		sqlsession.delete("deleteMemberAttach", mno);
 	}
+
+	@Override
+	public void deleteAttachByAtno(int atno) {
+		sqlsession.delete("a_deleteAttachByAtno",atno);
+	}
+
+	@Override
+	public List<AttachFileDTO> selectAttachListByBno(int bno) {
+		return sqlsession.selectList("a_selectAttachListByBno", bno);
+	}
+
 }

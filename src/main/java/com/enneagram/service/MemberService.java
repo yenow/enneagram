@@ -27,5 +27,7 @@ public interface MemberService {
 
 	MemberVO getMemberVO(int mno);
 
+	void memberDeleteByMno(int mno);
+
 
 }
