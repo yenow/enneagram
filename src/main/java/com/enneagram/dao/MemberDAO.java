@@ -27,4 +27,6 @@ public interface MemberDAO {
 	public int getTotalCountBySearch(Criteria c);
 
 	public void memberDeleteByMno(int mno);
+
+	public MemberVO getMemberByEmail(String email);
 }

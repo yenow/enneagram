@@ -29,7 +29,7 @@
 					
 					<div class="comment-form-wrap"></div>
 					<p>
-						<a href="#" class="float-left">아이디찾기 /</a> <a href="#" class="float-left ml-2">비밀번호찾기</a> <a href="${pageContext.request.contextPath}/member/member_insert" class="float-right">회원가입</a>
+						<a href="${pageContext.request.contextPath}/member/email_input?kind=id" class="float-left">아이디찾기 /</a> <a href="${pageContext.request.contextPath}/member/email_input?kind=password" class="float-left ml-2">비밀번호찾기</a> <a href="${pageContext.request.contextPath}/member/member_insert" class="float-right">회원가입</a>
 					</p>
 					<div class="comment-form-wrap"></div>
 					<input type="submit" value="로그인" class="btn btn-primary py-3 px-7 mt-2">

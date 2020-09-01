@@ -28,10 +28,7 @@ import com.enneagram.dao.ReplyDAO;
 import com.enneagram.domain.ApiExamMemberProfile;
 import com.enneagram.domain.AttachFileDTO;
 import com.enneagram.vo.BoardVO;
-import com.enneagram.vo.LikeyVO;
 import com.enneagram.vo.MemberVO;
-import com.enneagram.vo.PersonalityVO;
-import com.enneagram.vo.ReplyVO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -224,5 +221,29 @@ public class MemberServiceImpl implements MemberService {
 		personalityDAO.deletePersonalityByMno(mno);
 		// 회원삭제
 		memberDAO.memberDeleteByMno(mno);
+	}
+
+	@Override
+	public boolean isEmailExist(String email) {
+		MemberVO m = memberDAO.getMemberByEmail(email);
+		if(m==null) {
+			return false;
+		}else {
+			return true;
+		}
+		
+	}
+
+	// 이메일로 아이디 보여주기
+	@Override
+	public void findIdResult(String email, Model m) {
+		MemberVO member = memberDAO.getMemberByEmail(email);
+		m.addAttribute("member", member);
+	}
+
+	@Override
+	public void passwordChange(String email, Model m) {
+		MemberVO member = memberDAO.getMemberByEmail(email);
+		m.addAttribute("member", member);
 	}
 }

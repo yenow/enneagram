@@ -29,5 +29,11 @@ public interface MemberService {
 
 	void memberDeleteByMno(int mno);
 
+	boolean isEmailExist(String email);
+
+	void findIdResult(String email, Model m);
+
+	void passwordChange(String email, Model m);
+
 
 }

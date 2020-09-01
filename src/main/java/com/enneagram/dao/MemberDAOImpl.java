@@ -70,4 +70,9 @@ public class MemberDAOImpl implements MemberDAO {
 	public void memberDeleteByMno(int mno) {
 		sqlSession.delete("m_memberDeleteByMno", mno);
 	}
+
+	@Override
+	public MemberVO getMemberByEmail(String email) {
+		return sqlSession.selectOne("m_getMemberByEmail", email);
+	}
 }

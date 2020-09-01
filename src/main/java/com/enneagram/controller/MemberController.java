@@ -172,10 +172,44 @@ public class MemberController{
         
     }
     
-    // 아이디, 비밀번호 찾기
-    @RequestMapping("emailInput")
-    public void emailInput() {
+    // 비밀번호 변경 처리
+    @RequestMapping("passwordChange_ok")
+    public void passwordChange_ok(String password,Model m) {
     	
+    }
+    
+    // 비밀번호 찾기후 변경하는 페이지
+    @RequestMapping("passwordChange")
+    public void passwordChange(String email,Model m) {
+    	memberSerivce.passwordChange(email, m);
+    }
+    
+    // 아이디 찾기후 아이디 알려주는 페이지
+    @RequestMapping("findIdResult")
+    public void findIdResult(String email,Model m) {
+    	memberSerivce.findIdResult(email,m);
+    }
+    
+    // 이메일 존재 확인
+    @RequestMapping(value = "emailConfirm", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<String> emailConfirm(String email) {
+    	ResponseEntity<String> re = null;
+    	try {
+	    	if(memberSerivce.isEmailExist(email)) {
+	    		return new ResponseEntity<String>("true",HttpStatus.OK);
+	    	}else {
+	    		return new ResponseEntity<String>("false",HttpStatus.OK);
+	    	}
+    	} catch (Exception e) {
+    		return  new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+		}
+    }
+    
+    // 아이디, 비밀번호 찾기
+    @RequestMapping("email_input")
+    public void email_input(String kind, Model m) {
+    	m.addAttribute("kind",kind);
     }
     
 	// 프로필 사진 정보 가져오는 AJAX

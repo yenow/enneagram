@@ -17,14 +17,14 @@
 			<div class="col-md-6 text-center">
 				<form method="post" action="${pageContext.request.contextPath}/member/member_insert_ok" id="signUpForm">
 					<h2 class="text-center mb-5">회원가입</h2>
-
+					<!-- 아이디 입력 -->
 					<input type="text" class="form-control my-2" name="id" id="id"  placeholder="아이디 입력" />
 					<p class="text-left" id="p_id"></p>
-
+					<!-- 비밀번호입력-->
 					<input type="password" class="form-control  my-2" name="password" id="password" placeholder="비밀번호입력" />
 					<input type="password" class="form-control my-2" name="password2" id="password2"  placeholder="비밀번호 재입력" />
 					<p class="text-left" id="p_password"></p>
-
+					<!-- 이름 입력 -->
 					<input type="text" class="form-control  my-2" name="name" id="name"  placeholder="이름" />
 					<p class="text-left" id="p_name"></p>
 
@@ -33,10 +33,10 @@
 
 					<input type="tel" class="form-control  my-2" name="tel" id="tel"  placeholder="전화번호" />
 					<p class="text-left" id="p_tel"></p>
-					
+					<!-- 이메일 입력 -->
 					<div class="form-row" id="email-Input">
 						<div class="col-10"><input type="email" class="form-control  my-2" name="email" id="email"  placeholder="이메일" /></div>
-						<div class="col-2"><button class="btn btn-outline-secondary my-2" style="height: 80%" onclick="return emailAuthority();">이메일인증</button></div>
+						<div class="col-2"><button type="button" class="btn btn-outline-secondary my-2" style="height: 80%" onclick="return emailAuthority();">이메일인증</button></div>
 					</div>
 					
 					<p class="text-left" id="p_email"></p>
@@ -48,7 +48,7 @@
 					
 					<p class="text-left" id="p_gender"></p>
 
-					<input type="submit" value="회원가입" class="btn btn-primary form-control">
+						<input type="submit" value="등록" class="btn btn-primary btn-block">
 					
 					<p></p>
 				</form>
@@ -73,32 +73,53 @@ function emailAuthority() {
 		$('#p_email').html('이메일을 입력해주세요');
 		return false;
 	}else{
-		if(flag==false){
-			return false;
-		}
-		flag = false;
-		$div1= $('<div class="col-10 email-confirm-div"><input type="number" class="form-control  my-2" name="email-confirm" id="email-confirm"  placeholder="이메일 인증코드" /></div>');
-		$div2= $('<d iv class="col-2"><button class="btn btn-outline-secondary" style="height: 80%; width:100%;" onclick="return emailConfirm();">확인</button></div>');
-		$('#email-Input').append($div1);
-		$('#email-Input').append($div2);
 		
-		
-		$.ajax({
-			url : '${pageContext.request.contextPath}/member/auth.do',
-			type : 'POST',
-			data : {'email' : email}, 
-			dataType : 'html',
-			success : function(dice) {
-				console.log(dice);
-				emailcode = dice;
-			},
-			error : function() {
-				console.log('전송실패');
-			}
+			$.ajax({
+				url : '${pageContext.request.contextPath}/member/emailConfirm',
+				type : 'POST',
+				data : {'email' : email}, 
+				dataType : 'html',
+				success : function(data) {
+					console.log(data);
+					
+					// 이메일이 존재할떄
+					if(data=='true'){
+						alert('중복된 이메일 입니다');
+						return false;
+					}else{  // 이메일이 없을떄, 이메일은 중복되면 안됨, 이제 인증코드 보냄
+						
+						if(flag==false){
+							return false;
+						}
+						flag = false;
+						$div1= $('<div class="col-10 email-confirm-div"><input type="number" class="form-control  my-2" name="email-confirm" id="email-confirm"  placeholder="이메일 인증코드" /></div>');
+						$div2= $('<d iv class="col-2"><button class="btn btn-outline-secondary" style="height: 80%; width:100%;" onclick="return emailConfirm();">확인</button></div>');
+						$('#email-Input').append($div1);
+						$('#email-Input').append($div2);
+						
+						$.ajax({
+							url : '${pageContext.request.contextPath}/member/auth.do',
+							type : 'POST',
+							data : {'email' : email}, 
+							dataType : 'html',
+							success : function(dice) {
+								console.log(dice);
+								emailcode = dice;
+							},
+							error : function() {
+								console.log('전송실패');
+							}
+						});
+					}
+					
+				},
+				error : function() {
+					console.log('전송실패');
+				}
 		});
 	}
-	
 }
+
 // 인증코드 확인작업
 function emailConfirm() {
 	console.log("이메일 인증 번호 확인");
