@@ -13,12 +13,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     ]]>   
 	</select>
 	
-	<select id="a_getBoardListByCategory" resultType="b">
+	<!-- <select id="a_getBoardListByCategory" resultType="b">
 	<![CDATA[
  		select * from (select @rownum:=@rownum+1 as rownum, b.* FROM board b, (select @rownum:=0) TPM where b.category = #{category} order by b.bno desc ) emp 
 		where emp.rownum <= (#{pageNum} * #{maxLine}) and emp.rownum > (#{pageNum} *#{maxLine} - #{maxLine})
     ]]>   
-	</select>
+	</select> -->
 	
 	<select id="a_getBoardList" resultType="b">
 	<![CDATA[
@@ -30,6 +30,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="a_getReplyList" resultType="r">
 		<![CDATA[
  		select * from (select @rownum:=@rownum+1 as rownum, r.* FROM reply r, (select @rownum:=0) TPM order by r.rno desc ) emp 
+		where emp.rownum <= (#{pageNum} * #{maxLine}) and emp.rownum > (#{pageNum} *#{maxLine} - #{maxLine})
+    ]]>   
+	</select>
+	
+	<select id="a_getMemberListBySearch" resultType="m">
+		<![CDATA[
+ 		select * from (select @rownum:=@rownum+1 as rownum, m.* FROM member m, (select @rownum:=0) TPM where ${insertCategory} like CONCAT('%',#{search},'%') order by mno desc) emp 
+		where emp.rownum <= (#{pageNum} * #{maxLine}) and emp.rownum > (#{pageNum} *#{maxLine} - #{maxLine})
+    ]]>   
+	</select>
+	
+	<select id="a_getBoardListBySearch" resultType="b">
+		<![CDATA[
+ 		select * from (select @rownum:=@rownum+1 as rownum, b.* FROM board b, (select @rownum:=0) TPM where ${insertCategory} like CONCAT('%',#{search},'%') order by b.bno desc ) emp 
+		where emp.rownum <= (#{pageNum} * #{maxLine}) and emp.rownum > (#{pageNum} *#{maxLine} - #{maxLine})
+    ]]>   
+	</select>
+	
+	<select id="a_getReplyListBySearch" resultType="r">
+		<![CDATA[
+ 		select * from (select @rownum:=@rownum+1 as rownum, r.* FROM reply r, (select @rownum:=0) TPM where ${insertCategory} like CONCAT('%',#{search},'%') order by r.rno desc ) emp 
 		where emp.rownum <= (#{pageNum} * #{maxLine}) and emp.rownum > (#{pageNum} *#{maxLine} - #{maxLine})
     ]]>   
 	</select>

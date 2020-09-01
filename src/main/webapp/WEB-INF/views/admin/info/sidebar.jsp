@@ -25,12 +25,6 @@
 					<p>댓글 관리</p>
 				</a>
 			</li>
-			<li class="active-pro">
-				<a href="upgrade.html">
-					<i class="pe-7s-rocket"></i>
-					<p>Upgrade to PRO</p>
-				</a>
-			</li>
 		</ul>
 	</div>
 </div>

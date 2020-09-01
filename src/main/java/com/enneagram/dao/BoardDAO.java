@@ -42,4 +42,6 @@ public interface BoardDAO {
 
 	int boardTotalCount();
 
+	int boardTotalCountBySearch(Criteria c);
+
 }

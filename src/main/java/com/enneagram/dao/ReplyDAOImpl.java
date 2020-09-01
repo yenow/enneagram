@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.enneagram.domain.Criteria;
 import com.enneagram.vo.ReplyVO;
 
 @Repository
@@ -59,5 +60,10 @@ public class ReplyDAOImpl implements ReplyDAO{
 	@Override
 	public int getTotalCount() {
 		return sqlSession.selectOne("r_getTotalCount");
+	}
+
+	@Override
+	public int getTotalCountBySearch(Criteria c) {
+		return  sqlSession.selectOne("r_getTotalCountBySearch",c);
 	}
 }

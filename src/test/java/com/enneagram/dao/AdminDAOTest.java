@@ -54,10 +54,26 @@ public class AdminDAOTest {
 	@Test
 	public void getBoardList() {
 		Criteria c = new Criteria();
+		c.setSearch(null);
+		c.setInsertCategory(null);
 		// 카테고리가 잘못들어간다면?? 없다면?
 		log.info("totalCount :" +boardDAO.boardTotalCount());
 		List<BoardVO> bList = adminDAO.getBoardList(c);
 		assertThat(bList.size(), is(10)); // 제대로된 테스트 x ,,,
+	}
+	
+	@Test
+	public void getBoardListBySearch() {
+		Criteria c = new Criteria();
+		BoardTestCase btc = new BoardTestCase(memberDAO, boardDAO);
+		btc.TestCaseInput();
+		
+		c.setSearch("속닥속닥");
+		c.setInsertCategory("category");
+		List<BoardVO> bList = adminDAO.getBoardListBySearch(c);
+		assertThat(bList.size(), is(10));
+		
+		btc.TestCaseOutput();
 	}
 	
 	@Test

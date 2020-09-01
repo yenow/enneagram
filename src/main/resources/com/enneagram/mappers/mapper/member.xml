@@ -38,4 +38,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="m_deleteById">
 		delete from member where id = #{id}
 	</delete>
+	
+	<select id="m_getTotalCountBySearch" resultType="int">
+		select count(*) from member where ${insertCategory} like CONCAT('%',#{search},'%')
+	</select>
 </mapper>

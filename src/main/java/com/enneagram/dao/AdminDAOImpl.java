@@ -22,11 +22,6 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	@Override
-	public List<BoardVO> getBoardListByCategory(Criteria c) {
-		return sqlSession.selectList("a_getBoardListByCategory", c);
-	}
-
-	@Override
 	public List<BoardVO> getBoardList(Criteria c) {
 		return sqlSession.selectList("a_getBoardList", c);
 	}
@@ -34,5 +29,20 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public List<ReplyVO> getReplyList(Criteria c) {
 		return sqlSession.selectList("a_getReplyList", c);
+	}
+
+	@Override
+	public List<BoardVO> getBoardListBySearch(Criteria c) {
+		return sqlSession.selectList("a_getBoardListBySearch", c);
+	}
+
+	@Override
+	public List<MemberVO> getMemberListBySearch(Criteria c) {
+		return sqlSession.selectList("a_getMemberListBySearch", c);
+	}
+
+	@Override
+	public List<ReplyVO> getReplyListBySearch(Criteria c) {
+		return sqlSession.selectList("a_getReplyListBySearch", c);
 	}
 }

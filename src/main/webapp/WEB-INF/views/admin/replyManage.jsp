@@ -67,17 +67,16 @@
 												<!--  style="display: flex; justify-content: center; align-content: center" -->
 												<td colspan="10">
 													<div style="display: flex; justify-content: center; align-content: center">
-														<select class="border-rounded border-1 color-gray" >
-															<option class="color-gray">no</option>
-															<option class="color-gray">아이디</option>
-															<option class="color-gray">비밀번호</option>
-															<option class="color-gray">이름</option>
-															<option class="color-gray">닉네임</option>
-															<option class="color-gray">이메일</option>
-															<option class="color-gray">전화번호</option>
+														<select class="border-rounded border-1 color-gray" id="selectBox">
+															<option class="color-gray" value="rno">댓글번호</option>
+															<option class="color-gray" value="bno">게시물번호</option>
+															<option class="color-gray" value="mno">회원번호</option>
+															<option class="color-gray" value="content">댓글내용</option>
+															<option class="color-gray" value="rname">댓글아이디</option>
+															<option class="color-gray" value="regdate">등록날짜</option>
 														</select>
-														<input type="text" class="border-rounded align-self-stretch border-1 w50p" >
-														<button class="btn btn-outline-secondary border-1">검색</button>
+														<input type="text" id="selectInput" class="border-rounded align-self-stretch border-1 w50p" >
+														<button class="btn btn-outline-secondary border-1" onclick="searchSubmit();">검색</button>
 													</div>
 												</td>
 											</tr>
@@ -85,13 +84,22 @@
 										<tfoot>
 											<tr>
 												<td colspan="10" class="text-center">
-													<!-- 이전페이지 10개 -->
-													<button class="btn btn-outline-secondary btn-sm border-1">&#60;</button>
-													<c:forEach var="p" begin="${pageDTO.startPage }" end="${pageDTO.endPage }">
-														<button class="btn btn-outline-secondary btn-sm border-1" >${p}</button>
-													</c:forEach>
-													<!-- 다음페이지 10개 -->
-													<button class="btn btn-outline-secondary btn-sm border-1" >&#62;</button>
+													<form action="${pageContext.request.contextPath}/admin/replyManage" id="pageForm" method="post" >
+														<input type="hidden" name="search" value="${pageDTO.cri.search}">
+														<input type="hidden" name="insertCategory" value="${pageDTO.cri.insertCategory}">
+														
+														<c:if test="${pageDTO.prev == true }">
+															<a class="btn btn-outline-secondary btn-sm border-1" data-pageNum="${pageDTO.starPage-10}" onclick="pageSubmit(this);">&#60;</a>
+														</c:if>
+														<c:forEach var="p" begin="${pageDTO.startPage }" end="${pageDTO.endPage }">
+															<a class="btn btn-outline-secondary btn-sm border-1" data-pageNum="${p}" onclick="pageSubmit(this);">${p }</a>
+														</c:forEach>
+														<c:if test="${pageDTO.next == true }">
+															<a class="btn btn-outline-secondary btn-sm border-1" data-pageNum="${pageDTO.starPage+10}" onclick="pageSubmit(this);">&#60;</a>
+														</c:if>
+													
+													</form>
+													
 												</td>
 											</tr>
 										</tfoot>
@@ -102,34 +110,26 @@
 					</div>
 				</div>
 			</div>
-			<footer class="footer">
-				<div class="container-fluid">
-					<nav class="pull-left">
-						<ul>
-							<li>
-								<a href="#"> Home </a>
-							</li>
-							<li>
-								<a href="#"> Company </a>
-							</li>
-							<li>
-								<a href="#"> Portfolio </a>
-							</li>
-							<li>
-								<a href="#"> Blog </a>
-							</li>
-						</ul>
-					</nav>
-					<p class="copyright pull-right">
-						&copy;
-						<script>document.write(new Date().getFullYear())</script>
-						<a href="http://www.creative-tim.com">Creative Tim</a>
-						, made with love for a better web
-					</p>
-				</div>
-			</footer>
+			<jsp:include page="info/footerbar.jsp"></jsp:include>
 		</div>
 	</div>
+	<script type="text/javascript">
+	function searchSubmit() {
+		var insertCategory = $("#selectBox option:selected").val();
+		var search = $('#selectInput').val();
+		console.log(insertCategory);
+		console.log(search);
+		document.location.href='${pageContext.request.contextPath}/admin/replyManage?pageNum=${pageDTO.cri.pageNum}&search='+search+'&insertCategory='+insertCategory;
+	}
+
+	function pageSubmit(data) {
+	  	var page = $(data).data("pagenum");
+	  	$('#pageForm').append($('<input type="hidden" value="'+page+'" name="pageNum">'));
+	  	console.log(page);
+	  	console.log(data);
+		$('#pageForm').submit();
+	}
+	</script>
 </body>
 <!--   Core JS Files   -->
 <script src="../resources/assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>

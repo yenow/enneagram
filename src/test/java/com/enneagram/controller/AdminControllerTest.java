@@ -23,6 +23,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.enneagram.dao.AdminDAOTest;
 import com.enneagram.dao.MemberDAO;
+import com.enneagram.testcase.MemberTestCase;
 import com.enneagram.vo.MemberVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -60,27 +61,13 @@ public class AdminControllerTest {
 	
 	@Test
 	public void memberManage_Test() throws Exception {
-		// 데이터베이스에 데이터 새로 주입
-		int before = memberDAO.getTotalCount();  // 이게 되려면 그전에 데이터가 없어야함..
-		for(int i=0; i<100; i++) {
-			if(memberDAO.getMemberById("adminTest"+i)!=null) {
-				memberDAO.deleteById("adminTest"+i);
-				before = before-1;
-			}
-			
-			MemberVO member =  new MemberVO(0, "adminTest"+i, "password"+i, "name"+i, "nickname"+i, 
-					i+"email@naver.com", "010-0000-0000", "M", "사용자", "12-25", null);
-			memberDAO.memberInsert(member);
-		}
-		int after = memberDAO.getTotalCount();
-		log.info("before :" +before);
-		log.info("after :" +after);
-		assertThat(before, is(after-100));
+		MemberTestCase mtc= new MemberTestCase(memberDAO);
+		mtc.TestCaseInput();
 		
-		RequestBuilder reqBuilder = MockMvcRequestBuilders.get("/admin/memberManage").param("pageNum", "2");
+		RequestBuilder reqBuilder = MockMvcRequestBuilders.get("/admin/memberManage").param("pageNum", "2").param("insertCategory", "id").param("search", "admin");
 		mockMvc.perform(reqBuilder).andExpect(status().isOk()).andDo(print());
 		
-		
+		mtc.TestCaseOutput();
 	}
 	
 }

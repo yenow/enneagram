@@ -2,6 +2,7 @@ package com.enneagram.dao;
 
 import java.util.List;
 
+import com.enneagram.domain.Criteria;
 import com.enneagram.vo.MemberVO;
 import com.enneagram.vo.PersonalityVO;
 
@@ -22,4 +23,6 @@ public interface MemberDAO {
 	public int getTotalCount();
 
 	public void deleteById(String string);
+
+	public int getTotalCountBySearch(Criteria c);
 }

@@ -92,6 +92,8 @@ public class AdminController {
 	//게시글 관리 페이지 이동
 	@RequestMapping("/boardManage")
 	public void boardManage(Criteria c,Model m) {
+		log.info("search : "+c.getSearch());
+		log.info("insertCategory"+c.getInsertCategory());
 		adminService.boardManage(c,m);
 	}
 	

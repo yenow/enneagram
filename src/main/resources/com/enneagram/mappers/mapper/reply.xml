@@ -39,4 +39,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="r_getTotalCount" resultType="int">
 		select count(*) from reply 
 	</select>
+	
+	<select id="r_getTotalCountBySearch" resultType="int">
+		select count(*) from reply where ${insertCategory} like CONCAT('%',#{search},'%')
+	</select>
 </mapper>
