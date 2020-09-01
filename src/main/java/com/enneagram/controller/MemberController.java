@@ -6,12 +6,11 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.net.URLEncoder;
 import java.security.SecureRandom;
-import java.time.LocalDateTime;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,8 +19,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -48,6 +50,133 @@ public class MemberController{
     private AttachFileService attachFileService;
     @Autowired
     private PersonalitySerivce personalitySerivce;
+    
+    @Autowired
+    JavaMailSender mailSender; 
+
+    // 메일 전송
+    @RequestMapping(value = "auth.do",method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<String> mailSending(HttpServletRequest request, String email, HttpServletResponse response_email) throws IOException {
+    	ResponseEntity<String> re = null;
+        Random r = new Random();
+        int dice = r.nextInt(4589362) + 49311; //이메일로 받는 인증코드 부분 (난수)
+        
+        String setfrom = "nalraysy3@gamil.com";
+        String tomail = request.getParameter("email"); // 받는 사람 이메일
+        String title = "회원가입 인증 이메일 입니다."; // 제목
+        String content =
+        
+        System.getProperty("line.separator")+ //한줄씩 줄간격을 두기위해 작성
+        
+        System.getProperty("line.separator")+
+                
+        "안녕하세요 회원님 저희 홈페이지를 찾아주셔서 감사합니다"
+        
+        +System.getProperty("line.separator")+
+        
+        System.getProperty("line.separator")+
+
+        " 인증번호는 " +dice+ " 입니다. "
+        
+        +System.getProperty("line.separator")+
+        
+        System.getProperty("line.separator")+
+        
+        "받으신 인증번호를 홈페이지에 입력해 주시면 다음으로 넘어갑니다."; // 내용
+        
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper messageHelper = new MimeMessageHelper(message,
+                    true, "UTF-8");
+
+            messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
+            messageHelper.setTo(tomail); // 받는사람 이메일
+            messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+            messageHelper.setText(content); // 메일 내용
+            
+            mailSender.send(message);
+            re = new ResponseEntity<String>(Integer.toString(dice),HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println(e);
+            re = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+        }
+        /*
+        ModelAndView mv = new ModelAndView();    //ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
+        mv.setViewName("/member/email_injeung");     //뷰의이름
+        mv.addObject("dice", dice);
+        
+        System.out.println("mv : "+mv);
+
+        response_email.setContentType("text/html; charset=UTF-8");
+        PrintWriter out_email = response_email.getWriter();
+        out_email.println("<script>alert('이메일이 발송되었습니다. 인증번호를 입력해주세요.');</script>");
+        out_email.flush();
+        
+        */
+        return re;
+        
+    }
+    
+    @RequestMapping(value = "join_injeung.do{dice}", method = RequestMethod.POST)
+    @ResponseBody
+    public ModelAndView join_injeung(String email_injeung, @PathVariable String dice, HttpServletResponse response_equals) throws IOException {
+        
+        System.out.println("마지막 : email_injeung : "+email_injeung);
+        
+        System.out.println("마지막 : dice : "+dice);
+        
+        //페이지이동과 자료를 동시에 하기위해 ModelAndView를 사용해서 이동할 페이지와 자료를 담음
+         
+        ModelAndView mv = new ModelAndView();
+        
+        mv.setViewName("/member/join.do");
+        
+        mv.addObject("e_mail",email_injeung);
+        
+        if (email_injeung.equals(dice)) {
+            
+            //인증번호가 일치할 경우 인증번호가 맞다는 창을 출력하고 회원가입창으로 이동함
+        	
+            mv.setViewName("member/join");
+            
+            mv.addObject("e_mail",email_injeung);
+            
+            //만약 인증번호가 같다면 이메일을 회원가입 페이지로 같이 넘겨서 이메일을
+            //한번더 입력할 필요가 없게 한다.
+            
+            response_equals.setContentType("text/html; charset=UTF-8");
+            PrintWriter out_equals = response_equals.getWriter();
+            out_equals.println("<script>alert('인증번호가 일치하였습니다. 회원가입창으로 이동합니다.');</script>");
+            out_equals.flush();
+    
+            return mv;
+            
+            
+        }else if (email_injeung != dice) {
+            ModelAndView mv2 = new ModelAndView(); 
+            
+            mv2.setViewName("member/email_injeung");
+            
+            response_equals.setContentType("text/html; charset=UTF-8");
+            PrintWriter out_equals = response_equals.getWriter();
+            out_equals.println("<script>alert('인증번호가 일치하지않습니다. 인증번호를 다시 입력해주세요.'); history.go(-1);</script>");
+            out_equals.flush();
+            
+    
+            return mv2;
+            
+        }    
+    
+        return mv;
+        
+    }
+    
+    // 아이디, 비밀번호 찾기
+    @RequestMapping("emailInput")
+    public void emailInput() {
+    	
+    }
     
 	// 프로필 사진 정보 가져오는 AJAX
 	@RequestMapping("getProfile")
@@ -150,73 +279,7 @@ public class MemberController{
 	/* 마이페이지 - 내 성향*/
 	@RequestMapping("/mytype")
 	public String mytype(HttpSession session,Model model,HttpServletResponse response) throws IOException {
-		
-		
 		String str = personalitySerivce.getMyType(session,model,response);
-		/*
-		int mno;
-		if(session.getAttribute("login")==null) {
-			return "redirect:/member/login";
-		}else {
-			mno = ((MemberVO)session.getAttribute("login")).getMno();
-			System.out.println(mno);
-		}
-		
-		// 내 검사 리스트를 가져옴
-		List<PersonalityVO> pList = personalitySerivce.myPersonaltiyList(mno);
-		
-		PersonalityVO recently = new PersonalityVO();
-		EnneagramVO eclass =  new EnneagramVO();
-		EnneagramVO type = new EnneagramVO();
-		
-		// 검사결과가 없을경우 
-		if(pList.isEmpty()==true) {
-			System.out.println("리스트 없음");
-		}else {
-			// 가장 최근의 성향 가져오기
-			recently = pList.get(0);
-			LocalDateTime recent = pList.get(0).getRegdate();
-	
-			for(PersonalityVO p : pList) { 
-
-				if(recent.isBefore(p.getRegdate())) {
-					recent = p.getRegdate();
-					recently = p;
-				}
-			}
-		
-			//  pList sort 작업,,  가장 최신의 테스트가 맨 앞쪽으로감 
-			pList.sort(new Comparator<PersonalityVO>() {
-
-				@Override
-				public int compare(PersonalityVO o1, PersonalityVO o2) {
-					if(o1.getRegdate().isBefore(o2.getRegdate())) {
-						return 1;
-					}
-					return -1;
-				}
-			});
-			
-			EnneagramVO e = new EnneagramVO();
-			e.setCategory("eclass");
-			e.setEclass(recently.getEclass());
-			eclass= enneagramService.select(e);
-			e.setCategory("type");
-			e.setType(recently.getType());
-			type= enneagramService.select(e);
-			
-			System.out.println(eclass);
-			System.out.println(eclass.getEclass());
-			System.out.println(type);
-			System.out.println(type.getType());
-			
-			model.addAttribute("pList", pList);
-			model.addAttribute("recently", recently);
-			model.addAttribute("eclass", eclass);
-			model.addAttribute("type", type);
-			
-		}
-		*/
 		return str;
 	}
 	
@@ -320,6 +383,7 @@ public class MemberController{
 		return new BigInteger(130, random).toString(32);
 	}
 	
+	// 로그인 페이지
 	@RequestMapping("/login")
 	public void login(HttpServletRequest request,Model m) throws UnsupportedEncodingException {
 		String state = generateState();
@@ -336,6 +400,7 @@ public class MemberController{
 		m.addAttribute("apiURL", apiURL);
 	}
 
+	// 로그인 처리
 	@RequestMapping("/login_ok")
 	public void login_ok(MemberVO m, HttpSession session,HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		MemberVO member = memberSerivce.getMemberById(m.getId()); // user_id로 member객체 정보 가져오기
@@ -392,6 +457,7 @@ public class MemberController{
 		
 	}
 
+	// 로그아웃
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("login");
