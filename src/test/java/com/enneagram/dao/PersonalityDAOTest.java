@@ -28,7 +28,7 @@ public class PersonalityDAOTest {
 	@Before
 	public void setPersonalityVO() {
 		memberDAO.deleteById("testId");
-		MemberVO memberVO = new MemberVO(0, "testId", "testPassword", "테스트", "테스트", "test@test.com", "01000000000", "M", "관리자", "12-12", null);
+		MemberVO memberVO = new MemberVO(0, "testId", "testPassword", "테스트", "테스트", "test@test.com", "01000000000", "M", "관리자", "12-12", null,0);
 		memberDAO.memberInsert(memberVO);  
 		memberVO = memberDAO.getMemberById(memberVO.getId());
 		

@@ -27,6 +27,7 @@ public class MemberVO {
 	private String category;
 	private String birth;
 	private Date regdate;
+	private int naver;
 	
 	
 	

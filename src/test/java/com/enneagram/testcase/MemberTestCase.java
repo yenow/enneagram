@@ -29,7 +29,7 @@ public class MemberTestCase implements TestCase{
 				memberDAO.deleteById("adminTest"+i);
 			}
 			MemberVO member =  new MemberVO(0, "adminTest"+i, "password"+i, "name"+i, "nickname"+i, 
-					i+"email@naver.com", "010-0000-0000", "M", "사용자", "12-25", null);
+					i+"email@naver.com", "010-0000-0000", "M", "사용자", "12-25", null,0);
 			memberDAO.memberInsert(member);
 		}
 	

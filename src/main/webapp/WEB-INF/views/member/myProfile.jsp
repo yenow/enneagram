@@ -34,12 +34,21 @@
 					<a href="#" id="profileSubmit" class="btn btn-primary">등록</a> <a href="#" id="profiledelete" class="btn btn-primary">삭제</a>
 				</div>
 				<hr />
-				<!-- 비밀번호 -->
-				<h4 class="mb-3 h2">개인정보수정</h4>
-				<p>로그인 시 사용하는 비밀번호를 변경하거나 별명과, 전화번호, 이메일 주소등을 변경할수 있습니다. 주기적인 비밀번호 변경을 통해 개인정보를 안전하게 보호하세요.</p>
-				<div class="text-center">
-					<a href="${pageContext.request.contextPath}/member/is_member" class="btn btn-primary">개인정보 수정하기</a>
-				</div>
+				<c:if test="${login.naver != 1 }">
+					<!-- 비밀번호 -->
+					<h4 class="mb-3 h2">개인정보수정</h4>
+					<p>로그인 시 사용하는 비밀번호를 변경하거나 별명과, 전화번호, 이메일 주소등을 변경할수 있습니다. 주기적인 비밀번호 변경을 통해 개인정보를 안전하게 보호하세요.</p>
+					<div class="text-center">
+						<a href="${pageContext.request.contextPath}/member/is_member?kind=update" class="btn btn-primary">개인정보 수정하기</a>
+					</div>
+					<hr />
+					<!-- 회원탈퇴 -->
+					<h4 class="mb-3 h2">회원탈퇴</h4>
+					<p>회원을 탈퇴하시면, 이용하셨던 모든 정보가 삭제됩니다.</p>
+					<div class="text-center">
+						<a href="${pageContext.request.contextPath}/member/is_member?kind=delete" class="btn btn-primary">회원탈퇴하기</a>
+					</div>
+				</c:if>
 			</div>
 			<!-- sidebar -->
 			<div class="col-md-3 sidebar ftco-animate order-first fadeInUp ftco-animated">

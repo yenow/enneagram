@@ -18,7 +18,9 @@
 		<div class="row my-5">
 			<div class="col-md-9 order-md-1">
 				<h4 class="mb-3">비밀번호확인</h4>
-				<form class="needs-validation" action="${pageContext.request.contextPath}/member/member_info_check_ok" method="get">
+				<form class="needs-validation" action="${pageContext.request.contextPath}/member/member_info_check_ok" method="get" onsubmit="return validate();">
+					<input type="hidden" name="kind" value="${kind }">
+					
 					<div class="mb-3">
 						<label for="username">비밀번호</label>
 						<div class="input-group">
@@ -50,5 +52,17 @@
 	</div>
 </section>
 
+<script type="text/javascript">
+function validate() {
+	if('${kind}'=='delete'){
+		var flag = confirm('정말 삭제하시겠습니까?');
+		if(flag==true){
+			
+		}else{
+			return false;
+		}
+	}
+}
+</script>
 
 <jsp:include page="../info/footer.jsp"></jsp:include>

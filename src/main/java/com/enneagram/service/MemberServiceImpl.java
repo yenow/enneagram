@@ -150,10 +150,11 @@ public class MemberServiceImpl implements MemberService {
 					memberVO.setId(id);
 					memberVO.setName(name);
 					memberVO.setNickname(nickname);
-					memberVO.setEmail(email);
+					// memberVO.setEmail(email);  이메일은 중복됳 확률이 높기 때문에 넣지 않음
 					memberVO.setGender(gender);
 					memberVO.setBirth(birthday);;
 					memberVO.setCategory("네이버");;
+					memberVO.setNaver(1);
 					memberDAO.memberInsert(memberVO);
 					memberVO =  memberDAO.isPresent(id);
 					request.getSession().setAttribute("login", memberVO);
