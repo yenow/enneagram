@@ -18,7 +18,7 @@ public interface PersonalitySerivce {
 
 	String getType(Integer integer);
 
-	String test_complete(HttpServletRequest request, HttpSession Session, HttpServletResponse response);
+	// String test_complete(HttpServletRequest request, HttpSession Session, HttpServletResponse response);
 
 	PersonalityVO mytype(int mno);
 
@@ -28,5 +28,5 @@ public interface PersonalitySerivce {
 
 	String getMyType(HttpSession session, Model model, HttpServletResponse response);
 
-	String test_complete2(HttpServletRequest request, HttpSession session, HttpServletResponse response);
+	String test_complete(HttpServletRequest request, HttpSession session, HttpServletResponse response);
 }

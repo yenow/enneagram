@@ -25,37 +25,75 @@
 				<h2 class="text-center my-5">테스트 결과</h2>
 				<!-- 간단한 소개 -->
 				<div></div>
+				
+				<canvas id="myChart"></canvas>
 
 				<!-- eclass -->
 				<c:choose>
 					<c:when test="${eclass eq 1}">
-				        	<h3 class="text-center">머리형</h3>
+				        	<h3 class="text-center my-3">머리형</h3>
 				    </c:when>
 					<c:when test="${eclass eq 2}">
-				      		<h3 class="text-center">가슴형</h3>
+				      		<h3 class="text-center my-3">가슴형</h3>
 				    </c:when>
 					<c:otherwise>
-				      		<h3 class="text-center">장형</h3>
+				      		<h3 class="text-center my-3">장형</h3>
 				    </c:otherwise>
 				</c:choose>
 				<div style="min-height: 200px">${eclassContent }</div>
 
 
 				<!-- type -->
-				<h3 class="text-center">${type }번유형이란?</h3>
+				<h3 class="text-center my-3">${type }번유형이란?</h3>
 				<div style="min-height: 500px">${typeContent }</div>
 
 
 				<p>다른유형도 있어요</p>
 
 				<div class="col-12 text-center my-3">
-					<a href="${pageContext.request.contextPath}/enneagram/enneagram?category=enneagram" class="btn btn-primary">다른유형 알아보기</a>
+					<a href="${pageContext.request.contextPath}/enneagram/enneagram?category=enneagram" class="btn btn-primary mb-5">다른유형 알아보기</a>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
+<script>
+
+	var ctx = document.getElementById('myChart');
+	
+	
+	
+	new Chart(ctx, {
+		type : 'bar',
+		data : {
+			labels : [ '1번유형', '2번유형', '3번유형', '4번유형', '5번유형', '6번유형','7번유형', '8번유형', '9번유형' ],
+			datasets : [ {
+				label : 'result',
+				data : [ ${typeArray[0]},  ${typeArray[1]},  ${typeArray[2]},  ${typeArray[3]},  ${typeArray[4]},  ${typeArray[5]}, ${typeArray[6]},  ${typeArray[7]},  ${typeArray[8]} ],         // 아작스로 여기에 데이터넣자
+				backgroundColor : [ 'rgba(255, 99, 132, 0.2)',
+						'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)',
+						'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)',
+						'rgba(255, 159, 64, 0.2)','rgba(15,76,117,0.2)','rgba(56,41,51,0.2)' ,'rgba(181,43,101,0.2)'],
+				borderColor : [ 'rgba(255, 99, 132, 1)',
+						'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)',
+						'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)',
+						'rgba(255, 159, 64, 1)' , 'rgba(15,76,117,1)','rgba(56,41,51,1)' ,'rgba(181,43,101,1)' ],
+				borderWidth : 1
+			} ]
+		},
+		options : {
+			scales : {
+				yAxes : [ {
+					ticks : {
+						min : 0,
+						max : 50
+					}
+				} ]
+			} 
+		}
+	});
+</script>
 
 <jsp:include page="../info/footer.jsp"></jsp:include>
 

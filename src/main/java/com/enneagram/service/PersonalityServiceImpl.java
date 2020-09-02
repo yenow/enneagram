@@ -66,12 +66,12 @@ public class PersonalityServiceImpl implements PersonalitySerivce {
 	public PersonalityVO myPersonaltiy(int pno) {
 		return PersonalityDAO.myPersonaltiy(pno);
 	}
-
+	/*
 	// 테스트 완료시 처리 메서드
 	@Override
 	public String test_complete(HttpServletRequest request, HttpSession Session, HttpServletResponse response) {
 		
-		/* 로그인이 되었다면,, 이 정보를 넣어야함*/
+		//로그인이 되었다면,, 이 정보를 넣어야함
 		List<String> temp = new ArrayList<String>();
 		if(Session.getAttribute("test")!=null) {
 			temp = (List<String>) Session.getAttribute("test");
@@ -81,7 +81,7 @@ public class PersonalityServiceImpl implements PersonalitySerivce {
 		
 		
 		System.out.println(temp);
-		/* 각 성향별 값*/
+		// 각 성향별 값
 		int[] testNum = new int[9];
 		//1번 성향
 		testNum[0] = Integer.parseInt(temp.get(2)) + 
@@ -176,7 +176,7 @@ public class PersonalityServiceImpl implements PersonalitySerivce {
 				Integer.parseInt(temp.get(69));
 		
 		
-		/* map에는 1등과 그 점수가 매핑되어있음 */
+		// map에는 1등과 그 점수가 매핑되어있음 
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 		for(int i=1; i<=testNum.length; i++) {
 			map.put(i,testNum[i-1]);
@@ -187,7 +187,7 @@ public class PersonalityServiceImpl implements PersonalitySerivce {
 			rank[i] = i+1;
 		}
 		
-		/*  rank에는 순서대로 높은 성향이 들어가있음  */
+		//  rank에는 순서대로 높은 성향이 들어가있음  
 		Arrays.sort(rank, new Comparator<Integer>() {
 			@Override
 			public int compare(Integer o1, Integer o2) {
@@ -201,7 +201,7 @@ public class PersonalityServiceImpl implements PersonalitySerivce {
 			
 		} );
 		
-		/* rank확인! 순위대로 나온다  */
+		//rank확인! 순위대로 나온다  
 		for(int a : rank) {
 			System.out.print(a+" ");
 		}
@@ -216,7 +216,7 @@ public class PersonalityServiceImpl implements PersonalitySerivce {
 		int c = testNum[0]+testNum[7]+testNum[8];  // 장형
 		int eclass = (a>b) ? ((a>c) ? 1:3) : ((b>c) ? 2: 3);
 		
-		/* 로그인 되어있을 때, 테이블에 저장*/
+		// 로그인 되어있을 때, 테이블에 저장
 		if(((MemberVO)Session.getAttribute("login"))!=null) {
 			PersonalityVO p = new PersonalityVO(testNum[0],testNum[1],testNum[2],testNum[3],testNum[4],testNum[5],testNum[6],testNum[7],testNum[8]);
 			p.setType(rank[0]);
@@ -240,7 +240,7 @@ public class PersonalityServiceImpl implements PersonalitySerivce {
 		
 		return "/test/test_complete";
 	}
-
+	*/
 	@Override
 	public String getMyType(HttpSession session, Model model, HttpServletResponse response) {
 		
@@ -309,7 +309,7 @@ public class PersonalityServiceImpl implements PersonalitySerivce {
 	}
 
 	@Override
-	public String test_complete2(HttpServletRequest request, HttpSession session, HttpServletResponse response) {
+	public String test_complete(HttpServletRequest request, HttpSession session, HttpServletResponse response) {
 		int[] typeArray = new int[9];
 		// type 배열 0으로 초기화
 		for(int i=0; i<9;i++) {
@@ -321,7 +321,7 @@ public class PersonalityServiceImpl implements PersonalitySerivce {
 		if(session.getAttribute("test")!=null) {
 			 tList =  (List<String>) session.getAttribute("test");
 		}else {
-			return "/test/test_complete2";  //temp가 null 이면 ... 
+			return "/test/test_complete";  //temp가 null 이면 ... 
 			
 		}
 		// 질문지 정보 가져오기
@@ -392,8 +392,8 @@ public class PersonalityServiceImpl implements PersonalitySerivce {
 		session.setAttribute("typeContent", typeContent);
 		session.setAttribute("eclass", eclass);
 		session.setAttribute("rank", rank);
+		session.setAttribute("typeArray", typeArray);
 		
-		
-		return "/test/test_complete2";
+		return "/test/test_complete";
 	}
 }
