@@ -27,4 +27,6 @@ public interface PersonalitySerivce {
 	PersonalityVO myPersonaltiy(int pno);
 
 	String getMyType(HttpSession session, Model model, HttpServletResponse response);
+
+	String test_complete2(HttpServletRequest request, HttpSession session, HttpServletResponse response);
 }

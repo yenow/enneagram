@@ -18,17 +18,24 @@ import org.springframework.ui.Model;
 
 import com.enneagram.dao.EnneagramDAO;
 import com.enneagram.dao.PersonalityDAO;
+import com.enneagram.dao.QueryDAO;
 import com.enneagram.vo.EnneagramVO;
 import com.enneagram.vo.MemberVO;
 import com.enneagram.vo.PersonalityVO;
+import com.enneagram.vo.QueryVO;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class PersonalityServiceImpl implements PersonalitySerivce {
 
 	@Autowired
 	private PersonalityDAO PersonalityDAO;
 	@Autowired
 	private EnneagramDAO enneagramDAO;
+	@Autowired
+	private QueryDAO queryDAO;
 
 	@Override
 	public void insertPersonality(PersonalityVO p) {
@@ -301,4 +308,92 @@ public class PersonalityServiceImpl implements PersonalitySerivce {
 		return "/member/mytype";
 	}
 
+	@Override
+	public String test_complete2(HttpServletRequest request, HttpSession session, HttpServletResponse response) {
+		int[] typeArray = new int[9];
+		// type 배열 0으로 초기화
+		for(int i=0; i<9;i++) {
+			typeArray[i]=0;
+		}
+		
+		// 테스트 숫자결과 가져오기
+		List<String> tList = new ArrayList<String>();
+		if(session.getAttribute("test")!=null) {
+			 tList =  (List<String>) session.getAttribute("test");
+		}else {
+			return "/test/test_complete2";  //temp가 null 이면 ... 
+			
+		}
+		// 질문지 정보 가져오기
+		List<QueryVO> qList = queryDAO.selectQueryListAll();
+		log.info("tList :"+ tList);
+		log.info("qList :" + qList);
+		for(int i=0;i<81;i++) {
+			typeArray[qList.get(i).getType()-1] += Integer.parseInt(tList.get(i));
+		}
+		
+		/* map에는 1등과 그 점수가 매핑되어있음 */
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		for(int i=1; i<=typeArray.length; i++) {
+			map.put(i,typeArray[i-1]);
+		}
+		
+		Integer[] rank = new Integer[9];
+		for(int i=0; i<rank.length ;i++) {
+			rank[i] = i+1;
+		}
+		
+		/*  rank에는 순서대로 높은 성향이 들어가있음  */
+		Arrays.sort(rank, new Comparator<Integer>() {
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				if(map.get(o1)>map.get(o2)) {
+					return -1;
+				}else if(map.get(o1)<map.get(o2)) {
+					return 1;
+				}
+				return 0;
+			}
+			
+		} );
+		
+		/* rank확인! 순위대로 나온다  */
+		for(int a : rank) {
+			System.out.print(a+" ");
+		}
+		System.out.println();
+		
+		for(int i=1; i<=9; i++ ) {
+			System.out.print(map.get(i)+" ");
+		}
+		
+		int a = typeArray[4]+typeArray[5]+typeArray[6];  // 머리형
+		int b = typeArray[1]+typeArray[2]+typeArray[3];  // 가슴형
+		int c = typeArray[0]+typeArray[7]+typeArray[8];  // 장형
+		int eclass = (a>b) ? ((a>c) ? 1:3) : ((b>c) ? 2: 3);
+		
+		/* 로그인 되어있을 때, 테이블에 저장*/
+		if(((MemberVO)session.getAttribute("login"))!=null) {
+			PersonalityVO p = new PersonalityVO(typeArray[0],typeArray[1],typeArray[2],typeArray[3],typeArray[4],typeArray[5],typeArray[6],typeArray[7],typeArray[8]);
+			p.setType(rank[0]);
+			p.setMno(((MemberVO)session.getAttribute("login")).getMno());
+			p.setEclass(eclass);
+			
+			PersonalityDAO.insertPersonality(p);
+		}
+		
+		// rank[0], eclass
+		String eclassContent =  PersonalityDAO.getEclass(eclass);
+		String typeContent =  PersonalityDAO.getType(rank[0]);
+		
+		
+		session.setAttribute("type", rank[0]);
+		session.setAttribute("eclassContent", eclassContent);
+		session.setAttribute("typeContent", typeContent);
+		session.setAttribute("eclass", eclass);
+		session.setAttribute("rank", rank);
+		
+		
+		return "/test/test_complete2";
+	}
 }

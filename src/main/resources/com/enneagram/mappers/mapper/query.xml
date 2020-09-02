@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="query">
+	
+	<insert id="q_insertQueryInsertByQno">
+		insert into query values (#{qno},#{query},#{type})
+	</insert>
+	
+	<select id="q_getQueryByQno" resultType="com.enneagram.vo.QueryVO">
+		select * from query where qno = #{qno}
+	</select>
+
+	<update id="q_updateQueryByQno">
+		update query set query = #{query}, type = #{type} where qno = #{qno}
+	</update>
+	
+	<select id="q_selectListQuery" resultType="com.enneagram.vo.QueryVO">
+	 <![CDATA[  select * from query where qno >= #{startNum} and qno <= #{endNum} ]]>
+	</select>
+	
+	<select id="q_selectQueryListAll" resultType="com.enneagram.vo.QueryVO">
+	 <![CDATA[  select * from query where qno >= 1 and qno <= 81 ]]>
+	</select>
+</mapper>
