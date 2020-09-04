@@ -63,7 +63,7 @@ public class MemberController {
 		Random r = new Random();
 		int dice = r.nextInt(4589362) + 49311; // 이메일로 받는 인증코드 부분 (난수)
 
-		String setfrom = "nalraysy3@gamil.com";
+		String setfrom = "phantom_ysy@naver.com";
 		String tomail = request.getParameter("email"); // 받는 사람 이메일
 		String title = "회원가입 인증 이메일 입니다."; // 제목
 		String content =
