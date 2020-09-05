@@ -38,8 +38,11 @@ import com.enneagram.vo.EnneagramVO;
 import com.enneagram.vo.MemberVO;
 import com.enneagram.vo.PersonalityVO;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping("member")
+@Slf4j
 public class MemberController {
 
 	@Autowired
@@ -470,7 +473,8 @@ public class MemberController {
 	@RequestMapping("/login_ok")
 	public void login_ok(MemberVO m, HttpSession session, HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		MemberVO member = memberSerivce.getMemberById(m.getId()); // user_id로 member객체 정보 가져오기
+		log.info("member :"+m);
+		
 		PrintWriter out = response.getWriter();
 
 		/*
@@ -481,45 +485,54 @@ public class MemberController {
 		 * out.print("<script>"); out.print("alert('로그인이 필요합니다');");
 		 * out.print("</script>"); session.setAttribute("notLoginAccess", false); } }
 		 */
-		System.out.println(member);
+		
 		if (m.getId() == null) {
+			log.info("m.getId() == null");
 			out.print("<script>");
 			out.print("alert('아이디를 입력해주세요');");
 			out.print("history.back();");
 			out.print("</script>");
 			out.close();
-		}
-
-		if (member.getPassword() == null) {
+		}else if (m.getPassword() == null) {
+			log.info("m.getPassword() == null");
 			out.print("<script>");
-			out.print("alert('아이디가없습니다');");
+			out.print("alert('비밀번호를 입력해주세요');");
 			out.print("history.back();");
 			out.print("</script>");
 			out.close();
-		} else {
-			if (member.getPassword().equals(m.getPassword())) {
-				session.setAttribute("login", member); // login 성공할경우 "login"세션
+		}else {
+			MemberVO member = memberSerivce.getMemberById(m.getId()); // user_id로 member객체 정보 가져오기
+			if (member.getPassword() == null) {
 				out.print("<script>");
-				out.print("alert('로그인에 성공하셨습니다');");
-				out.print("location.href='" + request.getContextPath() + "';");
-				out.print("</script>");
-
-				/*
-				 * 서버에서 redirect하면 왜 안될까? PrintWriter out.println랑 view호출을 동시에 하니까 에러가 난다.
-				 * ServletContext sc = this.getServletContext(); RequestDispatcher rd =
-				 * sc.getRequestDispatcher("http://localhost:8181/"); rd.forward(request,
-				 * response);
-				 */
-				out.close();
-			} else {
-				out.print("<script>");
-				out.print("alert('비밀번호가 틀립니다');");
+				out.print("alert('아이디가없습니다');");
 				out.print("history.back();");
 				out.print("</script>");
 				out.close();
+			} else {
+				
+				if (member.getPassword().equals(m.getPassword())) {
+					session.setAttribute("login", member); // login 성공할경우 "login"세션
+					out.print("<script>");
+					out.print("alert('로그인에 성공하셨습니다');");
+					out.print("location.href='" + request.getContextPath() + "';");
+					out.print("</script>");
+
+					/*
+					 * 서버에서 redirect하면 왜 안될까? PrintWriter out.println랑 view호출을 동시에 하니까 에러가 난다.
+					 * ServletContext sc = this.getServletContext(); RequestDispatcher rd =
+					 * sc.getRequestDispatcher("http://localhost:8181/"); rd.forward(request,
+					 * response);
+					 */
+					out.close();
+				} else {
+					out.print("<script>");
+					out.print("alert('비밀번호가 틀립니다');");
+					out.print("history.back();");
+					out.print("</script>");
+					out.close();
+				}
 			}
 		}
-
 	}
 
 	// 로그아웃

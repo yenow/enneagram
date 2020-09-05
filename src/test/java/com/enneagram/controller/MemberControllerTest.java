@@ -1,5 +1,8 @@
 package com.enneagram.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.junit.Before;
@@ -8,6 +11,8 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -34,12 +39,9 @@ public class MemberControllerTest {
 		// 가짜 URL과 파라미터 등을 브라우저에서 사용하는 것처럼 만들어서 Controller의 getList() 에서 반환돈 결과를 이용해서 Model에 어떤 데이터들이 담겨있느지 확인한다.
 	}
 
-	
-	
-	
 	@Test
-	public void testListAutowired() {
-		System.out.println("확인");
+	public void login_ok() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.post("/member/login_ok").header("Content-type","text/html; charset=utf-8")).andExpect(status().isOk()).andDo(print());
 	}
 	
 }
