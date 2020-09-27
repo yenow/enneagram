@@ -41,7 +41,7 @@
 						<table class="my-2">
 							<tbody class="col-md-12" style="padding: 0 !important;">
 								<tr class="float-left">
-									<td class="align-middle border-0 px-2">[${b.type }번유형]</td>
+									<%-- <td class="align-middle border-0 px-2">[${b.type }번유형]</td> --%>
 									<td class="align-middle border-0 px-2">조회수: ${b.cnt }</td>
 									<td class="align-middle border-0 px-2">${b.moddate }</td>
 
