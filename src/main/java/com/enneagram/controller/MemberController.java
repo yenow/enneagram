@@ -397,15 +397,6 @@ public class MemberController {
 	@RequestMapping("/member_info")
 	public String member_info(HttpSession session, HttpServletRequest request, HttpServletResponse response)
 			throws IOException { // 리턴값이 void 일경우,, 매
-		/* 혹시라도 로그인이 안된 상태에서 진입했을 경우, 경고창을 띄우고 메인페이지로 이동 */
-		/*
-		 * if(session.getAttribute("login")==null) { PrintWriter out =
-		 * response.getWriter(); out.print("<script>");
-		 * out.print("alert('로그인이 필요합니다');");
-		 * out.print("location.href='/member/login'"); out.print("</script>"); }
-		 */
-		// return "/member/member_info";
-
 		PrintWriter out = response.getWriter();
 		/* 로그인이 안되어 있으면 */
 		if (session.getAttribute("login") == null) {
@@ -476,15 +467,6 @@ public class MemberController {
 		log.info("member :"+m);
 		
 		PrintWriter out = response.getWriter();
-
-		/*
-		 * System.out.println((boolean)session.getAttribute("notLoginAccess"));
-		 * if(session.getAttribute("notLoginAccess")!=null) {
-		 * if((boolean)session.getAttribute("notLoginAccess")==true) {
-		 * System.out.println((boolean)session.getAttribute("notLoginAccess"));
-		 * out.print("<script>"); out.print("alert('로그인이 필요합니다');");
-		 * out.print("</script>"); session.setAttribute("notLoginAccess", false); } }
-		 */
 		
 		if (m.getId() == null) {
 			log.info("m.getId() == null");

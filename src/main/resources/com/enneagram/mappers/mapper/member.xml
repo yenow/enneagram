@@ -9,6 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="m_insert">
 	insert into member (mno,id,password,name,nickname,email,tel,gender,regdate,birth) values
 	(nextval('mno'),#{id},#{password},#{name},#{nickname},#{email},#{tel},#{gender},sysdate(),#{birth})
+	<selectKey keyProperty="mno" order="AFTER" resultType="int">
+		select currval('mno') from dual
+	</selectKey>
 	</insert>
 
 	<select id="m_login" resultType="m">

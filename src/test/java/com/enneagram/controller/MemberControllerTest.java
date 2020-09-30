@@ -20,6 +20,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import com.enneagram.dao.MemberDAO;
 import com.enneagram.vo.MemberVO;
 
 @WebAppConfiguration  // 이걸붙여주면 되는 이유는??
@@ -28,8 +29,8 @@ import com.enneagram.vo.MemberVO;
 public class MemberControllerTest {
 	private static final Logger LOG = LoggerFactory.getLogger(AdminControllerTest.class);
 	
-	@Autowired
-	public MemberController memberController;
+	@Autowired public MemberController memberController;
+	@Autowired public MemberDAO memberDAO;
 	MockMvc mockMvc;
 
 		
@@ -42,6 +43,29 @@ public class MemberControllerTest {
 	@Test
 	public void login_ok() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.post("/member/login_ok").header("Content-type","text/html; charset=utf-8")).andExpect(status().isOk()).andDo(print());
+	}
+	
+	// 회원가입 삽입 테스트
+	@Test
+	public void member_insert_ok_test() throws Exception {
+		MemberVO member = new MemberVO();
+		memberDAO.deleteById("id");
+		mockMvc.perform(MockMvcRequestBuilders.post("/member/member_insert_ok").header("Content-type","text/html; charset=utf-8").param("id", "id")
+				.param("password", "password").param("name", "name").param("nickname", "nickname").param("tel", "tel").param("email", "email").param("gender", "M")
+				).andExpect(status().isOk()).andDo(print());
+		memberDAO.deleteById("id");
+	}
+	
+	// 회원 수정 테스트
+	@Test
+	public void member_info_update_ok_test() throws Exception {
+		MemberVO member = new MemberVO(0, "id", "password", "name", "nickname", "email11441", "tel", "M", "category", "birth", null, 0);
+		memberDAO.deleteById("id");
+		memberDAO.memberInsert(member);
+		mockMvc.perform(MockMvcRequestBuilders.post("/member/member_info_update_ok").header("Content-type","text/html; charset=utf-8").param("mno",Integer.toString(member.getMno()))
+				.param("password", "password").param("name", "name").param("nickname", "nickname").param("tel", "tel").param("email", "email").param("gender", "M")
+				).andExpect(status().isOk()).andDo(print());
+		memberDAO.deleteById("id");
 	}
 	
 }
