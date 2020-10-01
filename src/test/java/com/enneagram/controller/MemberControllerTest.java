@@ -73,7 +73,7 @@ public class MemberControllerTest {
 //@Autowired
 	//public MemberController memberController;
 	//MockMvc mockMvc;
-
+	// 1day 1commit
 	/*
 	@Before   // 모든테스트전에 매번 실행되는 메서드
 	public void setUpMockMvc() {
