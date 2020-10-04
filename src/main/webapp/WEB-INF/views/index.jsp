@@ -4,7 +4,7 @@
 
 <jsp:include page="info/header.jsp"></jsp:include>
 
-<!-- <div class="js-fullheight"> -->
+<!-- <div class="js-fullheight"> 1day -->
 	<div class="hero-wrap js-fullheight">
 		<!-- 분홍색 배경 -->
 		<div class="overlay"></div>
