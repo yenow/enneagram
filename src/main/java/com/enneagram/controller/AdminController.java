@@ -29,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AdminController {
 	//private static final Logger LOG = LoggerFactory.getLogger(AdminController.class);  이걸써도되
-	
+	// 실험
 	@Autowired
 	private AdminService adminService;
 	@Autowired
