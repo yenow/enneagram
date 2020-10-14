@@ -114,7 +114,7 @@ public class BoardController {
 		ResponseEntity<String> r;
 		System.out.println("카테고리/ "+board.getCategory());
 		System.out.println("내용/ "+board.getContent());
-		
+		log.info("인자값:"+board);
 		try {
 			int bno = boardService.insertBoardReturnBno(board);
 			r = new ResponseEntity<String>(Integer.toString(board.getBno()),HttpStatus.OK);
@@ -141,15 +141,6 @@ public class BoardController {
 	@RequestMapping(value = "/boardList", method = RequestMethod.GET)  
 	public String boardList(Model m, Criteria c) {
 		BoardVO bo = new BoardVO();
-		
-		/*
-		 * System.out.println("게시물 개수"+c.getMaxLine());
-		 * System.out.println("게시물 개수"+c.getPageNum());
-		 * System.out.println("타입"+c.getType());
-		 * System.out.println("카테고리"+c.getCategory());
-		 * System.out.println("검색 타입"+c.getInsertCategory());
-		 * System.out.println("검색"+c.getSearch());
-		 */
 		
 		/* 카테고리에 따른 게시물 총 개수 가져오기*/
 		int maxcount = boardService.boardAllCount(c.getCategory());
@@ -228,9 +219,10 @@ public class BoardController {
 	public ModelAndView boardDelete(int bno, HttpServletResponse response) throws IOException {
 		ModelAndView mv = new ModelAndView("redirect:/board/boardList");
 		boardService.boardDelete(bno);
-		PrintWriter out = response.getWriter();
-		out.println("alert('게시글이 삭제되었습니다');");
-		out.close();
+		//PrintWriter out = response.getWriter();
+		
+		// out.println("alert('게시글이 삭제되었습니다');");
+		// out.close();
 		return mv; 
 	} 
 	

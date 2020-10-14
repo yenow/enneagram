@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime" %>
 
 <!-- 로그인 유효성 검증 코드 해야함 -->
 
@@ -25,7 +26,7 @@
 					<c:forEach var="p" items="${pList }">
 						
 						<%-- <fmt:formatDate var="date" pattern="yyyy-MM-dd" value="${p.regdate}" /> --%>
-						<option value="${p.pno }">${p.regdate}</option>
+						<option value="${p.pno }"><javatime:format value="${p.regdate}" pattern="yyyy년 MM월 dd일"/></option>
 					</c:forEach>
 				</select>
 

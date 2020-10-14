@@ -63,12 +63,12 @@
 	var pageNum = 1; // 현재 페이지
 	var value = []; // ajax를 통해서.. 데이터를 넘김. session을 이용해서 값을 저장
 	
-	
+	// 아작스로 질문을 가져옴
 	function getQuery(page) {
 		$.ajax({
-			type : 'POST', // method
+			type : 'POST', 
 			url : '/enneagram/test/query',  
-			async : 'true', // true
+			async : 'true', 
 			data : {'pageNum':page},
 			dataType : 'JSON', // 명시하지 않을 경우 자동으로 추측
 			success : function(data) {

@@ -56,8 +56,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertBoardReturnBno" >
-			insert into board (bno,mno,title,content,category,regdate,type,moddate,nickname,id) values 
-		(nextval('bno'),#{mno},#{title},#{content},#{category},sysdate(),#{type},sysdate(),#{nickname},#{id})
+			insert into board (bno,mno,title,content,category,regdate,moddate,nickname,id) values 
+		(nextval('bno'),#{mno},#{title},#{content},#{category},sysdate(),sysdate(),#{nickname},#{id})
 		
 		<selectKey keyProperty="bno" resultType="Integer" order="AFTER"> select currval('bno') from dual </selectKey>
 

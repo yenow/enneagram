@@ -74,17 +74,17 @@
 	<div class="container-fluid">
 		<h2 class="text-center my-3 pt-3"><span class="pl-4">게시판 등록</span>
 			<c:if test="${category != '자료실' }">
-				<a href="${pageContext.request.contextPath}/board/boardList?category=${category}" class="btn btn-outline-secondary float-right" type="submit" id="inputGroupFileAddon04" style="margin-right: 15px;">목록</a>
-				<a href="${pageContext.request.contextPath}/board/boardList?category=${category}" class="btn btn-outline-secondary submit-button float-right" type="submit" id="inputGroupFileAddon04" style="margin-right: 15px;">등록</a>
+				<a  href="${pageContext.request.contextPath}/board/boardList?category=${category}" class="btn btn-outline-secondary float-right" type="submit" id="inputGroupFileAddon04" style="margin-right: 15px;">목록</a>
+				<a  href="${pageContext.request.contextPath}/board/boardList?category=${category}" class="btn btn-outline-secondary submit-button float-right" type="submit" id="inputGroupFileAddon04" style="margin-right: 15px;">등록</a>
 			</c:if>		
 		
 		</h2>
 		<%-- action="${pageContext.request.contextPath}/board/boardWrite_ok?catetgory=${category} --%>
 		<form id="boardWrite-form">
-			<input type="hidden" name="mno" value="${login.mno }">
-			<input type="hidden" name="id" value="${login.id }">
-			<input type="hidden" name="nickname" value="${login.nickname }">
-			<input type="hidden" name="category" value="${category }">
+			<input type="hidden" id="b-mno" name="mno" value="${login.mno }">
+			<input type="hidden" id="b-id" name="id" value="${login.id }">
+			<input type="hidden" id="b-nickname" name="nickname" value="${login.nickname }">
+			<input type="hidden" id="b-category" name="category" value="${category }">
 			
 			<div class="row justify-content-end" style="padding: 0 30px;">
 				<!-- 파일첨부 -->
@@ -161,6 +161,7 @@
 
 
 	    $(document).ready(function () {
+	    
 	    	
 	    	// 제출될때 이벤트 발생
 	        $('.submit-button').click(function () {
@@ -174,26 +175,27 @@
 	                //폼 태그도 ajax로 보내야함;; 그리고 다 되었으면 다시 ajax로 보내고,, 그리고 location.href로 이동
 	                var data = {};
 	                //serialize() 활용하기
-	                var str = $("form").serialize();
-	                console.log(str);
-	                var category = '${category}';
-	                data.str = str;
-	                // data.AttachFileDTOArray = AttachFileDTOArray;
-	                // data.category = category;
-	                console.log(data);
+	                //var str = $("form").serialize();
 
+	               
+	                var mno = $('#b-mno').val();
+	                var id = $('#b-id').val();
+	                var nickname = $('#b-nickname').val();
+	                var category = $('#b-category').val();
+	                data = {'mno': mno , 'id': id ,'nickname': nickname ,'category': category ,
+	                		'title': $('#title').val() , 'content' : $('#summernote').val()}
+	                console.log(data);
+	                
 	                $.ajax({
-	                    data: str,
+	                    data: data,
 	                    type: 'POST',
 	                    dataType: 'html',
 	                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 	                    url: "${pageContext.request.contextPath}/board/boardWriteAjax",
 	                    success: function (data) {
-
-	                        console.log(data);
-	                        data *= 1; // bno 숫자타입으로 만들기
+	                        bno = Number(data);	                        
 	                        console.log(typeof bno);
-	                        AttachFileDTOArray[0].bno = data;
+	                        AttachFileDTOArray[0].bno = bno;
 	                        console.log(AttachFileDTOArray[0]);
 
 	                        for (var i = 0; i < AttachFileDTOArray.length; i++) {
@@ -213,18 +215,14 @@
 	                                    console.log(data);
 	                                    if (data == "success") {
 	                                    	
-	                                    	window.location.replace='${pageContext.request.contextPath}/board/boardList?category=${category}';
+	                                   	 window.location.replace='${pageContext.request.contextPath}/board/boardList?category=${category}';
 	                                    } else {
 	                                        alert('등록이 되지 않았습니다');
 	                                       
-	                                    }
-	                                }
-	                            }); // end ajax
+	                                	}
+	                             	}
+	                         }); // end ajax
 	                            
-	                            
-	                    	$.ajax({
-	                    		
-	                    	});
 
 	                    } // end success function
 	                }); // end ajax	  	
