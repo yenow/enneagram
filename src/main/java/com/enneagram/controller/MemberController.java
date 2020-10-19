@@ -153,7 +153,7 @@ public class MemberController {
 			PrintWriter out_equals = response_equals.getWriter();
 			out_equals.println("<script>alert('인증번호가 일치하였습니다. 회원가입창으로 이동합니다.');</script>");
 			out_equals.flush();
-
+			out_equals.close();
 			return mv;
 
 		} else if (email_injeung != dice) {
@@ -165,7 +165,7 @@ public class MemberController {
 			PrintWriter out_equals = response_equals.getWriter();
 			out_equals.println("<script>alert('인증번호가 일치하지않습니다. 인증번호를 다시 입력해주세요.'); history.go(-1);</script>");
 			out_equals.flush();
-
+			out_equals.close();
 			return mv2;
 
 		}
@@ -498,14 +498,14 @@ public class MemberController {
 					out.print("alert('로그인에 성공하셨습니다');");
 					out.print("location.href='" + request.getContextPath() + "';");
 					out.print("</script>");
-
+					out.close();
 					/*
 					 * 서버에서 redirect하면 왜 안될까? PrintWriter out.println랑 view호출을 동시에 하니까 에러가 난다.
 					 * ServletContext sc = this.getServletContext(); RequestDispatcher rd =
 					 * sc.getRequestDispatcher("http://localhost:8181/"); rd.forward(request,
 					 * response);
 					 */
-					out.close();
+					
 				} else {
 					out.print("<script>");
 					out.print("alert('비밀번호가 틀립니다');");
