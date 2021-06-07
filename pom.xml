@@ -38,7 +38,7 @@
 		<dependency>
 		    <groupId>ch.qos.logback</groupId>
 		    <artifactId>logback-classic</artifactId>
-		    <version>1.1.7</version> <!--버전은 상황에 따라 -->
+		    <version>1.2.0</version> <!--버전은 상황에 따라 -->
 		</dependency>
 		<!-- mockito -->
 		<dependency>
